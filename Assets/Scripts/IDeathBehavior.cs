@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMergeable
+public interface IDeathBehavior
 {
-    public void Merge(int level);
+    public void Die();
 }

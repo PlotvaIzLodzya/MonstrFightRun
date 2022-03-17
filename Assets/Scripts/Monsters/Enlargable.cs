@@ -37,16 +37,18 @@ public class Enlargable : MonoBehaviour
         _maxStep = maxLevel;
     }
 
-    public void PlayEnlargeAnimation()
+    public void PlayEnlargeAnimation(int count)
     {
         if (_step < _maxStep)
         {
-            _step++;
+            _step+= count;
 
             StepChanged?.Invoke(_step, _maxStep);
         }
 
-        if (_coroutine == null)
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
             _coroutine = StartCoroutine(Enlarge());
     }
 

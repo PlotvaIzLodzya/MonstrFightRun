@@ -8,7 +8,9 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private Enlargable _enlargable;
 
     private int _level = 0;
-    private int _maxLevel = 20;
+    private int _maxLevel = 30;
+
+    public int Level => _level;
 
     public event Action<int> LevelChanged;
 
@@ -17,18 +19,18 @@ public class Monster : MonoBehaviour, IMergeable
         _enlargable.SetMaxStep(_maxLevel);
     }
 
-    public void Merge()
+    public void Merge(int level)
     {
-        _level++;
-        _level = Mathf.Clamp(_level, 0, _maxLevel);
-        _enlargable.PlayEnlargeAnimation();
+        _level+= level;
+        _level = Mathf.Clamp(_level, 1, _maxLevel);
+        _enlargable.PlayEnlargeAnimation(_level);
         LevelChanged?.Invoke(_level);
     }
 
-    public void UnMerge()
+    public void UnMerge(int level)
     {
-        _level--;
-        _level = Mathf.Clamp(_level, 0, _maxLevel);
+        _level-= level;
+        _level = Mathf.Clamp(_level, 1, _maxLevel);
         _enlargable.ShrinkAnimation(_level);
         LevelChanged?.Invoke(_level);
     }

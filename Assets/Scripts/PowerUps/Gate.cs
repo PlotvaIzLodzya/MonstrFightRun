@@ -18,6 +18,5 @@ public class Gate : Usable
     public override void Use(MonstersHandler monstersHandler)
     {
         monstersHandler.TrySetMonsterToPlace(_monster);
-        Debug.Log("Nihao");
     }
 }

@@ -18,7 +18,6 @@ public class Usable : MonoBehaviour, IUsable
         if (other.TryGetComponent(out MonstersHandler monstersHandler))
         {
             Use(monstersHandler);
-            Debug.Log("Hallo");
         }
     }
 
