@@ -8,7 +8,11 @@ public class MonstersHandler : MonoBehaviour
     [SerializeField] private Monster _initialMonster;
 
     private MonsterPlace[] _monsterPlaces;
-    private int _counter;
+    private const int _defaultLevelValue = 1;
+
+    private int _monstersMight;
+
+    public int MonsterMight => _monstersMight;
 
     private void Awake()
     {
@@ -23,9 +27,11 @@ public class MonstersHandler : MonoBehaviour
 
         if (place != default)
         {
+            ChangeMonstersMight(_defaultLevelValue);
+
             if (CanMerge(monster, place))
             {
-                place.Monster.Merge();
+                place.Monster.Merge(_defaultLevelValue);
 
                 return true;
             }
@@ -38,13 +44,14 @@ public class MonstersHandler : MonoBehaviour
         return false;
     }
 
-    public void MergeAllMonster()
+    public void MergeAllMonster(int level)
     {
         var monsters = GetAllMonsters();
 
         foreach (var monster in monsters)
         {
-            monster.Merge();
+            ChangeMonstersMight(level);
+            monster.Merge(level);
         }
     }
 
@@ -54,8 +61,13 @@ public class MonstersHandler : MonoBehaviour
 
         foreach (var monster in monsters)
         {
-            monster.UnMerge();
+            monster.UnMerge(1);
         }
+    }
+
+    private void ChangeMonstersMight(int level)
+    {
+        _monstersMight+= level;
     }
 
     private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace)

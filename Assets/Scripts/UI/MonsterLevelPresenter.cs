@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MonsterLevelPresenter : MonoBehaviour
+public class MonsterLevelPresenter : LevelPresenter
 {
     [SerializeField] private Canvas _canvas;
-    [SerializeField] private TMP_Text _level;
     [SerializeField] private Monster _monster;
 
     private float _maxFontSize;
@@ -14,7 +13,7 @@ public class MonsterLevelPresenter : MonoBehaviour
 
     private void Awake()
     {
-        _minFontSize = _level.fontSize;
+        _minFontSize = Level.fontSize;
         _maxFontSize = _minFontSize + 20f;
     }
 
@@ -33,8 +32,8 @@ public class MonsterLevelPresenter : MonoBehaviour
         if(_canvas.gameObject.activeInHierarchy == false)
             _canvas.gameObject.SetActive(true);
 
-        _level.text = $"{level}";
-        StartCoroutine(Animation(_level));
+        Show(level);
+        StartCoroutine(Animation(Level));
     }
 
     private IEnumerator Animation(TMP_Text text)
