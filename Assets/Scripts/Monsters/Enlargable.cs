@@ -1,0 +1,91 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class Enlargable : MonoBehaviour
+{
+    [SerializeField] private EnlargeOptions _enlargeOptions;
+
+    private Vector3 _initialScale;
+    private int _step;
+    private Coroutine _coroutine;
+    private int _maxStep;
+
+    public int Step => _step;
+    private float _scalePerStep => (_enlargeOptions.MaxScale - _initialScale.x)/ _maxStep;
+    private float _additionalScale => _step * _scalePerStep;
+    private Vector3 _nexSteptScale => new Vector3(_initialScale.x + _additionalScale, _initialScale.y + _additionalScale, _initialScale.z + _additionalScale);
+    private Vector3 _enlargeScale => _nexSteptScale * _enlargeOptions.ScaleCoefficient;
+
+    public event Action<int, int> StepChanged;
+
+    private void Start()
+    {
+        _initialScale = transform.localScale;
+        StepChanged?.Invoke(_step, _maxStep);
+    }
+
+    public void Reset()
+    {
+        _step = 0;
+        StepChanged?.Invoke(_step, _maxStep);
+    }
+
+    public void SetMaxStep(int maxLevel)
+    {
+        _maxStep = maxLevel;
+    }
+
+    public void PlayEnlargeAnimation()
+    {
+        if (_step < _maxStep)
+        {
+            _step++;
+
+            StepChanged?.Invoke(_step, _maxStep);
+        }
+
+        if (_coroutine == null)
+            _coroutine = StartCoroutine(Enlarge());
+    }
+
+    public void ShrinkAnimation(int stepCount)
+    {
+        if (_step > 0)
+        {
+            _step -= stepCount;
+
+            StepChanged?.Invoke(_step, _maxStep);
+
+            StartCoroutine(Shrink());
+        }
+    }
+
+    private IEnumerator Enlarge()
+    {
+        float changeSpeed = Mathf.Abs(transform.localScale.x - _enlargeScale.x / _enlargeOptions.Time);
+
+        while (transform.localScale.x < _enlargeScale.x)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, _enlargeScale, changeSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        StartCoroutine(Shrink());
+    }
+
+    private IEnumerator Shrink()
+    {
+        float changeSpeed = Mathf.Abs(transform.localScale.x - _nexSteptScale.x / _enlargeOptions.Time);
+
+        while (transform.localScale.x > _nexSteptScale.x)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, _nexSteptScale, changeSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        _coroutine = null;
+    }
+}
