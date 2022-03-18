@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gate : Usable
+public class Gate : PowerUp
 {
     [SerializeField] private MonsterList _monsters;
     [SerializeField] private GateIcon _gateIcon;

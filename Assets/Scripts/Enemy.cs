@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Chest))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private RunerEnemyMover _runerEnemyMover;
+    [SerializeField] private RunnerEnemyMover _runerEnemyMover;
     [SerializeField] private int _level;
 
     private RunerHassle _runerHassle = new RunerHassle();

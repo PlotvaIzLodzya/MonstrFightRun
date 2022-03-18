@@ -11,12 +11,11 @@ public class Player : MonoBehaviour
 
     public void RaiseMight(int level)
     {
-        _monstersHandler.MergeAllMonster(level);
+        _monstersHandler.LevelUpAllMonster(level);
     }
 
     public void Die()
     {
         _deathHandler.Die();
-        Debug.Log("hi");
     }
 }

@@ -10,7 +10,7 @@ public class MonsterPlace : MonoBehaviour
     public void Take(Monster monster)
     {
         Monster = monster;
-        Monster.Merge(1);
+        Monster.LevelUp(1);
         IsTaken = true;
     }
 

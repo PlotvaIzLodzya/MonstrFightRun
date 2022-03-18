@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUsable
+interface IUsable
 {
     public void Use(MonstersHandler monstersHandler);
 }

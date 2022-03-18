@@ -6,7 +6,8 @@ public class GateIcon : MonoBehaviour
 {
     public void CreateIcon(Monster monster)
     {
-        var monsterIcon = Instantiate(monster,transform);
+        var monsterIcon = Instantiate(monster, transform);
         monsterIcon.transform.localScale = Vector3.one * 1.5f;
+        monsterIcon.GetComponentInChildren<Rotator>().enabled = false;
     }
 }

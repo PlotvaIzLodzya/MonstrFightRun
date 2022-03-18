@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class MonstersHandler : MonoBehaviour
 {
     [SerializeField] private Monster _initialMonster;
 
     private MonsterPlace[] _monsterPlaces;
-    private const int _defaultLevelValue = 1;
-
+    private const int AddLevelOnMerge = 10;
     private int _monstersMight;
 
     public int MonsterMight => _monstersMight;
+
+    public event Action<MonsterAnimator> MonsterAdded;
 
     private void Awake()
     {
@@ -27,11 +29,11 @@ public class MonstersHandler : MonoBehaviour
 
         if (place != default)
         {
-            ChangeMonstersMight(_defaultLevelValue);
+            ChangeMonstersMight(AddLevelOnMerge);
 
             if (CanMerge(monster, place))
             {
-                place.Monster.Merge(_defaultLevelValue);
+                place.Monster.Merge(AddLevelOnMerge);
 
                 return true;
             }
@@ -44,24 +46,24 @@ public class MonstersHandler : MonoBehaviour
         return false;
     }
 
-    public void MergeAllMonster(int level)
+    public void LevelUpAllMonster(int level)
     {
         var monsters = GetAllMonsters();
 
         foreach (var monster in monsters)
         {
             ChangeMonstersMight(level);
-            monster.Merge(level);
+            monster.LevelUp(level);
         }
     }
 
-    public void UnMergeAllMonster()
+    public void LevelDownAllMonster()
     {
         var monsters = GetAllMonsters();
 
         foreach (var monster in monsters)
         {
-            monster.UnMerge(1);
+            monster.LevelDown(1);
         }
     }
 
@@ -75,6 +77,7 @@ public class MonstersHandler : MonoBehaviour
         var monster = Instantiate(monsterType);
         monsterPlace.Take(monster);
         monster.transform.SetParent(monsterPlace.transform, false);
+        MonsterAdded?.Invoke(monster.GetComponent<MonsterAnimator>());
     }
 
     private bool CanMerge(Monster monster, MonsterPlace place)
