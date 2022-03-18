@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RunerEnemyMover : MonoBehaviour
+public class RunnerEnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     
     private Rigidbody _rigidbody;
-    private RunerEnemyTrigger _enemyTrigger;
+    private RunnerEnemyTrigger _enemyTrigger;
     private Vector3 _direction;
     private bool _playerInSight;
 
@@ -22,7 +22,7 @@ public class RunerEnemyMover : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyTrigger = GetComponentInChildren<RunerEnemyTrigger>();
+        _enemyTrigger = GetComponentInChildren<RunnerEnemyTrigger>();
         _enemyTrigger.PlayerInTriggerZone += Move;
         _enemyTrigger.PlayerOutOfTriggerZone += StopMove;
     }
@@ -61,24 +61,6 @@ public class RunerEnemyMover : MonoBehaviour
     private void StopMove()
     {
         _playerInSight = false;
-    }
-
-    public void MoveForward()
-    {
-        StartCoroutine(MoveForwardAimation());
-    }
-
-    private IEnumerator MoveForwardAimation()
-    {
-        float timePassed = 0;
-
-        while(timePassed < 0.1f)
-        {
-            _rigidbody.MovePosition(transform.position + (transform.right+transform.forward) * _speed*2f * Time.deltaTime);
-            timePassed += Time.deltaTime;
-
-            yield return null;
-        }
     }
 
     public void Disable()

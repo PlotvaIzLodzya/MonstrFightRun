@@ -5,22 +5,35 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Form : MonoBehaviour
 {
-    [SerializeField] private Monster _monster;
-
     private Animator _animator;
 
     public Animator FormAnimator => _animator;
+
+    private const float _layerMaxWeight = 1f;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    private void OnAttack()
+    public void ChangeAnimatorLayer(int index)
     {
-        if (_monster.IsAllive)
+        if (index > 0)
+            StartCoroutine(LayerWeightChange(index));
+    }
+
+    private IEnumerator LayerWeightChange(int index)
+    {
+        float weight = 0.5f;
+        float changeSpeed = _layerMaxWeight / 0.2f;
+
+        while (weight < _layerMaxWeight)
         {
-            _monster.DealDamage();
-        }
+            weight = Mathf.MoveTowards(weight, _layerMaxWeight, changeSpeed * Time.deltaTime);
+
+            _animator.SetLayerWeight(index, weight);
+
+            yield return null;
+        } 
     }
 }

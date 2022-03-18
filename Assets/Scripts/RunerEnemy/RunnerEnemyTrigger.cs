@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class RunerEnemyTrigger : MonoBehaviour
+public class RunnerEnemyTrigger : MonoBehaviour
 {
     [SerializeField] private float _triggerRadius;
 

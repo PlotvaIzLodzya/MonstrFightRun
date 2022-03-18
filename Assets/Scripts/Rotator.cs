@@ -31,7 +31,9 @@ public class Rotator : MonoBehaviour
     {
         float pointerX = Input.GetAxis("Mouse X") * _rotatorOptions.RotationSpeed * _smoothMultiplier * Time.deltaTime;
 
-        SetRotation(pointerX);
+        xRotation += pointerX;
+
+        xRotation = Mathf.Clamp(xRotation, -_rotatorOptions.MaxAngle, _rotatorOptions.MaxAngle);
 
         if (Input.GetMouseButton(0))
         {
@@ -40,19 +42,6 @@ public class Rotator : MonoBehaviour
         }
 
         ResetRotation();
-    }
-
-    public void Rotate(float pointerX)
-    {
-        SetRotation(pointerX);
-        transform.localRotation = Quaternion.Euler(0, xRotation, 0f);
-    }
-
-    public void SetRotation(float pointerX)
-    {
-        xRotation += pointerX;
-
-        xRotation = Mathf.Clamp(xRotation, -_rotatorOptions.MaxAngle, _rotatorOptions.MaxAngle);
     }
 
     private void ResetRotation()

@@ -4,26 +4,20 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-[RequireComponent(typeof(MonsterHandlerColliders))]
 public class MonstersHandler : MonoBehaviour
 {
     [SerializeField] private Monster _initialMonster;
-    [SerializeField] private MonstersAnimatorHandler _monstersAnimatorHandler;
 
-    private MonsterHandlerColliders _monsterHandlerColliders;
     private MonsterPlace[] _monsterPlaces;
     private const int AddLevelOnMerge = 10;
     private int _monstersMight;
-    private int _counter = 0;
 
-    public int MonsterCounter { get; private set; }
     public int MonsterMight => _monstersMight;
 
     public event Action<MonsterAnimator> MonsterAdded;
 
     private void Awake()
     {
-        _monsterHandlerColliders = GetComponent<MonsterHandlerColliders>();
         _monsterPlaces = GetComponentsInChildren<MonsterPlace>();
         Error.CheckOnNull(_monsterPlaces[0], nameof(MonsterPlace));
         TrySetMonsterToPlace(_initialMonster);
@@ -35,16 +29,16 @@ public class MonstersHandler : MonoBehaviour
 
         if (place != default)
         {
+            ChangeMonstersMight(AddLevelOnMerge);
+
             if (CanMerge(monster, place))
             {
-                ChangeMonstersMight(AddLevelOnMerge);
+                place.Monster.Merge(AddLevelOnMerge);
 
-                return place.Monster.TryMerge(AddLevelOnMerge);
+                return true;
             }
 
             SetMonsterToPlace(monster, place);
-            _monsterHandlerColliders.CreateBoxCollider(place);
-            MonsterCounter++;
 
             return true;
         }
@@ -83,8 +77,7 @@ public class MonstersHandler : MonoBehaviour
         var monster = Instantiate(monsterType);
         monsterPlace.Take(monster);
         monster.transform.SetParent(monsterPlace.transform, false);
-        ChangeMonstersMight(1);
-        _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
+        MonsterAdded?.Invoke(monster.GetComponent<MonsterAnimator>());
     }
 
     private bool CanMerge(Monster monster, MonsterPlace place)
