@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerDeathHandler _deathHandler;
 
     public int Might => _monstersHandler.MonsterMight;
-    private int _counter;
 
     public void RaiseMight(int level)
     {
@@ -18,13 +17,5 @@ public class Player : MonoBehaviour
     public void Die()
     {
         _deathHandler.Die();
-    }
-
-    public void OnMonsterDie()
-    {
-        _counter++;
-
-        if (_counter >= _monstersHandler.MonsterCounter)
-            Die();
     }
 }

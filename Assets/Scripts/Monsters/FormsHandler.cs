@@ -9,6 +9,8 @@ public class FormsHandler : MonoBehaviour
     private int _counter = 0;
     private Form _currentForm;
 
+    public bool IsFinalForm { get; private set; }
+
     public Animator CurrentFormAnimator => _currentForm.FormAnimator;
 
     public event Action FormChanged;
@@ -27,19 +29,22 @@ public class FormsHandler : MonoBehaviour
         }
     }
 
-    public bool TryEnableNextForm()
+    public void EnableNextForm()
     {
         _counter++;
 
-        if(_counter > _forms.Length-1)
-            return false;
+        if(_counter >= _forms.Length)
+        {
+            _counter = _forms.Length - 1;
+            IsFinalForm = true;
+            return;
+        }
 
         if (_currentForm != null)
             _currentForm.gameObject.SetActive(false);
 
         SetCurrentForm(_counter);
         FormChanged?.Invoke();
-        return true;
     }
 
     public void EnablePreviousForm()
@@ -62,5 +67,6 @@ public class FormsHandler : MonoBehaviour
     {
         _currentForm = _forms[index];
         _currentForm.gameObject.SetActive(true);
+        _currentForm.ChangeAnimatorLayer(index);
     }
 }

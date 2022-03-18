@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MonstersAnimatorHandler : MonoBehaviour
 {
     [SerializeField] private MouseInput _mouseInput;
+    [SerializeField] private MonstersHandler _monstersHandler;
 
     private bool _isRunnig;
 
@@ -13,11 +14,13 @@ public class MonstersAnimatorHandler : MonoBehaviour
     private void OnEnable()
     {
         _mouseInput.RunBegan += SetRunAnimation;
+        _monstersHandler.MonsterAdded += AddAnimator;
     }
 
     private void OnDisable()
     {
         _mouseInput.RunBegan -= SetRunAnimation;
+        _monstersHandler.MonsterAdded -= AddAnimator;
     }
 
     public void AddAnimator(MonsterAnimator monsterAnimator)
@@ -39,14 +42,6 @@ public class MonstersAnimatorHandler : MonoBehaviour
         foreach (var monsterAnimator in _monstersAnimator)
         {
             monsterAnimator.DieAnimation();
-        }
-    }
-
-    public void TriggerAttackAnimation()
-    {
-        foreach (var monsterAnimator in _monstersAnimator)
-        {
-            monsterAnimator.AttackAnimation();
         }
     }
 
