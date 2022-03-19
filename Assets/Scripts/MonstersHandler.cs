@@ -7,6 +7,7 @@ using System;
 public class MonstersHandler : MonoBehaviour
 {
     [SerializeField] private Monster _initialMonster;
+    [SerializeField] private MonstersAnimatorHandler _monstersAnimatorHandler;
 
     private MonsterPlace[] _monsterPlaces;
     private const int AddLevelOnMerge = 10;
@@ -29,12 +30,10 @@ public class MonstersHandler : MonoBehaviour
 
         if (place != default)
         {
-            ChangeMonstersMight(AddLevelOnMerge);
-
             if (CanMerge(monster, place))
             {
                 place.Monster.Merge(AddLevelOnMerge);
-
+                ChangeMonstersMight(AddLevelOnMerge);
                 return true;
             }
 
@@ -77,7 +76,8 @@ public class MonstersHandler : MonoBehaviour
         var monster = Instantiate(monsterType);
         monsterPlace.Take(monster);
         monster.transform.SetParent(monsterPlace.transform, false);
-        MonsterAdded?.Invoke(monster.GetComponent<MonsterAnimator>());
+        ChangeMonstersMight(1);
+        _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
     }
 
     private bool CanMerge(Monster monster, MonsterPlace place)
