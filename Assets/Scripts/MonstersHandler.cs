@@ -4,11 +4,13 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+[RequireComponent(typeof(MonsterHandlerColliders))]
 public class MonstersHandler : MonoBehaviour
 {
     [SerializeField] private Monster _initialMonster;
     [SerializeField] private MonstersAnimatorHandler _monstersAnimatorHandler;
 
+    private MonsterHandlerColliders _monsterHandlerColliders;
     private MonsterPlace[] _monsterPlaces;
     private const int AddLevelOnMerge = 10;
     private int _monstersMight;
@@ -19,6 +21,7 @@ public class MonstersHandler : MonoBehaviour
 
     private void Awake()
     {
+        _monsterHandlerColliders = GetComponent<MonsterHandlerColliders>();
         _monsterPlaces = GetComponentsInChildren<MonsterPlace>();
         Error.CheckOnNull(_monsterPlaces[0], nameof(MonsterPlace));
         TrySetMonsterToPlace(_initialMonster);
@@ -38,7 +41,7 @@ public class MonstersHandler : MonoBehaviour
             }
 
             SetMonsterToPlace(monster, place);
-
+            _monsterHandlerColliders.CreateBoxCollider(place);
             return true;
         }
 
