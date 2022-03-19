@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(MonsterAnimator))]
 public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private ResizeAnimation ResizeAnimation;
     [SerializeField] private FormsHandler _formsHandler;
 
+    public MonsterAnimator MonsterAnimator { get; private set; }
     private int _level = 0;
     private int _maxLevel = 50;
 
+    public FormsHandler FormsHandler => _formsHandler;
     public int Level => _level;
     private bool IsFinalForm => _formsHandler.IsFinalForm;
 
@@ -18,6 +21,7 @@ public class Monster : MonoBehaviour, IMergeable
 
     private void Awake()
     {
+        MonsterAnimator = GetComponent<MonsterAnimator>();
         ResizeAnimation.SetMaxStep(_maxLevel);
     }
 

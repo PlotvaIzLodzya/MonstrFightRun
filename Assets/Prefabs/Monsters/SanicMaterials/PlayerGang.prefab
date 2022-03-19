@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialMonster: {fileID: 6869360728438512837, guid: 397ee4e29288fa44e8949d511d069360, type: 3}
+  _monstersAnimatorHandler: {fileID: 2096990774342737447}
 --- !u!65 &2020461896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -479,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseInput: {fileID: 1823091554893732090}
-  _monstersHandler: {fileID: 2020461897}
+  _monstersAnimator: []
 --- !u!1 &2940785713604490140
 GameObject:
   m_ObjectHideFlags: 0
