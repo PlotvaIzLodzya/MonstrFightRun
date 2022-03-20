@@ -35,7 +35,7 @@ public class FormsHandler : MonoBehaviour
 
         if(_counter >= _forms.Length)
         {
-            _counter = _forms.Length - 1;
+            _counter = _forms.Length;
             IsFinalForm = true;
             return;
         }
