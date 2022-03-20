@@ -6,6 +6,7 @@ using UnityEngine;
 public class Form : MonoBehaviour
 {
     private Animator _animator;
+    private Monster _monster;
 
     public Animator FormAnimator => _animator;
 
@@ -13,6 +14,7 @@ public class Form : MonoBehaviour
 
     private void Awake()
     {
+        _monster = transform.root.GetComponent<Monster>();
         _animator = GetComponent<Animator>();
     }
 
@@ -35,5 +37,10 @@ public class Form : MonoBehaviour
 
             yield return null;
         } 
+    }
+
+    private void OnAttack()
+    {
+        _monster.GiveDamage();
     }
 }

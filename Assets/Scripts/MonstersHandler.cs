@@ -14,7 +14,9 @@ public class MonstersHandler : MonoBehaviour
     private MonsterPlace[] _monsterPlaces;
     private const int AddLevelOnMerge = 10;
     private int _monstersMight;
+    private int _counter = 0;
 
+    public int MonsterCounter { get; private set; }
     public int MonsterMight => _monstersMight;
 
     public event Action<MonsterAnimator> MonsterAdded;
@@ -35,13 +37,15 @@ public class MonstersHandler : MonoBehaviour
         {
             if (CanMerge(monster, place))
             {
-                place.Monster.Merge(AddLevelOnMerge);
                 ChangeMonstersMight(AddLevelOnMerge);
-                return true;
+
+                return place.Monster.TryMerge(AddLevelOnMerge);
             }
 
             SetMonsterToPlace(monster, place);
             _monsterHandlerColliders.CreateBoxCollider(place);
+            MonsterCounter++;
+
             return true;
         }
 
