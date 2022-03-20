@@ -12,8 +12,8 @@ public class Chest : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void Push(Vector3 direction, float pushForce)
+    public void Push(float pushForce)
     {
-        _rigidbody.AddForce(direction.normalized * pushForce, ForceMode.VelocityChange);
+        _rigidbody.AddForce(-transform.forward * pushForce, ForceMode.VelocityChange);
     }
 }

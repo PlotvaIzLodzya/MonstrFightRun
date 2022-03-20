@@ -10,6 +10,7 @@ public class MonsterAnimator : MonoBehaviour
 
     private const string Run = "Run";
     private const string Die = "Die";
+    private const string Attack = "Attack";
 
     private void OnEnable()
     {
@@ -21,8 +22,14 @@ public class MonsterAnimator : MonoBehaviour
         _formsHandler.FormChanged -= RunAnimation;
     }
 
+    public void AttackAnimation()
+    {
+        _animator.SetBool(Attack, true);
+    }
+
     public void RunAnimation()
     {
+        _animator.SetBool(Attack, false);
         _animator.SetBool(Run, true);
     }
 

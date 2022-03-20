@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMergeable
 {
-    public void Merge(int level);
+    public bool TryMerge(int level);
 }

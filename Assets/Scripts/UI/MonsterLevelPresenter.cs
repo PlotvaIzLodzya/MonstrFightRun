@@ -21,15 +21,20 @@ public class MonsterLevelPresenter : LevelPresenter
 
     private void OnEnable()
     {
-        _monster.LevelChanged += OnMerge;
+        _monster.LevelChanged += OnLevelChange;
     }
 
     private void OnDisable()
     {
-        _monster.LevelChanged -= OnMerge;
+        _monster.LevelChanged -= OnLevelChange;
     }
 
-    public void OnMerge(int level)
+    public void Disable()
+    {
+        _canvas.gameObject.SetActive(false);
+    }
+
+    public void OnLevelChange(int level)
     {
         if(_canvas.gameObject.activeInHierarchy == false)
             _canvas.gameObject.SetActive(true);
