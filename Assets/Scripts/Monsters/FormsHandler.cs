@@ -62,6 +62,5 @@ public class FormsHandler : MonoBehaviour
     {
         _currentForm = _forms[index];
         _currentForm.gameObject.SetActive(true);
-        _currentForm.ChangeAnimatorLayer(index);
     }
 }
