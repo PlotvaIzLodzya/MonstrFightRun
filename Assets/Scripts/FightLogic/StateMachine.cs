@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class StateMachine: MonoBehaviour
     private AttackState _attackState;
     private IdleState _idleState;
 
+    public event Action<StateBehavior> StateChanged;
+
     private void Awake()
     {
         _moveState = new MoveState();
@@ -33,18 +36,20 @@ public class StateMachine: MonoBehaviour
             if (TryFindTarget(_attackRadius, out monster))
             {
                 _target = monster;
-                _currentBehavior = _attackState;
 
-                _currentBehavior.Act(_self, _target);
+                SetBehavior(_attackState);
+
+                if(monster.IsAllive)
+                    _currentBehavior.Act(_self, _target);
 
                 return;
             }
 
-            _currentBehavior = _moveState;
+            SetBehavior(_moveState);
         }
         else
         {
-            _currentBehavior = _idleState;
+            SetBehavior(_idleState);
         }
 
         _currentBehavior.Act(_self, _target);
@@ -53,9 +58,10 @@ public class StateMachine: MonoBehaviour
     public void SetBehavior(StateBehavior stateBehavior)
     {
         _currentBehavior = stateBehavior;
+        StateChanged?.Invoke(_currentBehavior);
     }
 
-    public bool TryFindTarget(float range, out Monster monster)
+    private bool TryFindTarget(float range, out Monster monster)
     {
         Collider[] monstersColliders = Physics.OverlapSphere(transform.position, range, _monsterLayerMask);
 

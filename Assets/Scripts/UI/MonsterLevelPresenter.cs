@@ -22,6 +22,7 @@ public class MonsterLevelPresenter : LevelPresenter
     private void OnEnable()
     {
         _monster.LevelChanged += OnLevelChange;
+        Show(_monster.Level);
     }
 
     private void OnDisable()
