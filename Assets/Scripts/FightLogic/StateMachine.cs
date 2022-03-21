@@ -36,6 +36,7 @@ public class StateMachine: MonoBehaviour
                 _currentBehavior = _attackState;
 
                 _currentBehavior.Act(_self, _target);
+
                 return;
             }
 

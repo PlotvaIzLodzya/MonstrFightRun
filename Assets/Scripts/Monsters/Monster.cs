@@ -8,9 +8,10 @@ public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private int _initialLevel;
     [SerializeField] private float _health;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _attackDelay;
     [SerializeField] private ResizeAnimation ResizeAnimation;
     [SerializeField] private FormsHandler _formsHandler;
-    [SerializeField] private float _speed;
     [SerializeField] private MonsterDeathHandler _monsterDeathHandler;
 
     private int _level;
@@ -24,6 +25,7 @@ public class Monster : MonoBehaviour, IMergeable
     public Rigidbody Rigidbody { get; private set; }
     public FormsHandler FormsHandler => _formsHandler;
     public MonsterDeathHandler MonsterDeathHandler => _monsterDeathHandler;
+    public float AttackDelay => _attackDelay;
     public float Speed => _speed;
     public int Level => _level;
     private float _damage => _level;
@@ -78,7 +80,7 @@ public class Monster : MonoBehaviour, IMergeable
             return;
         }
 
-        Target.ApplyDamage(_damage);
+        Target.ApplyDamage(_damage);  
     }
 
     public void Die()

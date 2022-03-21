@@ -41,6 +41,7 @@ public class Form : MonoBehaviour
 
     private void OnAttack()
     {
-        _monster.GiveDamage();
+        if(_monster.IsAllive)
+            _monster.GiveDamage();
     }
 }

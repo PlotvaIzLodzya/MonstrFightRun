@@ -446,10 +446,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialLevel: 666
-  _health: 0
+  _health: 200
+  _speed: 5
+  _attackDelay: 2
   ResizeAnimation: {fileID: 3245386251641310884}
   _formsHandler: {fileID: 6533357216252366699}
-  _speed: 5
   _monsterDeathHandler: {fileID: 3633350767895215585}
 --- !u!114 &8702843109924014784
 MonoBehaviour:
@@ -463,13 +464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agroRadius: 10
+  _agroRadius: 20
   _attackRadius: 3
   _attackBehavior: {fileID: 8543193120687286506}
   _self: {fileID: 7421221633222492867}
   _monsterLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!114 &3633350767895215585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 8702843109924014784}
+  _monsterAnimator: {fileID: 500679153263947845}
 --- !u!114 &8543193120687286506
 MonoBehaviour:
   m_ObjectHideFlags: 0
