@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Chest))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private RunerEnemyMover _runerEnemyMover;
+    [SerializeField] private MoveState _runerEnemyMover;
     [SerializeField] private int _level;
+    [SerializeField] private RunerFight _runerFight;
 
-    private RunerHassle _runerHassle = new RunerHassle();
     private Chest _chest;
     private bool _isFightOver;
 
@@ -21,23 +21,23 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Player player) && _isFightOver == false)
-        {
-            _runerHassle.Hassle(this, player, out bool IsPlayerWin);
+        //if (collision.collider.TryGetComponent(out Player player) && _isFightOver == false)
+        //{
+        //    _runerFight.Fight(this, player, out bool IsPlayerWin);
 
-            if (IsPlayerWin)
-            {
-                player.RaiseMight(_level);
-                _runerEnemyMover.Disable();
-                _chest.Push(-transform.forward, 50f);
-            }
-            else
-            {
-                _runerEnemyMover.Disable();
-                player.Die();
-            }
+        //    if (IsPlayerWin)
+        //    {
+        //        player.RaiseMight(_level);
+        //        _runerEnemyMover.Disable();
+        //        _chest.Push(-transform.forward, 50f);
+        //    }
+        //    else
+        //    {
+        //        _runerEnemyMover.Disable();
+        //        player.Die();
+        //    }
 
-            _isFightOver = true;
-        }
+        //    _isFightOver = true;
+        //}
     }
 }

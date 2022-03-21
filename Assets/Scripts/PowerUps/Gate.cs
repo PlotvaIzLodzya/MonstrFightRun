@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Gate : Usable
+public class Gate : PowerUp
 {
     [SerializeField] private MonsterList _monsters;
     [SerializeField] private GateIcon _gateIcon;
 
     private Monster _monster;
+    private bool _isActivated;
+
+    public event Action GateActivated;
 
     private void Start()
     {
@@ -17,6 +19,17 @@ public class Gate : Usable
 
     public override void Use(MonstersHandler monstersHandler)
     {
-        monstersHandler.TrySetMonsterToPlace(_monster);
+        if (_isActivated)
+            return;
+
+        _isActivated = monstersHandler.TrySetMonsterToPlace(_monster);
+
+        if (_isActivated)
+            GateActivated?.Invoke();
+    }
+
+    public void Disable()
+    {
+        _isActivated = true;
     }
 }

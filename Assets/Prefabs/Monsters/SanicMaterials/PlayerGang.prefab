@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &331614399
 Transform:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &821576292
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1644439420
 Transform:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1777157527
 Transform:
   m_ObjectHideFlags: 0
@@ -268,8 +268,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2020461894}
   - component: {fileID: 2020461897}
-  - component: {fileID: 2020461896}
   - component: {fileID: 2020461895}
+  - component: {fileID: 927938755}
   m_Layer: 6
   m_Name: GangPositions
   m_TagString: Untagged
@@ -310,20 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f895e7d06f17c8b498748b43f6255fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMonster: {fileID: 6869360728438512837, guid: 397ee4e29288fa44e8949d511d069360, type: 3}
---- !u!65 &2020461896
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020461893}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  _initialMonster: {fileID: 1898162739817672350, guid: cb6de8ae75b13d54e9b596530dc461d9, type: 3}
+  _monstersAnimatorHandler: {fileID: 2096990774342737447}
 --- !u!54 &2020461895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -340,6 +328,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &927938755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020461893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a3eafb209bbca47968b03af8e418e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1823091554893732080
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 2139742934}
   - component: {fileID: 743088369}
   - component: {fileID: 3962246818956571115}
+  - component: {fileID: 2096990774342737447}
   m_Layer: 6
   m_Name: PlayerGang
   m_TagString: Untagged
@@ -463,6 +464,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a82d55bacb441489ed6f6efbf72684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animatorHandler: {fileID: 2096990774342737447}
+  _mouseInput: {fileID: 1823091554893732090}
+--- !u!114 &2096990774342737447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823091554893732080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fb5d56e9f247c4687300d6de4d0042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mouseInput: {fileID: 1823091554893732090}
 --- !u!1 &2940785713604490140
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2940785713604490140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2020461894}
