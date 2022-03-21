@@ -2101,9 +2101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialLevel: 0
   _health: 20
+  _speed: 5
+  _attackDelay: 0
   ResizeAnimation: {fileID: 1210928487944211538}
   _formsHandler: {fileID: 7358167927055110084}
-  _speed: 5
   _monsterDeathHandler: {fileID: 2820715829231175876}
 --- !u!114 &8312301370298071193
 MonoBehaviour:
@@ -2118,6 +2119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _formsHandler: {fileID: 7358167927055110084}
+  _stateMachine: {fileID: 2875563422834860807}
 --- !u!65 &4631990308559747221
 BoxCollider:
   m_ObjectHideFlags: 0
