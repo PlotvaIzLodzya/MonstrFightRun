@@ -31,14 +31,14 @@ public class FormsHandler : MonoBehaviour
 
     public void EnableNextForm()
     {
-        _counter++;
-
-        if(_counter >= _forms.Length)
+        if(_counter >= _forms.Length-1)
         {
             _counter = _forms.Length;
             IsFinalForm = true;
             return;
         }
+
+        _counter++;
 
         if (_currentForm != null)
             _currentForm.gameObject.SetActive(false);

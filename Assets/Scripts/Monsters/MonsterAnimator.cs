@@ -24,17 +24,23 @@ public class MonsterAnimator : MonoBehaviour
 
     public void AttackAnimation()
     {
-        _animator.SetBool(Attack, true);
+        _animator.SetTrigger(Attack);
     }
 
     public void RunAnimation()
     {
-        _animator.SetBool(Attack, false);
         _animator.SetBool(Run, true);
     }
 
     public void DieAnimation()
     {
         _animator.SetTrigger(Die);
+    }
+
+    private IEnumerator ResetTrigger(string name)
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        _animator.ResetTrigger(name);
     }
 }
