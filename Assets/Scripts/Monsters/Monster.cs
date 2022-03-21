@@ -6,15 +6,14 @@ using System;
 [RequireComponent(typeof(MonsterAnimator), typeof(BoxCollider), typeof(Rigidbody))]
 public class Monster : MonoBehaviour, IMergeable
 {
-    [SerializeField] private int _initialLevel;
     [SerializeField] private float _health;
     [SerializeField] private float _speed;
     [SerializeField] private float _attackDelay;
+    [SerializeField] private int _level;
     [SerializeField] private ResizeAnimation ResizeAnimation;
     [SerializeField] private FormsHandler _formsHandler;
     [SerializeField] private MonsterDeathHandler _monsterDeathHandler;
 
-    private int _level;
     private int _maxLevel = 50;
     private BoxCollider _boxCollider;
 
@@ -29,7 +28,6 @@ public class Monster : MonoBehaviour, IMergeable
     public float Speed => _speed;
     public int Level => _level;
     private float _damage => _level;
-    private bool IsFinalForm => _formsHandler.IsFinalForm;
 
     public event Action<int> LevelChanged;
 
@@ -37,9 +35,6 @@ public class Monster : MonoBehaviour, IMergeable
     {
         Health = new Health(_health);
         IsAllive = true;
-
-        _level = _initialLevel;
-        LevelUp(0);
 
         _boxCollider = GetComponent<BoxCollider>();
         _boxCollider.center = Vector3.up * 0.5f;
@@ -53,14 +48,6 @@ public class Monster : MonoBehaviour, IMergeable
     public void SetTarget(Monster monster)
     {
         Target = monster;
-    }
-
-    public void Attack()
-    {
-        if (Target == null)
-            return;
-
-        MonsterAnimator.AttackAnimation();
     }
 
     public void ApplyDamage(float damage)
@@ -91,13 +78,14 @@ public class Monster : MonoBehaviour, IMergeable
 
     public bool TryMerge(int level)
     {
-        if (IsFinalForm)
-            return false;
+        if (_formsHandler.TryEnableNextForm())
+        {
+            LevelUp(level);
 
-        LevelUp(level);
-        _formsHandler.EnableNextForm();
+            return true;
+        }
 
-        return true;
+        return false;
     }
 
     public void LevelUp(int level)
