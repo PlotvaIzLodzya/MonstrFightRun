@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monster: {fileID: 5890225089132513927}
 --- !u!1 &1980958400504136547
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monster: {fileID: 5890225089132513927}
 --- !u!1 &3250413405195824201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,10 +1824,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbdfe4492c62d74ebfd4da33540bbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialLevel: 0
   _health: 20
   _speed: 2
   _attackDelay: 0
+  _level: 0
   ResizeAnimation: {fileID: 1360319142524603766}
   _formsHandler: {fileID: 7220308933314727648}
   _monsterDeathHandler: {fileID: 5735405572825229464}
@@ -2374,6 +2376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monster: {fileID: 5890225089132513927}
 --- !u!1 &8604555233396316637
 GameObject:
   m_ObjectHideFlags: 0
