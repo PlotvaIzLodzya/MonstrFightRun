@@ -9,5 +9,6 @@ public class FinishFightBehavior : AttackBehavior
     public override void Fight(Monster self, Monster monster)
     {
         self.SetTarget(monster);
+        self.MonsterAnimator.TriggerAttackAnimation();
     }
 }

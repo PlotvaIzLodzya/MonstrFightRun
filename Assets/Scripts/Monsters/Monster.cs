@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(MonsterAnimator), typeof(BoxCollider), typeof(Rigidbody))]
+[RequireComponent(typeof(MonsterAnimator), typeof(CapsuleCollider), typeof(Rigidbody))]
 public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private float _health;
@@ -15,7 +15,6 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private MonsterDeathHandler _monsterDeathHandler;
 
     private int _maxLevel = 50;
-    private BoxCollider _boxCollider;
 
     public MonsterAnimator MonsterAnimator { get; private set; }
     public bool IsAllive { get; private set; }
@@ -36,9 +35,6 @@ public class Monster : MonoBehaviour, IMergeable
     {
         Health = new Health(_health);
         IsAllive = true;
-
-        _boxCollider = GetComponent<BoxCollider>();
-        _boxCollider.center = Vector3.up * 0.5f;
 
         Rigidbody = GetComponent<Rigidbody>();
 
@@ -62,6 +58,9 @@ public class Monster : MonoBehaviour, IMergeable
     public void DealDamage()
     {
         DealtDamage?.Invoke();
+
+        if (Target == null)
+            return;
 
         if (Target.IsAllive == false)
         {

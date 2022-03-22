@@ -7,33 +7,47 @@ public class RunerFight: AttackBehavior
     [SerializeField] private Chest _chest;
 
     private Monster _monsterOfPlayer;
+    private Player _player;
+    private Monster _enemyMonster;
+
+    private bool _isFightOver;
 
     public override void Fight(Monster enemyMonster, Monster monsterOfPlayer)
     {
-        Player player = monsterOfPlayer.transform.root.GetComponent<Player>();
-        MonstersAnimatorHandler monstersAnimatorHandler = monsterOfPlayer.transform.root.GetComponent<MonstersAnimatorHandler>();
+        _enemyMonster = enemyMonster;
+        _player = monsterOfPlayer.transform.root.GetComponent<Player>();
+        MonstersAnimatorHandler playerMonsterAnimatorHandler = monsterOfPlayer.transform.root.GetComponent<MonstersAnimatorHandler>();
         _monsterOfPlayer = monsterOfPlayer;
 
-        bool isPlayerWin = player.Might >= enemyMonster.Level;
-        monstersAnimatorHandler.TriggerAttackAnimation();
+        bool isPlayerWin = _player.Might >= enemyMonster.Level;
+
+        enemyMonster.MonsterAnimator.TriggerAttackAnimation();
+        playerMonsterAnimatorHandler.TriggerAttackAnimation();
 
         if (isPlayerWin)
         {
-            player.RaiseMight(enemyMonster.Level);
             enemyMonster.Die();
             monsterOfPlayer.SetTarget(enemyMonster);
             monsterOfPlayer.DealtDamage += Push;
         }
         else
         {
-            player.Die();
+            enemyMonster.DealtDamage += Die;
+            enemyMonster.SetTarget(monsterOfPlayer);
         }
     }
 
     private void Push()
     {
-        Debug.Log("hi");
         _chest.Push(50f);
+        _player.RaiseMight(_enemyMonster.Level);
         _monsterOfPlayer.DealtDamage -= Push;
+    }
+
+    private void Die()
+    {
+        _player.Die();
+        _player.KillAllMonsters();
+        _enemyMonster.DealtDamage -= Die;
     }
 }

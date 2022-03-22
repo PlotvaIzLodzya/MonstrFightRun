@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
         _deathHandler.Die();
     }
 
+    public void KillAllMonsters()
+    {
+        _monstersHandler.KillAllMonsters();
+    }
+
     public void OnMonsterDie()
     {
         _counter++;
