@@ -1969,6 +1969,7 @@ GameObject:
   - component: {fileID: 2875563422834860807}
   - component: {fileID: 4471223017426013774}
   - component: {fileID: 7810645658176079989}
+  - component: {fileID: 6730681991607122179}
   m_Layer: 7
   m_Name: Skelington
   m_TagString: Untagged
@@ -2019,11 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 20
   _speed: 5
-  _attackDelay: 1
   _level: 0
-  ResizeAnimation: {fileID: 1210928487944211538}
-  _formsHandler: {fileID: 7358167927055110084}
-  _monsterDeathHandler: {fileID: 2820715829231175876}
 --- !u!114 &8312301370298071193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2083,7 +2080,6 @@ MonoBehaviour:
   _agroRadius: 20
   _attackRadius: 3
   _attackBehavior: {fileID: 4471223017426013774}
-  _self: {fileID: 1898162739817672350}
   _monsterLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -2113,6 +2109,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6730681991607122179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358167927135001218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7398795330234096953
 GameObject:
   m_ObjectHideFlags: 0

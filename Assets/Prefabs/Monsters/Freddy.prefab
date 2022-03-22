@@ -2484,6 +2484,7 @@ GameObject:
   - component: {fileID: 8315859956237760534}
   - component: {fileID: 1315671796675666924}
   - component: {fileID: 5961753621915226412}
+  - component: {fileID: 1486096345272683205}
   m_Layer: 7
   m_Name: Freddy
   m_TagString: Untagged
@@ -2548,11 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 20
   _speed: 3
-  _attackDelay: 1
   _level: 0
-  ResizeAnimation: {fileID: 404209163952124479}
-  _formsHandler: {fileID: 8308975982124528041}
-  _monsterDeathHandler: {fileID: 1315671796675666924}
 --- !u!54 &7520118801728612733
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2584,7 +2581,6 @@ MonoBehaviour:
   _agroRadius: 20
   _attackRadius: 3
   _attackBehavior: {fileID: 8315859956237760534}
-  _self: {fileID: 2840612604432673332}
   _monsterLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -2628,6 +2624,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1486096345272683205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308975982070457583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8308975982124528055
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3207738730332695139}
   - component: {fileID: 984595427164650286}
   - component: {fileID: 7720422196202892257}
+  - component: {fileID: 6767997675369168567}
   m_Layer: 7
   m_Name: CrazyZeliboba
   m_TagString: Untagged
@@ -156,11 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 20
   _speed: 2
-  _attackDelay: 1
   _level: 0
-  ResizeAnimation: {fileID: 1360319142524603766}
-  _formsHandler: {fileID: 7220308933314727648}
-  _monsterDeathHandler: {fileID: 5735405572825229464}
 --- !u!54 &5247057361356699220
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -206,7 +203,6 @@ MonoBehaviour:
   _agroRadius: 20
   _attackRadius: 3
   _attackBehavior: {fileID: 984595427164650286}
-  _self: {fileID: 5890225089132513927}
   _monsterLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -236,6 +232,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6767997675369168567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220308933360671654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2908463305364726067
 PrefabInstance:
   m_ObjectHideFlags: 0

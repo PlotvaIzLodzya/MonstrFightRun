@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(Monster))]
+
 public class MonsterLevelPresenter : LevelPresenter
 {
     [SerializeField] private Canvas _canvas;

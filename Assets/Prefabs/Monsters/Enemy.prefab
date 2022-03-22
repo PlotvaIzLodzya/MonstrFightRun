@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4509726904236880179}
   - component: {fileID: 6024683108254638000}
   - component: {fileID: 1142593737955690049}
-  - component: {fileID: 2888237913384299176}
+  - component: {fileID: 4368543371630416442}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -99,7 +99,6 @@ MonoBehaviour:
   _agroRadius: 15
   _attackRadius: 5
   _attackBehavior: {fileID: 4509726904236880179}
-  _self: {fileID: 4522152984019389758}
   _monsterLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -131,11 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   _speed: 5
-  _attackDelay: 1
   _level: 0
-  ResizeAnimation: {fileID: 4370092342482263883}
-  _formsHandler: {fileID: 5512877516766906091}
-  _monsterDeathHandler: {fileID: 6024683108254638000}
 --- !u!114 &4509726904236880179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf1fd88cf28ed449b3b6fbd1e3427cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chest: {fileID: 2888237913384299176}
+  _chest: {fileID: 4368543371630416442}
 --- !u!114 &6024683108254638000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: {fileID: 7628299748333105663}
   _canvas: {fileID: 5299524494832474230}
---- !u!114 &2888237913384299176
+--- !u!114 &4368543371630416442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
