@@ -43,7 +43,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3100369314251171874, guid: c386e301da3ff684fb27ce351d253648, type: 3}
+  m_Motion: {fileID: -3100369314251171874, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -57,7 +57,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8497493075119650215}
@@ -70,7 +70,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6720303635017113406, guid: c386e301da3ff684fb27ce351d253648, type: 3}
+  m_Motion: {fileID: 7400000, guid: b34f8675436026646a2ac9f395a019b0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -147,7 +147,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4348485665485846014, guid: c386e301da3ff684fb27ce351d253648, type: 3}
+  m_Motion: {fileID: 4348485665485846014, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -173,7 +173,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5522812681064789136, guid: c386e301da3ff684fb27ce351d253648, type: 3}
+  m_Motion: {fileID: 5522812681064789136, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -246,48 +246,6 @@ AnimatorController:
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
     m_IKPass: 1
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
-    m_Name: MiddleSkelly
-    m_StateMachine: {fileID: 5190623287785915708}
-    m_Mask: {fileID: 0}
-    m_Motions:
-    - serializedVersion: 2
-      m_State: {fileID: -1987072075669044367}
-      m_Motion: {fileID: 5522812681064789136, guid: 6fac1307667c6954db45bd7fa4fd3bed, type: 3}
-    - serializedVersion: 2
-      m_State: {fileID: -7540622014508453585}
-      m_Motion: {fileID: -3100369314251171874, guid: 6fac1307667c6954db45bd7fa4fd3bed, type: 3}
-    - serializedVersion: 2
-      m_State: {fileID: -3010609136896904075}
-      m_Motion: {fileID: 4348485665485846014, guid: 6fac1307667c6954db45bd7fa4fd3bed, type: 3}
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: 0
-    m_DefaultWeight: 0
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
-    m_Name: BigSkelly
-    m_StateMachine: {fileID: 7341902697973487829}
-    m_Mask: {fileID: 0}
-    m_Motions:
-    - serializedVersion: 2
-      m_State: {fileID: -1987072075669044367}
-      m_Motion: {fileID: 5522812681064789136, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
-    - serializedVersion: 2
-      m_State: {fileID: -7540622014508453585}
-      m_Motion: {fileID: -3100369314251171874, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
-    - serializedVersion: 2
-      m_State: {fileID: -3010609136896904075}
-      m_Motion: {fileID: 4348485665485846014, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: 0
-    m_DefaultWeight: 0
-    m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
@@ -440,7 +398,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5522812681064789136, guid: c386e301da3ff684fb27ce351d253648, type: 3}
+  m_Motion: {fileID: 5522812681064789136, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

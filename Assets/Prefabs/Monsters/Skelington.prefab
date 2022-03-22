@@ -974,7 +974,7 @@ Animator:
   m_GameObject: {fileID: 4559439660185425123}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0c5dbf82ccc856843b8ef2ce600407ba, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9aa4fcb3235ff1d439c09782d5d8f798, type: 2}
+  m_Controller: {fileID: 22100000, guid: 70d12976e6bfb8c4cb5d20dad64e318c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -996,6 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monster: {fileID: 1898162739817672350}
+  _isBoss: 0
 --- !u!1 &4608356716443248373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1379,7 @@ Animator:
   m_GameObject: {fileID: 5774748349071859472}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c386e301da3ff684fb27ce351d253648, type: 3}
-  m_Controller: {fileID: 9100000, guid: 115fdaa13c7b39e448b752e5f023f462, type: 2}
+  m_Controller: {fileID: 22100000, guid: 70bf7381d7804a04e96b3f2d3ed11e6a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1400,6 +1401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monster: {fileID: 1898162739817672350}
+  _isBoss: 0
 --- !u!1 &5806909264685378822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,11 +1964,11 @@ GameObject:
   - component: {fileID: 5885763208119292646}
   - component: {fileID: 1898162739817672350}
   - component: {fileID: 8312301370298071193}
-  - component: {fileID: 4631990308559747221}
   - component: {fileID: 6714324760914513227}
   - component: {fileID: 2820715829231175876}
   - component: {fileID: 2875563422834860807}
   - component: {fileID: 4471223017426013774}
+  - component: {fileID: 7810645658176079989}
   m_Layer: 7
   m_Name: Skelington
   m_TagString: Untagged
@@ -2017,7 +2019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 20
   _speed: 5
-  _attackDelay: 0
+  _attackDelay: 1
   _level: 0
   ResizeAnimation: {fileID: 1210928487944211538}
   _formsHandler: {fileID: 7358167927055110084}
@@ -2036,19 +2038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _formsHandler: {fileID: 7358167927055110084}
   _stateMachine: {fileID: 2875563422834860807}
---- !u!65 &4631990308559747221
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7358167927135001218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6714324760914513227
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2063,7 +2052,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2820715829231175876
 MonoBehaviour:
@@ -2086,7 +2075,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7358167927135001218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
@@ -2110,6 +2099,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17ea185a50e36847b8092918bfe160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &7810645658176079989
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358167927135001218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7398795330234096953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2706,7 @@ Animator:
   m_GameObject: {fileID: 8958002610698957477}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6fac1307667c6954db45bd7fa4fd3bed, type: 3}
-  m_Controller: {fileID: 9100000, guid: e8343e2573925284e832f8682b1ee5de, type: 2}
+  m_Controller: {fileID: 22100000, guid: 606dc42e6cc296746aabe01375471bd6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2725,6 +2728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monster: {fileID: 1898162739817672350}
+  _isBoss: 0
 --- !u!1 &9030332338693068655
 GameObject:
   m_ObjectHideFlags: 0

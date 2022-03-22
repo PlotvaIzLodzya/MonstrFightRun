@@ -24,9 +24,21 @@ public class MonstersHandler : MonoBehaviour
     private void Awake()
     {
         _monsterHandlerColliders = GetComponent<MonsterHandlerColliders>();
+
         _monsterPlaces = GetComponentsInChildren<MonsterPlace>();
         Error.CheckOnNull(_monsterPlaces[0], nameof(MonsterPlace));
+
         TrySetMonsterToPlace(_initialMonster);
+    }
+
+    public void KillAllMonsters()
+    {
+        var monsters = GetAllMonsters();
+
+        foreach (var monster in monsters)
+        {
+            monster.Die();
+        }
     }
 
     public bool TrySetMonsterToPlace(Monster monster)

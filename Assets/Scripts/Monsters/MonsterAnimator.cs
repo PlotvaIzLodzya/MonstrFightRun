@@ -11,7 +11,9 @@ public class MonsterAnimator : MonoBehaviour
 
     private const string Run = "Run";
     private const string Die = "Die";
-    private const string Attack = "Attack";
+    private string _fightAttack = "FightAttack";
+    private string _attack = "Attack";
+    private const string Idle = "Idle";
 
     private bool _isDead;
 
@@ -27,11 +29,11 @@ public class MonsterAnimator : MonoBehaviour
         _stateMachine.StateChanged -= OnStateChanged;
     }
 
-    public void AttackAnimation()
+    public void TriggerAttackAnimation()
     {
-        _animator.SetTrigger(Attack);
+        _animator.SetTrigger(_attack);
 
-        StartCoroutine(ResetTrigger(Attack));
+        StartCoroutine(ResetTrigger(_attack));
     }
 
     public void RunAnimation()
@@ -42,14 +44,25 @@ public class MonsterAnimator : MonoBehaviour
     public void DieAnimation()
     {
         if(_isDead == false)
-            _animator.SetTrigger(Die);
+        {
+            _animator.SetBool(Idle, false);
+            _animator.SetBool(Die, true);
+            _animator.SetLayerWeight(1, 0);
+        }
 
         _isDead = true;
     }
 
     public void IdleAnimation()
     {
+        _animator.SetBool(Idle, true);
+    }
 
+    public void ToFightTransition()
+    {
+        IdleAnimation();
+        _attack = _fightAttack;
+        _animator.SetLayerWeight(1, 0);
     }
 
     private IEnumerator ResetTrigger(string name)
@@ -59,13 +72,31 @@ public class MonsterAnimator : MonoBehaviour
         _animator.ResetTrigger(name);
     }
 
+    private IEnumerator ResetWeight()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        _animator.SetLayerWeight(1,0);
+    }
+
     private void OnStateChanged(StateBehavior stateBehavior)
     {
+        if (_isDead)
+            return;
+
         if (stateBehavior is MoveState)
+        {
             RunAnimation();
+        }
         else if (stateBehavior is AttackState)
-            AttackAnimation();
-        else if (stateBehavior is IdleState)
+        {
             IdleAnimation();
+            _animator.SetBool(Run, false);
+        }
+        else if (stateBehavior is IdleState)
+        {
+            IdleAnimation();
+            _animator.SetBool(Run, false);
+        }
     }
 }

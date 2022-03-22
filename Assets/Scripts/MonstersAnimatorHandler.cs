@@ -46,7 +46,7 @@ public class MonstersAnimatorHandler : MonoBehaviour
     {
         foreach (var monsterAnimator in _monstersAnimator)
         {
-            monsterAnimator.AttackAnimation();
+            monsterAnimator.TriggerAttackAnimation();
         }
     }
 
