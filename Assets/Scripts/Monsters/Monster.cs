@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour, IMergeable
     private float _damage => _level;
 
     public event Action<int> LevelChanged;
+    public event Action DealtDamage;
 
     private void Awake()
     {
@@ -58,8 +59,10 @@ public class Monster : MonoBehaviour, IMergeable
             Die();
     }
 
-    public void GiveDamage()
+    public void DealDamage()
     {
+        DealtDamage?.Invoke();
+
         if (Target.IsAllive == false)
         {
             MonsterAnimator.RunAnimation();
@@ -67,7 +70,7 @@ public class Monster : MonoBehaviour, IMergeable
             return;
         }
 
-        Target.ApplyDamage(_damage);  
+        Target.ApplyDamage(_damage);
     }
 
     public void Die()
