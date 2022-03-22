@@ -58,9 +58,12 @@ public class FormsHandler : MonoBehaviour
         SetCurrentForm(_counter);
     }
 
-    private void SetCurrentForm(int index)
+    public void SetCurrentForm(int index)
     {
-        _currentForm = _forms[index];
+        if (index > _forms.Length - 1)
+            index = _forms.Length - 1;
+
+            _currentForm = _forms[index];
         _currentForm.gameObject.SetActive(true);
     }
 }

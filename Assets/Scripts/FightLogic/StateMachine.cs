@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Monster))]
 public class StateMachine: MonoBehaviour
 {
     [SerializeField] private float _agroRadius;
     [SerializeField] private float _attackRadius;
     [SerializeField] private AttackBehavior _attackBehavior;
-    [SerializeField] private Monster _self;
     [SerializeField] private LayerMask _monsterLayerMask;
 
+    private Monster _self;
     private Monster _target;
     private StateBehavior _currentBehavior;
     private MoveState _moveState;
@@ -25,6 +26,8 @@ public class StateMachine: MonoBehaviour
         _attackState = new AttackState(_attackBehavior);
         _idleState = new IdleState();
         _currentBehavior = _idleState;
+
+        _self = GetComponent<Monster>();
     }
 
     private void FixedUpdate()

@@ -3,27 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(MonsterAnimator), typeof(CapsuleCollider), typeof(Rigidbody))]
+[RequireComponent(typeof(MonsterAnimator), typeof(MonsterDeathHandler), typeof(Rigidbody))]
 public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private float _health;
     [SerializeField] private float _speed;
-    [SerializeField] private float _attackDelay;
     [SerializeField] private int _level;
-    [SerializeField] private ResizeAnimation ResizeAnimation;
-    [SerializeField] private FormsHandler _formsHandler;
-    [SerializeField] private MonsterDeathHandler _monsterDeathHandler;
 
     private int _maxLevel = 50;
+    private ResizeAnimation ResizeAnimation;
 
     public MonsterAnimator MonsterAnimator { get; private set; }
-    public bool IsAllive { get; private set; }
     public Monster Target { get; private set; }
     public Health Health { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
-    public FormsHandler FormsHandler => _formsHandler;
-    public MonsterDeathHandler MonsterDeathHandler => _monsterDeathHandler;
-    public float AttackDelay => _attackDelay;
+    public FormsHandler FormsHandler { get; private set; }
+    public MonsterDeathHandler MonsterDeathHandler { get; private set; }
+    public bool IsAllive { get; private set; }
     public float Speed => _speed;
     public int Level => _level;
     private float _damage => _level;
@@ -39,6 +35,10 @@ public class Monster : MonoBehaviour, IMergeable
         Rigidbody = GetComponent<Rigidbody>();
 
         MonsterAnimator = GetComponent<MonsterAnimator>();
+        ResizeAnimation = GetComponentInChildren<ResizeAnimation>();
+        FormsHandler = GetComponentInChildren<FormsHandler>();
+        MonsterDeathHandler = GetComponent<MonsterDeathHandler>();
+
         ResizeAnimation.SetMaxStep(_maxLevel);
     }
 
@@ -74,13 +74,13 @@ public class Monster : MonoBehaviour, IMergeable
 
     public void Die()
     {
-        _monsterDeathHandler.Die();
+        MonsterDeathHandler.Die();
         IsAllive = false;
     }
 
     public bool TryMerge(int level)
     {
-        if (_formsHandler.TryEnableNextForm())
+        if (FormsHandler.TryEnableNextForm())
         {
             LevelUp(level);
 
@@ -110,7 +110,7 @@ public class Monster : MonoBehaviour, IMergeable
     public void UnMerge(int level)
     {
         LevelDown(level);
-        _formsHandler.EnablePreviousForm();
+        FormsHandler.EnablePreviousForm();
         LevelChanged?.Invoke(_level);
     }
 }
