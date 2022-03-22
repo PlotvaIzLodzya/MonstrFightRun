@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RunerFight: AttackBehavior
 {
@@ -9,8 +10,6 @@ public class RunerFight: AttackBehavior
     private Monster _monsterOfPlayer;
     private Player _player;
     private Monster _enemyMonster;
-
-    private bool _isFightOver;
 
     public override void Fight(Monster enemyMonster, Monster monsterOfPlayer)
     {
@@ -42,6 +41,10 @@ public class RunerFight: AttackBehavior
         _chest.Push(50f);
         _player.RaiseMight(_enemyMonster.Level);
         _monsterOfPlayer.DealtDamage -= Push;
+
+        goto Hi;
+
+    Hi: Debug.Log("nihao");
     }
 
     private void Die()
