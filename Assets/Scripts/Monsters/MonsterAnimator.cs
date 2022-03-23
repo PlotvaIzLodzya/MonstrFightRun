@@ -55,6 +55,7 @@ public class MonsterAnimator : MonoBehaviour
 
     public void IdleAnimation()
     {
+
         _animator.SetBool(Idle, true);
     }
 
@@ -90,7 +91,6 @@ public class MonsterAnimator : MonoBehaviour
         }
         else if (stateBehavior is AttackState)
         {
-            IdleAnimation();
             _animator.SetBool(Run, false);
         }
         else if (stateBehavior is IdleState)

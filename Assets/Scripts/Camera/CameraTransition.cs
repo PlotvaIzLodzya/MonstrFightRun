@@ -54,7 +54,7 @@ public class CameraTransition : MonoBehaviour
         {
             _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _cameraPoint.transform.position, changeSpeed * Time.deltaTime);
 
-            _camera.transform.rotation = Quaternion.RotateTowards(_camera.transform.rotation, _cameraPoint.transform.rotation, _rotationSpeed * Time.deltaTime);
+            _camera.transform.rotation = Quaternion.Slerp(_camera.transform.rotation, _cameraPoint.transform.rotation, _rotationSpeed * Time.deltaTime);
 
             yield return null;
         }
