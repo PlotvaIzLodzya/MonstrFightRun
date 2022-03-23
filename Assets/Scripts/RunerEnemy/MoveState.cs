@@ -9,9 +9,10 @@ public class MoveState: StateBehavior
     {
         Vector3 direction = (monster.transform.position - self.transform.position).normalized;
 
-        self.Rigidbody.MovePosition(self.transform.position + direction * self.Speed * Time.deltaTime);
-
         Rotate(self.transform, direction);
+
+        self.transform.position += (self.transform.forward * self.Speed * Time.deltaTime);
+
     }
 
     public override void OnMonsterOutRange() => throw new NotImplementedException();

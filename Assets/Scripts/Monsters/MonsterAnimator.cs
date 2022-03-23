@@ -32,20 +32,17 @@ public class MonsterAnimator : MonoBehaviour
     public void TriggerAttackAnimation()
     {
         _animator.SetTrigger(_attack);
-
-        StartCoroutine(ResetTrigger(_attack));
     }
 
     public void RunAnimation()
     {
-        _animator.SetBool(Run, true);
+        _animator.SetTrigger(Run);
     }
 
     public void DieAnimation()
     {
         if(_isDead == false)
         {
-            _animator.SetBool(Idle, false);
             _animator.SetBool(Die, true);
             _animator.SetLayerWeight(1, 0);
         }
@@ -55,20 +52,18 @@ public class MonsterAnimator : MonoBehaviour
 
     public void IdleAnimation()
     {
-
-        _animator.SetBool(Idle, true);
+        _animator.SetTrigger(Idle);
     }
 
     public void ToFightTransition()
     {
-        IdleAnimation();
         _attack = _fightAttack;
         _animator.SetLayerWeight(1, 0);
     }
 
     private IEnumerator ResetTrigger(string name)
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.2f);
 
         _animator.ResetTrigger(name);
     }
@@ -87,16 +82,18 @@ public class MonsterAnimator : MonoBehaviour
 
         if (stateBehavior is MoveState)
         {
+            _animator.ResetTrigger(Idle);
             RunAnimation();
         }
-        else if (stateBehavior is AttackState)
+        else if( stateBehavior is AttackState)
         {
-            _animator.SetBool(Run, false);
+            TriggerAttackAnimation();
         }
         else if (stateBehavior is IdleState)
         {
+            _animator.ResetTrigger(Run);
+            _animator.ResetTrigger(_attack);
             IdleAnimation();
-            _animator.SetBool(Run, false);
         }
     }
 }
