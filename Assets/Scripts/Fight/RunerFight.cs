@@ -25,9 +25,9 @@ public class RunerFight: AttackBehavior
 
         if (isPlayerWin)
         {
-            enemyMonster.Die();
             monsterOfPlayer.SetTarget(enemyMonster);
             monsterOfPlayer.DealtDamage += Push;
+            _enemyMonster.Die();
         }
         else
         {

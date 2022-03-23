@@ -14,6 +14,7 @@ public class StateMachine: MonoBehaviour
     private Monster _self;
     private Monster _target;
     private StateBehavior _currentBehavior;
+    private StateBehavior _previousBehavior;
     private MoveState _moveState;
     private AttackState _attackState;
     private IdleState _idleState;
@@ -30,19 +31,15 @@ public class StateMachine: MonoBehaviour
         _self = GetComponent<Monster>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(TryFindTarget(_agroRadius, out Monster monster))
+        if(TryFindTarget(_agroRadius))
         {
-            _target = monster;
-
-            if (TryFindTarget(_attackRadius, out monster))
+            if (Vector3.Distance(transform.position, _target.transform.position) <= _attackRadius)
             {
-                _target = monster;
-
                 SetBehavior(_attackState);
 
-                if(monster.IsAllive)
+                if(_target.IsAllive)
                     _currentBehavior.Act(_self, _target);
 
                 return;
@@ -61,16 +58,26 @@ public class StateMachine: MonoBehaviour
     public void SetBehavior(StateBehavior stateBehavior)
     {
         _currentBehavior = stateBehavior;
-        StateChanged?.Invoke(_currentBehavior);
+
+        if(_currentBehavior != _previousBehavior)
+        {
+            StateChanged?.Invoke(_currentBehavior);
+            _previousBehavior = stateBehavior;
+        }
     }
 
-    private bool TryFindTarget(float range, out Monster monster)
+    private bool TryFindTarget(float range)
     {
+        if (_target != null && _target.IsAllive)
+        {
+            return true;
+        }
+
         Collider[] monstersColliders = Physics.OverlapSphere(transform.position, range, _monsterLayerMask);
 
-        monster = GetClosestTargetCollider(monstersColliders);
+        _target = GetClosestTargetCollider(monstersColliders);
 
-        return monster != null;
+        return _target != null;
     }
 
     private Monster GetClosestTargetCollider(Collider[] monstersColliders)

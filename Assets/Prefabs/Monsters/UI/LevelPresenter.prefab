@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3551555956734290695}
   - component: {fileID: 13999542407126418}
   - component: {fileID: 8604894503580946709}
+  - component: {fileID: 5204220824448924499}
   m_Layer: 5
   m_Name: LevelPresenter
   m_TagString: Untagged
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8604894503580946709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5204220824448924499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931138596338762784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1533ab33b1b22a4b98843490f9aecfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3042489613552907373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,19 +325,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -340,7 +353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
