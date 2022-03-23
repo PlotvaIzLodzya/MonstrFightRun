@@ -94,7 +94,9 @@ public class MonstersHandler : MonoBehaviour
     {
         var monster = Instantiate(monsterType);
         monsterPlace.Take(monster);
+
         monster.transform.SetParent(monsterPlace.transform, false);
+
         ChangeMonstersMight(1);
         _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
     }

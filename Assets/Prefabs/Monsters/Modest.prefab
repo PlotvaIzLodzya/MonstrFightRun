@@ -1729,7 +1729,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6497590932572901558, guid: 2d3b64942f4feb34ea04b1d8b094c008, type: 3}
+  - {fileID: 2100000, guid: d36c8fe7c2057c846ab3e62d3554e654, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: {fileID: 6403005830748604422}
+  Level: {fileID: 781224690250256154}
   _canvas: {fileID: 8685913881356706191}
 --- !u!114 &6503530302774671924
 MonoBehaviour:
@@ -3531,7 +3531,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6497590932572901558, guid: 507ea5a7184360c44b1bc15519bbcad7, type: 3}
+  - {fileID: 2100000, guid: d36c8fe7c2057c846ab3e62d3554e654, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5138,7 +5138,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6497590932572901558, guid: 30c1560ca86980c44a76229d8d9018b7, type: 3}
+  - {fileID: 2100000, guid: d36c8fe7c2057c846ab3e62d3554e654, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5871,6 +5871,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3656441529279204487, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656441529279204487, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -5891,9 +5899,9 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 5315155708968651400}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6403005830748604422 stripped
+--- !u!114 &781224690250256154 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 5315155708968651400}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

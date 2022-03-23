@@ -245,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 951319580663017294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 5343598466603210080}
   - {fileID: 2054425657535727357}
@@ -835,7 +835,7 @@ Transform:
   m_GameObject: {fileID: 3584018784086920592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 7894983008097074287}
   - {fileID: 8549939274515625918}
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: {fileID: 2668454244079747125}
+  Level: {fileID: 8575764810537813801}
   _canvas: {fileID: 386988203042793916}
 --- !u!114 &2852297289183539719
 MonoBehaviour:
@@ -1634,7 +1634,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021693927493381573, guid: 48efd44e95255874f87f211f91f8f805, type: 3}
+  - {fileID: 2100000, guid: 66748988eb71d0f4592367cff96c58cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1832,7 +1832,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021693927493381573, guid: edd8f1e4ca98f4b4086549f3bc457bc8, type: 3}
+  - {fileID: 2100000, guid: 66748988eb71d0f4592367cff96c58cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1936,7 +1936,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2021693927493381573, guid: 7854e656c6fa4fd4ca35fdf70f90551b, type: 3}
+  - {fileID: 2100000, guid: 66748988eb71d0f4592367cff96c58cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2051,7 +2051,7 @@ Transform:
   m_GameObject: {fileID: 5637156351959930342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 657720940512587720}
   - {fileID: 6913739257785506798}
@@ -2917,9 +2917,9 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3753595168208454331}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2668454244079747125 stripped
+--- !u!114 &8575764810537813801 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3753595168208454331}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

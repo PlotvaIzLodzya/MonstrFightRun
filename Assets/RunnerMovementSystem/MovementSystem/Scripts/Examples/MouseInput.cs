@@ -10,6 +10,7 @@ namespace RunnerMovementSystem.Examples
 
         private Vector3 _mousePosition;
         private float _saveOffset;
+        private float _offset;
 
         public event Action RunBegan;
 
@@ -43,12 +44,15 @@ namespace RunnerMovementSystem.Examples
 
             if (Input.GetMouseButton(0))
             {
+                IsMoved = true;
                 var offset = Input.mousePosition - _mousePosition;
                 _roadMovement.SetOffset(_saveOffset + offset.x * _sensitivity);
             }
 
-            if(IsMoved)
+            if (IsMoved)
+            {
                 _roadMovement.MoveForward();
+            }
 
             if (Input.GetMouseButtonUp(0))
             {

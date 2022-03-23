@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using RunnerMovementSystem;
 
 [RequireComponent(typeof(MonsterAnimator), typeof(MonsterDeathHandler), typeof(Rigidbody))]
 public class Monster : MonoBehaviour, IMergeable
@@ -13,6 +14,7 @@ public class Monster : MonoBehaviour, IMergeable
     private int _maxLevel = 50;
     private ResizeAnimation ResizeAnimation;
 
+    public MovementSystem MovementSystem { get; private set; }
     public MonsterAnimator MonsterAnimator { get; private set; }
     public Monster Target { get; private set; }
     public Health Health { get; private set; }

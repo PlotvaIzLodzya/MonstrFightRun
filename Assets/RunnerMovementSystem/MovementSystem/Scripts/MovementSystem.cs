@@ -16,6 +16,7 @@ namespace RunnerMovementSystem
 
         public event UnityAction<PathSegment> PathChanged;
 
+        public RoadSegment FirstRoad => _firstRoad;
         public float Offset => _currentMovement.Offset;
         public float CurrentSpeed => _movementBehaviour.GetCurrentSpeed();
         public bool IsOnTransition => _currentMovement is TransitionMovement;
