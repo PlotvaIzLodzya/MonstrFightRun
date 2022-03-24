@@ -275,7 +275,7 @@ Transform:
   m_GameObject: {fileID: 802063541574060028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 2848596677785348627}
   - {fileID: 5492705901786594770}
@@ -1200,7 +1200,7 @@ Transform:
   m_GameObject: {fileID: 3061176283024919906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 2272321833633551903}
   - {fileID: 7881574210537207628}
@@ -2550,6 +2550,8 @@ MonoBehaviour:
   _health: 20
   _speed: 3
   _level: 0
+  IsIcon: 0
+  Name: Freddy
 --- !u!54 &7520118801728612733
 Rigidbody:
   m_ObjectHideFlags: 0

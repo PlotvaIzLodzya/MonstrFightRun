@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Stylized Water 1
   m_Shader: {fileID: 4800000, guid: c8110ef7c96474f73b2ee5f90e026b10, type: 3}
-  m_ShaderKeywords: FANCY_SHADOWS SAMPLE_SHADOWS SHADOWS
+  m_ShaderKeywords: FANCY_SHADOWS SAMPLE_SHADOWS
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -33,19 +33,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _DepthDensity: 0.5
-    - _DistanceDensity: 0.025
+    - _DistanceDensity: 0.02
     - _EdgeFoamDepth: 0.25
-    - _FancyShadows: 1
-    - _FoamContribution: 0.549
-    - _FoamNoiseScale: 0.32
-    - _FoamScale: 10
+    - _FancyShadows: 0
+    - _FoamContribution: 0.528
+    - _FoamNoiseScale: 0.355
+    - _FoamScale: 20
     - _FoamSpeed: 0.1
     - _MaxSampleDistance: 49
     - _MaxShadowDistance: 50
-    - _ReflectionContribution: 1
+    - _ReflectionContribution: 0.361
     - _RefractionStrength: 0
-    - _SparkleExponent: 20000
-    - _SparkleScale: 75
+    - _SparkleExponent: 1000
+    - _SparkleScale: 100
     - _SparkleSpeed: 0.025
     - _SunSpecularExponent: 3500
     - _VertexNormalDelta: 0.01
@@ -61,11 +61,12 @@ Material:
     - _WaveNormalScale: 20
     - _WaveNormalSpeed: 0.05
     m_Colors:
-    - _DeepColor: {r: 0, g: 0.012465047, b: 0.122641504, a: 1}
+    - _DeepColor: {r: 0.8773585, g: 0.26072446, b: 0.8313566, a: 1}
     - _EdgeFoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FarColor: {r: 0.11863652, g: 0.47998604, b: 0.8113208, a: 1}
+    - _FarColor: {r: 0.68913496, g: 0.20901564, b: 0.7264151, a: 1}
     - _SSSColor: {r: 0.15222874, g: 0.2735849, b: 0.06323425, a: 1}
     - _ShadowColor: {r: 0.16220185, g: 0.2170624, b: 0.254717, a: 1}
-    - _ShallowColor: {r: 0.44313726, g: 0.9137255, b: 0.6627451, a: 1}
-    - _SparkleColor: {r: 0.54901963, g: 0.9607843, b: 0.8156863, a: 1}
+    - _ShallowColor: {r: 0.5835262, g: 0.84396845, b: 0.8773585, a: 1}
+    - _SparkleColor: {r: 1, g: 0.504717, b: 0.9805772, a: 1}
     - _SunSpecularColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

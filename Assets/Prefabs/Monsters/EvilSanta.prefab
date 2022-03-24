@@ -698,6 +698,8 @@ MonoBehaviour:
   _health: 20
   _speed: 3
   _level: 0
+  IsIcon: 0
+  Name: Evil Santa
 --- !u!114 &3346011927490690321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1859,7 @@ Transform:
   m_GameObject: {fileID: 5866823830660994508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4974454766733584596}
   - {fileID: 1616976230734000098}
@@ -2359,7 +2361,7 @@ Transform:
   m_GameObject: {fileID: 7350925923536165211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8323953598122313126}
   - {fileID: 2384724507889460085}
