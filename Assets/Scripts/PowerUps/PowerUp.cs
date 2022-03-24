@@ -6,7 +6,6 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour, IUsable
 {
     private BoxCollider _boxCollider;
-
     private bool _isUsed;
 
     private void Awake()
