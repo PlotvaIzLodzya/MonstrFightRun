@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.53333336, g: 0, b: 0.77647066, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.07075471, g: 0.35234392, b: 1, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 270
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 83aac703c966b493d952713bc2e01283, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 13650c9f255e440c28885b43f863a21d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 1.1062388, g: 0.5946344, b: 1.1601025, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.7445148, b: 1.0588834, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1058,6 +1058,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4186224151234087465, guid: 2d2499df9e70aeb42b26521dee600049, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 66951f3df1eb52f4ebb44de162b041aa, type: 2}
     - target: {fileID: 4186224151234087467, guid: 2d2499df9e70aeb42b26521dee600049, type: 3}
       propertyPath: m_Name
       value: Water (1)
@@ -1508,13 +1512,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.26657823, y: 0.046061248, z: -0.012755639, w: 0.96262753}
+  m_LocalRotation: {x: 0.058724895, y: 0.041185297, z: -0.0024248553, w: 0.9974214}
   m_LocalPosition: {x: 0.36, y: 6.22, z: -6.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30.958, y: 5.479, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.739, y: 4.729, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2543,9 +2547,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e14c64c88ee392347bc22c23ae32ce6d, type: 2}
-  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
-  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  - {fileID: 2100000, guid: 13a93b5d10767c041b1f6c14aa6d53bf, type: 2}
+  - {fileID: 2100000, guid: d04f2fba8e73e1c4a9f01d960d0b0e5c, type: 2}
+  - {fileID: 2100000, guid: d04f2fba8e73e1c4a9f01d960d0b0e5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2853,6 +2857,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1830092402944618887, guid: efb1281775f906b459869ffabc0c22da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cbb8beacefb093498d9800c648c5c63, type: 2}
+    - target: {fileID: 1830092403195140239, guid: efb1281775f906b459869ffabc0c22da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97d2a084db0ef3f41b9c854297fa800f, type: 2}
+    - target: {fileID: 1830092404324051219, guid: efb1281775f906b459869ffabc0c22da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9523b9c509a7e7545b070f492eda72d0, type: 2}
     - target: {fileID: 3360086415082342106, guid: efb1281775f906b459869ffabc0c22da, type: 3}
       propertyPath: m_RootOrder
       value: 14
