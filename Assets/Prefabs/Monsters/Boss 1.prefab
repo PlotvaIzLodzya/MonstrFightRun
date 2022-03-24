@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3633350767895215585}
   - component: {fileID: 8543193120687286506}
   - component: {fileID: 1711629952788690678}
+  - component: {fileID: 2861530687393169011}
   m_Layer: 6
   m_Name: Boss 1
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75a56fd64fb2924f80b948f8eed8ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFinisher: 1
   _formsHandler: {fileID: 6533357216252366699}
   _stateMachine: {fileID: 8702843109924014784}
 --- !u!114 &7421221633222492867
@@ -95,11 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 200
   _speed: 5
-  _attackDelay: 2
   _level: 0
-  ResizeAnimation: {fileID: 3245386251641310884}
-  _formsHandler: {fileID: 6533357216252366699}
-  _monsterDeathHandler: {fileID: 3633350767895215585}
+  Name: 
 --- !u!114 &8702843109924014784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 20
-  _attackRadius: 3
+  _attackRadius: 7
   _attackBehavior: {fileID: 8543193120687286506}
-  _self: {fileID: 7421221633222492867}
   _monsterLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -159,6 +157,18 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &2861530687393169011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966460246365832472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe0896a39982cc42ad0cdac5d672c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5148235704067392603
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 5148235704067392603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 8891987392005920362}
   - {fileID: 5599283512945406476}
@@ -225,6 +235,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3022522550383838800}
     m_Modifications:
+    - target: {fileID: 3360931710901172182, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ed6e2b24a5bd1348ae8f3951026c6a5, type: 2}
     - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: _isBoss
       value: 1
@@ -365,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.691
+      value: 1.8222222
       objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -385,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_fontSize
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_fontAsset
@@ -405,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_sharedMaterial
@@ -414,6 +428,10 @@ PrefabInstance:
     - target: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4281028298
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627867691637657367, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -437,12 +455,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+--- !u!1 &4104737744491792290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 4829884104820376450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5599283512945406476 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 4829884104820376450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5915478200014471436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1233759885249856142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 4829884104820376450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7665816933127652722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104737744491792290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca78868170bf7984da4f7c2f7af87756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: {fileID: 5915478200014471436}
+  _monster: {fileID: 7421221633222492867}

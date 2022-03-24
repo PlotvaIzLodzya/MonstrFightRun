@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour, IMergeable
 
     public event Action<int> LevelChanged;
     public event Action DealtDamage;
+    public event Action Died;
 
     private void Awake()
     {
@@ -80,6 +81,7 @@ public class Monster : MonoBehaviour, IMergeable
     {
         MonsterDeathHandler.Die();
         IsAllive = false;
+        Died?.Invoke();
     }
 
     public bool TryMerge(int level)
