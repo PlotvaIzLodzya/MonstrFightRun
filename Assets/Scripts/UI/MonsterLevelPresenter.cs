@@ -51,6 +51,9 @@ public class MonsterLevelPresenter : LevelPresenter
         var floatingText = Instantiate(_floatingText, _spawnPosition);
         floatingText.Init(addedMight);
 
+        if (addedMight < 0)
+            return;
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -59,7 +62,7 @@ public class MonsterLevelPresenter : LevelPresenter
 
     private IEnumerator WoopAnimation(RectTransform rectTransform)
     {
-        float changeSpeed = Mathf.Abs((rectTransform.localScale.x - MaxScale) / 0.1f);
+        float changeSpeed = Mathf.Abs((_intialScale.x - MaxScale) / 0.1f);
 
         while (rectTransform.localScale.x < MaxScale)
         {
