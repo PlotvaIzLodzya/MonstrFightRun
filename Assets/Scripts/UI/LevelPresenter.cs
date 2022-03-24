@@ -9,6 +9,6 @@ public class LevelPresenter : MonoBehaviour
 
     public void Show(int level)
     {
-        Level.text = $"{level}";
+        Level.text = $"Lv.{level}";
     }
 }

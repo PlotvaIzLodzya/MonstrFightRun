@@ -32,7 +32,6 @@ public class GateIcon : MonoBehaviour
         _monsterIcon.transform.rotation = transform.rotation;
         _monsterIcon.Rigidbody.isKinematic = true;
         _monsterIcon.gameObject.layer = 0;
-        _monsterIcon.GetComponent<MonsterLevelPresenter>().Disable();
         _monsterIcon.GetComponent<Collider>().enabled = false;
         _monsterIcon.GetComponent<StateMachine>().enabled = false;
         _monsterIcon.GetComponentInChildren<Rotator>().enabled = false;

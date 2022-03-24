@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterAnimator : MonoBehaviour
 {
+    [SerializeField] private bool _isFinisher;
     [SerializeField] private FormsHandler _formsHandler;
     [SerializeField] private StateMachine _stateMachine;
 
@@ -16,6 +17,12 @@ public class MonsterAnimator : MonoBehaviour
     private const string Idle = "Idle";
 
     private bool _isDead;
+
+    private void Awake()
+    {
+        if (_isFinisher)
+            ToFightTransition();
+    }
 
     private void OnEnable()
     {

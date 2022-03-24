@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1289954068896746567}
   - component: {fileID: 7319565273481950930}
-  - component: {fileID: 2762341195725620258}
   - component: {fileID: 333436611930828381}
   - component: {fileID: 4396687526734094772}
   - component: {fileID: 4201055977755705208}
@@ -131,20 +130,6 @@ MonoBehaviour:
   _speed: 3
   _level: 0
   Name: Pampk
---- !u!114 &2762341195725620258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289954068896746566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: {fileID: 6068252201464224627}
-  _canvas: {fileID: 2768346155065996774}
 --- !u!114 &333436611930828381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,22 +340,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 1667050368365174497}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &2768346155065996774 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 1667050368365174497}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6068252201464224627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 1667050368365174497}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2276870513177754038
 PrefabInstance:
   m_ObjectHideFlags: 0

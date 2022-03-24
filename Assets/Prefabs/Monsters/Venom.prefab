@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6569940447389341562}
   - component: {fileID: 8790789293307509045}
-  - component: {fileID: 7826700682380091167}
   - component: {fileID: 5650701107661043040}
   - component: {fileID: 8633370119383661193}
   - component: {fileID: 8108430156371928133}
@@ -56,20 +55,6 @@ MonoBehaviour:
   _speed: 3
   _level: 0
   Name: Venom
---- !u!114 &7826700682380091167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6569940447389341563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: {fileID: 2232953475396010062}
-  _canvas: {fileID: 7827515955532213979}
 --- !u!114 &5650701107661043040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,22 +480,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 6767015889886954972}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &7827515955532213979 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 6767015889886954972}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2232953475396010062 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 6767015889886954972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7691443860970766498
 PrefabInstance:
   m_ObjectHideFlags: 0

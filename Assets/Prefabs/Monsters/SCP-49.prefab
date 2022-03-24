@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3662317055963435037}
   - component: {fileID: 7515761044871465735}
-  - component: {fileID: 387363718180132984}
   - component: {fileID: 2852297289183539719}
   - component: {fileID: 2175752725621865966}
   - component: {fileID: 1835456224147006242}
@@ -131,20 +130,6 @@ MonoBehaviour:
   _speed: 3
   _level: 0
   Name: SCP-049
---- !u!114 &387363718180132984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3662317055963435036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: {fileID: 8575764810537813801}
-  _canvas: {fileID: 386988203042793916}
 --- !u!114 &2852297289183539719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,22 +406,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3753595168208454331}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &386988203042793916 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 3753595168208454331}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8575764810537813801 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 3753595168208454331}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4571364578358545376
 PrefabInstance:
   m_ObjectHideFlags: 0

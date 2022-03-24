@@ -21,6 +21,7 @@ public class MonstersHandler : MonoBehaviour
 
     public event Action<MonsterAnimator> MonsterAdded;
     public event Action<Monster> MonsterMerged;
+    public event Action<int, int> MightChanged;
 
     private void Awake()
     {
@@ -74,9 +75,10 @@ public class MonstersHandler : MonoBehaviour
 
         foreach (var monster in monsters)
         {
-            ChangeMonstersMight(level);
             monster.LevelUp(level);
         }
+
+        ChangeMonstersMight(level);
     }
 
     public void LevelDownAllMonster()
@@ -87,11 +89,14 @@ public class MonstersHandler : MonoBehaviour
         {
             monster.LevelDown(1);
         }
+
+        ChangeMonstersMight(-1);
     }
 
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
+        MightChanged?.Invoke(_monstersMight, level);
     }
 
     private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace)

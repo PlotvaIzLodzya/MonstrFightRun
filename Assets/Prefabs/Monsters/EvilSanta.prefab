@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1863492801631827316}
   - component: {fileID: 2169321206334283348}
-  - component: {fileID: 3346011927490690321}
   - component: {fileID: 908100279949662062}
   - component: {fileID: 3836660830347876487}
   - component: {fileID: 3636521008271377995}
@@ -56,20 +55,6 @@ MonoBehaviour:
   _speed: 3
   _level: 0
   Name: Evil Santa
---- !u!114 &3346011927490690321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863492801631827317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66f30b93816ec47b0f0699b5385427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: {fileID: 6632783595405304384}
-  _canvas: {fileID: 3337596792491265237}
 --- !u!114 &908100279949662062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,22 +340,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 2240593359565301714}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &3337596792491265237 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3551555956734290695, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 2240593359565301714}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6632783595405304384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4833574352678471058, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 2240593359565301714}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3328591326412709527
 PrefabInstance:
   m_ObjectHideFlags: 0
