@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Gate : PowerUp
 {
-    [SerializeField] private MonsterList _monsters;
     [SerializeField] private GateIcon _gateIcon;
 
     private Monster _monster;
@@ -11,9 +10,9 @@ public class Gate : PowerUp
 
     public event Action GateActivated;
 
-    private void Start()
+    public void SetMonster(Monster monster)
     {
-        _monster = _monsters.GetRandomMonster();
+        _monster = monster;
         _gateIcon.CreateIcon(_monster);
     }
 

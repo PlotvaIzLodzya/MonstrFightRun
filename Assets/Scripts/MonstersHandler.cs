@@ -20,6 +20,7 @@ public class MonstersHandler : MonoBehaviour
     public int MonsterMight => _monstersMight;
 
     public event Action<MonsterAnimator> MonsterAdded;
+    public event Action<Monster> MonsterMerged;
 
     private void Awake()
     {
@@ -51,8 +52,11 @@ public class MonstersHandler : MonoBehaviour
             {
                 ChangeMonstersMight(AddLevelOnMerge);
 
+                MonsterMerged?.Invoke(place.Monster);
+
                 return place.Monster.TryMerge(AddLevelOnMerge);
             }
+
 
             SetMonsterToPlace(monster, place);
             _monsterHandlerColliders.CreateBoxCollider(place);
@@ -92,10 +96,8 @@ public class MonstersHandler : MonoBehaviour
 
     private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace)
     {
-        var monster = Instantiate(monsterType);
+        var monster = Instantiate(monsterType, monsterPlace.transform);
         monsterPlace.Take(monster);
-
-        monster.transform.SetParent(monsterPlace.transform, false);
 
         ChangeMonstersMight(1);
         _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
