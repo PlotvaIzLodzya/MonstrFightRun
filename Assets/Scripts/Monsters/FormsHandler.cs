@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FormsHandler : MonoBehaviour
 {
-    private bool _isIcon;
+    private bool NOICOn;
     private Form[] _forms;
     private int _counter = 0;
     private Form _currentForm;
@@ -26,11 +26,6 @@ public class FormsHandler : MonoBehaviour
             else
                 _forms[i].gameObject.SetActive(false);
         }
-    }
-
-    public void SetIcon()
-    {
-        _isIcon = true;
     }
 
     public bool TryEnableNextForm()
@@ -70,9 +65,6 @@ public class FormsHandler : MonoBehaviour
             index = _forms.Length - 1;
 
         _currentForm = _forms[index];
-
-        if (_isIcon == false)
-            _currentForm.transform.localScale = Vector3.one;
 
         _currentForm.gameObject.SetActive(true);
     }

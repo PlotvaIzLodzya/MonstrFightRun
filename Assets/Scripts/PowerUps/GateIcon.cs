@@ -27,7 +27,6 @@ public class GateIcon : MonoBehaviour
 
     public void CreateIcon(Monster monster)
     {
-        monster.IsIcon = true;
         _monsterIcon = Instantiate(monster);
         _monsterIcon.transform.position = transform.position;
         _monsterIcon.transform.rotation = transform.rotation;
