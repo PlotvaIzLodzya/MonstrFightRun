@@ -7,27 +7,33 @@ using TMPro;
 public class MonsterLevelPresenter : LevelPresenter
 {
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private RectTransform _levelRectTransform;
+    [SerializeField] private FloatingText _floatingText;
+    [SerializeField] private Transform _spawnPosition;
 
-    private Monster _monster;
-    private float _maxFontSize;
-    private float _minFontSize;
+    private MonstersHandler _monstersHandler;
+    private Coroutine _coroutine;
+    private Vector3 _enlargeScale;
+    private Vector3 _intialScale;
+
+    private const float MaxScale = 0.7f;
 
     private void Awake()
     {
-        _monster = GetComponent<Monster>();
-        _minFontSize = Level.fontSize;
-        _maxFontSize = _minFontSize + 20f;
+        _intialScale = _levelRectTransform.localScale;
+        _enlargeScale = new Vector3(MaxScale, MaxScale, MaxScale);
+        _monstersHandler = GetComponent<MonstersHandler>();
     }
 
     private void OnEnable()
     {
-        _monster.LevelChanged += OnLevelChange;
-        Show(_monster.Level);
+        _monstersHandler.MightChanged += OnMightChange;
+        Show(_monstersHandler.MonsterMight);
     }
 
     private void OnDisable()
     {
-        _monster.LevelChanged -= OnLevelChange;
+        _monstersHandler.MightChanged -= OnMightChange;
     }
 
     public void Disable()
@@ -35,28 +41,36 @@ public class MonsterLevelPresenter : LevelPresenter
         _canvas.gameObject.SetActive(false);
     }
 
-    public void OnLevelChange(int level)
+    public void OnMightChange(int might, int addedMight)
     {
         if(_canvas.gameObject.activeInHierarchy == false)
             _canvas.gameObject.SetActive(true);
 
-        Show(level);
-        StartCoroutine(Animation(Level));
+        Show(might);
+
+        var floatingText = Instantiate(_floatingText, _spawnPosition);
+        floatingText.Init(addedMight);
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(WoopAnimation(_levelRectTransform));
     }
 
-    private IEnumerator Animation(TMP_Text text)
+    private IEnumerator WoopAnimation(RectTransform rectTransform)
     {
-        float changeSpeed = (_maxFontSize - _minFontSize) / 0.1f;
+        float changeSpeed = Mathf.Abs((rectTransform.localScale.x - MaxScale) / 0.1f);
 
-        while (text.fontSize < _maxFontSize)
+        while (rectTransform.localScale.x < MaxScale)
         {
-            text.fontSize = Mathf.MoveTowards(text.fontSize, _maxFontSize, changeSpeed * Time.deltaTime);
+            rectTransform.localScale = Vector3.MoveTowards(rectTransform.localScale, _enlargeScale, changeSpeed * Time.deltaTime);
             yield return null;
         }
 
-        while (text.fontSize > _minFontSize)
+        while (transform.localScale.x > _intialScale.x)
         {
-            text.fontSize = Mathf.MoveTowards(text.fontSize, _minFontSize, changeSpeed * Time.deltaTime);
+            rectTransform.localScale = Vector3.MoveTowards(rectTransform.localScale, _intialScale, changeSpeed * Time.deltaTime);
+
             yield return null;
         }
     }
