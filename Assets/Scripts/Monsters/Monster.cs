@@ -11,8 +11,6 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
 
-    [HideInInspector] public bool IsIcon;
-
     public string Name;
     private int _maxLevel = 50;
     private ResizeAnimation ResizeAnimation;
@@ -24,6 +22,7 @@ public class Monster : MonoBehaviour, IMergeable
     public Rigidbody Rigidbody { get; private set; }
     public FormsHandler FormsHandler { get; private set; }
     public MonsterDeathHandler MonsterDeathHandler { get; private set; }
+    public bool IsNoIcon { get; private set; }
     public bool IsAllive { get; private set; }
     public float Speed => _speed;
     public int Level => _level;
@@ -43,9 +42,6 @@ public class Monster : MonoBehaviour, IMergeable
         ResizeAnimation = GetComponentInChildren<ResizeAnimation>();
         FormsHandler = GetComponentInChildren<FormsHandler>();
         MonsterDeathHandler = GetComponent<MonsterDeathHandler>();
-
-        if (IsIcon)
-            FormsHandler.SetIcon();
 
         ResizeAnimation.SetMaxStep(_maxLevel);
     }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class Form : MonoBehaviour
 {
     [SerializeField] private Monster _monster;
-    [SerializeField] private bool _isBoss;
 
     private Animator _animator;
 
@@ -15,12 +14,6 @@ public class Form : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        if (_isBoss)
-            _monster.MonsterAnimator.ToFightTransition();
     }
 
     private void RangeAttack()
