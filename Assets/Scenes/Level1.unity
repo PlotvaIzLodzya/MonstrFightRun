@@ -1116,8 +1116,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.42
+      value: -5.67
       objectReference: {fileID: 0}
     - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1442,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.950077
+      value: -12.12
       objectReference: {fileID: 0}
     - target: {fileID: 4266176479083975467, guid: d5da59a044537e84d959440086f549e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1487,6 +1499,10 @@ PrefabInstance:
     - target: {fileID: 4892011296455733239, guid: d5da59a044537e84d959440086f549e2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702843109924014784, guid: d5da59a044537e84d959440086f549e2, type: 3}
+      propertyPath: _attackRadius
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5da59a044537e84d959440086f549e2, type: 3}
@@ -5548,6 +5564,10 @@ PrefabInstance:
     - target: {fileID: 8122029529603746166, guid: 6bfeabbbaa29d3144a535dfe356cc30e, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122029529603746166, guid: 6bfeabbbaa29d3144a535dfe356cc30e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bfeabbbaa29d3144a535dfe356cc30e, type: 3}

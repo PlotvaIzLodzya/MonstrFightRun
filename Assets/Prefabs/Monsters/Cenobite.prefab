@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75a56fd64fb2924f80b948f8eed8ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFinisher: 0
   _formsHandler: {fileID: 1648695248796500369}
   _stateMachine: {fileID: 6797843127744865554}
 --- !u!54 &4180376130239183141
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 20
-  _attackRadius: 6
+  _attackRadius: 3
   _attackBehavior: {fileID: 9185966087264629855}
   _monsterLayerMask:
     serializedVersion: 2
