@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FormsHandler : MonoBehaviour
 {
-    private Form[] _forms;
+    private List<Form> _forms;
     private int _counter = 0;
 
     public Animator CurrentFormAnimator => CurrentForm.FormAnimator;
@@ -15,23 +16,26 @@ public class FormsHandler : MonoBehaviour
 
     private void Awake()
     {
-        _forms = GetComponentsInChildren<Form>();
+        _forms = GetComponentsInChildren<Form>().ToList();
         Error.CheckOnNull(_forms, nameof(Form));
 
-        for (int i = 0; i < _forms.Length; i++)
-        {
-            if (i == _counter)
-                SetCurrentForm(i);
-            else
-                _forms[i].gameObject.SetActive(false);
-        }
+        if (_forms[0] == null)
+            return;
+
+        EnableFirstForm();
+    }
+
+    public void SetForm(Form form)
+    {
+        _forms.Add(form);
+        EnableFirstForm();
     }
 
     public bool TryEnableNextForm()
     {
         _counter++;
 
-        if(_counter > _forms.Length-1)
+        if(_counter > _forms.Count-1)
             return false;
 
         if (CurrentForm != null)
@@ -60,11 +64,22 @@ public class FormsHandler : MonoBehaviour
 
     public void SetCurrentForm(int index)
     {
-        if (index > _forms.Length - 1)
-            index = _forms.Length - 1;
+        if (index > _forms.Count - 1)
+            index = _forms.Count - 1;
 
         CurrentForm = _forms[index];
 
         CurrentForm.gameObject.SetActive(true);
+    }
+
+    private void EnableFirstForm()
+    {
+        for (int i = 0; i < _forms.Count; i++)
+        {
+            if (i == _counter)
+                SetCurrentForm(i);
+            else
+                _forms[i].gameObject.SetActive(false);
+        }
     }
 }
