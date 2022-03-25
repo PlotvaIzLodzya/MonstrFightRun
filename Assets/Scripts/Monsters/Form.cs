@@ -22,10 +22,6 @@ public class Form : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _skinnedMeshRenderer.material.SetFloat("_SelfShadingSizeExtra", 1f);
-
-        StartCoroutine(MagicalMaterial());
-
-
     }
 
     private void RangeAttack()
@@ -34,14 +30,14 @@ public class Form : MonoBehaviour
         {
             _monster.DealDamage();
 
-            Instantiate(_particleSystem, _particlePoint.position, _particlePoint.rotation);
+            if(_particleSystem != null)
+                Instantiate(_particleSystem, _particlePoint.position, _particlePoint.rotation);
         }
     }
 
     public void OnDamaged()
     {
         _skinnedMeshRenderer.material.SetFloat("_SelfShadingSizeExtra", 1f);
-        Debug.Log("Hi");
 
         if (_coroutine != null)
             _coroutine = null;

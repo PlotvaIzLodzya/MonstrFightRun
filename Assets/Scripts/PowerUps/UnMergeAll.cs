@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class UnMergeAll : PowerUp
 {
-    [SerializeField] private PowerUpAlongPath _heightHandler = new PowerUpAlongPath();
+    [SerializeField] private PositionAlongPath _heightHandler = new PositionAlongPath();
 
     private PathCreator _pathCreator;
 
     private void Start()
     {
         _pathCreator = FindObjectOfType<PathCreator>();
-        transform.position = _heightHandler.GetHeight(transform.position, _pathCreator.path);
+        transform.position = _heightHandler.GetPosition(transform.position, _pathCreator.path);
     }
 
     public override void Use(MonstersHandler monstersHandler)

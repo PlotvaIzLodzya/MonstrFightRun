@@ -70,6 +70,9 @@ public class StateMachine: MonoBehaviour
     {
         if (_target != null && _target.IsAllive)
         {
+            if (Vector3.Distance(transform.position, _target.transform.position) >= _agroRadius)
+                return false;
+
             return true;
         }
 
