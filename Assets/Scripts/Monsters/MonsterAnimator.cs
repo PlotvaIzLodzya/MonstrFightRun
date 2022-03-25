@@ -18,7 +18,7 @@ public class MonsterAnimator : MonoBehaviour
 
     private bool _isDead;
 
-    private void Awake()
+    private void Start()
     {
         if (_isFinisher)
             ToFightTransition();

@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class FormsHandler : MonoBehaviour
 {
-    private bool NOICOn;
     private Form[] _forms;
     private int _counter = 0;
-    private Form _currentForm;
 
-    public Animator CurrentFormAnimator => _currentForm.FormAnimator;
+    public Animator CurrentFormAnimator => CurrentForm.FormAnimator;
+    public Form CurrentForm { get; private set; }
 
     public event Action FormChanged;
 
@@ -35,8 +34,8 @@ public class FormsHandler : MonoBehaviour
         if(_counter > _forms.Length-1)
             return false;
 
-        if (_currentForm != null)
-            _currentForm.gameObject.SetActive(false);
+        if (CurrentForm != null)
+            CurrentForm.gameObject.SetActive(false);
 
         SetCurrentForm(_counter);
         FormChanged?.Invoke();
@@ -53,8 +52,8 @@ public class FormsHandler : MonoBehaviour
             return;
         }
 
-        if (_currentForm != null)
-            _currentForm.gameObject.SetActive(false);
+        if (CurrentForm != null)
+            CurrentForm.gameObject.SetActive(false);
 
         SetCurrentForm(_counter);
     }
@@ -64,8 +63,8 @@ public class FormsHandler : MonoBehaviour
         if (index > _forms.Length - 1)
             index = _forms.Length - 1;
 
-        _currentForm = _forms[index];
+        CurrentForm = _forms[index];
 
-        _currentForm.gameObject.SetActive(true);
+        CurrentForm.gameObject.SetActive(true);
     }
 }

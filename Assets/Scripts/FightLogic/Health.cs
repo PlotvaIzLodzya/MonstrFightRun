@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Health
 {
+    [SerializeField] private float _healthPerLevel;
+
     private float _maxHealth;
     private float _currentHealth;
 
@@ -13,25 +16,39 @@ public class Health
 
     public event Action<float, float> HealthChanged;
 
-    public Health(float maxHealth)
+    public void Init(float level)
     {
-        _maxHealth = maxHealth;
-        _currentHealth = maxHealth;
+        var health = CalctulateHealth(level);
+
+        _maxHealth = health;
+        _currentHealth = health;
+
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void Decrease(float damage)
     {
         _currentHealth -= damage;
 
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
 
         if (_currentHealth <= 0)
             _currentHealth = 0;
+
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
-    public void IncreaseMaxHealth(float health)
+    public void IncreaseMaxHealth(float level)
     {
-        _maxHealth += health;
+        var health = CalctulateHealth(level);
+
+        _maxHealth = health;
+        _currentHealth = health;
+
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    private float CalctulateHealth(float level)
+    {
+        return level * _healthPerLevel;
     }
 }

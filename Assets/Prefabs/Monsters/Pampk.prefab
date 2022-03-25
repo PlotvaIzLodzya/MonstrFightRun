@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8681984122702048462}
   - component: {fileID: 2229587244767067137}
   - component: {fileID: 3265507466101910414}
+  - component: {fileID: 912069905492843410}
   m_Layer: 7
   m_Name: Pampk
   m_TagString: Untagged
@@ -126,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344b0b99c6a045f46a0ebf78487f81a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 33
+  _health:
+    _healthPerLevel: 10
   _speed: 3
   _level: 0
   Name: Pampk
@@ -231,6 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &912069905492843410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289954068896746566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 1713150304297517365}
 --- !u!1001 &1667050368365174497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,6 +253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1289954068850940191}
     m_Modifications:
+    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -322,10 +341,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1794198830528894287, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 7319565273481950930}
     - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 7319565273481950930}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -339,6 +366,11 @@ PrefabInstance:
 --- !u!224 &1842282082018471791 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 1667050368365174497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1713150304297517365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 1667050368365174497}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2276870513177754038

@@ -11,6 +11,10 @@ public class FinishFightBehavior : AttackBehavior
     {
         self.SetTarget(monster);
 
+        Vector3 lookDirection = (monster.transform.position - self.transform.position).normalized;
+
+        self.transform.rotation = Quaternion.LookRotation(lookDirection, self.transform.up);
+
         if(_coroutine == null)
             _coroutine = StartCoroutine(AttackDelay(self));
     }

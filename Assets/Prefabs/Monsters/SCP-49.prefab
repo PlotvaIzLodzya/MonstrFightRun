@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 6577899911241248916}
   - component: {fileID: 4450939995606360155}
   - component: {fileID: -5463968040146712892}
+  - component: {fileID: 290619021912467632}
+  - component: {fileID: 3887323483477742277}
   m_Layer: 7
   m_Name: SCP-49
   m_TagString: Untagged
@@ -126,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40e7382bc24d9b4b978c40506c76db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 24
+  _health:
+    _healthPerLevel: 10
   _speed: 3
   _level: 0
   Name: SCP-049
@@ -231,6 +234,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &290619021912467632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662317055963435036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 3815580987642256751}
+--- !u!114 &3887323483477742277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662317055963435036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingText: {fileID: 92913884053030813, guid: 350bc535af1354046be583e5f27ec4b3, type: 3}
+  _monster: {fileID: 7515761044871465735}
+  _point: {fileID: 3815580987642256750}
 --- !u!1001 &3654303194236756599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,6 +273,10 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 7515761044871465735}
+    - target: {fileID: 5870069537222153590, guid: deb7328d1fb8b8c4eacd04826e550baa, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
     - target: {fileID: 8630676022646697259, guid: deb7328d1fb8b8c4eacd04826e550baa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -304,6 +339,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3662317055849858373}
     m_Modifications:
+    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.598
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 149.77
+      objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -388,10 +443,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1794198830528894287, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 7515761044871465735}
     - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 7515761044871465735}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -407,6 +470,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3753595168208454331}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3815580987642256751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 3753595168208454331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3815580987642256750 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 3753595168208454331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4571364578358545376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,6 +491,10 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 7515761044871465735}
+    - target: {fileID: 1743055862821060418, guid: 44f0a3ca3cc2f164b9401574f5fa1415, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
     - target: {fileID: 3621874604640281774, guid: 44f0a3ca3cc2f164b9401574f5fa1415, type: 3}
       propertyPath: m_Name
       value: Scp-49_02
@@ -488,6 +565,10 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 7515761044871465735}
+    - target: {fileID: 5054000317070837197, guid: 661134faf537fd840a4c039e8f44694f, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
     - target: {fileID: 5752298284473416223, guid: 661134faf537fd840a4c039e8f44694f, type: 3}
       propertyPath: m_RootOrder
       value: 2

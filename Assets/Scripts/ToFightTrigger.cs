@@ -12,5 +12,8 @@ public class ToFightTrigger : MonoBehaviour
 
         if (other.TryGetComponent(out MonsterAnimator monsterAnimator))
             monsterAnimator.ToFightTransition();
+
+        if (other.TryGetComponent(out UIHandler healthbarEnabler))
+            healthbarEnabler.ToFight();
     }
 }
