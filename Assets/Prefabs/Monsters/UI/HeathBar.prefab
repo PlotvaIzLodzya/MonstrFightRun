@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 1767471667467438903}
   - component: {fileID: 1767471667467438920}
   - component: {fileID: 1767471667467438921}
+  - component: {fileID: 37660554759291344}
   m_Layer: 5
   m_Name: HeathBar
   m_TagString: Untagged
@@ -348,10 +349,25 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 31.1
+  m_Value: 29.9
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &37660554759291344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767471667467438923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b101ad3b2841cc45babd6cf74a7bf65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 0}
+  _slider: {fileID: 1767471667467438921}
+  health: {fileID: 1767471667231649799}
 --- !u!1 &3562777838893501353
 GameObject:
   m_ObjectHideFlags: 0

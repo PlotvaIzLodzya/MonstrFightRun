@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1315671796675666924}
   - component: {fileID: 5961753621915226412}
   - component: {fileID: 1486096345272683205}
+  - component: {fileID: 9016688956941291151}
   m_Layer: 7
   m_Name: Freddy
   m_TagString: Untagged
@@ -66,7 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb5ddfdbb61ac458df00ab84f5cda3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health:
+    _healthPerLevel: 10
   _speed: 3
   _level: 0
   Name: Freddy
@@ -156,6 +158,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9016688956941291151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308975982070457583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 8462240498972060060}
 --- !u!1 &8308975982124528055
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8308975982124528054}
     m_Modifications:
+    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -388,10 +407,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1794198830528894287, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2840612604432673332}
     - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2840612604432673332}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -405,6 +432,11 @@ PrefabInstance:
 --- !u!224 &8879029239410706374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 8469919308891420232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8462240498972060060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 8469919308891420232}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8709328029728653376

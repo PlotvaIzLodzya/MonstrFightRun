@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8090215624604030461}
   - component: {fileID: 1642608219962410290}
   - component: {fileID: 8185055595472910462}
+  - component: {fileID: -5806378647150935583}
   m_Layer: 7
   m_Name: EvilSanta
   m_TagString: Untagged
@@ -51,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4db1f154177b3e48876258a097969c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health:
+    _healthPerLevel: 10
   _speed: 3
   _level: 0
   Name: Evil Santa
@@ -156,6 +158,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5806378647150935583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863492801631827317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 2304989308520216582}
 --- !u!1 &1863492801678024749
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1863492801678024748}
     m_Modifications:
+    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -322,10 +341,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1794198830528894287, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -339,6 +366,11 @@ PrefabInstance:
 --- !u!224 &1273317455093896796 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 2240593359565301714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2304989308520216582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 2240593359565301714}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3328591326412709527
@@ -589,14 +621,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2122585361301514841, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
   m_PrefabInstance: {fileID: 8896663211290882818}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7874663256745640929 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1603035792989647075, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-  m_PrefabInstance: {fileID: 8896663211290882818}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8058698538906039397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1486596423048972135, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+  m_PrefabInstance: {fileID: 8896663211290882818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7874663256745640929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1603035792989647075, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
   m_PrefabInstance: {fileID: 8896663211290882818}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6647268645182900441

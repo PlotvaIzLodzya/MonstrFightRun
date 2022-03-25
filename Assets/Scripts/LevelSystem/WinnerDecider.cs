@@ -31,7 +31,7 @@ public class WinnerDecider : MonoBehaviour
     {
         foreach (var boss in _bosses)
         {
-            boss.GetComponent<Monster>().Died -= OnMonsterDied;
+            boss.Monster.Died -= OnMonsterDied;
         }
     }
 

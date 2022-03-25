@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: DR_RIM_ON DR_SPECULAR_ON _CELPRIMARYMODE_SINGLE _TEXTUREBLENDINGMODE_MULTIPLY
     _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -101,9 +101,9 @@ Material:
     - _QueueOffset: 0
     - _RimEnabled: 1
     - _SelfShadingSize: 0.707
-    - _SelfShadingSizeExtra: 0
+    - _SelfShadingSizeExtra: 0.277
     - _ShadowEdgeSize: 0.05
-    - _ShadowEdgeSizeExtra: 0.05
+    - _ShadowEdgeSizeExtra: 0.04
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 1
     - _SpecularHighlights: 1
@@ -113,20 +113,20 @@ Material:
     - _TextureImpact: 1
     - _UVSec: 0
     - _UnityShadowMode: 0
-    - _UnityShadowPower: 0.2
+    - _UnityShadowPower: 0.367
     - _UnityShadowSharpness: 1
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    - _Color: {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
     - _ColorDim: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorDimExtra: {r: 0.625, g: 0.60775864, b: 0.60775864, a: 1}
+    - _ColorDimExtra: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorGradient: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.5377358, g: 0.5199804, b: 0.5199804, a: 1}
     - _FlatSpecularColor: {r: 1.39772, g: 1.3684484, b: 1.3684484, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
-    - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _UnityShadowColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
   m_BuildTextureStacks: []

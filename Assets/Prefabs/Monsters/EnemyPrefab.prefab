@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3f1f8266d57d84983466817143cea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health:
+    _healthPerLevel: 0
   _speed: 5
   _level: 2
   Name: Skelington
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 20
-  _attackRadius: 6
+  _attackRadius: 2
   _attackBehavior: {fileID: 5311803419947127178}
   _monsterLayerMask:
     serializedVersion: 2
@@ -465,6 +466,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.9599991
       objectReference: {fileID: 0}
+    - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 6123299620713783651}
     - target: {fileID: 8144886184681815272, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: Level
       value: 

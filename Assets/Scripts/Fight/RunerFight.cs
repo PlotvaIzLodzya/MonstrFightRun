@@ -43,7 +43,7 @@ public class RunerFight: AttackBehavior
 
     private void Push()
     {
-        _chest.Push(50f);
+        _chest.Push(15f);
         _player.RaiseMight(_enemyMonster.Level);
         _monsterOfPlayer.DealtDamage -= Push;
     }

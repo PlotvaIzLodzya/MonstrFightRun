@@ -15,12 +15,12 @@ public class Particles : MonoBehaviour
 
     private void OnEnable()
     {
-        _monster.Damaged += OnDamaged;
+        _monster.DealtDamage += OnDamaged;
     }
 
     private void OnDisable()
     {
-        _monster.Damaged -= OnDamaged;
+        _monster.DealtDamage -= OnDamaged;
     }
 
     private void OnDamaged()

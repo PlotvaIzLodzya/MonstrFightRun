@@ -7,7 +7,7 @@ using RunnerMovementSystem;
 [RequireComponent(typeof(MonsterAnimator), typeof(MonsterDeathHandler), typeof(Rigidbody))]
 public class Monster : MonoBehaviour, IMergeable
 {
-    [SerializeField] private float _health;
+    [SerializeField] private Health _health = new Health();
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
 
@@ -18,23 +18,22 @@ public class Monster : MonoBehaviour, IMergeable
     public MovementSystem MovementSystem { get; private set; }
     public MonsterAnimator MonsterAnimator { get; private set; }
     public Monster Target { get; private set; }
-    public Health Health { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
     public FormsHandler FormsHandler { get; private set; }
     public MonsterDeathHandler MonsterDeathHandler { get; private set; }
     public bool IsAllive { get; private set; }
+    public Health Health => _health;
     public float Speed => _speed;
     public int Level => _level;
     private float _damage => _level;
 
     public event Action<int> LevelChanged;
-    public event Action Damaged;
+    public event Action<float> Damaged;
     public event Action DealtDamage;
     public event Action Died;
 
     private void Awake()
     {
-        Health = new Health(_health);
         IsAllive = true;
 
         Rigidbody = GetComponent<Rigidbody>();
@@ -45,6 +44,8 @@ public class Monster : MonoBehaviour, IMergeable
         MonsterDeathHandler = GetComponent<MonsterDeathHandler>();
 
         ResizeAnimation.SetMaxStep(_maxLevel);
+
+        _health.Init(_level);
     }
 
     public void SetTarget(Monster monster)
@@ -56,7 +57,9 @@ public class Monster : MonoBehaviour, IMergeable
     {
         Health.Decrease(damage);
 
-        Damaged?.Invoke();
+        Damaged?.Invoke(damage);
+
+        FormsHandler.CurrentForm.OnDamaged();
 
         if (Health.CurrentHealth <= 0)
             Die();
@@ -103,6 +106,7 @@ public class Monster : MonoBehaviour, IMergeable
         _level += level;
         _level = Mathf.Clamp(_level, 0, _maxLevel);
         ResizeAnimation.PlayEnlargeAnimation(_level);
+        _health.IncreaseMaxHealth(_level);
         LevelChanged?.Invoke(_level);
     }
 
