@@ -11,13 +11,8 @@ public class PowerUpAlongPath
 
     public Vector3 GetHeight(Vector3 position, VertexPath vertexPath)
     {
-        if (Physics.Raycast(position, Vector3.down, out RaycastHit hitInfo))
-        {
-            Vector3 point = vertexPath.GetClosestPointOnPath(position);
-
-            position = new Vector3(point.x + offset, hitInfo.point.y + height, point.z);
-        }
-
+        Vector3 point = vertexPath.GetClosestPointOnPath(position);
+        position = new Vector3(point.x + offset, point.y + height, point.z);
 
         return position;
     }

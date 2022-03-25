@@ -21,9 +21,14 @@ public class FloatingText : MonoBehaviour
         _addedMight.text = $"{addedMight}";
 
         if (addedMight < 0)
+        {
             _addedMight.color = Color.red;
+        }
         else
+        {
+            _addedMight.text = $"+{addedMight}";
             _addedMight.color = Color.green;
+        }
 
         StartCoroutine(FloatAway());
         StartCoroutine(Fade(_addedMight));
