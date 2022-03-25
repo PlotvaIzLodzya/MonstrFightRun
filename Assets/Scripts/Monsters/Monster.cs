@@ -22,13 +22,13 @@ public class Monster : MonoBehaviour, IMergeable
     public Rigidbody Rigidbody { get; private set; }
     public FormsHandler FormsHandler { get; private set; }
     public MonsterDeathHandler MonsterDeathHandler { get; private set; }
-    public bool IsNoIcon { get; private set; }
     public bool IsAllive { get; private set; }
     public float Speed => _speed;
     public int Level => _level;
     private float _damage => _level;
 
     public event Action<int> LevelChanged;
+    public event Action Damaged;
     public event Action DealtDamage;
     public event Action Died;
 
@@ -55,6 +55,8 @@ public class Monster : MonoBehaviour, IMergeable
     public void ApplyDamage(float damage)
     {
         Health.Decrease(damage);
+
+        Damaged?.Invoke();
 
         if (Health.CurrentHealth <= 0)
             Die();
