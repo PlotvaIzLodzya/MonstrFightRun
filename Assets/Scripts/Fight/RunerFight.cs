@@ -31,6 +31,7 @@ public class RunerFight: AttackBehavior
         {
             monsterOfPlayer.SetTarget(enemyMonster);
             monsterOfPlayer.DealtDamage += Push;
+            _monsterOfPlayer.DealDamage();
             _enemyMonster.Die();
         }
         else
