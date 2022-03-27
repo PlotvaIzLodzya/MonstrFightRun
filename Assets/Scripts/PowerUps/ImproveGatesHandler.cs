@@ -6,16 +6,11 @@ using PathCreation;
 public class ImproveGatesHandler : MonoBehaviour
 {
     [SerializeField] private MonsterList _monsters;
-    [SerializeField] private PositionAlongPath _positionAlongPath = new PositionAlongPath();
 
     private Gate[] _gates;
-    private PathCreator _pathCreator;
     private void Awake()
     {
-        _pathCreator = FindObjectOfType<PathCreator>();
         _gates = GetComponentsInChildren<Gate>();
-        transform.position = _positionAlongPath.GetPosition(transform.position, _pathCreator.path);
-        transform.rotation = _positionAlongPath.GetRotation(transform.position, _pathCreator.path);
         PlaceMonster();
     }
 
