@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poppy_Doll_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3065166478932013348, guid: f47015073f73d964dac5e70a67671cfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6488294890959451196, guid: f47015073f73d964dac5e70a67671cfd, type: 3}
       propertyPath: _monster
       value: 
@@ -442,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poppy_Fnaf_02
       objectReference: {fileID: 0}
+    - target: {fileID: 9101724164040861958, guid: 3e6bfbcc2498cd24db5d826d05736c55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e6bfbcc2498cd24db5d826d05736c55, type: 3}
 --- !u!4 &4076942925769004518 stripped
@@ -467,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 3629537806311861721, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: m_Name
       value: Poppy_stage_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629537806311861721, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4113305757336860515, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: m_RootOrder
@@ -526,30 +538,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7220308933314727679}
     m_Modifications:
-    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.598
-      objectReference: {fileID: 0}
-    - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 149.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -39.999977
-      objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -585,14 +573,6 @@ PrefabInstance:
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_SizeDelta.y
       value: 808
-      objectReference: {fileID: 0}
-    - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.009999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.009999999
       objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -646,18 +626,6 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 5890225089132513927}
-    - target: {fileID: 2980094102640169697, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656441529279204487, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656441529279204487, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: _monster
       value: 
@@ -665,10 +633,6 @@ PrefabInstance:
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
