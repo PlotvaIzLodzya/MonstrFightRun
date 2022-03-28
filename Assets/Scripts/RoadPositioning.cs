@@ -23,6 +23,11 @@ public class RoadPositioning : MonoBehaviour
         transform.rotation = GetRotation(transform.position, height, offset);
     }
 
+    public void PlaceWithoutRotation(float height, float offset)
+    {
+        transform.position = GetPosition(transform.position, height, offset);
+    }
+
     public Vector3 GetPosition(Vector3 position, float height, float offset)
     {
         Vector3 point = _pathCreator.path.GetClosestPointOnPath(position);

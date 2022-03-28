@@ -31,6 +31,7 @@ public class Monster : MonoBehaviour, IMergeable
     public event Action<float> Damaged;
     public event Action DealtDamage;
     public event Action Died;
+    public event Action<int> HittedAnObstacle;
 
     private void Awake()
     {
@@ -108,6 +109,12 @@ public class Monster : MonoBehaviour, IMergeable
         ResizeAnimation.PlayEnlargeAnimation(_level);
         _health.IncreaseMaxHealth(_level);
         LevelChanged?.Invoke(_level);
+    }
+
+    public void ObstacleHitted(int level)
+    {
+        HittedAnObstacle?.Invoke(level);
+        LevelDown(level);
     }
 
     public void LevelDown(int level)

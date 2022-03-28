@@ -5,16 +5,9 @@ using System;
 
 public class RunerFight: AttackBehavior
 {
-    [SerializeField] private Chest _chest;
-
     private Monster _monsterOfPlayer;
     private Player _player;
     private Monster _enemyMonster;
-
-    //private void Awake()
-    //{
-    //    _chest = GetComponent<Chest>();
-    //}
 
     public override void Fight(Monster enemyMonster, Monster monsterOfPlayer)
     {

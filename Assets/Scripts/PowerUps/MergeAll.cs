@@ -8,5 +8,6 @@ public class MergeAll : PowerUp
     public override void Use(MonstersHandler monstersHandler)
     {
         monstersHandler.LevelUpAllMonster(1);
+        gameObject.SetActive(false);
     }
 }

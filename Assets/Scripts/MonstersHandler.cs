@@ -80,16 +80,16 @@ public class MonstersHandler : MonoBehaviour
         ChangeMonstersMight(level);
     }
 
-    public void LevelDownAllMonster()
+    public void LevelDownAllMonster(int level)
     {
         var monsters = GetAllMonsters();
 
         foreach (var monster in monsters)
         {
-            monster.LevelDown(1);
+            monster.LevelDown(level);
         }
 
-        ChangeMonstersMight(-1);
+        ChangeMonstersMight(-level);
     }
 
     private void ChangeMonstersMight(int level)
@@ -123,5 +123,12 @@ public class MonstersHandler : MonoBehaviour
                        select monsterPlace.Monster;
 
         return monsters;
+    }
+
+    private Monster GetMonster(Monster monster)
+    {
+        Monster existMonster = _monsterPlaces.First(monsterPlace => monsterPlace.Monster.GetType() == monster.GetType()).Monster;
+
+        return existMonster;
     }
 }

@@ -8,6 +8,7 @@ public class UIHandler : MonoBehaviour
 
     public void SwitchState()
     {
+        Debug.Log("hi");
         _interfaceObject.gameObject.SetActive(!_interfaceObject.gameObject.activeInHierarchy);
     } 
 }

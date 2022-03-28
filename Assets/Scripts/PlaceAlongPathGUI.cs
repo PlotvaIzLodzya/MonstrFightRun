@@ -27,6 +27,14 @@ public class PlaceAlongPathGUI : Editor
                 roadPositioning.Place(_height, _offset);
             }
         }
+
+        if(GUILayout.Button("Place without rotation"))
+        {
+            foreach (RoadPositioning roadPositioning in targets)
+            {
+                roadPositioning.PlaceWithoutRotation(_height, _offset);
+            }
+        }
     }
 
     private float Constrainer(float value)

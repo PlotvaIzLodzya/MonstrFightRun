@@ -7,6 +7,7 @@ public class UnMergeAll : PowerUp
 {
     public override void Use(MonstersHandler monstersHandler)
     {
-        monstersHandler.LevelDownAllMonster();
+        monstersHandler.LevelDownAllMonster(1);
+        gameObject.SetActive(false);
     }
 }
