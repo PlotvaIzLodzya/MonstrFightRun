@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1711629952788690678}
   - component: {fileID: 2861530687393169011}
   - component: {fileID: 2354130289165664736}
+  - component: {fileID: 5989209965086242806}
   m_Layer: 6
   m_Name: Boss 1
   m_TagString: Untagged
@@ -186,6 +187,19 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 350bc535af1354046be583e5f27ec4b3, type: 3}
   _monster: {fileID: 7421221633222492867}
   _point: {fileID: 4892011295299689559}
+--- !u!114 &5989209965086242806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966460246365832472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 4892011295299689558}
 --- !u!1 &5148235704067392603
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +465,11 @@ PrefabInstance:
 --- !u!224 &5599283512945406476 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 4829884104820376450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4892011295299689558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 4829884104820376450}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &4892011295299689559 stripped

@@ -58,7 +58,6 @@ public class MonstersHandler : MonoBehaviour
                 return place.Monster.TryMerge(AddLevelOnMerge);
             }
 
-
             SetMonsterToPlace(monster, place);
             _monsterHandlerColliders.CreateBoxCollider(place);
             MonsterCounter++;
@@ -96,6 +95,10 @@ public class MonstersHandler : MonoBehaviour
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
+
+        if (_monstersMight <= 0)
+            _monstersMight = 0;
+
         MightChanged?.Invoke(_monstersMight, level);
     }
 

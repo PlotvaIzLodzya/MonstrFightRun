@@ -6,18 +6,26 @@ public class MonstersAnimatorHandler : MonoBehaviour
 {
     [SerializeField] private MouseInput _mouseInput;
 
+    private WinnerDecider _winnerDecider;
     private bool _isRunnig;
 
     private List<MonsterAnimator> _monstersAnimator = new List<MonsterAnimator>();
 
+    private void Awake()
+    {
+        _winnerDecider = FindObjectOfType<WinnerDecider>();
+        Error.CheckOnNull(_winnerDecider, nameof(WinnerDecider));
+    }
     private void OnEnable()
     {
         _mouseInput.RunBegan += SetRunAnimation;
+        _winnerDecider.Victory += OnVictory;
     }
 
     private void OnDisable()
     {
         _mouseInput.RunBegan -= SetRunAnimation;
+        _winnerDecider.Victory -= OnVictory;
     }
 
     public void AddAnimator(MonsterAnimator monsterAnimator)
@@ -39,6 +47,14 @@ public class MonstersAnimatorHandler : MonoBehaviour
         foreach (var monsterAnimator in _monstersAnimator)
         {
             monsterAnimator.DieAnimation();
+        }
+    }
+
+    public void OnVictory()
+    {
+        foreach (var monsterAnimator in _monstersAnimator)
+        {
+            monsterAnimator.LookAtPlayer();
         }
     }
 
