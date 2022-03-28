@@ -6,7 +6,7 @@ public class UIHandler : MonoBehaviour
 {
     [SerializeField] private GameObject _interfaceObject;
 
-    public void ToFight()
+    public void SwitchState()
     {
         _interfaceObject.gameObject.SetActive(!_interfaceObject.gameObject.activeInHierarchy);
     } 

@@ -14,6 +14,6 @@ public class ToFightTrigger : MonoBehaviour
             monsterAnimator.ToFightTransition();
 
         if (other.TryGetComponent(out UIHandler healthbarEnabler))
-            healthbarEnabler.ToFight();
+            healthbarEnabler.SwitchState();
     }
 }

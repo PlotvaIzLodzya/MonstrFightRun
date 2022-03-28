@@ -21,7 +21,7 @@ public class MonsterDeathHandler : MonoBehaviour, IDeathBehavior
         _stateMachine.enabled = false;
         _monsterAnimator.DieAnimation();
         gameObject.layer = 9;
-        _uIHandler.ToFight();
+        _uIHandler.SwitchState();
 
         _player = transform.root.GetComponent<Player>();
 

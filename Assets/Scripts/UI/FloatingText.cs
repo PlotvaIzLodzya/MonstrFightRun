@@ -8,6 +8,8 @@ public class FloatingText : MonoBehaviour
 {
     [SerializeField] private float _time;
     [SerializeField] private float _speed;
+    [SerializeField] private Color _positiveColor;
+    [SerializeField] private Color _negativeColor;
 
     private TMP_Text _addedMight;
 
@@ -22,12 +24,12 @@ public class FloatingText : MonoBehaviour
 
         if (addedMight < 0)
         {
-            _addedMight.color = Color.red;
+            _addedMight.color = _negativeColor;
         }
         else
         {
             _addedMight.text = $"+{addedMight}";
-            _addedMight.color = Color.green;
+            _addedMight.color = _positiveColor;
         }
 
         StartCoroutine(FloatAway());
