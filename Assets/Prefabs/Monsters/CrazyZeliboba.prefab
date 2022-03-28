@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFinisher: 0
+  _isRagdolDeath: 0
   _formsHandler: {fileID: 7220308933314727648}
   _stateMachine: {fileID: 3207738730332695139}
 --- !u!114 &5890225089132513927
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatingText: {fileID: 92913884053030813, guid: 350bc535af1354046be583e5f27ec4b3, type: 3}
+  _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 5890225089132513927}
   _point: {fileID: 7067049399681177300}
 --- !u!1 &8404040905291931982
@@ -538,6 +539,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7220308933314727679}
     m_Modifications:
+    - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.514

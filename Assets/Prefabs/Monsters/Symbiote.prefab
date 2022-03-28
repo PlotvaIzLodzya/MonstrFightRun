@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFinisher: 0
+  _isRagdolDeath: 0
   _formsHandler: {fileID: 6569940447443796541}
   _stateMachine: {fileID: 1412586423548651198}
 --- !u!54 &8633370119383661193
@@ -299,7 +300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5273437815156039286, guid: 32ed0a6615c58f242b7a27a4cb00b7ef, type: 3}
       propertyPath: m_Name
-      value: Venom_03
+      value: Symbiote_03
       objectReference: {fileID: 0}
     - target: {fileID: 7439928893591074939, guid: 32ed0a6615c58f242b7a27a4cb00b7ef, type: 3}
       propertyPath: _monster

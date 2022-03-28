@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFinisher: 0
+  _isRagdolDeath: 0
   _formsHandler: {fileID: 3662317055849858394}
   _stateMachine: {fileID: 8819372073311461849}
 --- !u!54 &2175752725621865966
@@ -259,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatingText: {fileID: 92913884053030813, guid: 350bc535af1354046be583e5f27ec4b3, type: 3}
+  _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 7515761044871465735}
   _point: {fileID: 3815580987642256750}
 --- !u!1001 &3654303194236756599

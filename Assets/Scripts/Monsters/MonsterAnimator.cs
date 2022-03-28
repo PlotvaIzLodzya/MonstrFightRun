@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterAnimator : MonoBehaviour
 {
     [SerializeField] private bool _isFinisher;
+    [SerializeField] private bool _isRagdolDeath;
     [SerializeField] private FormsHandler _formsHandler;
     [SerializeField] private StateMachine _stateMachine;
 
@@ -18,9 +19,9 @@ public class MonsterAnimator : MonoBehaviour
     private string _attack = "Attack";
     private const string Idle = "Idle";
     private const string Victory = "Victory";
+    private const string Hit = "TakeHit";
 
     private bool _isDead;
-    private bool _isRuner = true;
 
     private void Awake()
     {
@@ -56,16 +57,17 @@ public class MonsterAnimator : MonoBehaviour
 
     public void DieAnimation()
     {
-        _animator.enabled = false;
-
         if(_isDead == false)
         {
             _animator.SetBool(Die, true);
             _animator.SetLayerWeight(1, 0);
         }
 
-        if (_isRuner)
+        if (_isRagdolDeath)
+        {
+            _animator.enabled = false;
             _formsHandler.CurrentForm.EnableRagdoll();
+        }
 
         _isDead = true;
     }
@@ -73,6 +75,11 @@ public class MonsterAnimator : MonoBehaviour
     public void IdleAnimation()
     {
         _animator.SetTrigger(Idle);
+    }
+
+    public void HitAnimation()
+    {
+        _animator.SetTrigger(Hit);
     }
 
     public void VictoryAnimation()
@@ -108,7 +115,7 @@ public class MonsterAnimator : MonoBehaviour
 
     public void ToFightTransition()
     {
-        _isRuner = false;
+        _isRagdolDeath = false;
         _attack = _fightAttack;
         _animator.SetLayerWeight(1, 0);
     }
