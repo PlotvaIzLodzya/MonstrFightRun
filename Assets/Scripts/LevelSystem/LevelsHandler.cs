@@ -22,14 +22,16 @@ public class LevelsHandler : MonoBehaviour
     {
         _playerDeathHandler = FindObjectOfType<PlayerDeathHandler>();
         _winnderDecider = FindObjectOfType<WinnerDecider>();
+
+
+        Counter = _saveSystem.LoadLevelsProgression();
     }
 
     private void Start()
     {
         _timePassed = Time.time;
 
-        Counter = _saveSystem.LoadLevelsProgression();
-
+        Debug.Log("start " + Counter);
         if (_InitialLevel == false)
             _integrationMetric.OnLevelStart(Counter);
     }
@@ -54,6 +56,7 @@ public class LevelsHandler : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Debug.Log("Level " + Counter);
         if (Counter >= _levelList.SceneCount)
             _levelList.GetRandomScene(Counter).LoadSceneAsync();
         else

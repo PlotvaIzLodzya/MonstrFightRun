@@ -49,7 +49,7 @@ public class ResizeAnimation : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(Enlarge());
+        _coroutine = StartCoroutine(Enlarge());
     }
 
     public void ShrinkAnimation(int stepCount)
@@ -74,7 +74,16 @@ public class ResizeAnimation : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(Shrink());
+        changeSpeed = Mathf.Abs(transform.localScale.x - _nexSteptScale.x / _enlargeOptions.Time);
+
+        while (transform.localScale.x > _nexSteptScale.x)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, _nexSteptScale, changeSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        _coroutine = null;
     }
 
     private IEnumerator Shrink()

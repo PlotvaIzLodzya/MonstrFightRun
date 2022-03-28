@@ -6,13 +6,13 @@ namespace RunnerMovementSystem
 {
     public class MovementSystem : MonoBehaviour
     {
-        [SerializeField] private RoadSegment _firstRoad;
         [SerializeField] private MovementOptions _options;
 
         private MovementBehaviour _movementBehaviour;
         private RoadMovement _roadMovement;
         private TransitionMovement _transitionMovement;
         private IMovement _currentMovement;
+        private RoadSegment _firstRoad;
 
         public event UnityAction<PathSegment> PathChanged;
 
@@ -24,6 +24,9 @@ namespace RunnerMovementSystem
 
         private void Awake()
         {
+            _firstRoad = FindObjectOfType<RoadSegment>();
+            Error.CheckOnNull(_firstRoad, nameof(RoadSegment));
+
             _movementBehaviour = new MovementBehaviour(transform, _options);
 
             _roadMovement = new RoadMovement(_movementBehaviour);
