@@ -85,9 +85,12 @@ public class Monster : MonoBehaviour, IMergeable
 
     public void Die()
     {
-        MonsterDeathHandler.Die();
-        IsAllive = false;
-        Died?.Invoke();
+        if (IsAllive)
+        {
+            MonsterDeathHandler.Die();
+            IsAllive = false;
+            Died?.Invoke();
+        }
     }
 
     public bool TryMerge(int level)
