@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 1424786645882205950}
   - component: {fileID: 5311803419947127178}
   - component: {fileID: 4958798308010938200}
+  - component: {fileID: 616472238563550363}
   m_Layer: 6
   m_Name: EnemyPrefab
   m_TagString: Untagged
@@ -275,6 +276,19 @@ MonoBehaviour:
   _monster: {fileID: 6123299620713783651}
   _particleSystem: {fileID: 19867606, guid: f7f981e04f718c7488256a1300f636c7, type: 3}
   _particlePoint: {fileID: 657513660280463762}
+--- !u!114 &616472238563550363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931987140438316415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 7920641641163394019}
 --- !u!1001 &3347539959675930584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,6 +299,18 @@ PrefabInstance:
     - target: {fileID: 13999542407126418, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414175957281910, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414176882630615, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64414177116595352, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Pivot.x
@@ -466,6 +492,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.9599991
       objectReference: {fileID: 0}
+    - target: {fileID: 5242109469479322557, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7665816933127652722, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: _monster
       value: 
@@ -478,6 +508,10 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 6123299620713783651}
+    - target: {fileID: 8164705252182091104, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8931138596338762784, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_Name
       value: LevelPresenter
@@ -491,6 +525,11 @@ PrefabInstance:
 --- !u!224 &2361941654760912470 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 3347539959675930584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7920641641163394019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4872644383064640571, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3347539959675930584}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7920641639521463099 stripped

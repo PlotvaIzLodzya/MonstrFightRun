@@ -15,6 +15,7 @@ public class MonsterAnimator : MonoBehaviour
     private string _fightAttack = "FightAttack";
     private string _attack = "Attack";
     private const string Idle = "Idle";
+    private const string Victory = "Victory";
 
     private bool _isDead;
 
@@ -60,6 +61,35 @@ public class MonsterAnimator : MonoBehaviour
     public void IdleAnimation()
     {
         _animator.SetTrigger(Idle);
+    }
+
+    public void VictoryAnimation()
+    {
+        if (_isDead)
+            return;
+
+        _animator.SetTrigger(Victory);
+    }
+
+    public void LookAtPlayer()
+    {
+        _stateMachine.enabled = false;
+
+        Vector3 lookDirection = (Camera.main.transform.position - _formsHandler.CurrentForm.transform.position).normalized;
+        lookDirection.x = 0;
+        lookDirection.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookDirection, transform.up);
+        StartCoroutine(LookAnimation(rotation));
+    }
+
+    private IEnumerator LookAnimation(Quaternion rotation)
+    {
+        while(_formsHandler.CurrentForm.transform.rotation != rotation)
+        {
+            _formsHandler.CurrentForm.transform.rotation = Quaternion.Lerp(_formsHandler.CurrentForm.transform.rotation, rotation, 20 * Time.deltaTime);
+
+            yield return null;
+        }
     }
 
     public void ToFightTransition()

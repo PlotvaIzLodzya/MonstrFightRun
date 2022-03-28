@@ -8,13 +8,20 @@ public class MonsterDeathHandler : MonoBehaviour, IDeathBehavior
     [SerializeField] private StateMachine _stateMachine;
     [SerializeField] private MonsterAnimator _monsterAnimator;
 
+    private UIHandler _uIHandler;
     private Player _player;
+
+    private void Awake()
+    {
+        _uIHandler = GetComponent<UIHandler>();
+    }
 
     public void Die()
     {
         _stateMachine.enabled = false;
         _monsterAnimator.DieAnimation();
         gameObject.layer = 9;
+        _uIHandler.ToFight();
 
         _player = transform.root.GetComponent<Player>();
 
