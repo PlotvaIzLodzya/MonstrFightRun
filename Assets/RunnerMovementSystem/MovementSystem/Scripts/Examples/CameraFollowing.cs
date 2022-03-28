@@ -7,13 +7,18 @@ namespace RunnerMovementSystem.Examples
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotationSpeed;
         [Space(15)]
-        [SerializeField] private Transform _target;
         [SerializeField] private float _height;
         [SerializeField] private float _distance;
         [SerializeField] private float _lookAngle;
 
+        private Transform _target;
         private Vector3 _targetPosition;
 
+        private void Awake()
+        {
+            _target = FindObjectOfType<CameraTarget>().transform;
+            Error.CheckOnNull(_target, nameof(CameraTarget));
+        }
         private void LateUpdate()
         {
             _targetPosition = _target.position;

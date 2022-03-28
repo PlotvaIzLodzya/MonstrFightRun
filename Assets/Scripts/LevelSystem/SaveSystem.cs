@@ -10,12 +10,16 @@ public class SaveSystem
     public void SaveLevelsProgression(int index)
     {
         PlayerPrefs.SetInt(_levelKey, index);
+
     }
 
     public int LoadLevelsProgression()
     {
         if (PlayerPrefs.HasKey(_levelKey))
+        {
+            Debug.Log("Load "+PlayerPrefs.GetInt(_levelKey));
             return PlayerPrefs.GetInt(_levelKey);
+        }
 
         return _firstLevel;
     }

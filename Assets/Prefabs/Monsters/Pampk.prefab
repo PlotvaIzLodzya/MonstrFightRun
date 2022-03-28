@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFinisher: 0
+  _isRagdolDeath: 0
   _formsHandler: {fileID: 1289954068850940160}
   _stateMachine: {fileID: 6436008618434100611}
 --- !u!54 &4396687526734094772
@@ -259,15 +260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.514
       objectReference: {fileID: 0}
     - target: {fileID: 64414175957281909, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_AnchoredPosition.y

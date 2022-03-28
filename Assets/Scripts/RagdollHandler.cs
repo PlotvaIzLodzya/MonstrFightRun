@@ -8,6 +8,7 @@ public class RagdollHandler : MonoBehaviour
 
     private List<Collider> _colliders = new List<Collider>();
 
+    private const int DeadLayer = 9;
     public Chest Chest { get; private set; }
     private void Start()
     {
@@ -33,17 +34,17 @@ public class RagdollHandler : MonoBehaviour
 
     public void EnableRagdoll()
     {
-        Chest.Push(300f);
-
         foreach (var rigidbody in _rigidbodys)
         {
             rigidbody.isKinematic = false;
-
-            foreach (var collider in _colliders)
-            {
-                collider.enabled = true;
-            }
         }
 
+        foreach (var collider in _colliders)
+        {
+            collider.enabled = true;
+            collider.gameObject.layer = DeadLayer;
+        }
+
+        Chest.Push(300f);
     }
 }

@@ -127,7 +127,7 @@ public class MonstersHandler : MonoBehaviour
 
     private Monster GetMonster(Monster monster)
     {
-        Monster existMonster = _monsterPlaces.First(monsterPlace => monsterPlace.Monster.GetType() == monster.GetType()).Monster;
+        Monster existMonster = _monsterPlaces.FirstOrDefault(monsterPlace => monsterPlace.Monster.GetType() == monster.GetType()).Monster;
 
         return existMonster;
     }

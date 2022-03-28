@@ -9,33 +9,33 @@ public class IntegrationMetric
 
     public void OnGameStart()
     {
-        //Dictionary<string, object> count = new Dictionary<string, object>();
-        //count.Add("count", CountSession());
-        //Amplitude.Instance.logEvent("game_start", count);
+        Dictionary<string, object> count = new Dictionary<string, object>();
+        count.Add("count", CountSession());
+        Amplitude.Instance.logEvent("game_start", count);
     }
 
     public void OnLevelStart(int levelIndex)
     {
-        //Amplitude.Instance.logEvent("level_start", CreateLevelProperty(levelIndex));
+        Amplitude.Instance.logEvent("level_start", CreateLevelProperty(levelIndex));
     }
 
     public void OnLevelComplete(int levelComplitioTime, int levelIndex)
     {
-        //Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelComplitioTime } };
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelComplitioTime } };
 
-        //Amplitude.Instance.logEvent("level_complete", userInfo);
+        Amplitude.Instance.logEvent("level_complete", userInfo);
     }
 
     public void OnLevelFail(int levelFailTime, int levelIndex)
     {
-        //Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelFailTime } };
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelFailTime } };
 
-        //Amplitude.Instance.logEvent("fail", userInfo);
+        Amplitude.Instance.logEvent("fail", userInfo);
     }
 
     public void OnRestartLevel(int levelIndex)
     {
-        //Amplitude.Instance.logEvent("restart", CreateLevelProperty(levelIndex));
+        Amplitude.Instance.logEvent("restart", CreateLevelProperty(levelIndex));
     }
 
     private Dictionary<string, object> CreateLevelProperty( int levelIndex)
