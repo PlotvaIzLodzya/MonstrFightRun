@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8604894503580946709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,57 +136,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1059353824081228174}
     m_Modifications:
-    - target: {fileID: 1767471666328156393, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0bafcd41fb6c8344bb79c140448e5de2, type: 3}
-    - target: {fileID: 1767471666328156393, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_Color.b
-      value: 0.34888297
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156393, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156393, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_Color.r
-      value: 0.30588233
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156393, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.514
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -2.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -2.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.16000366
-      objectReference: {fileID: 0}
     - target: {fileID: 1767471666328156394, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.10000038
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471667231649817, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471667467438921, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_Value
-      value: 25.7
       objectReference: {fileID: 0}
     - target: {fileID: 1767471667467438922, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_Pivot.x
@@ -275,10 +227,6 @@ PrefabInstance:
     - target: {fileID: 1767471667467438923, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
       propertyPath: m_Name
       value: HeathBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767471667467438923, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fadf340590b708e4caea0d05e98e1e62, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator),typeof(RagdollHandler))]
 public class Form : MonoBehaviour
 {
     [SerializeField] private Monster _monster;
@@ -10,6 +10,7 @@ public class Form : MonoBehaviour
     [SerializeField] private Transform _particlePoint;
 
     private Animator _animator;
+    private RagdollHandler _ragdollHandler;
 
     public SkinnedMeshRenderer _skinnedMeshRenderer { get; private set; }
     public Animator FormAnimator => _animator;
@@ -20,8 +21,14 @@ public class Form : MonoBehaviour
     {
         _skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         _animator = GetComponent<Animator>();
+        _ragdollHandler = GetComponent<RagdollHandler>();
 
         _skinnedMeshRenderer.material.SetFloat("_SelfShadingSizeExtra", 1f);
+    }
+
+    public void EnableRagdoll()
+    {
+        _ragdollHandler.EnableRagdoll();
     }
 
     private void RangeAttack()

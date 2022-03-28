@@ -14,6 +14,6 @@ public class Chest : MonoBehaviour
 
     public void Push(float pushForce)
     {
-        _rigidbody.AddForce(-transform.forward * pushForce, ForceMode.VelocityChange);
+        _rigidbody.AddForce((-transform.forward+ transform.right*0.25f).normalized * pushForce, ForceMode.VelocityChange);
     }
 }

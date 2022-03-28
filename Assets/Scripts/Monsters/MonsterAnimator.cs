@@ -10,6 +10,8 @@ public class MonsterAnimator : MonoBehaviour
 
     private Animator _animator => _formsHandler.CurrentFormAnimator;
 
+    private UIHandler _uIHandler;
+
     private const string Run = "Run";
     private const string Die = "Die";
     private string _fightAttack = "FightAttack";
@@ -18,7 +20,12 @@ public class MonsterAnimator : MonoBehaviour
     private const string Victory = "Victory";
 
     private bool _isDead;
+    private bool _isRuner = true;
 
+    private void Awake()
+    {
+        _uIHandler = GetComponent<UIHandler>();
+    }
     private void Start()
     {
         if (_isFinisher)
@@ -49,11 +56,16 @@ public class MonsterAnimator : MonoBehaviour
 
     public void DieAnimation()
     {
+        _animator.enabled = false;
+
         if(_isDead == false)
         {
             _animator.SetBool(Die, true);
             _animator.SetLayerWeight(1, 0);
         }
+
+        if (_isRuner)
+            _formsHandler.CurrentForm.EnableRagdoll();
 
         _isDead = true;
     }
@@ -67,6 +79,8 @@ public class MonsterAnimator : MonoBehaviour
     {
         if (_isDead)
             return;
+
+        _uIHandler.SwitchState();
 
         _animator.SetTrigger(Victory);
     }
@@ -94,6 +108,7 @@ public class MonsterAnimator : MonoBehaviour
 
     public void ToFightTransition()
     {
+        _isRuner = false;
         _attack = _fightAttack;
         _animator.SetLayerWeight(1, 0);
     }
