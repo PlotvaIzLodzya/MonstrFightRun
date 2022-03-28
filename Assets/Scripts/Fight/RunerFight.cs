@@ -5,15 +5,16 @@ using System;
 
 public class RunerFight: AttackBehavior
 {
-    private Chest _chest;
+    [SerializeField] private Chest _chest;
+
     private Monster _monsterOfPlayer;
     private Player _player;
     private Monster _enemyMonster;
 
-    private void Awake()
-    {
-        _chest = GetComponent<Chest>();
-    }
+    //private void Awake()
+    //{
+    //    _chest = GetComponent<Chest>();
+    //}
 
     public override void Fight(Monster enemyMonster, Monster monsterOfPlayer)
     {
@@ -43,7 +44,6 @@ public class RunerFight: AttackBehavior
 
     private void Push()
     {
-        _chest.Push(15f);
         _player.RaiseMight(_enemyMonster.Level);
         _monsterOfPlayer.DealtDamage -= Push;
     }
