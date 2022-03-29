@@ -24,6 +24,9 @@ public class Form : MonoBehaviour
         _ragdollHandler = GetComponent<RagdollHandler>();
 
         _skinnedMeshRenderer.material.SetFloat("_SelfShadingSizeExtra", 1f);
+
+        if (_particleSystem != null)
+            _particleSystem = Instantiate(_particleSystem, _particlePoint.position, _particlePoint.rotation);
     }
 
     public void EnableRagdoll()
@@ -37,8 +40,8 @@ public class Form : MonoBehaviour
         {
             _monster.DealDamage();
 
-            if(_particleSystem != null)
-                Instantiate(_particleSystem, _particlePoint.position, _particlePoint.rotation);
+            if (_particleSystem != null)
+                _particleSystem.Play();
         }
     }
 
