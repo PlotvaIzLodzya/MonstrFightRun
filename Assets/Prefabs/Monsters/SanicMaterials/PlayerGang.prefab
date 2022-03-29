@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f895e7d06f17c8b498748b43f6255fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMonster: {fileID: 5890225089132513927, guid: d26db191ba65e984ab355b3f73ea3a47, type: 3}
+  _initialMonster: {fileID: 7319565273481950930, guid: 12a3127363a624a42ba9a5b65b71f890, type: 3}
   _monstersAnimatorHandler: {fileID: 2096990774342737447}
 --- !u!54 &2020461895
 Rigidbody:
@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 743088369}
   - component: {fileID: 3962246818956571115}
   - component: {fileID: 2096990774342737447}
+  - component: {fileID: 1995468296}
   m_Layer: 7
   m_Name: PlayerGang
   m_TagString: Untagged
@@ -409,9 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb3dac8755925c42b527ffe8f8cadb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstRoad: {fileID: 0}
   _options:
-    _moveSpeed: 12
+    _moveSpeed: 13
     _rotationSpeed: 30
     _borderOffset: 1.1
 --- !u!114 &1823091554893732090
@@ -498,6 +498,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseInput: {fileID: 1823091554893732090}
+--- !u!114 &1995468296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823091554893732080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interfaceObject: {fileID: 1682965853}
 --- !u!1 &2940785713604490140
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +613,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &13999542063856309
 MonoBehaviour:
@@ -751,6 +764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
+--- !u!1 &1682965853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2942406698866087882, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
+  m_PrefabInstance: {fileID: 2942406700414833303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1682965854 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2942406698866087881, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
