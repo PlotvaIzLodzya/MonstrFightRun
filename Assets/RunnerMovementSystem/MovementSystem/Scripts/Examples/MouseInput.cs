@@ -45,8 +45,11 @@ namespace RunnerMovementSystem.Examples
             if (Input.GetMouseButton(0))
             {
                 IsMoved = true;
-                var offset = Input.mousePosition - _mousePosition;
-                _roadMovement.SetOffset(_saveOffset + offset.x * _sensitivity);
+                var offset = (Input.mousePosition - _mousePosition) * _sensitivity;
+                float xOffset = _saveOffset + offset.x;
+                xOffset = Mathf.Clamp(xOffset, -2.5f, 2.5f);
+                _roadMovement.SetOffset(xOffset);
+                Debug.Log(xOffset);
             }
 
             if (IsMoved)

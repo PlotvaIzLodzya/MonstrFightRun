@@ -1517,6 +1517,7 @@ MonoBehaviour:
   _monster: {fileID: 0}
   _particleSystem: {fileID: 0}
   _particlePoint: {fileID: 0}
+  _damagedColor: {r: 4.867144, g: 4.867144, b: 4.867144, a: 1}
 --- !u!114 &3210546490501335429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,7 +2870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 200
 --- !u!1 &8644024739299134383
 GameObject:
   m_ObjectHideFlags: 0

@@ -180,7 +180,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999330174036552590}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.44, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
@@ -222,7 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monster: {fileID: 0}
   _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 0}
+  _particlePoint: {fileID: 1066166914219108631}
+  _damagedColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
 --- !u!114 &8045833807824570281
 MonoBehaviour:
   m_ObjectHideFlags: 0
