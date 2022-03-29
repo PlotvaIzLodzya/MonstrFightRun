@@ -7,6 +7,7 @@ public class PowerUp : MonoBehaviour, IUsable
 {
     private BoxCollider _boxCollider;
 
+    private bool _isUsed;
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider>();
@@ -18,6 +19,10 @@ public class PowerUp : MonoBehaviour, IUsable
 
         if (other.TryGetComponent(out MonstersHandler monstersHandler))
         {
+            if (_isUsed)
+                return;
+
+            _isUsed = true;
             Use(monstersHandler);
         }
 

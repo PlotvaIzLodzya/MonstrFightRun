@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 4616366948059801704}
   - component: {fileID: -5339213973782199474}
   - component: {fileID: 1116400972318927695}
-  - component: {fileID: 3659146417224688121}
   - component: {fileID: 3098945206034469508}
   m_Layer: 7
   m_Name: Modest
@@ -280,21 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 5271430028807230812}
---- !u!114 &3659146417224688121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5694629014061799471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 3101967689015378006}
-  _particleSystem: {fileID: 198621470978125048, guid: efd3699d5723edd4f802516ce94a3fe5, type: 3}
-  _particlePoint: {fileID: 3779700603821184252}
 --- !u!114 &3098945206034469508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +308,7 @@ PrefabInstance:
     - target: {fileID: 4882824570494695538, guid: 8080e7bb98bf4c245aed295bbb5f0285, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5169517461345848986, guid: 8080e7bb98bf4c245aed295bbb5f0285, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -554,7 +538,7 @@ PrefabInstance:
     - target: {fileID: 2121518624847335270, guid: 57e8bef3d69dd144b8ad6a82b5ce8682, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2513415487264204567, guid: 57e8bef3d69dd144b8ad6a82b5ce8682, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -672,7 +656,7 @@ PrefabInstance:
     - target: {fileID: 5914685506604507365, guid: a950a75ed349a0e48ae94ec6267c01c5, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a950a75ed349a0e48ae94ec6267c01c5, type: 3}
 --- !u!4 &4778106609662550227 stripped
