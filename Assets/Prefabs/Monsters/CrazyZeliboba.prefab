@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 7720422196202892257}
   - component: {fileID: 6767997675369168567}
   - component: {fileID: 9042948475836876302}
-  - component: {fileID: 4789255327083080791}
   - component: {fileID: 7265111489085853297}
   m_Layer: 7
   m_Name: CrazyZeliboba
@@ -250,21 +249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 7067049399681177301}
---- !u!114 &4789255327083080791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220308933360671654}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 5890225089132513927}
-  _particleSystem: {fileID: 198621470978125048, guid: efd3699d5723edd4f802516ce94a3fe5, type: 3}
-  _particlePoint: {fileID: 52440141135376308}
 --- !u!114 &7265111489085853297
 MonoBehaviour:
   m_ObjectHideFlags: 0
