@@ -1386,7 +1386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 371265081427636767, guid: 4b0d857fbc3551b4e864f587a4af5804, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 371265081427636767, guid: 4b0d857fbc3551b4e864f587a4af5804, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2823,7 +2823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854143845914422726, guid: 35b4a7a552de29341b7ca0039bdab77c, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7854143845914422726, guid: 35b4a7a552de29341b7ca0039bdab77c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a7904073e150149b5d12b6099dbbe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _moveSpeed: 15
   _rotationSpeed: 20
   _height: 7
   _distance: 2.5
@@ -3289,7 +3289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2018215991977746465, guid: 74623a08b8cc7764ead7e92f9b7fc977, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2018215991977746465, guid: 74623a08b8cc7764ead7e92f9b7fc977, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6312,6 +6312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FredyFnafMidle
       objectReference: {fileID: 0}
+    - target: {fileID: 8589140729247633548, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: _pushForce
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8698684627649584390, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6737,35 +6741,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07999992
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7299998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.84
+      value: -4.05
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99708676
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.076275915
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1645550105534093412, guid: c78d8c09b54328444a64781eb6e732c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7026,6 +7030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6478805122266477985, guid: 6bfeabbbaa29d3144a535dfe356cc30e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8122029529603746122, guid: 6bfeabbbaa29d3144a535dfe356cc30e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
