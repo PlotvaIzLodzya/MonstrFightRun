@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFinisher: 0
+  _isRagdolDeath: 0
   _formsHandler: {fileID: 1863492801678024755}
   _stateMachine: {fileID: 5867039183351563440}
 --- !u!54 &3836660830347876487
@@ -396,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilSantaBig
       objectReference: {fileID: 0}
+    - target: {fileID: 276042596594739412, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 621325138500498030, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -444,6 +449,22 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
+    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+      propertyPath: _damagedColor.b
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+      propertyPath: _damagedColor.g
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+      propertyPath: _damagedColor.r
+      value: 7.929896
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
 --- !u!1 &3307114834497205827 stripped
@@ -486,6 +507,10 @@ PrefabInstance:
     - target: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
       propertyPath: m_Name
       value: EvilSantMidle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4501042456319786769, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
       propertyPath: m_RootOrder
@@ -535,6 +560,22 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
+    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: _damagedColor.b
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: _damagedColor.g
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: _damagedColor.r
+      value: 7.929896
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
 --- !u!1 &5866823830660994508 stripped
@@ -622,10 +663,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilSantaSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 2122585361301514841, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
+    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: _damagedColor.b
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: _damagedColor.g
+      value: 7.929896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: _damagedColor.r
+      value: 7.929896
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
 --- !u!1 &7350925923536165211 stripped

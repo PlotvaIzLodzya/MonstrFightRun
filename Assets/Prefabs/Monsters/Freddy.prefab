@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FredyFnafBig
       objectReference: {fileID: 0}
+    - target: {fileID: 8239042440419916530, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8727173292154740808, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -306,6 +310,22 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2840612604432673332}
+    - target: {fileID: 8946515765444343154, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946515765444343154, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+      propertyPath: _damagedColor.b
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946515765444343154, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+      propertyPath: _damagedColor.g
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946515765444343154, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+      propertyPath: _damagedColor.r
+      value: 1.8443027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
 --- !u!4 &2391599628173531096 stripped
@@ -463,6 +483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FredyFnafMidle
       objectReference: {fileID: 0}
+    - target: {fileID: 8357624519695009724, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8698684627649584390, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -511,6 +535,22 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2840612604432673332}
+    - target: {fileID: 9113776519639071216, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113776519639071216, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: _damagedColor.b
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113776519639071216, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: _damagedColor.g
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113776519639071216, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+      propertyPath: _damagedColor.r
+      value: 1.8443027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
 --- !u!4 &29924472616131910 stripped
@@ -529,9 +569,29 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2840612604432673332}
+    - target: {fileID: 3307961889053161892, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+      propertyPath: _damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307961889053161892, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+      propertyPath: _damagedColor.b
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307961889053161892, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+      propertyPath: _damagedColor.g
+      value: 1.8443027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307961889053161892, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+      propertyPath: _damagedColor.r
+      value: 1.8443027
+      objectReference: {fileID: 0}
     - target: {fileID: 4693867647950647040, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
       propertyPath: m_Name
       value: FredyFnafSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693867647950647040, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5361578706168690106, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
       propertyPath: m_RootOrder
