@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private int _level;
 
     public string Name;
-    private int _maxLevel = 50;
+    private int _maxLevel = 80;
     private ResizeAnimation ResizeAnimation;
 
     public MovementSystem MovementSystem { get; private set; }

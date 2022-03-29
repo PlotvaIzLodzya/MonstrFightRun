@@ -10,6 +10,8 @@ namespace RunnerMovementSystem.Examples
 
         private Vector3 _mousePosition;
         private float _saveOffset;
+        private Vector3 _mouseDownPosition;
+        private Vector3 _previoutMousePosition;
         private float _offset;
 
         public event Action RunBegan;
@@ -37,30 +39,24 @@ namespace RunnerMovementSystem.Examples
             if (Input.GetMouseButtonDown(0))
             {
                 _saveOffset = _roadMovement.Offset;
-                _mousePosition = Input.mousePosition;
-                IsMoved = true;
+                _mouseDownPosition = Input.mousePosition;
+                _previoutMousePosition = Input.mousePosition;
                 RunBegan?.Invoke();
+                IsMoved = true;
             }
 
             if (Input.GetMouseButton(0))
             {
-                IsMoved = true;
-                var offset = (Input.mousePosition - _mousePosition) * _sensitivity;
-                float xOffset = _saveOffset + offset.x;
-                xOffset = Mathf.Clamp(xOffset, -2.5f, 2.5f);
-                _roadMovement.SetOffset(xOffset);
-                Debug.Log(xOffset);
+                var offset = Input.mousePosition - _previoutMousePosition;
+
+                _roadMovement.SetOffset(_saveOffset + offset.x * _sensitivity);
+                _saveOffset = _roadMovement.Offset;
+
+                _previoutMousePosition = Input.mousePosition;
             }
 
-            if (IsMoved)
-            {
+            if(IsMoved)
                 _roadMovement.MoveForward();
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                //IsMoved = false;
-            }
         }
     }
 }
