@@ -79,8 +79,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0052490234, y: 0.025054932}
-  m_SizeDelta: {x: 0, y: 0.049988}
+  m_AnchoredPosition: {x: -12, y: -51.2}
+  m_SizeDelta: {x: 109.4, y: 63.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6764245195487601763
 CanvasRenderer:
@@ -137,12 +137,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 500
+  m_fontSize: 550
   m_fontSizeBase: 500
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 500
+  m_fontSizeMax: 550
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -225,9 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec39e2085ad92904e93f77de9bd38748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heightHandler:
-    height: 0
-    offset: 4
   _gateIcon: {fileID: 7376390128070734045}
 --- !u!65 &4584148252836072676
 BoxCollider:
