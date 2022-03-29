@@ -8,7 +8,7 @@ public class ImproveGatesHandler : MonoBehaviour
     [SerializeField] private MonsterList _monsters;
 
     private Gate[] _gates;
-    private void Awake()
+    private void Start()
     {
         _gates = GetComponentsInChildren<Gate>();
         PlaceMonster();
