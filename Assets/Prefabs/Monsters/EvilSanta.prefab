@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _healthPerLevel: 10
+    _healthPerLevel: 13
+  _damagePerLevel: 1.5
   _speed: 3
   _level: 0
   Name: Evil Santa
@@ -441,10 +442,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2623601899007693458, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: _monster
-      value: 
-      objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
       propertyPath: _monster
       value: 
@@ -463,10 +460,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1863492801678024748}
     m_Modifications:
-    - target: {fileID: 2439821709512627325, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: _monster
-      value: 
-      objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
       propertyPath: m_Name
       value: EvilSantMidle
@@ -582,10 +575,6 @@ PrefabInstance:
       value: EvilSantaSmall
       objectReference: {fileID: 0}
     - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: _monster
-      value: 
-      objectReference: {fileID: 2169321206334283348}
-    - target: {fileID: 6647268645182900441, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}

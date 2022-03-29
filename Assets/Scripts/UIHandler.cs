@@ -9,5 +9,10 @@ public class UIHandler : MonoBehaviour
     public void SwitchState()
     {
         _interfaceObject.gameObject.SetActive(!_interfaceObject.gameObject.activeInHierarchy);
-    } 
+    }
+
+    public void Enable()
+    {
+        _interfaceObject.gameObject.SetActive(true);
+    }
 }

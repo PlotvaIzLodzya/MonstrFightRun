@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _healthPerLevel: 10
+    _healthPerLevel: 15
+  _damagePerLevel: 2.5
   _speed: 4
   _level: 0
   Name: Cenobite
@@ -463,6 +464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648695248796500366}
     m_Modifications:
+    - target: {fileID: 1663809328969503035, guid: b9893c0c78e2bc942be54f7a270e0842, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 1181063364622969746}
     - target: {fileID: 5979832869476910497, guid: b9893c0c78e2bc942be54f7a270e0842, type: 3}
       propertyPath: m_Name
       value: Cenobite_Pinhead_03
@@ -573,6 +578,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4818768998775146719, guid: 70543232698fdc94d949b4ad47de2948, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 1181063364622969746}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70543232698fdc94d949b4ad47de2948, type: 3}
 --- !u!4 &7774323327052881497 stripped

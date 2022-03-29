@@ -8,6 +8,7 @@ using RunnerMovementSystem;
 public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private Health _health = new Health();
+    [SerializeField] private float _damagePerLevel;
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
 
@@ -25,7 +26,7 @@ public class Monster : MonoBehaviour, IMergeable
     public Health Health => _health;
     public float Speed => _speed;
     public int Level => _level;
-    private float _damage => _level;
+    private float _damage => _level * _damagePerLevel;
 
     public event Action<int> LevelChanged;
     public event Action<float> Damaged;
@@ -80,6 +81,7 @@ public class Monster : MonoBehaviour, IMergeable
             return;
         }
 
+        Debug.Log(transform.name + " " + _damage);
         Target.ApplyDamage(_damage);
     }
 

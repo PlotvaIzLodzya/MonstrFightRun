@@ -31,7 +31,6 @@ public class LevelsHandler : MonoBehaviour
     {
         _timePassed = Time.time;
 
-        Debug.Log("start " + Counter);
         if (_InitialLevel == false)
             _integrationMetric.OnLevelStart(Counter);
     }

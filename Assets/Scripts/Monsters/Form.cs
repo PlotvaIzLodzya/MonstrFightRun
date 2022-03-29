@@ -42,6 +42,9 @@ public class Form : MonoBehaviour
 
     private void RangeAttack()
     {
+        if (_monster == null)
+            return;
+
         if (_monster.IsAllive)
         {
             _monster.DealDamage();

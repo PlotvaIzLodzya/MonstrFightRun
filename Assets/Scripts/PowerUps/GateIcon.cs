@@ -30,6 +30,7 @@ public class GateIcon : MonoBehaviour
         _monsterIcon = Instantiate(monster);
         _monsterIcon.transform.position = transform.position;
         _monsterIcon.transform.rotation = transform.rotation;
+        _monsterIcon.transform.SetParent(transform);
         _monsterIcon.Rigidbody.isKinematic = true;
         _monsterIcon.gameObject.layer = 0;
         _monsterIcon.GetComponent<Collider>().enabled = false;

@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 1603035792989647075}
   - component: {fileID: 4674468527478909593}
   - component: {fileID: 3791188630625275604}
-  - component: {fileID: 6647268645182900441}
   m_Layer: 0
   m_Name: EvilSantaSmall
   m_TagString: Untagged
@@ -193,21 +192,6 @@ MonoBehaviour:
   _particleSystem: {fileID: 0}
   _particlePoint: {fileID: 0}
   _damagedColor: {r: 7.929896, g: 7.929896, b: 7.929896, a: 1}
---- !u!114 &6647268645182900441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122585361301514841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 0}
-  _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 1486596423048972135}
 --- !u!1 &2211436117947042050
 GameObject:
   m_ObjectHideFlags: 0

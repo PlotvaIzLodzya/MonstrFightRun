@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 7536429351225107819}
   - component: {fileID: 8956730511906494361}
   - component: {fileID: 8422494044115372006}
-  - component: {fileID: 2439821709512627325}
   m_Layer: 0
   m_Name: EvilSantMidle
   m_TagString: Untagged
@@ -626,21 +625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98d3adc97ab39b4790a6a3735799c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2439821709512627325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836287228604327339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 0}
-  _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 4388961629928507541}
 --- !u!1 &3961289319430604528
 GameObject:
   m_ObjectHideFlags: 0
