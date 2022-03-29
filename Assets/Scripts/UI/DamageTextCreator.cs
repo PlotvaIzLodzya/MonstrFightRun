@@ -19,7 +19,6 @@ public class DamageTextCreator : MonoBehaviour
     }
     private void OnDamaged(float damage)
     {
-        Debug.Log("asd");
         var text = Instantiate(_floatingText, _point);
         text.Init((int)-damage);
     }

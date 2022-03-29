@@ -9,7 +9,7 @@ public class Rotator : MonoBehaviour
     private PlayerDeathHandler _playerDeathHandler;
     private Quaternion _forwardQuaternionRotation = new Quaternion(0, 0, 0, 1);
     private float xRotation;
-    private float _threshold = 0.001f;
+    private float _threshold = 0.1f;
     private float _smoothMultiplier = 10;
 
     private void Awake()
@@ -35,7 +35,7 @@ public class Rotator : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (Mathf.Abs (pointerX) >= _threshold)
+            if (Mathf.Abs(pointerX) >= _threshold)
                 transform.localRotation = Quaternion.Euler(0, xRotation, 0f);
         }
 

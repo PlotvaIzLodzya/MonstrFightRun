@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _healthPerLevel: 10
+    _healthPerLevel: 8
+  _damagePerLevel: 2
   _speed: 2
   _level: 0
   Name: Huggy
@@ -481,6 +482,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7220308933314727679}
     m_Modifications:
+    - target: {fileID: 3360931710901172182, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f92f1452660b41e4ab3c7decbfedc766, type: 2}
     - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: _monster
       value: 

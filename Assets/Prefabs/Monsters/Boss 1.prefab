@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health:
     _healthPerLevel: 10
+  _damagePerLevel: 0
   _speed: 5
   _level: 20
   Name: 
@@ -267,38 +268,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3022522550383838800}
     m_Modifications:
-    - target: {fileID: 3360931710901172182, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4ed6e2b24a5bd1348ae8f3951026c6a5, type: 2}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _isBoss
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: _monster
       value: 
       objectReference: {fileID: 7421221633222492867}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _damagedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _damagedColor.b
-      value: 0.28627452
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _damagedColor.g
-      value: 0.28627452
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _damagedColor.r
-      value: 0.9019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
-      propertyPath: _particleSystem
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3629537806311861721, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: m_Name
       value: Poppy_stage_03

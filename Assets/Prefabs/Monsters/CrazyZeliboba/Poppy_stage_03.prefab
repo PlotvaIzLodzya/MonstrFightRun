@@ -281,8 +281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monster: {fileID: 0}
-  _particleSystem: {fileID: 198621470978125048, guid: efd3699d5723edd4f802516ce94a3fe5, type: 3}
+  _particleSystem: {fileID: 0}
   _particlePoint: {fileID: 2298642641898134688}
+  _damagedColor: {r: 0.9019608, g: 0.28627452, b: 0.28627452, a: 1}
 --- !u!1 &4169200614252194096
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +770,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b9499f797e81e440b8d42294a9032aa, type: 2}
+  - {fileID: 2100000, guid: 4ed6e2b24a5bd1348ae8f3951026c6a5, type: 2}
   - {fileID: 2100000, guid: 8b9499f797e81e440b8d42294a9032aa, type: 2}
   - {fileID: 2100000, guid: 8b9499f797e81e440b8d42294a9032aa, type: 2}
   - {fileID: 2100000, guid: 8b9499f797e81e440b8d42294a9032aa, type: 2}

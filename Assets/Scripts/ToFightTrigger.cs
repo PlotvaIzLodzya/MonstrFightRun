@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ToFightTrigger : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out StateMachine stateMachine))
             stateMachine.enabled = true;

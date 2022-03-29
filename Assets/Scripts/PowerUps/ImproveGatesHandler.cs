@@ -8,14 +8,11 @@ public class ImproveGatesHandler : MonoBehaviour
     [SerializeField] private MonsterList _monsters;
 
     private Gate[] _gates;
-    private void Start()
+    private void OnEnable()
     {
         _gates = GetComponentsInChildren<Gate>();
         PlaceMonster();
-    }
 
-    private void OnEnable()
-    {
         foreach (var gate in _gates)
         {
             gate.GateActivated += DisableGates;
