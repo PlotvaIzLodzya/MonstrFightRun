@@ -397,10 +397,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilSantaBig
       objectReference: {fileID: 0}
-    - target: {fileID: 276042596594739412, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 621325138500498030, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -445,58 +441,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
+    - target: {fileID: 2623601899007693458, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: _damagedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: _damagedColor.b
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: _damagedColor.g
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3725400242395848088, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-      propertyPath: _damagedColor.r
-      value: 7.929896
-      objectReference: {fileID: 0}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2169321206334283348}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
---- !u!1 &3307114834497205827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 276042596594739412, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-  m_PrefabInstance: {fileID: 3328591326412709527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2787424459706936569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 621325138500498030, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
   m_PrefabInstance: {fileID: 3328591326412709527}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2607787432371821437 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 720911251043419626, guid: 243483b46d56e6042b891d6fb32c18f7, type: 3}
-  m_PrefabInstance: {fileID: 3328591326412709527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2623601899007693458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3307114834497205827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 2169321206334283348}
-  _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 2607787432371821437}
 --- !u!1001 &7230001264884215911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -504,13 +463,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1863492801678024748}
     m_Modifications:
+    - target: {fileID: 2439821709512627325, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2169321206334283348}
     - target: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
       propertyPath: m_Name
       value: EvilSantMidle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4501042456319786769, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
       propertyPath: m_RootOrder
@@ -560,54 +519,13 @@ PrefabInstance:
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
-    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: _damagedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: _damagedColor.b
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: _damagedColor.g
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956730511906494361, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-      propertyPath: _damagedColor.r
-      value: 7.929896
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
---- !u!1 &5866823830660994508 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3836287228604327339, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-  m_PrefabInstance: {fileID: 7230001264884215911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6494460713718255478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4501042456319786769, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
   m_PrefabInstance: {fileID: 7230001264884215911}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6394731595432540402 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4388961629928507541, guid: dd0ade1ca7a842e42a53647dc18f6e0a, type: 3}
-  m_PrefabInstance: {fileID: 7230001264884215911}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2439821709512627325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5866823830660994508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 2169321206334283348}
-  _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 6394731595432540402}
 --- !u!1001 &8896663211290882818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,59 +581,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilSantaSmall
       objectReference: {fileID: 0}
-    - target: {fileID: 2122585361301514841, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
       propertyPath: _monster
       value: 
       objectReference: {fileID: 2169321206334283348}
-    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: _damagedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: _damagedColor.b
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: _damagedColor.g
-      value: 7.929896
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-      propertyPath: _damagedColor.r
-      value: 7.929896
-      objectReference: {fileID: 0}
+    - target: {fileID: 6647268645182900441, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 2169321206334283348}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
---- !u!1 &7350925923536165211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2122585361301514841, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-  m_PrefabInstance: {fileID: 8896663211290882818}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8058698538906039397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1486596423048972135, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-  m_PrefabInstance: {fileID: 8896663211290882818}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7874663256745640929 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1603035792989647075, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
   m_PrefabInstance: {fileID: 8896663211290882818}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6647268645182900441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7350925923536165211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monster: {fileID: 2169321206334283348}
-  _particleSystem: {fileID: 0}
-  _particlePoint: {fileID: 8058698538906039397}
