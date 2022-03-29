@@ -257,7 +257,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7220308933360671654}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a0c601bc868c5f4a928fbf844e6c1d2, type: 3}
   m_Name: 
@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 6488294890959451196, guid: f47015073f73d964dac5e70a67671cfd, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47015073f73d964dac5e70a67671cfd, type: 3}
 --- !u!4 &693158483097864877 stripped
@@ -398,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 1998467831733452684, guid: 3e6bfbcc2498cd24db5d826d05736c55, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8431865827796382652, guid: 3e6bfbcc2498cd24db5d826d05736c55, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -472,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 3542283602339795209, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: _particleSystem
       value: 
-      objectReference: {fileID: 19899290, guid: 62fd996916f749345a7e0bb9088053d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3629537806311861721, guid: 05f46dc0aa1dd9047a5d7c218b5b2def, type: 3}
       propertyPath: m_Name
       value: Poppy_stage_03
