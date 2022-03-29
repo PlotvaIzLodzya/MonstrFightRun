@@ -21,7 +21,7 @@ public class Gate : PowerUp
         if (_isActivated)
             return;
 
-        _isActivated = monstersHandler.TrySetMonsterToPlace(_monster);
+        _isActivated = monstersHandler.TrySetMonsterToPlace(_monster, 10);
 
         if (_isActivated)
             GateActivated?.Invoke();

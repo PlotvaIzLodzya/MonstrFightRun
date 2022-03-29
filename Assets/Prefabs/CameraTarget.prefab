@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _options:
-    _moveSpeed: 12
+    _moveSpeed: 13
     _rotationSpeed: 30
-    _borderOffset: 1
+    _borderOffset: 2
 --- !u!114 &1645550105534093418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roadMovement: {fileID: 1645550105534093413}
-  _sensitivity: 0.005
+  _sensitivity: 0.009
 --- !u!114 &8178494069389329496
 MonoBehaviour:
   m_ObjectHideFlags: 0

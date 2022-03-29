@@ -10,7 +10,7 @@ public class TestButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (_monstersHandler.TrySetMonsterToPlace(_monster))
+        if (_monstersHandler.TrySetMonsterToPlace(_monster,1))
             Debug.Log("bonjour");
     }
 }

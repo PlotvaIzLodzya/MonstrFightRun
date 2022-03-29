@@ -30,7 +30,7 @@ public class MonstersHandler : MonoBehaviour
         _monsterPlaces = GetComponentsInChildren<MonsterPlace>();
         Error.CheckOnNull(_monsterPlaces[0], nameof(MonsterPlace));
 
-        TrySetMonsterToPlace(_initialMonster);
+        TrySetMonsterToPlace(_initialMonster, 1);
     }
 
     public void KillAllMonsters()
@@ -43,7 +43,7 @@ public class MonstersHandler : MonoBehaviour
         }
     }
 
-    public bool TrySetMonsterToPlace(Monster monster)
+    public bool TrySetMonsterToPlace(Monster monster, int level)
     {
         MonsterPlace place = _monsterPlaces.FirstOrDefault(place => place.IsTaken == false || place.Monster.GetType() == monster.GetType());
 
@@ -58,7 +58,7 @@ public class MonstersHandler : MonoBehaviour
                 return place.Monster.TryMerge(AddLevelOnMerge);
             }
 
-            SetMonsterToPlace(monster, place);
+            SetMonsterToPlace(monster, place, level);
             _monsterHandlerColliders.CreateBoxCollider(place);
             MonsterCounter++;
 
@@ -102,12 +102,12 @@ public class MonstersHandler : MonoBehaviour
         MightChanged?.Invoke(_monstersMight, level);
     }
 
-    private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace)
+    private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace, int level)
     {
         var monster = Instantiate(monsterType, monsterPlace.transform);
         monsterPlace.Take(monster);
 
-        ChangeMonstersMight(1);
+        ChangeMonstersMight(level);
         _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
     }
 

@@ -23,6 +23,7 @@ public class PowerUp : MonoBehaviour, IUsable
                 return;
 
             _isUsed = true;
+
             Use(monstersHandler);
         }
 
