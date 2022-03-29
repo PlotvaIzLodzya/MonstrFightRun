@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2807099185434130805}
   - component: {fileID: 8277038867539151881}
   - component: {fileID: 1423091055832619925}
-  - component: {fileID: 8589140729247633548}
   m_Layer: 0
   m_Name: mixamorig:Spine1
   m_TagString: Untagged
@@ -110,18 +109,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8589140729247633548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150474228326455018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &345188287086544146
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5927da8178012984898b0955afefbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pushForce: 300
 --- !u!1 &2030019776257277529
 GameObject:
   m_ObjectHideFlags: 0

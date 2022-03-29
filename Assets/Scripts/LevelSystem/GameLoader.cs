@@ -17,7 +17,7 @@ public class GameLoader : MonoBehaviour
     {
         _amplitude = Amplitude.Instance;
         _amplitude.logging = true;
-        _amplitude.init("20f7406d23a1b7b97854c2620608e1b1");
+        _amplitude.init("ff6e88dc4f6c537509627e74706ece7a");
     }
 
     private void Start()

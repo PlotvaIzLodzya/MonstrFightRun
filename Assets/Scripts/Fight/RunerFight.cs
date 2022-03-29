@@ -9,6 +9,7 @@ public class RunerFight: AttackBehavior
     private Player _player;
     private Monster _enemyMonster;
 
+    private bool _isDead;
     public override void Fight(Monster enemyMonster, Monster monsterOfPlayer)
     {
         _enemyMonster = enemyMonster;
@@ -17,6 +18,9 @@ public class RunerFight: AttackBehavior
         _monsterOfPlayer = monsterOfPlayer;
 
         bool isPlayerWin = _player.Might >= enemyMonster.Level;
+
+        if (_isDead)
+            return;
 
         enemyMonster.MonsterAnimator.TriggerAttackAnimation();
         playerMonsterAnimatorHandler.TriggerAttackAnimation();
@@ -30,6 +34,7 @@ public class RunerFight: AttackBehavior
         }
         else
         {
+            _isDead = true;
             enemyMonster.DealtDamage += Die;
             enemyMonster.SetTarget(monsterOfPlayer);
         }
