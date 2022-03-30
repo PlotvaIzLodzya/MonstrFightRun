@@ -90,6 +90,7 @@ public class MonsterAnimator : MonoBehaviour
         _uIHandler.SwitchState();
 
         _animator.SetTrigger(Victory);
+        _animator.ResetTrigger(Run);
     }
 
     public void LookAtPlayer()
@@ -115,7 +116,6 @@ public class MonsterAnimator : MonoBehaviour
 
     public void ToFightTransition()
     {
-        _isRagdolDeath = false;
         _attack = _fightAttack;
         _animator.SetLayerWeight(1, 0);
     }

@@ -92,6 +92,16 @@ public class MonstersHandler : MonoBehaviour
         ChangeMonstersMight(-level);
     }
 
+    public int GetMonsterForm(Monster monster)
+    {
+        var tempMonster = GetMonster(monster);
+
+        if (tempMonster != null)
+            return tempMonster.FormCounter;
+
+        return 0;
+    }
+
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
@@ -127,8 +137,11 @@ public class MonstersHandler : MonoBehaviour
 
     private Monster GetMonster(Monster monster)
     {
-        Monster existMonster = _monsterPlaces.FirstOrDefault(monsterPlace => monsterPlace.Monster.GetType() == monster.GetType()).Monster;
+        var existMonster = _monsterPlaces.FirstOrDefault(monsterPlace => monsterPlace.Monster != null && monsterPlace.Monster.GetType() == monster.GetType());
 
-        return existMonster;
+        if (existMonster != default)
+            return existMonster.Monster;
+
+        return null;
     }
 }

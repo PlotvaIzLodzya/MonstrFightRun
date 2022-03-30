@@ -12,7 +12,11 @@ public class TutorialGates : MonoBehaviour
     public void SetGate()
     {
         _gates = GetComponentsInChildren<Gate>();
-        _gates[0].SetMonster(_leftGate.GetRandomMonster());
-        _gates[1].SetMonster(_rightGate.GetRandomMonster());
+
+        _leftGate.TryGetRandomMonster(out Monster monster);
+        _gates[0].SetMonster(monster);
+
+        _leftGate.TryGetRandomMonster(out monster);
+        _gates[1].SetMonster(monster);
     }
 }

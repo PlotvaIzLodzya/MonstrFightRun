@@ -23,7 +23,7 @@ public class RunerFight: AttackBehavior
             return;
 
         enemyMonster.MonsterAnimator.TriggerAttackAnimation();
-        playerMonsterAnimatorHandler.TriggerAttackAnimation();
+        monsterOfPlayer.MonsterAnimator.TriggerAttackAnimation();
 
         if (isPlayerWin)
         {

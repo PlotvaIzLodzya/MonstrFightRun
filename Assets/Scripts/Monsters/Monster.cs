@@ -16,6 +16,7 @@ public class Monster : MonoBehaviour, IMergeable
     private int _maxLevel = 80;
     private ResizeAnimation ResizeAnimation;
 
+    public int FormCounter { get; private set; }
     public MovementSystem MovementSystem { get; private set; }
     public MonsterAnimator MonsterAnimator { get; private set; }
     public Monster Target { get; private set; }
@@ -76,8 +77,6 @@ public class Monster : MonoBehaviour, IMergeable
 
         if (Target.IsAllive == false)
         {
-            MonsterAnimator.RunAnimation();
-
             return;
         }
 
@@ -99,6 +98,7 @@ public class Monster : MonoBehaviour, IMergeable
         if (FormsHandler.TryEnableNextForm())
         {
             LevelUp(level);
+            FormCounter++;
 
             return true;
         }

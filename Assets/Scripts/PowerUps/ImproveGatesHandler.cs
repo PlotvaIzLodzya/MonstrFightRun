@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PathCreation;
+using System.Linq;
 
 public class ImproveGatesHandler : MonoBehaviour
 {
@@ -11,11 +11,11 @@ public class ImproveGatesHandler : MonoBehaviour
     private void OnEnable()
     {
         _gates = GetComponentsInChildren<Gate>();
-        PlaceMonster();
 
         foreach (var gate in _gates)
         {
             gate.GateActivated += DisableGates;
+            gate.NeedAnotherMonster += ReplaceMonster;
         }
     }
 
@@ -24,6 +24,7 @@ public class ImproveGatesHandler : MonoBehaviour
         foreach (var gate in _gates)
         {
             gate.GateActivated -= DisableGates;
+            gate.NeedAnotherMonster -= ReplaceMonster;
         }
     }
 
@@ -36,20 +37,43 @@ public class ImproveGatesHandler : MonoBehaviour
         }
     }
 
-    private void PlaceMonster()
+    public void PlaceMonster()
     {
         Monster previousMonster = null;
-        Monster monster = _monsters.GetRandomMonster();
+        _monsters.TryGetRandomMonster(out Monster monster);
+        Monster newMonster = monster;
 
         foreach (var gate in _gates)
         {
-            while (monster == previousMonster)
+            while (newMonster == previousMonster)
             {
-                monster = _monsters.GetRandomMonster();
+                _monsters.TryGetRandomMonster(out Monster tempMonster);
+                newMonster = tempMonster;
             }
 
-            gate.SetMonster(monster);
-            previousMonster = monster;
+            gate.SetMonster(newMonster);
+            previousMonster = newMonster;
+        }
+    }
+
+    private void ReplaceMonster(Monster monsterToRemove, Gate gate)
+    {
+        _monsters.RemoveMonster(monsterToRemove);
+
+        List<Monster> monsters = new List<Monster>();
+
+        foreach (var tempGate in _gates)
+        {
+            monsters.Add(tempGate.Monster);
+        }
+
+        Monster monsterToBeExcepted = monsters.FirstOrDefault(tempMonster => tempMonster.GetType() != monsterToRemove.GetType());
+
+        if (_monsters.TryGetRandomMonsterExcept(monsterToBeExcepted, out Monster newMonster))
+            gate.ReplaceMonster(newMonster);
+        else
+        {
+            gate.PlacePowerUp(_monsters.GetPowerUp());
         }
     }
 }

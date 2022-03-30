@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f895e7d06f17c8b498748b43f6255fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMonster: {fileID: 7319565273481950930, guid: 12a3127363a624a42ba9a5b65b71f890, type: 3}
+  _initialMonster: {fileID: 5890225089132513927, guid: d26db191ba65e984ab355b3f73ea3a47, type: 3}
   _monstersAnimatorHandler: {fileID: 2096990774342737447}
 --- !u!54 &2020461895
 Rigidbody:
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5e9511fcb92a74ea5190f2d90e9b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interfaceObject: {fileID: 1682965853}
+  _interfaceObject: {fileID: 8931138596178993927}
 --- !u!1 &2940785713604490140
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,13 +763,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
+    - target: {fileID: 6625042499364786895, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
---- !u!1 &1682965853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2942406698866087882, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
-  m_PrefabInstance: {fileID: 2942406700414833303}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1682965854 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2942406698866087881, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
