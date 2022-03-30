@@ -15,6 +15,7 @@ public class MonsterPoolCreator : MonoBehaviour
 
         foreach (var improveGatesHandler in _improveGatesHandlers)
         {
+            improveGatesHandler.Init(_monsterList);
             improveGatesHandler.PlaceMonster();
         }
     }

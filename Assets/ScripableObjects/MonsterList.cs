@@ -14,7 +14,8 @@ public class MonsterList : ScriptableObject
 
     public void CreateMonsterPool()
     {
-        _monsterPool.RemoveRange(0, _monsterPool.Count);
+        if(_monsterPool.Count>0)
+            _monsterPool.RemoveRange(0, _monsterPool.Count);
 
         foreach (var monster in _monsters)
         {

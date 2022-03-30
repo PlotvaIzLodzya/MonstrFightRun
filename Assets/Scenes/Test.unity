@@ -2765,50 +2765,6 @@ PrefabInstance:
     - {fileID: 600164638295084859, guid: d5da59a044537e84d959440086f549e2, type: 3}
     - {fileID: 1255321331138980326, guid: d5da59a044537e84d959440086f549e2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d5da59a044537e84d959440086f549e2, type: 3}
---- !u!1 &1509761980
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1509761982}
-  - component: {fileID: 1509761981}
-  m_Layer: 0
-  m_Name: MonsterPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1509761981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509761980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb38dcad73f3b94a92961b212df6171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monsterList: {fileID: 11400000, guid: 68c49621b259f99438b765bb9733b1a0, type: 2}
---- !u!4 &1509761982
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509761980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0449944, y: 5.6561985, z: 30.539549}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553630341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,3 +4990,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2666f045eab97e4479f9d719d143e84e, type: 3}
+--- !u!1001 &8092138435484070247
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.0449944
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.6561985
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30.539549
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539481, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8092138434030539483, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}
+      propertyPath: m_Name
+      value: MonsterPool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ca4b8ae54d8683438d7c6c286c96ff0, type: 3}

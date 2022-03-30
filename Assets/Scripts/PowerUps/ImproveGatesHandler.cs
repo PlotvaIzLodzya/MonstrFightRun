@@ -5,7 +5,7 @@ using System.Linq;
 
 public class ImproveGatesHandler : MonoBehaviour
 {
-    [SerializeField] private MonsterList _monsters;
+    private MonsterList _monstersList;
 
     private Gate[] _gates;
     private void OnEnable()
@@ -28,6 +28,11 @@ public class ImproveGatesHandler : MonoBehaviour
         }
     }
 
+    public void Init(MonsterList monsterList)
+    {
+        _monstersList = monsterList;
+    }
+
     public void DisableGates()
     {
         foreach (var gate in _gates)
@@ -40,14 +45,14 @@ public class ImproveGatesHandler : MonoBehaviour
     public void PlaceMonster()
     {
         Monster previousMonster = null;
-        _monsters.TryGetRandomMonster(out Monster monster);
+        _monstersList.TryGetRandomMonster(out Monster monster);
         Monster newMonster = monster;
 
         foreach (var gate in _gates)
         {
             while (newMonster == previousMonster)
             {
-                _monsters.TryGetRandomMonster(out Monster tempMonster);
+                _monstersList.TryGetRandomMonster(out Monster tempMonster);
                 newMonster = tempMonster;
             }
 
@@ -58,7 +63,7 @@ public class ImproveGatesHandler : MonoBehaviour
 
     private void ReplaceMonster(Monster monsterToRemove, Gate gate)
     {
-        _monsters.RemoveMonster(monsterToRemove);
+        _monstersList.RemoveMonster(monsterToRemove);
 
         List<Monster> monsters = new List<Monster>();
 
@@ -69,11 +74,11 @@ public class ImproveGatesHandler : MonoBehaviour
 
         Monster monsterToBeExcepted = monsters.FirstOrDefault(tempMonster => tempMonster.GetType() != monsterToRemove.GetType());
 
-        if (_monsters.TryGetRandomMonsterExcept(monsterToBeExcepted, out Monster newMonster))
+        if (_monstersList.TryGetRandomMonsterExcept(monsterToBeExcepted, out Monster newMonster))
             gate.ReplaceMonster(newMonster);
         else
         {
-            gate.PlacePowerUp(_monsters.GetPowerUp());
+            gate.PlacePowerUp(_monstersList.GetPowerUp());
         }
     }
 }
