@@ -23,7 +23,6 @@ public class LevelsHandler : MonoBehaviour
         _playerDeathHandler = FindObjectOfType<PlayerDeathHandler>();
         _winnderDecider = FindObjectOfType<WinnerDecider>();
 
-
         Counter = _saveSystem.LoadLevelsProgression();
     }
 
@@ -55,7 +54,6 @@ public class LevelsHandler : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Debug.Log("Level " + Counter);
         if (Counter >= _levelList.SceneCount)
             _levelList.GetRandomScene(Counter).LoadSceneAsync();
         else

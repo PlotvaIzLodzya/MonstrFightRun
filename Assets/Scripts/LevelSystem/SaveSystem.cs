@@ -10,7 +10,6 @@ public class SaveSystem
     public void SaveLevelsProgression(int index)
     {
         PlayerPrefs.SetInt(_levelKey, index);
-
     }
 
     public int LoadLevelsProgression()

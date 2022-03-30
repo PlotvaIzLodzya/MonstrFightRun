@@ -81,7 +81,6 @@ public class Monster : MonoBehaviour, IMergeable
             return;
         }
 
-        Debug.Log(transform.name + " " + _damage);
         Target.ApplyDamage(_damage);
     }
 

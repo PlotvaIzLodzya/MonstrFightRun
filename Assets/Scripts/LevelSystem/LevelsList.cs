@@ -17,6 +17,11 @@ public class LevelsList : ScriptableObject
         return _currentScene;
     }
 
+    public void SetCurrentScene(AssetReference currentScene)
+    {
+        _currentScene = currentScene;
+    }
+
     public AssetReference GetCurrentScene()
     {
         if (_currentScene == null)
