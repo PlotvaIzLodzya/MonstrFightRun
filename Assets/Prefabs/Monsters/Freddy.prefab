@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5961753621915226412}
   - component: {fileID: 1486096345272683205}
   - component: {fileID: 9016688956941291151}
+  - component: {fileID: 898072621684657544}
   m_Layer: 7
   m_Name: Freddy
   m_TagString: Untagged
@@ -173,6 +174,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 8462240498972060060}
+--- !u!114 &898072621684657544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308975982070457583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
+  _monster: {fileID: 2840612604432673332}
+  _point: {fileID: 8462240498972060061}
 --- !u!1 &8308975982124528055
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +471,11 @@ RectTransform:
 --- !u!1 &8462240498972060060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 8469919308891420232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8462240498972060061 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 8469919308891420232}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8709328029728653376

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1870845674683688080}
   - component: {fileID: -7415137142007887291}
   - component: {fileID: 5077960941191452199}
+  - component: {fileID: 8582147808129861489}
   m_Layer: 7
   m_Name: Cenobite
   m_TagString: Untagged
@@ -173,6 +174,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 1207480181364382116}
+--- !u!114 &8582147808129861489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648695248674936023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
+  _monster: {fileID: 1181063364622969746}
+  _point: {fileID: 1207480181364382117}
 --- !u!1 &1648695248796500367
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +471,11 @@ RectTransform:
 --- !u!1 &1207480181364382116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 1163349863712867952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1207480181364382117 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 1163349863712867952}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3058250050386611781

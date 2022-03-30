@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6069407171376899900}
   - component: {fileID: -8064192339549875492}
   - component: {fileID: -8767546320264036306}
+  - component: {fileID: 2683949805891145738}
   m_Layer: 7
   m_Name: Symbiote
   m_TagString: Untagged
@@ -173,6 +174,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 6705188331341502984}
+--- !u!114 &2683949805891145738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6569940447389341563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45ee403107299f4fb984859ff73decd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
+  _monster: {fileID: 8790789293307509045}
+  _point: {fileID: 6705188331341502985}
 --- !u!1 &6569940447443796515
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +541,11 @@ RectTransform:
 --- !u!1 &6705188331341502984 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 64414176882630612, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+  m_PrefabInstance: {fileID: 6767015889886954972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6705188331341502985 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 64414176882630613, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 6767015889886954972}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7691443860970766498

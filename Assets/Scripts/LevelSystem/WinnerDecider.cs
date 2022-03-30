@@ -52,12 +52,19 @@ public class WinnerDecider : MonoBehaviour
 
         if (_counter >= _bosses.Length)
         {
-            _winScreen.SetActive(true);
+            StartCoroutine(DelayedEnable());
 
             SetVictoryAnimation();
 
             Victory?.Invoke();
         }
+    }
+
+    private IEnumerator DelayedEnable()
+    {
+        yield return new WaitForSeconds(1f);
+
+        _winScreen.SetActive(true);
     }
 
     public void OnPlayerLost()

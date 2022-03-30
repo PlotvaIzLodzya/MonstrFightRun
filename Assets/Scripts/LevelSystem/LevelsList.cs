@@ -11,38 +11,61 @@ public class LevelsList : ScriptableObject
     private AssetReference _currentScene;
     public int SceneCount => _scenes.Length-1;
 
+    private const string CurrentLevelIndex = "CurrentLevelIndex";
+
     public AssetReference GetScene(int index)
     {
         _currentScene = _scenes[index];
-        return _currentScene;
-    }
 
-    public void SetCurrentScene(AssetReference currentScene)
-    {
-        _currentScene = currentScene;
+        SaveCurrentIndex(index);
+
+        return _currentScene;
     }
 
     public AssetReference GetCurrentScene()
     {
         if (_currentScene == null)
-            _currentScene = _scenes[0];
+        {
+            if (PlayerPrefs.HasKey(CurrentLevelIndex))
+                _currentScene = _scenes[PlayerPrefs.GetInt(CurrentLevelIndex)];
+            else
+                _currentScene = _scenes[0];
+        }
+            
 
         return _currentScene;
     }
 
-    public AssetReference GetRandomScene(int currentSceneIndex)
+    public AssetReference GetRandomScene(int counter)
     {
         int index = 0;
+
+        if (counter % 5 == 0)
+        {
+            index = 5;
+
+            SaveCurrentIndex(index);
+
+            return _scenes[index];
+        }
 
         if (SceneCount > 1)
         {
             do
             {
                 index = Random.Range(0, _scenes.Length);
-            } while (index == currentSceneIndex);
+            } while (index == counter);
         }
 
         _currentScene = _scenes[index];
+
+        SaveCurrentIndex(index);
+
         return _currentScene;
+    }
+
+    private void SaveCurrentIndex(int index)
+    {
+        PlayerPrefs.SetInt(CurrentLevelIndex, index);
     }
 }

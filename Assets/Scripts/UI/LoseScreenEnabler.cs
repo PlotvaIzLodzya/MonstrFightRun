@@ -26,6 +26,13 @@ public class LoseScreenEnabler : MonoBehaviour
 
     private void Enable()
     {
+        StartCoroutine(DelayedEnable());
+    }
+
+    private IEnumerator DelayedEnable()
+    {
+        yield return new WaitForSeconds(1f);
+
         _loseScreen.gameObject.SetActive(true);
     }
 }
