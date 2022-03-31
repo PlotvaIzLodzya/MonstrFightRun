@@ -34,6 +34,13 @@ namespace RunnerMovementSystem.Examples
             _mousePosition = Input.mousePosition;
         }
 
+
+        public void  StartRun()
+        {
+            RunBegan?.Invoke();
+            Debug.Log("jj");
+            IsMoved = true;
+        }
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -55,8 +62,10 @@ namespace RunnerMovementSystem.Examples
                 _previoutMousePosition = Input.mousePosition;
             }
 
-            if(IsMoved)
+            if (IsMoved)
+            {
                 _roadMovement.MoveForward();
+            }
         }
     }
 }
