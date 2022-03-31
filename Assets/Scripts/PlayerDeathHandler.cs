@@ -19,7 +19,7 @@ public class PlayerDeathHandler : MonoBehaviour, IDeathBehavior
         PlayerLost?.Invoke();
         _mouseInput.enabled = false;
         _animatorHandler.SetDeathAnimation();
-        _uIHandler.SwitchState();
+        _uIHandler.Disable();
 
         _isDead = true;
     }
