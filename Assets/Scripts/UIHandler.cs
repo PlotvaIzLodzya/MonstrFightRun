@@ -15,4 +15,9 @@ public class UIHandler : MonoBehaviour
     {
         _interfaceObject.gameObject.SetActive(true);
     }
+
+    public void Disable()
+    {
+        _interfaceObject.gameObject.SetActive(false);
+    }
 }
