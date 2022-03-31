@@ -23,6 +23,13 @@ public class MonsterList : ScriptableObject
         }
     }
 
+    public Monster GetRandomMonster()
+    {
+        int index = UnityEngine.Random.Range(0, _monsters.Count);
+
+        return _monsters[index];
+    }
+
     public bool TryGetRandomMonster(out Monster monster)
     {
 

@@ -48,8 +48,24 @@ public class RunerFight: AttackBehavior
 
     private void Die()
     {
+        
         _player.Die();
+        StartCoroutine(PushBackAnimation());
         _player.KillAllMonsters();
         _enemyMonster.DealtDamage -= Die;
+    }
+
+    private IEnumerator PushBackAnimation()
+    {
+        float elapsedTime = 0;
+
+        while(elapsedTime < 0.2f)
+        {
+            elapsedTime += Time.deltaTime;
+
+            _player.transform.position += -_player.transform.forward * 10f * Time.deltaTime;
+
+            yield return null;
+        }
     }
 }

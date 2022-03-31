@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialGateSwitcher : MonoBehaviour
 {
-    [SerializeField] private TutorialGates _tutorialGates;
+    [SerializeField] private GameObject _tutorialGates;
     [SerializeField] private ImproveGatesHandler _improveGatesHandler;
     [SerializeField] private string _saveName;
 
@@ -18,7 +18,7 @@ public class TutorialGateSwitcher : MonoBehaviour
         else
         {
             _tutorialGates.gameObject.SetActive(true);
-            _tutorialGates.SetGate();
+            _tutorialGates.gameObject.SetActive(true);
             _improveGatesHandler.gameObject.SetActive(false);
         }
 
