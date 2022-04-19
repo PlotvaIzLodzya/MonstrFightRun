@@ -30,6 +30,8 @@ public class LevelsList : ScriptableObject
                 _currentScene = _scenes[PlayerPrefs.GetInt(CurrentLevelIndex)];
             else
                 _currentScene = _scenes[0];
+
+            Debug.Log(PlayerPrefs.GetInt(CurrentLevelIndex));
         }
             
 

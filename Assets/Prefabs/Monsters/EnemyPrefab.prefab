@@ -128,6 +128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2931987140316348454}
+  - {fileID: 8607165405034842537}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75a56fd64fb2924f80b948f8eed8ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFinisher: 0
+  _isFinisher: 1
   _isRagdolDeath: 1
   _formsHandler: {fileID: 2931987140316348473}
   _stateMachine: {fileID: 7585743789503196410}
@@ -202,13 +203,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2931987140438316415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 2
-  _attackRadius: 3
+  _attackRadius: 2
   _attackBehavior: {fileID: 5311803419947127178}
   _monsterLayerMask:
     serializedVersion: 2
@@ -291,6 +292,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 6162365614785905656}
+--- !u!1 &2954408650176829499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8607165405034842537}
+  - component: {fileID: 4709065705865895793}
+  - component: {fileID: 3930668510787251545}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8607165405034842537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954408650176829499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 1.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2931987140438316414}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4709065705865895793
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954408650176829499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3930668510787251545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954408650176829499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d926b63a32df44aa939c5a0c0d1b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 6123299620713783651}
+  _runerFight: {fileID: 5311803419947127178}
 --- !u!1001 &3347539959675930584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +490,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3511253003321166142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 6123299620713783651}
+    - target: {fileID: 3511253003321166142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _weakColor.a
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511253003321166142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _weakColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511253003321166142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _weakColor.g
+      value: 0.76862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511253003321166142, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
+      propertyPath: _weakColor.r
+      value: 0.15127239
+      objectReference: {fileID: 0}
     - target: {fileID: 4627867691637657367, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -560,46 +640,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1059353824081228174, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3347539959675930584}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7920641641163394017 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4872644383064640569, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 3347539959675930584}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &7920641639521463100 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4872644384705801444, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
-  m_PrefabInstance: {fileID: 3347539959675930584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7920641639521463099 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4872644384705801443, guid: e81f5ba7124cb13488d603bcaf0c6abd, type: 3}
   m_PrefabInstance: {fileID: 3347539959675930584}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920641639521463100}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3024354309576499051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920641639521463100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca78868170bf7984da4f7c2f7af87756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: {fileID: 7920641639521463099}
-  _monster: {fileID: 6123299620713783651}
-  _weakColor: {r: 0.2649539, g: 0.745283, b: 0.14413491, a: 0.7921569}
-  _background: {fileID: 7920641641163394017}

@@ -54,6 +54,20 @@ public class Form : MonoBehaviour
         }
     }
 
+    private void Hit()
+    {
+        if (_monster == null)
+            return;
+
+        if (_monster.IsAllive)
+        {
+            _monster.DealDamage();
+
+            if (_particleSystem != null)
+                _particleSystem.Play();
+        }
+    }
+
     public void OnDamaged()
     {
         _skinnedMeshRenderer.materials[0].SetFloat("_FlatSpecularSize", 0.78f);

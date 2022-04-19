@@ -22,6 +22,7 @@ public class MonstersHandler : MonoBehaviour
     public event Action<MonsterAnimator> MonsterAdded;
     public event Action<Monster> MonsterMerged;
     public event Action<int, int> MightChanged;
+    public event Action<int> CurrencyPickedUp;
 
     private void Awake()
     {
@@ -92,6 +93,21 @@ public class MonstersHandler : MonoBehaviour
         ChangeMonstersMight(-level);
     }
 
+    public int GetMonsterForm(Monster monster)
+    {
+        var tempMonster = GetMonster(monster);
+
+        if (tempMonster != null)
+            return tempMonster.FormCounter;
+
+        return 0;
+    }
+
+    public void PickUpCurrency(int amount)
+    {
+        CurrencyPickedUp?.Invoke(amount);
+    }
+
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
@@ -127,8 +143,11 @@ public class MonstersHandler : MonoBehaviour
 
     private Monster GetMonster(Monster monster)
     {
-        Monster existMonster = _monsterPlaces.FirstOrDefault(monsterPlace => monsterPlace.Monster.GetType() == monster.GetType()).Monster;
+        var existMonster = _monsterPlaces.FirstOrDefault(monsterPlace => monsterPlace.Monster != null && monsterPlace.Monster.GetType() == monster.GetType());
 
-        return existMonster;
+        if (existMonster != default)
+            return existMonster.Monster;
+
+        return null;
     }
 }

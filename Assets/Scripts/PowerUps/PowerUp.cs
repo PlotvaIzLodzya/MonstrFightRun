@@ -34,6 +34,5 @@ public class PowerUp : MonoBehaviour, IUsable
     }
 
     public virtual void Use(MonstersHandler monstersHandler) { }
-
     public virtual void Use(Monster monster) { }
 }

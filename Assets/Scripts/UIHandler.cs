@@ -5,6 +5,9 @@ using UnityEngine;
 public class UIHandler : MonoBehaviour
 {
     [SerializeField] private GameObject _interfaceObject;
+    [SerializeField] private Transform _CurrencySpawnPoint;
+
+    public Vector3 Position => Camera.main.WorldToScreenPoint(_CurrencySpawnPoint.position);
 
     public void SwitchState()
     {
@@ -14,5 +17,10 @@ public class UIHandler : MonoBehaviour
     public void Enable()
     {
         _interfaceObject.gameObject.SetActive(true);
+    }
+
+    public void Disable()
+    {
+        _interfaceObject.gameObject.SetActive(false);
     }
 }

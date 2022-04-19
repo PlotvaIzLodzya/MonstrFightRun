@@ -58,6 +58,7 @@ public class LevelsHandler : MonoBehaviour
             _levelList.GetRandomScene(Counter).LoadSceneAsync();
         else
             _levelList.GetScene(Counter).LoadSceneAsync();
+        Debug.Log(Counter);
     }
 
     public void RestartLevel()

@@ -18,7 +18,7 @@ public class CameraTransitionTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Player player))
+        if (other.TryGetComponent(out MonstersHandler monstersHandler))
         {
             _cameraTransition.Transit();
             _boxCollider.enabled = false;

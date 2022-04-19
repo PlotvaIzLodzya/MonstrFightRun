@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GateIcon : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class GateIcon : MonoBehaviour
 
     private Monster _monsterIcon;
     private MonstersHandler _monstersHandler;
+    private int _counter = 0;
 
+    public event Action<Monster> NeedAnotherMonster;
     private void Awake()
     {
         _monstersHandler = FindObjectOfType<MonstersHandler>();
@@ -17,12 +20,12 @@ public class GateIcon : MonoBehaviour
 
     private void OnEnable()
     {
-        _monstersHandler.MonsterMerged += TryUpdateIconForm;
+        _monstersHandler.MonsterMerged += UpdateIcon;
     }
 
     private void OnDisable()
     {
-        _monstersHandler.MonsterMerged -= TryUpdateIconForm;
+        _monstersHandler.MonsterMerged -= UpdateIcon;
     }
 
     public void CreateIcon(Monster monster)
@@ -41,9 +44,44 @@ public class GateIcon : MonoBehaviour
         _monsterName.text = _monsterIcon.Name;
     }
 
-    public void TryUpdateIconForm(Monster monster)
+    public void CreateIcon(PowerUp powerUp)
     {
-        if(monster.GetType() == _monsterIcon.GetType())
-            _monsterIcon.TryMerge(0);
+        Destroy(_monsterIcon.gameObject);
+        var powerUpIcon = Instantiate(powerUp, transform, false);
+
+        powerUpIcon.transform.localPosition = Vector3.up *1.5f;
+
+        _monsterName.text = $"LevelUp";
+    }
+
+    public void UpdateIcon(Monster monster)
+    {
+        if (monster.GetType() == _monsterIcon.GetType())
+            if (_monsterIcon.TryMerge(0))
+                _counter++;
+
+        if (_counter >= 2)
+        {
+            _counter = 0;
+
+            NeedAnotherMonster?.Invoke(monster);
+        }
+    }
+
+    public void ReplaceIcon(Monster monster)
+    {
+        Destroy(_monsterIcon.gameObject);
+
+        int formCounter = _monstersHandler.GetMonsterForm(monster);
+
+        if (formCounter > 1)
+            return;
+
+        CreateIcon(monster);
+
+        for (int i = 0; i < formCounter; i++)
+        {
+            UpdateIcon(monster);
+        }
     }
 }

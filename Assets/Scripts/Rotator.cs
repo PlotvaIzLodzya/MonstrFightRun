@@ -57,7 +57,7 @@ public class Rotator : MonoBehaviour
 
     private void ResetRotation()
     {
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, _forwardQuaternionRotation, _rotatorOptions.ResetSpeed * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, _forwardQuaternionRotation, _rotatorOptions.ResetSpeed * Time.deltaTime);
         xRotation = transform.localEulerAngles.y;
 
         if (xRotation > 180)
