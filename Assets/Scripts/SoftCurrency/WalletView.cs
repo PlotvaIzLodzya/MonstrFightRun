@@ -10,6 +10,8 @@ public class WalletView : MonoBehaviour
 
     private Player _player;
 
+    public Image Image => _image;
+
     private void Awake()
     {
         _player = FindObjectOfType<Player>();
@@ -18,14 +20,16 @@ public class WalletView : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CurrencyWallet.AmountChanged += OnAmountChange;
+        _player.CurrencyWallet.AmountIncreased += OnAmountChange;
         _player.CurrencyWallet.AmountLoaded += OnAmountLoaded;
+        _player.CurrencyWallet.AmountDecreased += ChangeViewText;
     }
 
     private void OnDisable()
     {
-        _player.CurrencyWallet.AmountChanged -= OnAmountChange;
+        _player.CurrencyWallet.AmountIncreased -= OnAmountChange;
         _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
+        _player.CurrencyWallet.AmountDecreased -= ChangeViewText;
     }
 
     public void ChangeViewText(int amount)
@@ -36,7 +40,6 @@ public class WalletView : MonoBehaviour
     private void OnAmountChange(int amount)
     {
         var flyingPicture = Instantiate(_flyingPicture, transform);
-        Debug.Log(_player.UiHandler.Position);
         flyingPicture.transform.position = _player.UiHandler.Position;
         flyingPicture.Init(_image.transform.localPosition, _image.sprite, _image.rectTransform.rect.width, this, amount);
     }
@@ -46,6 +49,4 @@ public class WalletView : MonoBehaviour
         ChangeViewText(amount);
         _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
     }
-
- 
 }

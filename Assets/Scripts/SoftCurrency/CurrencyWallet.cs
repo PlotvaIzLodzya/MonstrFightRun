@@ -10,17 +10,38 @@ public class CurrencyWallet
 
     public const string SaveAmount = "SaveAmount";
 
-    public event Action<int> AmountChanged;
+    public event Action<int> AmountIncreased;
+    public event Action<int> AmountDecreased;
     public event Action<int> AmountLoaded;
 
     public void InceaseCurrency(int amount)
     {
         AmountChange(amount);
+        AmountIncreased?.Invoke(_amount);
     }
 
-    public void DecreaseCurrency(int amount)
+    public bool TrySpend(int amount)
+    {
+        if (IsEnoughCurrency(amount))
+        {
+            DecreaseCurrency(amount);
+            return true;
+        }
+        else
+        {
+            return false;
+        }    
+    }
+
+    public bool IsEnoughCurrency(int amount)
+    {
+        return _amount >= amount;
+    }
+
+    private void DecreaseCurrency(int amount)
     {
         AmountChange(-amount);
+        AmountDecreased?.Invoke(_amount);
     }
 
     public void AmountChange(int amount)
@@ -29,7 +50,6 @@ public class CurrencyWallet
 
         Mathf.Clamp(_amount, 0, _maxAmount);
         Save();
-        AmountChanged?.Invoke(_amount);
     }
 
     public void Save()
