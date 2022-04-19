@@ -1,22 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class IntegrationMetric
 {
     private const string SessionCountName = "sessionCount";
+    private const string _regDay = "regDay";
+
+    private string _profileId;
+    private const string ProfileId = "ProfileId";
+    private const int ProfileIdLength = 10;
+
     public int SessionCount;
 
     public void OnGameStart()
     {
         Dictionary<string, object> count = new Dictionary<string, object>();
         count.Add("count", CountSession());
+
         Amplitude.Instance.logEvent("game_start", count);
+        AppMetrica.Instance.ReportEvent("game_start", count);
     }
 
     public void OnLevelStart(int levelIndex)
     {
-        Amplitude.Instance.logEvent("level_start", CreateLevelProperty(levelIndex));
+        var levelProperty = CreateLevelProperty(levelIndex);
+
+        Amplitude.Instance.logEvent("level_start", levelProperty);
+        AppMetrica.Instance.ReportEvent("level_start", levelProperty);
     }
 
     public void OnLevelComplete(int levelComplitioTime, int levelIndex)
@@ -24,6 +37,7 @@ public class IntegrationMetric
         Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelComplitioTime } };
 
         Amplitude.Instance.logEvent("level_complete", userInfo);
+        AppMetrica.Instance.ReportEvent("level_complete", userInfo);
     }
 
     public void OnLevelFail(int levelFailTime, int levelIndex)
@@ -31,11 +45,87 @@ public class IntegrationMetric
         Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelFailTime } };
 
         Amplitude.Instance.logEvent("fail", userInfo);
+        AppMetrica.Instance.ReportEvent("fail", userInfo);
     }
 
     public void OnRestartLevel(int levelIndex)
     {
-        Amplitude.Instance.logEvent("restart", CreateLevelProperty(levelIndex));
+        var levelProperty = CreateLevelProperty(levelIndex);
+
+        Amplitude.Instance.logEvent("restart", levelProperty);
+        AppMetrica.Instance.ReportEvent("restart", levelProperty);
+    }
+
+    public void SetUserProperty(Amplitude amplitude)
+    {
+        amplitude.setUserProperty("session_count", SessionCount);
+
+        YandexAppMetricaUserProfile userProfile = new YandexAppMetricaUserProfile();
+        userProfile.Apply(YandexAppMetricaAttribute.CustomCounter("session_count").WithDelta(SessionCount));
+        ReportUserProfile(userProfile);
+
+        if (PlayerPrefs.HasKey(_regDay) == false)
+        {
+            RegDay(amplitude);
+        }
+        else
+        {
+            int firstDay = PlayerPrefs.GetInt(_regDay);
+            int daysInGame = DateTime.Now.Day - firstDay;
+
+            DaysInGame(amplitude, daysInGame);
+        }
+    }
+
+    private void RegDay(Amplitude amplitude)
+    {
+        amplitude.setUserProperty("reg_day", DateTime.Now.ToString());
+
+        YandexAppMetricaUserProfile userProfile = new YandexAppMetricaUserProfile();
+        userProfile.Apply(YandexAppMetricaAttribute.CustomString("reg_day").WithValue(DateTime.Now.ToString()));
+        ReportUserProfile(userProfile);
+
+        PlayerPrefs.SetInt(_regDay, DateTime.Now.Day);
+    }
+
+    private void DaysInGame(Amplitude amplitude, int daysInGame)
+    {
+        amplitude.setUserProperty("days_in_game", daysInGame);
+
+        YandexAppMetricaUserProfile userProfile = new YandexAppMetricaUserProfile();
+        userProfile.Apply(YandexAppMetricaAttribute.CustomCounter("days_in_game").WithDelta(daysInGame));
+        ReportUserProfile(userProfile);
+    }
+
+    private void ReportUserProfile(YandexAppMetricaUserProfile userProfile)
+    {
+        AppMetrica.Instance.SetUserProfileID(GetProfileId());
+        AppMetrica.Instance.ReportUserProfile(userProfile);
+    }
+
+    private string GetProfileId()
+    {
+        if (PlayerPrefs.HasKey(ProfileId))
+        {
+            _profileId = PlayerPrefs.GetString(ProfileId);
+        }
+        else
+        {
+            _profileId = GenerateProfileId(ProfileIdLength);
+            PlayerPrefs.SetString(ProfileId, _profileId);
+        }
+
+        return _profileId;
+    }
+
+    private string GenerateProfileId(int length)
+    {
+        const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        var random = new System.Random();
+
+        return new string(Enumerable.Repeat(chars, length)
+            .Select(letter => letter[random.Next(letter.Length)]).ToArray());
     }
 
     private Dictionary<string, object> CreateLevelProperty( int levelIndex)

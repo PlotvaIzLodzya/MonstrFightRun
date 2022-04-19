@@ -71,6 +71,7 @@ public class ResizeAnimation : MonoBehaviour
         while (transform.localScale.x < _enlargeScale.x)
         {
             transform.localScale = Vector3.MoveTowards(transform.localScale, _enlargeScale, changeSpeed * Time.deltaTime);
+
             yield return null;
         }
 
