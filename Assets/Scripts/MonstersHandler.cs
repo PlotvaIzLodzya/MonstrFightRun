@@ -22,6 +22,7 @@ public class MonstersHandler : MonoBehaviour
     public event Action<MonsterAnimator> MonsterAdded;
     public event Action<Monster> MonsterMerged;
     public event Action<int, int> MightChanged;
+    public event Action<int> CurrencyPickedUp;
 
     private void Awake()
     {
@@ -100,6 +101,11 @@ public class MonstersHandler : MonoBehaviour
             return tempMonster.FormCounter;
 
         return 0;
+    }
+
+    public void PickUpCurrency(int amount)
+    {
+        CurrencyPickedUp?.Invoke(amount);
     }
 
     private void ChangeMonstersMight(int level)
