@@ -14,7 +14,6 @@ public class RunerFight: AttackBehavior
     {
         _enemyMonster = enemyMonster;
         _player = monsterOfPlayer.transform.root.GetComponent<Player>();
-        MonstersAnimatorHandler playerMonsterAnimatorHandler = monsterOfPlayer.transform.root.GetComponent<MonstersAnimatorHandler>();
         _monsterOfPlayer = monsterOfPlayer;
 
         bool isPlayerWin = _player.Might >= enemyMonster.Level;
@@ -23,7 +22,7 @@ public class RunerFight: AttackBehavior
             return;
 
         enemyMonster.MonsterAnimator.TriggerAttackAnimation();
-        playerMonsterAnimatorHandler.TriggerAttackAnimation();
+        _monsterOfPlayer.MonsterAnimator.TriggerAttackAnimation();
 
         if (isPlayerWin)
         {

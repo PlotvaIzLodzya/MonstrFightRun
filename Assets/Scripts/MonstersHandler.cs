@@ -19,6 +19,7 @@ public class MonstersHandler : MonoBehaviour
     public int MonsterCounter { get; private set; }
     public int MonsterMight => _monstersMight;
 
+    public event Action<int> CurrencyPickedUp;
     public event Action<MonsterAnimator> MonsterAdded;
     public event Action<Monster> MonsterMerged;
     public event Action<int, int> MightChanged;
@@ -90,6 +91,11 @@ public class MonstersHandler : MonoBehaviour
         }
 
         ChangeMonstersMight(-level);
+    }
+
+    public void PickUpCurrency(int amount)
+    {
+        CurrencyPickedUp?.Invoke(amount);
     }
 
     private void ChangeMonstersMight(int level)

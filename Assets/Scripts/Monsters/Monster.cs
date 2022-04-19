@@ -126,7 +126,6 @@ public class Monster : MonoBehaviour, IMergeable
         _level -= level;
         _level = Mathf.Clamp(_level, 1, _maxLevel);
 
-        ResizeAnimation.ShrinkAnimation(_level);
         LevelChanged?.Invoke(_level);
     }
 

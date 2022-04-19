@@ -17,5 +17,8 @@ public class ToFightTrigger : MonoBehaviour
 
         if (other.TryGetComponent(out Monster monster))
             monster.GetComponentInChildren<Rotator>().enabled = false;
+
+        if (other.TryGetComponent(out Player player))
+            player.DisableCollider();
     }
 }
