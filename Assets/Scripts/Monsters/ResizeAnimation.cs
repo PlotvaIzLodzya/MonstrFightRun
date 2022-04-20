@@ -59,8 +59,6 @@ public class ResizeAnimation : MonoBehaviour
             _step -= stepCount;
 
             StepChanged?.Invoke(_step, _maxStep);
-
-            StartCoroutine(Shrink());
         }
     }
 

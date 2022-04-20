@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ToFightTrigger : MonoBehaviour
 {
+    public event Action PlayerEnteredFight;
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out StateMachine stateMachine))
@@ -19,6 +21,9 @@ public class ToFightTrigger : MonoBehaviour
             monster.GetComponentInChildren<Rotator>().enabled = false;
 
         if (other.TryGetComponent(out Player player))
+        {
+            PlayerEnteredFight?.Invoke();
             player.DisableCollider();
+        }
     }
 }

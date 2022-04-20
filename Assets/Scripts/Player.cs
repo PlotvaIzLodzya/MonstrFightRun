@@ -13,16 +13,16 @@ public class Player : MonoBehaviour
 
     private int _multiplier = 1;
     private int _counter;
-    private CurrencyWallet _currencyWallet = new CurrencyWallet();
+    private ValueHandler _amountHandler = new ValueHandler(0, "Currency");
 
     public MouseInput MouseInput => _mouseInput;
     public int Might => _monstersHandler.MonsterMight;
-    public CurrencyWallet CurrencyWallet => _currencyWallet;
+    public ValueHandler AmountHandler => _amountHandler;
     public UIHandler UiHandler => _uIHandler;
 
     private void Awake()
     {
-        _currencyWallet.LoadAmount();
+        _amountHandler.LoadAmount();
     }
 
     private void OnEnable()
@@ -71,6 +71,6 @@ public class Player : MonoBehaviour
     private void OnCurrencyPickedUp(int amount)
     {
         var mulipliedAmount = amount * _multiplier;
-        _currencyWallet.InceaseCurrency(mulipliedAmount);
+        _amountHandler.Increase(mulipliedAmount);
     }
 }

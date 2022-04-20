@@ -13,6 +13,7 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private int _level;
 
     public string Name;
+    public bool Protected;
     private int _maxLevel = 80;
     private ResizeAnimation ResizeAnimation;
 
@@ -58,6 +59,9 @@ public class Monster : MonoBehaviour, IMergeable
 
     public void ApplyDamage(float damage)
     {
+        if (Protected)
+            return;
+
         Health.Decrease(damage);
 
         Damaged?.Invoke(damage);

@@ -30,11 +30,18 @@ public class Health
     {
         _currentHealth -= damage;
 
-
         if (_currentHealth <= 0)
             _currentHealth = 0;
 
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public void Increase(float health)
+    {
+        _currentHealth += health;
+
+        if (_currentHealth >= MaxHealth)
+            _currentHealth = MaxHealth;
     }
 
     public void IncreaseMaxHealth(float level)

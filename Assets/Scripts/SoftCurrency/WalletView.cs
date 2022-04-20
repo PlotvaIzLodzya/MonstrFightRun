@@ -20,33 +20,33 @@ public class WalletView : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CurrencyWallet.AmountIncreased += OnAmountChange;
-        _player.CurrencyWallet.AmountLoaded += OnAmountLoaded;
-        _player.CurrencyWallet.AmountDecreased += ChangeViewText;
+        _player.AmountHandler.AmountIncreased += OnAmountChange;
+        _player.AmountHandler.AmountLoaded += OnAmountLoaded;
+        _player.AmountHandler.AmountDecreased += ChangeViewText;
     }
 
     private void OnDisable()
     {
-        _player.CurrencyWallet.AmountIncreased -= OnAmountChange;
-        _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
-        _player.CurrencyWallet.AmountDecreased -= ChangeViewText;
+        _player.AmountHandler.AmountIncreased -= OnAmountChange;
+        _player.AmountHandler.AmountLoaded -= OnAmountLoaded;
+        _player.AmountHandler.AmountDecreased -= ChangeViewText;
     }
 
-    public void ChangeViewText(int amount)
+    public void ChangeViewText(float amount)
     {
         _currencyAmount.text = $"{amount}";
     }
 
-    private void OnAmountChange(int amount)
+    private void OnAmountChange(float amount)
     {
         var flyingPicture = Instantiate(_flyingPicture, transform);
         flyingPicture.transform.position = _player.UiHandler.Position;
         flyingPicture.Init(_image.transform.localPosition, _image.sprite, _image.rectTransform.rect.width, this, amount);
     }
 
-    private void OnAmountLoaded(int amount)
+    private void OnAmountLoaded(float amount)
     {
         ChangeViewText(amount);
-        _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
+        _player.AmountHandler.AmountLoaded -= OnAmountLoaded;
     }
 }

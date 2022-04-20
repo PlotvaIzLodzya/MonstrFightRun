@@ -27,7 +27,7 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
         if (_player == null)
             _player = FindObjectOfType<Player>();
 
-        if (_player.CurrencyWallet.TrySpend(_cost))
+        if (_player.AmountHandler.TryDecrease(_cost))
             Buy(_cost);
     }
 

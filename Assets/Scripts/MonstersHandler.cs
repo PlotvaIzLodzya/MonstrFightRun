@@ -108,6 +108,15 @@ public class MonstersHandler : MonoBehaviour
         CurrencyPickedUp?.Invoke(amount);
     }
 
+    public IEnumerable<Monster> GetAllMonsters()
+    {
+        var monsters = from MonsterPlace monsterPlace in _monsterPlaces
+                       where monsterPlace.Monster != null
+                       select monsterPlace.Monster;
+
+        return monsters;
+    }
+
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
@@ -130,15 +139,6 @@ public class MonstersHandler : MonoBehaviour
     private bool CanMerge(Monster monster, MonsterPlace place)
     {       
         return place.Monster != null && place.Monster.GetType() == monster.GetType();
-    }
-
-    private IEnumerable<Monster> GetAllMonsters()
-    {
-        var monsters = from MonsterPlace monsterPlace in _monsterPlaces
-                       where monsterPlace.Monster != null
-                       select monsterPlace.Monster;
-
-        return monsters;
     }
 
     private Monster GetMonster(Monster monster)
