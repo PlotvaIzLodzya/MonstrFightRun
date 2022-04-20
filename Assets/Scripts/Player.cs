@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _amountHandler.LoadAmount();
+        _amountHandler.Increase(200);
     }
 
     private void OnEnable()

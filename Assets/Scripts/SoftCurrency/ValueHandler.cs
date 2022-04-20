@@ -9,7 +9,7 @@ public class ValueHandler
     private float _maxAmount = 1000000;
     private float _minValue;
 
-    private string SaveAmount;
+    private string SaveWord;
 
     public float Amount => _amount;
 
@@ -20,7 +20,7 @@ public class ValueHandler
 
     public ValueHandler(float minValue, string saveAmount)
     {
-        SaveAmount = saveAmount;
+        SaveWord = saveAmount;
         _minValue = minValue;
         _amount = _minValue;
     }
@@ -66,15 +66,15 @@ public class ValueHandler
 
     public void Save()
     {
-        PlayerPrefs.SetFloat(SaveAmount, _amount);
+        PlayerPrefs.SetFloat(SaveWord, _amount);
     }
 
     public float LoadAmount()
     {
         _amount = _minValue;
 
-        if (PlayerPrefs.HasKey(SaveAmount))
-            _amount =  PlayerPrefs.GetFloat(SaveAmount);
+        if (PlayerPrefs.HasKey(SaveWord))
+            _amount =  PlayerPrefs.GetFloat(SaveWord);
 
         AmountLoaded?.Invoke(_amount);
         return _amount;
