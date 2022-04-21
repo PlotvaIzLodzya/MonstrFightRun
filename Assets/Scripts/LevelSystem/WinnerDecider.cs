@@ -6,6 +6,7 @@ using UnityEngine;
 public class WinnerDecider : MonoBehaviour
 {
     [SerializeField] private GameObject _winScreen;
+    [SerializeField] private RoadMap _roadMap;
 
     private Boss[] _bosses;
     private MonsterAnimator[] _monsterAnimators;
@@ -65,6 +66,8 @@ public class WinnerDecider : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         _winScreen.SetActive(true);
+        _roadMap.gameObject.SetActive(true);
+        _roadMap.FillCurrentPoint();
     }
 
     public void OnPlayerLost()

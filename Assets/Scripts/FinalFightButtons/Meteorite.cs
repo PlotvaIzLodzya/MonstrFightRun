@@ -64,7 +64,6 @@ public class Meteorite : MonoBehaviour
         {
             if(collider.TryGetComponent(out Monster monster))
             {
-                Debug.Log(monster.name);
                 monster.ApplyDamage(_damage);
             }
         }
