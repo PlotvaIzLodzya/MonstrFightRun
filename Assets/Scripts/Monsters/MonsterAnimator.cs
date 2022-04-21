@@ -144,7 +144,7 @@ public class MonsterAnimator : MonoBehaviour
             _animator.ResetTrigger(Idle);
             RunAnimation();
         }
-        else if( stateBehavior is AttackState)
+        else if(stateBehavior is AttackState)
         {
             TriggerAttackAnimation();
         }

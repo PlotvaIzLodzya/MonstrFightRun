@@ -18,7 +18,10 @@ public class ToFightTrigger : MonoBehaviour
             healthbarEnabler.SwitchState();
 
         if (other.TryGetComponent(out Monster monster))
+        {
             monster.GetComponentInChildren<Rotator>().enabled = false;
+            monster.Attack.SetInitialRange();
+        }
 
         if (other.TryGetComponent(out Player player))
         {

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7371834362894993911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5251046405217997243}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5251046405217997243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371834362894993911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8308975982070457582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8308975982070457583
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,6 +49,7 @@ GameObject:
   - component: {fileID: 1486096345272683205}
   - component: {fileID: 9016688956941291151}
   - component: {fileID: 898072621684657544}
+  - component: {fileID: 3012858696403644293}
   m_Layer: 7
   m_Name: Freddy
   m_TagString: Untagged
@@ -38,6 +69,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8308975982124528054}
+  - {fileID: 5251046405217997243}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,7 +106,9 @@ MonoBehaviour:
   _damagePerLevel: 1
   _speed: 3
   _level: 0
+  _pointForProjectile: {fileID: 5251046405217997243}
   Name: Freddy
+  Protected: 0
 --- !u!54 &7520118801728612733
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 8462240498972060060}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &898072621684657544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +224,21 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 2840612604432673332}
   _point: {fileID: 8462240498972060061}
+--- !u!114 &3012858696403644293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308975982070457583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0
+  _projectile: {fileID: 0}
+  _attackPoint: {fileID: 0}
 --- !u!1 &8308975982124528055
 GameObject:
   m_ObjectHideFlags: 0

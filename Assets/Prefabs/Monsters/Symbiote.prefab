@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5223717275502452529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101171745141333116}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101171745141333116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223717275502452529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6569940447389341562}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6569940447389341563
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,6 +49,7 @@ GameObject:
   - component: {fileID: -8064192339549875492}
   - component: {fileID: -8767546320264036306}
   - component: {fileID: 2683949805891145738}
+  - component: {fileID: 247960561667863425}
   m_Layer: 7
   m_Name: Symbiote
   m_TagString: Untagged
@@ -38,6 +69,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6569940447443796514}
+  - {fileID: 101171745141333116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,7 +90,9 @@ MonoBehaviour:
   _damagePerLevel: 1.5
   _speed: 3
   _level: 0
+  _pointForProjectile: {fileID: 101171745141333116}
   Name: Symbiote
+  Protected: 0
 --- !u!114 &5650701107661043040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 6705188331341502984}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &2683949805891145738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +224,21 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 8790789293307509045}
   _point: {fileID: 6705188331341502985}
+--- !u!114 &247960561667863425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6569940447389341563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0
+  _projectile: {fileID: 0}
+  _attackPoint: {fileID: 0}
 --- !u!1 &6569940447443796515
 GameObject:
   m_ObjectHideFlags: 0

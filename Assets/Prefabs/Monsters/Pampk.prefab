@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3265507466101910414}
   - component: {fileID: 912069905492843410}
   - component: {fileID: 3605812200394845889}
+  - component: {fileID: 7700951053674859433}
   m_Layer: 7
   m_Name: Pampk
   m_TagString: Untagged
@@ -113,6 +114,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1289954068850940191}
+  - {fileID: 6991608700294338587}
+  - {fileID: 2309069548281847610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +136,9 @@ MonoBehaviour:
   _damagePerLevel: 1
   _speed: 3
   _level: 0
+  _pointForProjectile: {fileID: 6991608700294338587}
   Name: Pampk
+  Protected: 0
 --- !u!114 &333436611930828381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 20
-  _attackRadius: 3
+  _attackRadius: 14
   _attackBehavior: {fileID: 8681984122702048462}
   _monsterLayerMask:
     serializedVersion: 2
@@ -249,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 1713150304297517365}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &3605812200394845889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +270,81 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 7319565273481950930}
   _point: {fileID: 1713150304297517364}
+--- !u!114 &7700951053674859433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289954068896746566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 1
+  _projectile: {fileID: 290961035013506113, guid: de9a92375e6ac21419ec0e2d9dd2d3fb, type: 3}
+  _attackPoint: {fileID: 2309069548281847610}
+--- !u!1 &3416232870054454935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2309069548281847610}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2309069548281847610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416232870054454935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 1.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1289954068896746567}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3629560899636427046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6991608700294338587}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6991608700294338587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629560899636427046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1289954068896746567}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1667050368365174497
 PrefabInstance:
   m_ObjectHideFlags: 0

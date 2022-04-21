@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: -5463968040146712892}
   - component: {fileID: 290619021912467632}
   - component: {fileID: 3887323483477742277}
+  - component: {fileID: 4107478718602203707}
   m_Layer: 7
   m_Name: SCP-49
   m_TagString: Untagged
@@ -113,6 +114,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3662317055849858373}
+  - {fileID: 8123966103673348519}
+  - {fileID: 6793584862293909770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +136,9 @@ MonoBehaviour:
   _damagePerLevel: 1.5
   _speed: 3
   _level: 0
+  _pointForProjectile: {fileID: 6793584862293909770}
   Name: SCP-049
+  Protected: 0
 --- !u!114 &2852297289183539719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agroRadius: 20
-  _attackRadius: 3
+  _attackRadius: 14
   _attackBehavior: {fileID: 6577899911241248916}
   _monsterLayerMask:
     serializedVersion: 2
@@ -249,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 3815580987642256751}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &3887323483477742277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +270,81 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 7515761044871465735}
   _point: {fileID: 3815580987642256750}
+--- !u!114 &4107478718602203707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662317055963435036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 1
+  _projectile: {fileID: 8504317211094323919, guid: a02fd930a5788d84cb9ff18d33955f73, type: 3}
+  _attackPoint: {fileID: 8123966103673348519}
+--- !u!1 &4214123574840253693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6793584862293909770}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6793584862293909770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214123574840253693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3662317055963435037}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4521337379373673972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8123966103673348519}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8123966103673348519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4521337379373673972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 1.5, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3662317055963435037}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3654303194236756599
 PrefabInstance:
   m_ObjectHideFlags: 0
