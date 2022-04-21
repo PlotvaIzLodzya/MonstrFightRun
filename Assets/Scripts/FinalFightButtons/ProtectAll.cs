@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ProtectAll : AbilitiyButtonView
 {
-    private IEnumerable<Monster> _monsters;
+    [SerializeField] private ParticleSystem _particleSystem;
 
+    private IEnumerable<Monster> _monsters;
+    private List<ParticleSystem> _tempParticles = new List<ParticleSystem>();
     public override void Cast()
     {
         if(_monsters == null)
@@ -18,6 +20,10 @@ public class ProtectAll : AbilitiyButtonView
     {
         foreach (var monster in _monsters)
         {
+            var particle = Instantiate(_particleSystem, monster.transform);
+            particle.transform.localPosition += new Vector3(0, 1, 0);
+            _tempParticles.Add(particle);
+
             monster.Protected = true;
         }
 
@@ -27,5 +33,12 @@ public class ProtectAll : AbilitiyButtonView
         {
             monster.Protected = false;
         }
+
+        foreach (var tempParticle in _tempParticles)
+        {
+            tempParticle.Stop();
+        }
+
+        _tempParticles.RemoveRange(0,_tempParticles.Count);
     }
 }

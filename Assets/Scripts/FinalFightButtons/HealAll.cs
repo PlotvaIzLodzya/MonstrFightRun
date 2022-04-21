@@ -16,7 +16,8 @@ public class HealAll : AbilitiyButtonView
         foreach (var monster in _monsters)
         {
             monster.Health.Increase(ValueHandler.Amount);
-            PlayParticle(monster.transform.position);
+            Vector3 position = monster.transform.position + new Vector3(0, 1, 0);
+            PlayParticle(position);
         }
     }
 

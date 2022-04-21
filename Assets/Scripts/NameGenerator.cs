@@ -5,10 +5,8 @@ using UnityEngine;
 
 public static class NameGenerator
 {
-    public static string GenerateProfileId(int length)
+    public static string GenerateProfileId(string chars, int length)
     {
-        const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-
         var random = new System.Random();
 
         return new string(Enumerable.Repeat(chars, length)

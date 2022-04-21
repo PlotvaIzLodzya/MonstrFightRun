@@ -879,8 +879,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6076842748265765150}
   m_HandleRect: {fileID: 5146664240472172074}
   m_Direction: 0
-  m_Value: -0.0000017029944
-  m_Size: 0.9517775
+  m_Value: 0.0000034059772
+  m_Size: 0.95177734
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 571863174325910327}
   m_HandleRect: {fileID: 8621133790783168002}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2401,6 +2401,10 @@ PrefabInstance:
       propertyPath: _icon
       value: 
       objectReference: {fileID: 21300000, guid: b3d8dbe835c404179842f9f9595f2bf0, type: 3}
+    - target: {fileID: 5423120168923652131, guid: d71cead8e8d8b2e45b399922f12c83bc, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 198332385175974526, guid: b216a5fba948a0c4ea5eefff779b6dff, type: 3}
     - target: {fileID: 6788815339825739820, guid: d71cead8e8d8b2e45b399922f12c83bc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2489,6 +2493,10 @@ PrefabInstance:
       propertyPath: _icon
       value: 
       objectReference: {fileID: 21300000, guid: 3c6f5b7a54bd84489ba7d655c5b7b812, type: 3}
+    - target: {fileID: 8092419870646928868, guid: d71cead8e8d8b2e45b399922f12c83bc, type: 3}
+      propertyPath: _minValue
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8919267567946761491, guid: d71cead8e8d8b2e45b399922f12c83bc, type: 3}
       propertyPath: _icon
       value: 

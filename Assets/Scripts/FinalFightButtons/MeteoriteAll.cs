@@ -6,11 +6,32 @@ public class MeteoriteAll : AbilitiyButtonView
 {
     [SerializeField] private Meteorite _meteorite;
 
+    private MeteoriteTarget[] _targets;
+    private MeteoritePoint[] _spawnPoints;
     public override void Cast()
     {
-        Vector3 spawnPoint = Camera.main.transform.GetComponentInChildren<MeteoritePoint>().transform.position;
+        _spawnPoints = Camera.main.transform.GetComponentsInChildren<MeteoritePoint>();
+        _targets = Camera.main.transform.GetComponentsInChildren<MeteoriteTarget>();
 
-        var meteorite = Instantiate(_meteorite, spawnPoint, Quaternion.identity);
-        meteorite.Init(ValueHandler.Amount);
+        StartCoroutine(MeteoriteShower());
+    }
+
+    private IEnumerator MeteoriteShower()
+    {
+        int index = 0;
+
+        foreach (var target in _targets)
+        {
+            var meteorite = Instantiate(_meteorite, _spawnPoints[index].transform.position, Quaternion.identity);
+
+            meteorite.Init(ValueHandler.Amount, target.transform.position, 0.3f);
+
+            index++;
+
+            if (index > _targets.Length)
+                index = 0;
+
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

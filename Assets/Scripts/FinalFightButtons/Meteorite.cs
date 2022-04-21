@@ -7,8 +7,9 @@ public class Meteorite : MonoBehaviour
     [SerializeField] private LayerMask _ground;
     [SerializeField] private LayerMask _enemy;
     [SerializeField] private float _radius;
-    [SerializeField] private float _time;
+    [SerializeField] private ParticleSystem[] _particleSystems;
 
+    private float _time;
     private bool _collided;
     private float _damage;
 
@@ -17,22 +18,42 @@ public class Meteorite : MonoBehaviour
         if (other.TryGetComponent(out Ground ground))
         {
             Exploode();
+            PlayParticleOnImpact();
+            StartCoroutine(FadeAnimation(transform.GetChild(0)));
             _collided = true;
         }
     }
 
-    public void Init(float damage)
+    public void Init(float damage, Vector3 destination, float time)
     {
-        Vector3 destination;
-
         _damage = damage;
+        _time = time;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit raycastHit, _ground))
+        StartCoroutine(FlyAnimation(destination));
+    }
+
+    private void PlayParticleOnImpact()
+    {
+        foreach (var particle in _particleSystems)
         {
-            destination = raycastHit.point;
-
-            StartCoroutine(FlyAnimation(destination));
+            particle.Play();
         }
+    }
+
+    private IEnumerator FadeAnimation(Transform model)
+    {
+        float changeSpeed = 1/0.5f;
+
+        yield return new WaitForSeconds(1f);
+
+        while (model.transform.localScale.x > 0)
+        {
+            model.transform.localScale = Vector3.MoveTowards(model.transform.localScale, Vector3.zero, changeSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        Destroy(model.gameObject);
     }
 
     private void Exploode()
@@ -52,12 +73,11 @@ public class Meteorite : MonoBehaviour
     private IEnumerator FlyAnimation(Vector3 destination)
     {
         float speed = Vector3.Distance(transform.position, destination) / _time;
-        Vector3 directaion = destination - transform.position;
-
+        Vector3 direction = destination - transform.position;
 
         while(_collided == false)
         {
-            transform.position += directaion.normalized * speed * Time.deltaTime;
+            transform.position += direction.normalized * speed * Time.deltaTime;
 
             yield return null;
         }
