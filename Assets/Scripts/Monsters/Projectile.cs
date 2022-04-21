@@ -35,8 +35,13 @@ public class Projectile : MonoBehaviour
     private void OnHit(Monster target, float damage)
     {
         if (target.IsAllive == false || target == null)
-            target.ApplyDamage(damage);
+        {
+            Explode();
+            return;
+        }
+            
 
+        target.ApplyDamage(damage);
         Explode();
     }
 
