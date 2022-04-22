@@ -35,7 +35,7 @@ public class StateMachine: MonoBehaviour
     {
         if(TryFindTarget(_agroRadius))
         {
-            if (Vector3.Distance(transform.position, _target.transform.position) <= _attackRadius)
+            if (Vector3.Distance(transform.position, _target.transform.position) < _attackRadius)
             {
                 SetBehavior(_attackState);
 

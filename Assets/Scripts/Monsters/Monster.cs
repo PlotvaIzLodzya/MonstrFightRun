@@ -13,9 +13,9 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
     [SerializeField] private Transform _pointForProjectile;
+    [HideInInspector] public bool Protected;
 
     public string Name;
-    public bool Protected;
     private int _maxLevel = 80;
     private ResizeAnimation ResizeAnimation;
     private Attack _attack;
@@ -82,7 +82,7 @@ public class Monster : MonoBehaviour, IMergeable
     {
         DealtDamage?.Invoke();
 
-        if (Target.IsAllive == false || Target == null)
+        if (Target == null || Target.IsAllive == false)
             return;
 
         _attack.Perform(Target, _damage);
