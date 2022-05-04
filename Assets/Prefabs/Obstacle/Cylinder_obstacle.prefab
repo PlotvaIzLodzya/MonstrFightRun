@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2416964132662512067}
   - component: {fileID: 2998962442944208655}
-  - component: {fileID: 2453142341408066371}
+  - component: {fileID: 8921953696647056746}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -45,7 +45,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6145859, y: 0.6961194, z: 3.0159276}
   m_Center: {x: 0, y: 1.0535918, z: 0}
---- !u!114 &2453142341408066371
+--- !u!114 &8921953696647056746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,9 +54,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3162732114782442582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff8bc2535232244c8b34e97b3d2b146, type: 3}
+  m_Script: {fileID: 11500000, guid: cc9e5f82b47e4ee46b04a3d5194ff464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _infiniteUse: 1
+  _particleSystem: {fileID: 19875214, guid: 23c97901a2f375b479167b2ae9716563, type: 3}
 --- !u!1 &6759121809860355983
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854143845914422726}
+  - component: {fileID: 274204467664633779}
   m_Layer: 0
   m_Name: Cylinder_obstacle
   m_TagString: Untagged
@@ -169,6 +172,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &274204467664633779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472692902821164924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40812a71966aa24fb461be08027d610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
+  Offset: 0
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8171046329593678653
 GameObject:
   m_ObjectHideFlags: 0

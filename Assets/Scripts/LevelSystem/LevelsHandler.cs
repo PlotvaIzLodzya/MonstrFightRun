@@ -58,7 +58,6 @@ public class LevelsHandler : MonoBehaviour
             _levelList.GetRandomScene(Counter).LoadSceneAsync();
         else
             _levelList.GetScene(Counter).LoadSceneAsync();
-        Debug.Log(Counter);
     }
 
     public void RestartLevel()
@@ -71,17 +70,21 @@ public class LevelsHandler : MonoBehaviour
     }
 
     public void OnLevelCompleted()
-    {
-        _integrationMetric.OnLevelComplete(GetTime(), Counter);
+    { 
+        WalletView walletView = FindObjectOfType<WalletView>();
+        int currencyCollected = (int)walletView.CurrencyCollected;
+        int amount = (int)walletView.Amount;
+
+        _integrationMetric.OnLevelComplete(GetTime(), Counter, currencyCollected, amount);
 
         Counter++;
 
         _saveSystem.SaveLevelsProgression(Counter);
     }
 
-    private void OnLevelFailed()
+    private void OnLevelFailed(string lostCouse)
     {
-        _integrationMetric.OnLevelFail(GetTime(), Counter);
+        _integrationMetric.OnLevelFail(GetTime(), Counter, lostCouse);
     }
 
     private int GetTime()

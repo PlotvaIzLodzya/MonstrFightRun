@@ -4,21 +4,18 @@ using UnityEngine;
 using RunnerMovementSystem;
 using RunnerMovementSystem.Examples;
 
-[RequireComponent(typeof(MovementSystem), typeof(MouseInput))]
-public class CameraTarget : MonoBehaviour
+[RequireComponent(typeof(BoxCollider), typeof(Rigidbody))]
+public class CameraTarget : MonoBehaviour, IJumpable
 {
-    private MovementSystem _movementSystem;
-    private MouseInput _mouseInput;
-    private PlayerDeathHandler _playerDeathHandler;
+    [SerializeField]private MovementSystem _movementSystem;
+    [SerializeField]private MouseInput _mouseInput;
 
+    private PlayerDeathHandler _playerDeathHandler;
+    private JumpAnimation _jumpAnimation = new JumpAnimation();
     private void Awake()
     {
         _playerDeathHandler = FindObjectOfType<PlayerDeathHandler>();
         Error.CheckOnNull(_playerDeathHandler, nameof(PlayerDeathHandler));
-
-        _mouseInput = GetComponent<MouseInput>();
-
-        _movementSystem = GetComponent<MovementSystem>();
     }
 
     private void OnEnable()
@@ -30,7 +27,12 @@ public class CameraTarget : MonoBehaviour
     {
         _playerDeathHandler.PlayerLost -= DisableControl;
     }
-    private void DisableControl()
+
+    public void Jump(AnimationCurve animationCurve)
+    {
+        StartCoroutine(_jumpAnimation.Play(animationCurve, transform));
+    }
+    private void DisableControl(string lostCousse)
     {
         _movementSystem.enabled = false;
         _playerDeathHandler.PlayerLost -= DisableControl;

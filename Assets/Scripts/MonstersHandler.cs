@@ -15,7 +15,6 @@ public class MonstersHandler : MonoBehaviour
     private const int AddLevelOnMerge = 10;
     private int _monstersMight;
     private int _counter = 0;
-
     public int MonsterCounter { get; private set; }
     public int MonsterMight => _monstersMight;
 
@@ -31,32 +30,56 @@ public class MonstersHandler : MonoBehaviour
         _monsterPlaces = GetComponentsInChildren<MonsterPlace>();
         Error.CheckOnNull(_monsterPlaces[0], nameof(MonsterPlace));
 
+        for (int i = 0; i < _monsterPlaces.Length; i++)
+        {
+            _monsterPlaces[i].Position = i;
+        }
+
         TrySetMonsterToPlace(_initialMonster, 1);
     }
 
-    public void KillAllMonsters()
+    private void OnEnable()
+    {
+        foreach (var monsterPlace in _monsterPlaces)
+        {
+            monsterPlace.PlaceFree += SwapMonsterPlaces;
+            monsterPlace.CurrencyPickedUp += PickUpCurrency;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var monsterPlace in _monsterPlaces)
+        {
+            monsterPlace.PlaceFree -= SwapMonsterPlaces;
+            monsterPlace.CurrencyPickedUp -= PickUpCurrency;
+        }
+    }
+
+    public void KillAllMonsters(LostCouse lostCouse)
     {
         var monsters = GetAllMonsters();
 
         foreach (var monster in monsters)
         {
-            monster.Die();
+            monster.Die(lostCouse);
         }
     }
 
     public bool TrySetMonsterToPlace(Monster monster, int level)
     {
-        MonsterPlace place = _monsterPlaces.FirstOrDefault(place => place.IsTaken == false || place.Monster.GetType() == monster.GetType());
+        MonsterPlace place = _monsterPlaces.FirstOrDefault(place => place.IsTaken == false);
+        MonsterPlace placeWithMonster = _monsterPlaces.FirstOrDefault(placeWithMonster => placeWithMonster.Monster != null && placeWithMonster.Monster.GetType() == monster.GetType());
 
-        if (place != default)
+        if (place != default || placeWithMonster != default)
         {
-            if (CanMerge(monster, place))
+            if (CanMerge(monster, placeWithMonster))
             {
                 ChangeMonstersMight(AddLevelOnMerge);
 
-                MonsterMerged?.Invoke(place.Monster);
+                MonsterMerged?.Invoke(placeWithMonster.Monster);
 
-                return place.Monster.TryMerge(AddLevelOnMerge);
+                return placeWithMonster.Monster.TryMerge(AddLevelOnMerge);
             }
 
             SetMonsterToPlace(monster, place, level);
@@ -108,6 +131,48 @@ public class MonstersHandler : MonoBehaviour
         CurrencyPickedUp?.Invoke(amount);
     }
 
+    public IEnumerable<Monster> GetAllMonsters()
+    {
+        var monsters = from MonsterPlace monsterPlace in _monsterPlaces
+                       where monsterPlace.Monster != null
+                       select monsterPlace.Monster;
+
+        return monsters;
+    }
+
+    private void SwapMonsterPlaces(MonsterPlace monsterPlace)
+    {
+        _monsterHandlerColliders.DisableCollider(monsterPlace);
+        MonsterPlace currentPlace = _monsterPlaces.FirstOrDefault(place => place.Monster != null && place.Position > monsterPlace.Position);
+
+        if (currentPlace != default)
+        {
+            _monsterHandlerColliders.DisableCollider(currentPlace);
+            _monsterHandlerColliders.EnableCollider(monsterPlace);
+
+            currentPlace.Monster.transform.SetParent(monsterPlace.transform, true);
+            monsterPlace.Take(currentPlace.Monster);
+            StartCoroutine(MoveTo(currentPlace.Monster, currentPlace));
+            currentPlace.Free();
+        }
+
+    }
+
+    private IEnumerator MoveTo(Monster monster, MonsterPlace monsterPlace)
+    {
+        float distance = Vector3.Distance(monster.transform.localPosition, Vector3.zero);
+        float speed = distance / 0.5f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        while (monster.transform.localPosition != Vector3.zero && monster.IsAllive)
+        {
+            monster.transform.localPosition = Vector3.MoveTowards(monster.transform.localPosition, Vector3.zero, speed * Time.deltaTime);
+
+            yield return null;
+        }
+    }
+
     private void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
@@ -129,16 +194,7 @@ public class MonstersHandler : MonoBehaviour
 
     private bool CanMerge(Monster monster, MonsterPlace place)
     {       
-        return place.Monster != null && place.Monster.GetType() == monster.GetType();
-    }
-
-    private IEnumerable<Monster> GetAllMonsters()
-    {
-        var monsters = from MonsterPlace monsterPlace in _monsterPlaces
-                       where monsterPlace.Monster != null
-                       select monsterPlace.Monster;
-
-        return monsters;
+        return place != default && place.Monster != null && place.Monster.GetType() == monster.GetType();
     }
 
     private Monster GetMonster(Monster monster)

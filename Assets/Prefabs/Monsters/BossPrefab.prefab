@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2925640269213527632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4676767847979285325}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4676767847979285325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925640269213527632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1715623065084709645}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4013230489286090046
 GameObject:
   m_ObjectHideFlags: 0
@@ -20,6 +50,7 @@ GameObject:
   - component: {fileID: 814496287340160597}
   - component: {fileID: 887231079957600710}
   - component: {fileID: 9216172753416875984}
+  - component: {fileID: 5171784198593863336}
   m_Layer: 6
   m_Name: BossPrefab
   m_TagString: Untagged
@@ -39,6 +70,8 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 363022248627838582}
+  - {fileID: 6499744455962288597}
+  - {fileID: 4676767847979285325}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -103,6 +136,8 @@ MonoBehaviour:
   _damagePerLevel: 2
   _speed: 3
   _level: 80
+  _pointForProjectile: {fileID: 6499744455962288597}
+  Protected: 0
   Name: 
 --- !u!114 &6070055443634328294
 MonoBehaviour:
@@ -116,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agroRadius: 20
+  _agroRadius: 10
   _attackRadius: 3
   _attackBehavior: {fileID: 6517863217607897292}
   _monsterLayerMask:
@@ -202,6 +237,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 8005276618521265264}
+  _CurrencySpawnPoint: {fileID: 0}
+--- !u!114 &5171784198593863336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013230489286090046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0
+  _projectile: {fileID: 0}
+  _attackPoint: {fileID: 0}
 --- !u!1 &7748913654217677949
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +311,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e98bbe5d0845b459dcb354cc21929a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8565964053974731853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6499744455962288597}
+  m_Layer: 6
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6499744455962288597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565964053974731853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9172658, z: 0.17921957}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1715623065084709645}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8069514787524303780
 PrefabInstance:
   m_ObjectHideFlags: 0

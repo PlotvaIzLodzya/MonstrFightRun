@@ -8,7 +8,7 @@ using System;
 public class MonsterList : ScriptableObject
 {
     [SerializeField] private List<Monster> _monsters;
-    [SerializeField] private PowerUp _powerUp;
+    [SerializeField] private Interactable _powerUp;
 
     private List<Monster> _monsterPool = new List<Monster>();
 
@@ -48,7 +48,7 @@ public class MonsterList : ScriptableObject
 
     }
 
-    public PowerUp GetPowerUp()
+    public Interactable GetPowerUp()
     {
         return _powerUp;
     }
@@ -65,5 +65,10 @@ public class MonsterList : ScriptableObject
         var monsterToRemove = _monsterPool.FirstOrDefault(currentMonster => currentMonster.GetType() == monster.GetType());
 
         _monsterPool.Remove(monsterToRemove);
+    }
+
+    public void AddMonster(Monster monster)
+    {
+        _monsterPool.Add(monster);
     }
 }

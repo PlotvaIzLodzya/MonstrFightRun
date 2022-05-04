@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDeathBehavior
 {
-    public void Die();
+    public void Die(LostCouse lostCouse);
 }

@@ -1,41 +1,51 @@
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [CustomEditor(typeof(RoadPositioning)), CanEditMultipleObjects]
 public class PlaceAlongPathGUI : Editor
 {
-    [SerializeField] private float _offset;
-    [SerializeField] private float _height;
+    private RoadPositioning _roadPositioning;
 
+    private void Awake()
+    {
+        _roadPositioning = (RoadPositioning)target;
+    }
     public override void OnInspectorGUI()
     {
-
-        _offset = EditorGUILayout.Slider("Offset", _offset, -2, 2);
-        _height = EditorGUILayout.Slider("Height", _height, 0, 1);
-
-        _offset = Constrainer(_offset);
-        _height = Constrainer(_height);
-        
+        base.OnInspectorGUI();        
 
         if (GUILayout.Button("Place"))
         {
             foreach (RoadPositioning roadPositioning in targets)
             {
-                roadPositioning.Place(_height, _offset);
+                roadPositioning.Place();
             }
+            
         }
+
 
         if(GUILayout.Button("Place without rotation"))
         {
             foreach (RoadPositioning roadPositioning in targets)
             {
-                roadPositioning.PlaceWithoutRotation(_height, _offset);
+                roadPositioning.PlaceWithoutRotation();
             }
         }
-    }
 
-    private float Constrainer(float value)
-    {
-        return Mathf.Round(value * 10) * 0.1f;
+
+        if(GUILayout.Button("Place by curve"))
+        {
+            foreach (RoadPositioning roadPositioning in targets)
+            {
+                roadPositioning.PlaceByCurve();
+            }
+        }
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(_roadPositioning);
+            EditorSceneManager.MarkSceneDirty(_roadPositioning.gameObject.scene);
+        }
     }
 }

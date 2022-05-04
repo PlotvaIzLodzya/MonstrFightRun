@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class RagdollHandler : MonoBehaviour
 {
+    [SerializeField] private bool _dontPushAfterDeath;
+
     private Rigidbody[] _rigidbodys;
 
     private List<Collider> _colliders = new List<Collider>();
 
     private const int DeadLayer = 9;
     public Chest Chest { get; private set; }
+
     private void Start()
     {
         _rigidbodys = GetComponentsInChildren<Rigidbody>();
@@ -45,6 +48,7 @@ public class RagdollHandler : MonoBehaviour
             collider.gameObject.layer = DeadLayer;
         }
 
-        Chest.Push(300f);
+        if(_dontPushAfterDeath == false)
+            Chest.Push(300f);
     }
 }

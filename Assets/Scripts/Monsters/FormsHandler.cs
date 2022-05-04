@@ -22,13 +22,13 @@ public class FormsHandler : MonoBehaviour
         if (_forms[0] == null)
             return;
 
-        EnableFirstForm();
+        EnableInitialForm();
     }
 
     public void SetForm(Form form)
     {
         _forms.Add(form);
-        EnableFirstForm();
+        EnableInitialForm();
     }
 
     public bool TryEnableNextForm()
@@ -72,7 +72,18 @@ public class FormsHandler : MonoBehaviour
         CurrentForm.gameObject.SetActive(true);
     }
 
-    private void EnableFirstForm()
+    public void EnableFirstForm()
+    {
+        for (int i = 0; i < _forms.Count; i++)
+        {
+            if (i == 0)
+                SetCurrentForm(i);
+            else
+                _forms[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void EnableInitialForm()
     {
         for (int i = 0; i < _forms.Count; i++)
         {

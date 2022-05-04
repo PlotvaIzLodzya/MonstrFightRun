@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc60c4b2a5e642448226cc9743bb72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _infiniteUse: 0
 --- !u!95 &2040780869793466413
 Animator:
   serializedVersion: 3
@@ -186,5 +187,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40812a71966aa24fb461be08027d610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Height: 0
+  Height: 0.8
   Offset: 0
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

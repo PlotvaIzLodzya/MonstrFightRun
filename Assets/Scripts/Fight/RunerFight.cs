@@ -30,7 +30,7 @@ public class RunerFight: AttackBehavior
             monsterOfPlayer.SetTarget(enemyMonster);
             monsterOfPlayer.DealtDamage += Push;
             _monsterOfPlayer.DealDamage();
-            _enemyMonster.Die();
+            _enemyMonster.Die(LostCouse.RunerEnemy);
         }
         else
         {
@@ -49,15 +49,17 @@ public class RunerFight: AttackBehavior
     private void Die()
     {
         
-        _player.Die();
+        _player.Die(LostCouse.RunerEnemy);
         StartCoroutine(PushBackAnimation());
-        _player.KillAllMonsters();
+        _player.KillAllMonsters(LostCouse.RunerEnemy);
         _enemyMonster.DealtDamage -= Die;
     }
 
     private IEnumerator PushBackAnimation()
     {
         float elapsedTime = 0;
+
+        Debug.Log(transform.name);
 
         while(elapsedTime < 0.2f)
         {

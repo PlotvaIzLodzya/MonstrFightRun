@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264371378779962598}
   - component: {fileID: 7528052502171686663}
+  - component: {fileID: 4817254300470194447}
   m_Layer: 0
   m_Name: DoubleGate
   m_TagString: Untagged
@@ -45,7 +46,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baae239753c69f04bbe01a74a9d99c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsters: {fileID: 11400000, guid: 7785041dbbf6cd343bc308648e922c0f, type: 2}
+--- !u!114 &4817254300470194447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726315211088018856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40812a71966aa24fb461be08027d610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
+  Offset: 0
 --- !u!1001 &2075294716740996752
 PrefabInstance:
   m_ObjectHideFlags: 0

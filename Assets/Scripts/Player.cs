@@ -11,18 +11,18 @@ public class Player : MonoBehaviour
     [SerializeField] private Collider _collider;
     [SerializeField] private MouseInput _mouseInput;
 
-    private int _multiplier = 1;
+    private float _multiplier = 1f;
     private int _counter;
-    private CurrencyWallet _currencyWallet = new CurrencyWallet();
+    private ValueHandler _currencyHandler = new ValueHandler(0, "Currency");
 
     public MouseInput MouseInput => _mouseInput;
     public int Might => _monstersHandler.MonsterMight;
-    public CurrencyWallet CurrencyWallet => _currencyWallet;
+    public ValueHandler CurrencyHandler => _currencyHandler;
     public UIHandler UiHandler => _uIHandler;
 
     private void Awake()
     {
-        _currencyWallet.LoadAmount();
+        _currencyHandler.LoadAmount();
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         _monstersHandler.CurrencyPickedUp -= OnCurrencyPickedUp;
     }
 
-    public void SetMuliplier(int multiplier)
+    public void SetMuliplier(float multiplier)
     {
         _multiplier = multiplier;
     }
@@ -50,27 +50,27 @@ public class Player : MonoBehaviour
         _collider.enabled = false;
     }
 
-    public void Die()
+    public void Die(LostCouse lostCouse)
     {
-        _deathHandler.Die();
+        _deathHandler.Die(lostCouse);
     }
 
-    public void KillAllMonsters()
+    public void KillAllMonsters(LostCouse lostCouse)
     {
-        _monstersHandler.KillAllMonsters();
+        _monstersHandler.KillAllMonsters(lostCouse);
     }
 
-    public void OnMonsterDie()
+    public void OnMonsterDie(LostCouse lostCouse)
     {
         _counter++;
 
         if (_counter >= _monstersHandler.MonsterCounter)
-            Die();
+            Die(lostCouse);
     }
 
     private void OnCurrencyPickedUp(int amount)
     {
-        var mulipliedAmount = amount * _multiplier;
-        _currencyWallet.InceaseCurrency(mulipliedAmount);
+        float mulipliedAmount = amount * _multiplier;
+        _currencyHandler.Increase(mulipliedAmount);
     }
 }

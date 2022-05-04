@@ -14,7 +14,7 @@ public class Health
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _currentHealth;
 
-    public event Action<float, float> HealthChanged;
+    public event Action<float, float, float> HealthChanged;
 
     public void Init(float level)
     {
@@ -23,18 +23,27 @@ public class Health
         _maxHealth = health;
         _currentHealth = health;
 
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        HealthChanged?.Invoke(_currentHealth, _maxHealth, 0);
     }
 
     public void Decrease(float damage)
     {
         _currentHealth -= damage;
 
-
         if (_currentHealth <= 0)
             _currentHealth = 0;
 
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        HealthChanged?.Invoke(_currentHealth, _maxHealth, -damage);
+    }
+
+    public void Increase(float health)
+    {
+        _currentHealth += health;
+
+        if (_currentHealth >= MaxHealth)
+            _currentHealth = MaxHealth;
+
+        HealthChanged?.Invoke(_currentHealth, _maxHealth, health);
     }
 
     public void IncreaseMaxHealth(float level)
@@ -43,8 +52,6 @@ public class Health
 
         _maxHealth = health;
         _currentHealth = health;
-
-        HealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     private float CalctulateHealth(float level)

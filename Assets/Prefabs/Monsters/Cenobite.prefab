@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -7415137142007887291}
   - component: {fileID: 5077960941191452199}
   - component: {fileID: 8582147808129861489}
+  - component: {fileID: 8477414712064332852}
   m_Layer: 7
   m_Name: Cenobite
   m_TagString: Untagged
@@ -38,6 +39,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1648695248796500366}
+  - {fileID: 2054270401945577947}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,6 +60,8 @@ MonoBehaviour:
   _damagePerLevel: 2.5
   _speed: 4
   _level: 0
+  _pointForProjectile: {fileID: 2054270401945577947}
+  Protected: 0
   Name: Cenobite
 --- !u!114 &263208958283675340
 MonoBehaviour:
@@ -87,7 +91,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -117,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agroRadius: 20
-  _attackRadius: 3
+  _agroRadius: 25
+  _attackRadius: 7
   _attackBehavior: {fileID: 9185966087264629855}
   _monsterLayerMask:
     serializedVersion: 2
@@ -145,7 +149,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7409861
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -174,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 1207480181364382116}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &8582147808129861489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +194,22 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 1181063364622969746}
   _point: {fileID: 1207480181364382117}
+--- !u!114 &8477414712064332852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648695248674936023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 1
+  _projectile: {fileID: 2722240817811937054, guid: 32e0be24dda59364e81907aac871b739, type: 3}
+  _attackPoint: {fileID: 2054270401945577947}
+  _DontSwitchRangeOnStart: 0
 --- !u!1 &1648695248796500367
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +285,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotatorOptions: {fileID: 11400000, guid: a60b2e7b06473354eaa9786af107b483, type: 2}
+--- !u!1 &4683628527866795247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2054270401945577947}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2054270401945577947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683628527866795247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1648695248674936022}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &614533759816734500
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,16 +16,16 @@ public class MonsterDeathHandler : MonoBehaviour, IDeathBehavior
         _uIHandler = GetComponent<UIHandler>();
     }
 
-    public void Die()
+    public void Die(LostCouse lostCouse)
     {
         _stateMachine.enabled = false;
         _monsterAnimator.DieAnimation();
         gameObject.layer = 9;
-        _uIHandler.SwitchState();
+        _uIHandler.Disable();
 
         _player = transform.root.GetComponent<Player>();
 
         if (_player != null)
-            _player.OnMonsterDie();
+            _player.OnMonsterDie(lostCouse);
     }
 }

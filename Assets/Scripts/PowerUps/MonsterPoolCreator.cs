@@ -7,6 +7,7 @@ public class MonsterPoolCreator : MonoBehaviour
     [SerializeField] private MonsterList _monsterList;
 
     private ImproveGatesHandler[] _improveGatesHandlers;
+
     private void Awake()
     {
         _improveGatesHandlers = FindObjectsOfType<ImproveGatesHandler>();
@@ -17,6 +18,14 @@ public class MonsterPoolCreator : MonoBehaviour
         {
             improveGatesHandler.Init(_monsterList);
             improveGatesHandler.PlaceMonster();
+        }
+    }
+
+    public void ResetMonster(Monster monster)
+    {
+        foreach (var improveGatesHandler in _improveGatesHandlers)
+        {
+            improveGatesHandler.ResetMonster(monster);
         }
     }
 }

@@ -7,6 +7,8 @@ namespace RunnerMovementSystem
     [RequireComponent(typeof(Rigidbody))]
     public class TransitionTrigger : MonoBehaviour
     {
+        [SerializeField] private AnimationCurve _animationCurve;
+
         private BoxCollider _boxCollider;
         private Rigidbody _body;
 

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class GateIcon : MonoBehaviour
 {
     [SerializeField] private TMP_Text _monsterName;
+    [SerializeField] private Image _rangeIcon;
+    [SerializeField] private MonstersIcons _monstersIcons;
 
     private Monster _monsterIcon;
     private MonstersHandler _monstersHandler;
@@ -42,9 +45,11 @@ public class GateIcon : MonoBehaviour
         _monsterIcon.MonsterAnimator.enabled = false;
 
         _monsterName.text = _monsterIcon.Name;
+
+        _rangeIcon.sprite = _monstersIcons.GetAttackRangeIconSprite(_monsterIcon.Attack.InitialRange);
     }
 
-    public void CreateIcon(PowerUp powerUp)
+    public void CreateIcon(Interactable powerUp)
     {
         Destroy(_monsterIcon.gameObject);
         var powerUpIcon = Instantiate(powerUp, transform, false);
@@ -52,6 +57,12 @@ public class GateIcon : MonoBehaviour
         powerUpIcon.transform.localPosition = Vector3.up *1.5f;
 
         _monsterName.text = $"LevelUp";
+    }
+
+    public void ResetForm()
+    {
+        _counter = 0;
+        _monsterIcon.FormsHandler.EnableFirstForm();
     }
 
     public void UpdateIcon(Monster monster)

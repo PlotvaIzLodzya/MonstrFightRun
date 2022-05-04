@@ -24,7 +24,7 @@ namespace RunnerMovementSystem
 
         private void Awake()
         {
-            _firstRoad = FindObjectOfType<RoadSegment>();
+            _firstRoad = RoadPositioning.FindNearestPath(transform).GetComponent<RoadSegment>();
             Error.CheckOnNull(_firstRoad, nameof(RoadSegment));
 
             _movementBehaviour = new MovementBehaviour(transform, _options);

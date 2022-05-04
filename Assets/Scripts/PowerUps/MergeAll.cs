@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class MergeAll : PowerUp
+public class MergeAll : Interactable
 {
     public override void Use(MonstersHandler monstersHandler)
     {

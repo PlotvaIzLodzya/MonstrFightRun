@@ -32,17 +32,17 @@ public class IntegrationMetric
         AppMetrica.Instance.ReportEvent("level_start", levelProperty);
     }
 
-    public void OnLevelComplete(int levelComplitioTime, int levelIndex)
+    public void OnLevelComplete(int levelComplitioTime, int levelIndex, int amountCollected, int amountInWallet)
     {
-        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelComplitioTime } };
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelComplitioTime }, { "soft_lvl", amountCollected }, { "soft_all", amountInWallet } };
 
         Amplitude.Instance.logEvent("level_complete", userInfo);
         AppMetrica.Instance.ReportEvent("level_complete", userInfo);
     }
 
-    public void OnLevelFail(int levelFailTime, int levelIndex)
+    public void OnLevelFail(int levelFailTime, int levelIndex, string lostCouse)
     {
-        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelFailTime } };
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "level", levelIndex }, { "time_spent", levelFailTime }, { "reason", lostCouse } };
 
         Amplitude.Instance.logEvent("fail", userInfo);
         AppMetrica.Instance.ReportEvent("fail", userInfo);
@@ -54,6 +54,14 @@ public class IntegrationMetric
 
         Amplitude.Instance.logEvent("restart", levelProperty);
         AppMetrica.Instance.ReportEvent("restart", levelProperty);
+    }
+
+    public void OnSoftCurrencySpend(string type, string name, int currencySpend)
+    {
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "type", type }, { "name", name }, {"amount", currencySpend } };
+
+        Amplitude.Instance.logEvent("soft_spent", userInfo);
+        AppMetrica.Instance.ReportEvent("soft_spent", userInfo);
     }
 
     public void SetUserProperty(Amplitude amplitude)

@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 5694629014061799470}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4949846009640034719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4358435376339697740}
+  m_Layer: 7
+  m_Name: PointForProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4358435376339697740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949846009640034719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5694629014061799470}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5694629013974044023
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +154,7 @@ GameObject:
   - component: {fileID: -5339213973782199474}
   - component: {fileID: 1116400972318927695}
   - component: {fileID: 3098945206034469508}
+  - component: {fileID: 6251104496607798326}
   m_Layer: 7
   m_Name: Modest
   m_TagString: Untagged
@@ -144,6 +175,7 @@ Transform:
   m_Children:
   - {fileID: 5694629013974044022}
   - {fileID: 3779700603821184252}
+  - {fileID: 4358435376339697740}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,10 +192,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _healthPerLevel: 5
+    _healthPerLevel: 12
   _damagePerLevel: 5
-  _speed: 3
+  _speed: 4
   _level: 0
+  _pointForProjectile: {fileID: 4358435376339697740}
+  Protected: 0
   Name: Modest
 --- !u!114 &6503530302774671924
 MonoBehaviour:
@@ -193,7 +227,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -223,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de95a939f711182418a71fdfc961bb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agroRadius: 20
+  _agroRadius: 25
   _attackRadius: 3
   _attackBehavior: {fileID: 2782430730521475239}
   _monsterLayerMask:
@@ -251,7 +285,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.538625
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -280,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interfaceObject: {fileID: 5271430028807230812}
+  _CurrencySpawnPoint: {fileID: 0}
 --- !u!114 &3098945206034469508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +330,22 @@ MonoBehaviour:
   _floatingText: {fileID: 92913884053030813, guid: 84b8dbe9373194e41a20b8cc8099ff85, type: 3}
   _monster: {fileID: 3101967689015378006}
   _point: {fileID: 5271430028807230813}
+--- !u!114 &6251104496607798326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5694629014061799471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b848c2a5a038aa949868dd3bc8fee00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 0
+  _projectile: {fileID: 0}
+  _attackPoint: {fileID: 0}
+  _DontSwitchRangeOnStart: 0
 --- !u!1001 &3014200126070608576
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,16 +5,20 @@ using System;
 using RunnerMovementSystem;
 
 [RequireComponent(typeof(MonsterAnimator), typeof(MonsterDeathHandler), typeof(Rigidbody))]
+[RequireComponent(typeof(Attack))]
 public class Monster : MonoBehaviour, IMergeable
 {
     [SerializeField] private Health _health = new Health();
     [SerializeField] private float _damagePerLevel;
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
+    [SerializeField] private Transform _pointForProjectile;
+    [HideInInspector] public bool Protected;
 
     public string Name;
     private int _maxLevel = 80;
     private ResizeAnimation ResizeAnimation;
+    private Attack _attack;
 
     public int FormCounter { get; private set; }
     public MovementSystem MovementSystem { get; private set; }
@@ -24,9 +28,11 @@ public class Monster : MonoBehaviour, IMergeable
     public FormsHandler FormsHandler { get; private set; }
     public MonsterDeathHandler MonsterDeathHandler { get; private set; }
     public bool IsAllive { get; private set; }
+    public Attack Attack => _attack;
     public Health Health => _health;
     public float Speed => _speed;
     public int Level => _level;
+    public Transform PointForProjectile => _pointForProjectile;
     private float _damage => _level * _damagePerLevel;
 
     public event Action<int> LevelChanged;
@@ -38,6 +44,7 @@ public class Monster : MonoBehaviour, IMergeable
     private void Awake()
     {
         IsAllive = true;
+        _attack = GetComponent<Attack>();
 
         Rigidbody = GetComponent<Rigidbody>();
 
@@ -58,6 +65,9 @@ public class Monster : MonoBehaviour, IMergeable
 
     public void ApplyDamage(float damage)
     {
+        if (Protected)
+            return;
+
         Health.Decrease(damage);
 
         Damaged?.Invoke(damage);
@@ -65,29 +75,24 @@ public class Monster : MonoBehaviour, IMergeable
         FormsHandler.CurrentForm.OnDamaged();
 
         if (Health.CurrentHealth <= 0)
-            Die();
+            Die(LostCouse.Battle);
     }
 
     public void DealDamage()
     {
         DealtDamage?.Invoke();
 
-        if (Target == null)
+        if (Target == null || Target.IsAllive == false)
             return;
 
-        if (Target.IsAllive == false)
-        {
-            return;
-        }
-
-        Target.ApplyDamage(_damage);
+        _attack.Perform(Target, _damage);
     }
 
-    public void Die()
+    public void Die(LostCouse lostCouse)
     {
         if (IsAllive)
         {
-            MonsterDeathHandler.Die();
+            MonsterDeathHandler.Die(lostCouse);
             IsAllive = false;
             Died?.Invoke();
         }
@@ -97,7 +102,7 @@ public class Monster : MonoBehaviour, IMergeable
     {
         if (FormsHandler.TryEnableNextForm())
         {
-            LevelUp(level);
+            LevelUp(level, true);
             FormCounter++;
 
             return true;
@@ -106,11 +111,11 @@ public class Monster : MonoBehaviour, IMergeable
         return false;
     }
 
-    public void LevelUp(int level)
+    public void LevelUp(int level, bool evo = false)
     {
         _level += level;
         _level = Mathf.Clamp(_level, 0, _maxLevel);
-        ResizeAnimation.PlayEnlargeAnimation(_level);
+        ResizeAnimation.PlayEnlargeAnimation(_level, evo);
         _health.IncreaseMaxHealth(_level);
         LevelChanged?.Invoke(_level);
     }

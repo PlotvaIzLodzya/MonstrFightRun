@@ -64,7 +64,7 @@ public class Rotator : MonoBehaviour
             xRotation -= 360;
     }
 
-    private void Disable()
+    private void Disable(string lostCouse)
     {
         this.enabled = false;
     }

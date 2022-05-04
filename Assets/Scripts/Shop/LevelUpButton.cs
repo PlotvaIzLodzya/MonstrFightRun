@@ -6,15 +6,29 @@ using TMPro;
 
 public class LevelUpButton : ShopButton
 {
-    [SerializeField] private int _levelsAmount;
-    [SerializeField] private TMP_Text value;
+    [SerializeField] private int _levelsPerBuy;
+    [SerializeField] private TMP_Text _levels;
+
+    private const string SaveName = "LevelUpButton";
+    private MonstersHandler _monstersHandler;
     private void Awake()
     {
-        value.text = $"+{_levelsAmount}";
+        LoadProgression(SaveName);
+        UpdateInfo();
+        _monstersHandler = FindObjectOfType<MonstersHandler>();
+
+        _monstersHandler.LevelUpAllMonster((int)ValueHandler.Value-1);
     }
 
-    public override void Buy(int cost)
+    public override void Buy(float cost)
     {
-        FindObjectOfType<MonstersHandler>().LevelUpAllMonster(_levelsAmount);
+        ValueHandler.Increase(_levelsPerBuy);
+        _monstersHandler.LevelUpAllMonster(_levelsPerBuy);
+    }
+
+    protected override void UpdateInfo()
+    {
+        _levels.text = $"Lv.{ValueHandler.Value}";
+        base.UpdateInfo();
     }
 }

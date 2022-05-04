@@ -8,6 +8,7 @@ public class ImproveGatesHandler : MonoBehaviour
     private MonsterList _monstersList;
 
     private Gate[] _gates;
+
     private void OnEnable()
     {
         _gates = GetComponentsInChildren<Gate>();
@@ -31,6 +32,19 @@ public class ImproveGatesHandler : MonoBehaviour
     public void Init(MonsterList monsterList)
     {
         _monstersList = monsterList;
+    }
+
+    public void ResetMonster(Monster monster)
+    {
+        foreach (var gate in _gates)
+        {
+            if (gate.Monster.GetType() == monster.GetType())
+            {
+                gate.ResetMonster();
+            }
+        }
+
+        _monstersList.AddMonster(monster);
     }
 
     public void DisableGates()
@@ -77,8 +91,6 @@ public class ImproveGatesHandler : MonoBehaviour
         if (_monstersList.TryGetRandomMonsterExcept(monsterToBeExcepted, out Monster newMonster))
             gate.ReplaceMonster(newMonster);
         else
-        {
             gate.PlacePowerUp(_monstersList.GetPowerUp());
-        }
     }
 }

@@ -37,8 +37,10 @@ public class ResizeAnimation : MonoBehaviour
         _maxStep = maxLevel;
     }
 
-    public void PlayEnlargeAnimation(int count)
+    public void PlayEnlargeAnimation(int count, bool evo = false)
     {
+        int multiplier = 1;
+
         if (_step < _maxStep)
         {
             _step+= count;
@@ -49,7 +51,10 @@ public class ResizeAnimation : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Enlarge());
+        if (evo)
+            multiplier = 3;
+
+        _coroutine = StartCoroutine(Enlarge(multiplier));
     }
 
     public void ShrinkAnimation(int stepCount)
@@ -59,18 +64,18 @@ public class ResizeAnimation : MonoBehaviour
             _step -= stepCount;
 
             StepChanged?.Invoke(_step, _maxStep);
-
-            StartCoroutine(Shrink());
         }
     }
 
-    private IEnumerator Enlarge()
+    private IEnumerator Enlarge(int multilpier)
     {
-        float changeSpeed = Mathf.Abs(transform.localScale.x - _enlargeScale.x / _enlargeOptions.Time);
+        var targetScale = Vector3.one + (_enlargeScale - Vector3.one) * multilpier;
 
-        while (transform.localScale.x < _enlargeScale.x)
+        float changeSpeed = Mathf.Abs(transform.localScale.x - targetScale.x / _enlargeOptions.Time);
+
+        while (transform.localScale.x < targetScale.x)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, _enlargeScale, changeSpeed * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, changeSpeed * Time.deltaTime);
 
             yield return null;
         }
@@ -86,6 +91,8 @@ public class ResizeAnimation : MonoBehaviour
 
         _coroutine = null;
     }
+
+
 
     private IEnumerator Shrink()
     {
