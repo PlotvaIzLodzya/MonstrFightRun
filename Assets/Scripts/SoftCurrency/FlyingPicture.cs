@@ -8,14 +8,14 @@ public class FlyingPicture : MonoBehaviour
     [SerializeField] private float _time;
     [SerializeField] private Image _image;
 
-    public void Init(Vector3 destination, Sprite sprite, float size, WalletView walletView, int amount)
+    public void Init(Vector3 destination, Sprite sprite, float size, WalletView walletView, float amount)
     {
         _image.sprite = sprite;
         StartCoroutine(Fly(destination, walletView, amount));
         StartCoroutine(SizeChange(size));
     }
 
-    private IEnumerator Fly(Vector3 destination, WalletView walletView, int amount)
+    private IEnumerator Fly(Vector3 destination, WalletView walletView, float amount)
     {
         float distance = Vector3.Distance(transform.localPosition, destination);
         float speed = distance / _time; 

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Currency : PowerUp
+public class Currency : Interactable
 {
     [SerializeField] private int _amount;
 
-    public override void Use(MonstersHandler monstersHandler)
+    public override void Use(MonsterPlace monsterPlace)
     {
-        monstersHandler.PickUpCurrency(_amount);
+        monsterPlace.PickUpCurrency(_amount);
         Destroy(gameObject);
     }
 }

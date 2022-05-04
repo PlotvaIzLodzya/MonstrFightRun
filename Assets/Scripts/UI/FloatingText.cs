@@ -20,6 +20,9 @@ public class FloatingText : MonoBehaviour
 
     public void Init(int addedMight)
     {
+        if (_addedMight == null)
+            return;
+
         _addedMight.text = $"{addedMight}";
 
         if (addedMight < 0)

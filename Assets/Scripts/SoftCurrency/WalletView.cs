@@ -10,6 +10,8 @@ public class WalletView : MonoBehaviour
 
     private Player _player;
 
+    public float Amount => _player.CurrencyHandler.Value;
+    public float CurrencyCollected { get; private set; }
     public Image Image => _image;
 
     private void Awake()
@@ -20,33 +22,34 @@ public class WalletView : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CurrencyWallet.AmountIncreased += OnAmountChange;
-        _player.CurrencyWallet.AmountLoaded += OnAmountLoaded;
-        _player.CurrencyWallet.AmountDecreased += ChangeViewText;
+        _player.CurrencyHandler.ValueIncreased += OnAmountChange;
+        _player.CurrencyHandler.ValueLoaded += OnAmountLoaded;
+        _player.CurrencyHandler.ValueDecreased += ChangeViewText;
     }
 
     private void OnDisable()
     {
-        _player.CurrencyWallet.AmountIncreased -= OnAmountChange;
-        _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
-        _player.CurrencyWallet.AmountDecreased -= ChangeViewText;
+        _player.CurrencyHandler.ValueIncreased -= OnAmountChange;
+        _player.CurrencyHandler.ValueLoaded -= OnAmountLoaded;
+        _player.CurrencyHandler.ValueDecreased -= ChangeViewText;
     }
 
-    public void ChangeViewText(int amount)
+    public void ChangeViewText(float amount)
     {
-        _currencyAmount.text = $"{amount}";
+        _currencyAmount.text = $"{(int)amount}";
     }
 
-    private void OnAmountChange(int amount)
+    private void OnAmountChange(float amount, float changeValue)
     {
-        var flyingPicture = Instantiate(_flyingPicture, transform);
+        var flyingPicture = Instantiate(_flyingPicture, _image.transform);
         flyingPicture.transform.position = _player.UiHandler.Position;
-        flyingPicture.Init(_image.transform.localPosition, _image.sprite, _image.rectTransform.rect.width, this, amount);
+        flyingPicture.Init(Vector3.zero, _image.sprite, _image.rectTransform.rect.width, this, amount);
+        CurrencyCollected += changeValue;
     }
 
-    private void OnAmountLoaded(int amount)
+    private void OnAmountLoaded(float amount)
     {
         ChangeViewText(amount);
-        _player.CurrencyWallet.AmountLoaded -= OnAmountLoaded;
+        _player.CurrencyHandler.ValueLoaded -= OnAmountLoaded;
     }
 }

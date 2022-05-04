@@ -8,17 +8,17 @@ public class HealthPresenter : MonoBehaviour
 {
     [SerializeField] private Monster _monster;
     [SerializeField] private Slider _slider;
-    [SerializeField] private TMP_Text health;
+    [SerializeField] private FloatingText _floatingText;
 
     private float _currentValue;
-    private float _changeSpeed => _slider.maxValue / 0.4f;
+    private float _changeSpeed => _slider.maxValue;
 
     private Coroutine _coroutine;
 
     private void OnEnable()
     {
         _monster.Health.HealthChanged += OnHealthChange;
-        OnHealthChange(_monster.Health.CurrentHealth, _monster.Health.MaxHealth);
+        OnHealthChange(_monster.Health.CurrentHealth, _monster.Health.MaxHealth, 0);
     }
 
     private void OnDisable()
@@ -26,17 +26,21 @@ public class HealthPresenter : MonoBehaviour
         _monster.Health.HealthChanged -= OnHealthChange;
     }
 
-    private void OnHealthChange(float currentHealth, float maxHealth)
+    private void OnHealthChange(float currentHealth, float maxHealth, float healAmount)
     {
-        _currentValue = currentHealth;
         _slider.maxValue = maxHealth;
-
-        health.text = $"{currentHealth}/{maxHealth}";
+        _currentValue = currentHealth;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         StartCoroutine(ChangeAnimation());
+
+        if (healAmount <= 0)
+            return;
+
+        var heal = Instantiate(_floatingText, transform);
+        heal.Init((int)healAmount);
     }
 
     private IEnumerator ChangeAnimation()

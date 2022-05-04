@@ -24,7 +24,7 @@ public class LoseScreenEnabler : MonoBehaviour
         _playerDeathHandler.PlayerLost -= Enable;
     }
 
-    private void Enable()
+    private void Enable(string lostCouse)
     {
         StartCoroutine(DelayedEnable());
     }
