@@ -14,14 +14,13 @@ public class RoadMap : MonoBehaviour
     private int _firstLevelIndex;
     private int _currentLevelIndex;
     private int _remainder;
-    private SaveSystem _saveSystem = new SaveSystem();
 
     private const float FillStep = 0.25f;
 
     private void Awake()
     {
         _pathImage.fillAmount = 0;
-        _currentLevelIndex = _saveSystem.LoadLevelsProgression();
+        _currentLevelIndex = SaveSystem.LoadLevelsProgression();
 
         _remainder = _currentLevelIndex % 5;
 

@@ -20,12 +20,10 @@ public class AbilityUpgradeShopView : ShopButton
 
     private const string SaveName = "AbilityUpgradeShopView";
 
-    private SaveSystem _saveSystem = new SaveSystem();
-
     private void Awake()
     {
         _ability.LoadStats();
-        int currentLevel = 1 + _saveSystem.LoadLevelsProgression();
+        int currentLevel = 1 + SaveSystem.LoadLevelsProgression();
 
         LoadProgression(SaveName);
 

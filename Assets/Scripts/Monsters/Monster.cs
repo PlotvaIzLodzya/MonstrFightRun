@@ -12,13 +12,16 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private float _damagePerLevel;
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
+    [SerializeField] private float _damageScaler;
     [SerializeField] private Transform _pointForProjectile;
     [HideInInspector] public bool Protected;
 
     public string Name;
     private int _maxLevel = 80;
-    private ResizeAnimation ResizeAnimation;
+    private float _damage;
+    private ResizeAnimation _resizeAnimation;
     private Attack _attack;
+    private StatScaler _statScaler = new StatScaler();
 
     public int FormCounter { get; private set; }
     public MovementSystem MovementSystem { get; private set; }
@@ -33,7 +36,6 @@ public class Monster : MonoBehaviour, IMergeable
     public float Speed => _speed;
     public int Level => _level;
     public Transform PointForProjectile => _pointForProjectile;
-    private float _damage => _level * _damagePerLevel;
 
     public event Action<int> LevelChanged;
     public event Action<float> Damaged;
@@ -49,11 +51,13 @@ public class Monster : MonoBehaviour, IMergeable
         Rigidbody = GetComponent<Rigidbody>();
 
         MonsterAnimator = GetComponent<MonsterAnimator>();
-        ResizeAnimation = GetComponentInChildren<ResizeAnimation>();
+        _resizeAnimation = GetComponentInChildren<ResizeAnimation>();
         FormsHandler = GetComponentInChildren<FormsHandler>();
         MonsterDeathHandler = GetComponent<MonsterDeathHandler>();
 
-        ResizeAnimation.SetMaxStep(_maxLevel);
+        _resizeAnimation.SetMaxStep(_maxLevel);
+
+        _damage = _statScaler.ScaleByLevel(_level, _damageScaler, _damagePerLevel);
 
         _health.Init(_level);
     }
@@ -115,7 +119,8 @@ public class Monster : MonoBehaviour, IMergeable
     {
         _level += level;
         _level = Mathf.Clamp(_level, 0, _maxLevel);
-        ResizeAnimation.PlayEnlargeAnimation(_level, evo);
+        _resizeAnimation.PlayEnlargeAnimation(_level, evo);
+        _damage = _statScaler.ScaleByLevel(_level, _damageScaler, _damagePerLevel);
         _health.IncreaseMaxHealth(_level);
         LevelChanged?.Invoke(_level);
     }

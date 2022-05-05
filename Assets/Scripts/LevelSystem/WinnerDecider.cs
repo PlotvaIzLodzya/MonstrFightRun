@@ -9,7 +9,6 @@ public class WinnerDecider : MonoBehaviour
     [SerializeField] private RoadMap _roadMap;
     [SerializeField] private GameObject[] _screensToClose;
 
-    private Boss[] _bosses;
     private MonsterAnimator[] _monsterAnimators;
     private PlayerDeathHandler _playerDeathHandler;
     private int _counter;
@@ -23,36 +22,23 @@ public class WinnerDecider : MonoBehaviour
 
         if (_winScreen.activeInHierarchy)
             _winScreen.SetActive(false);
-
-        _bosses = FindObjectsOfType<Boss>();
-        Error.CheckOnNull(_bosses, nameof(Boss));
     }
 
     private void OnEnable()
     {
         _playerDeathHandler.PlayerLost += OnPlayerLost;
-
-        foreach (var boss in _bosses)
-        {
-            boss.GetComponent<Monster>().Died += OnMonsterDied;
-        }
     }
 
     private void OnDisable()
     {
         _playerDeathHandler.PlayerLost -= OnPlayerLost;
-
-        foreach (var boss in _bosses)
-        {
-            boss.Monster.Died -= OnMonsterDied;
-        }
     }
 
-    public void OnMonsterDied()
+    public void OnMonsterDied(int bossCount)
     {
         _counter++;
 
-        if (_counter >= _bosses.Length)
+        if (_counter >= bossCount)
         {
             StartCoroutine(DelayedEnable());
 

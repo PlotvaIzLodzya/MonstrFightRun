@@ -105,9 +105,11 @@ MonoBehaviour:
   _damagePerLevel: 0
   _speed: 5
   _level: 20
+  _damageScaler: 0.5
+  _healthScaler: 1
   _pointForProjectile: {fileID: 6803224439247552529}
-  Name: 
   Protected: 0
+  Name: 
 --- !u!114 &8702843109924014784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +224,7 @@ MonoBehaviour:
   _attackRange: 0
   _projectile: {fileID: 0}
   _attackPoint: {fileID: 0}
+  _DontSwitchRangeOnStart: 0
 --- !u!1 &5148235704067392603
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class LevelsList : ScriptableObject
     {
         int index = 0;
 
-        if (counter % 5 == 0)
+        if (counter % BossLevelIndex == 0)
         {
             int randomizerForBossLevels = BossLevelIndex * Random.Range(0, 3);
 
@@ -72,8 +72,8 @@ public class LevelsList : ScriptableObject
         PlayerPrefs.SetInt(CurrentLevelIndex, index);
     }
 
-    private bool BossLevelFilter(int index)
+    public static bool BossLevelFilter(int index)
     {
-        return (index % BossLevelIndex) - 1 == 0;
+        return (index % BossLevelIndex) + 1 == BossLevelIndex;
     }
 }

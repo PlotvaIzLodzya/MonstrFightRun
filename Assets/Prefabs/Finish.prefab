@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1239625155663074488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8709901288358460688}
+  - component: {fileID: 8869577673693123380}
+  m_Layer: 0
+  m_Name: Bossprefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8709901288358460688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239625155663074488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2251234753711622533}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8869577673693123380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239625155663074488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfff21c0a4e30674eab30526804444af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bosses: []
 --- !u!1 &1813605876512394162
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +225,7 @@ GameObject:
   - component: {fileID: 1016145343}
   - component: {fileID: 1016145342}
   - component: {fileID: 1016145344}
+  - component: {fileID: 5996488714971749181}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Untagged
@@ -208,6 +253,7 @@ Transform:
   - {fileID: 4631107614117855710}
   - {fileID: 3804884581648158428}
   - {fileID: 4396948380984642137}
+  - {fileID: 8709901288358460688}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -251,6 +297,24 @@ MonoBehaviour:
   _cameraPoint: {fileID: 1645282911}
   _rotationSpeed: 3
   _setPointAsParent: 0
+--- !u!114 &5996488714971749181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2251234753711622538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965386d794699f34fb34713b69715041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossPrefabs:
+  - {fileID: 679788981236622487, guid: 865b044131d646f469be85ea72e4aedb, type: 3}
+  - {fileID: 575183272266389341, guid: 3340bd091bf79764493a02a927b4882a, type: 3}
+  - {fileID: 3357947649400532639, guid: 8266808aea140bb46a8ede6d6ded9267, type: 3}
+  - {fileID: 6712620072516385663, guid: 1c059700ecf407448bfa9b626096312f, type: 3}
+  _normalBosses: {fileID: 8869577673693123380}
 --- !u!1 &7881384543560520382
 GameObject:
   m_ObjectHideFlags: 0

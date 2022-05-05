@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
 
 public class LevelsHandler : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class LevelsHandler : MonoBehaviour
 
     private WinnerDecider _winnderDecider;
     private PlayerDeathHandler _playerDeathHandler;
-    private SaveSystem _saveSystem = new SaveSystem();
     private IntegrationMetric _integrationMetric = new IntegrationMetric();
     private float _timePassed;
 
@@ -23,7 +21,7 @@ public class LevelsHandler : MonoBehaviour
         _playerDeathHandler = FindObjectOfType<PlayerDeathHandler>();
         _winnderDecider = FindObjectOfType<WinnerDecider>();
 
-        Counter = _saveSystem.LoadLevelsProgression();
+        Counter = SaveSystem.LoadLevelsProgression();
     }
 
     private void Start()
@@ -79,7 +77,7 @@ public class LevelsHandler : MonoBehaviour
 
         Counter++;
 
-        _saveSystem.SaveLevelsProgression(Counter);
+        SaveSystem.SaveLevelsProgression(Counter);
     }
 
     private void OnLevelFailed(string lostCouse)

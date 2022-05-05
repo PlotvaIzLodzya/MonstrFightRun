@@ -7,10 +7,13 @@ using UnityEngine;
 public class Health
 {
     [SerializeField] private float _healthPerLevel;
+    [SerializeField] private float _healthScaler;
 
     private float _maxHealth;
     private float _currentHealth;
+    private StatScaler _statScaler = new StatScaler(); 
 
+    public float HealthPerLevel => _healthPerLevel;
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _currentHealth;
 
@@ -18,7 +21,7 @@ public class Health
 
     public void Init(float level)
     {
-        var health = CalctulateHealth(level);
+        var health = _statScaler.ScaleByLevel(level, _healthScaler, _healthPerLevel);
 
         _maxHealth = health;
         _currentHealth = health;
