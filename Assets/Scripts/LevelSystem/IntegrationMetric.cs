@@ -64,6 +64,14 @@ public class IntegrationMetric
         AppMetrica.Instance.ReportEvent("soft_spent", userInfo);
     }
 
+    public void OnAbiltyUsed(string name)
+    {
+        Dictionary<string, object> userInfo = new Dictionary<string, object> { { "name", name } };
+
+        Amplitude.Instance.logEvent("ability_used", userInfo);
+        AppMetrica.Instance.ReportEvent("ability_used", userInfo);
+    }
+
     public void SetUserProperty(Amplitude amplitude)
     {
         amplitude.setUserProperty("session_count", SessionCount);

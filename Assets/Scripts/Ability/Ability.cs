@@ -15,6 +15,7 @@ public abstract class Ability : MonoBehaviour
     private ValueHandler _valueHandler;
     private ValueHandler _amountHandler;
     private float _elapsedTime = 1;
+    private IntegrationMetric _integrationMetric = new IntegrationMetric();
 
     public Sprite Icon => _icon.sprite;
     public string AbilityName => _abilityName;
@@ -50,6 +51,7 @@ public abstract class Ability : MonoBehaviour
                 StartCoroutine(Cooldown());
                 Cast();
                 OnAbilityCasted();
+                _integrationMetric.OnAbiltyUsed(_abilityName);
             }
         }
     }
