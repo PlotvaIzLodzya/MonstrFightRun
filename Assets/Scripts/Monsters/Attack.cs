@@ -15,6 +15,11 @@ public class Attack : MonoBehaviour
 
     private void Awake()
     {
+        InitRunerSetting();
+    }
+
+    public void InitRunerSetting()
+    {
         _inititalRange = _attackRange;
 
         if (_DontSwitchRangeOnStart)

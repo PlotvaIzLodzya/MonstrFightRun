@@ -7,7 +7,6 @@ using System;
 [RequireComponent(typeof(MonsterHandlerColliders))]
 public class MonstersHandler : MonoBehaviour
 {
-    [SerializeField] private Monster _initialMonster;
     [SerializeField] private MonstersAnimatorHandler _monstersAnimatorHandler;
 
     private MonsterHandlerColliders _monsterHandlerColliders;
@@ -34,8 +33,6 @@ public class MonstersHandler : MonoBehaviour
         {
             _monsterPlaces[i].Position = i;
         }
-
-        TrySetMonsterToPlace(_initialMonster, 1);
     }
 
     private void OnEnable()
@@ -90,6 +87,27 @@ public class MonstersHandler : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void TrySetMonsterToPlace(Monster monster, MonsterPlace place, int level)
+    {
+        _monsterHandlerColliders.CreateBoxCollider(place);
+
+        monster.transform.parent = null;
+        monster.transform.SetParent(place.transform);
+        monster.transform.localRotation = Quaternion.identity;
+        monster.transform.localPosition = Vector3.zero;
+        monster.transform.localScale = Vector3.one;
+
+        place.Take(monster);
+
+        _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
+        MonsterCounter++;
+    }
+
+    public void DecreasseCounter()
+    {
+        MonsterCounter--;
     }
 
     public void LevelUpAllMonster(int level)

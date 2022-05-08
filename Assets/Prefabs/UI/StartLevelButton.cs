@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using RunnerMovementSystem.Examples;
 
 public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 {
@@ -20,5 +21,14 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         _abilityShopAnimator.HideIcon();
         _roadMap.Disable();
         RunStarted?.Invoke();
+        FindObjectOfType<CameraFollowing>().enabled = true;
+
+        DisableMonsterShop();
+    }
+
+    private void DisableMonsterShop()
+    {
+        Graber graber = FindObjectOfType<Graber>();
+        graber.enabled = false;
     }
 }

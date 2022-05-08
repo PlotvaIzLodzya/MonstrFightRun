@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 276459037}
   - component: {fileID: 276459038}
   - component: {fileID: 1713777475692394637}
+  - component: {fileID: 3696993509481047658}
   m_Layer: 6
   m_Name: Second
   m_TagString: Untagged
@@ -58,6 +59,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &3696993509481047658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276459036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &331614398
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +84,7 @@ GameObject:
   - component: {fileID: 331614399}
   - component: {fileID: 331614400}
   - component: {fileID: 5607368106860923238}
+  - component: {fileID: 4864552007178720652}
   m_Layer: 6
   m_Name: Sixth
   m_TagString: Untagged
@@ -112,10 +128,24 @@ BoxCollider:
   m_GameObject: {fileID: 331614398}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4864552007178720652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331614398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &821576291
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +157,7 @@ GameObject:
   - component: {fileID: 821576292}
   - component: {fileID: 821576293}
   - component: {fileID: 647302532230469787}
+  - component: {fileID: 6311656227175871395}
   m_Layer: 6
   m_Name: Third
   m_TagString: Untagged
@@ -170,10 +201,24 @@ BoxCollider:
   m_GameObject: {fileID: 821576291}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6311656227175871395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821576291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &1644439419
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +230,7 @@ GameObject:
   - component: {fileID: 1644439420}
   - component: {fileID: 1644439421}
   - component: {fileID: 7548352850301695343}
+  - component: {fileID: 9053631126147854262}
   m_Layer: 6
   m_Name: Fifth
   m_TagString: Untagged
@@ -228,10 +274,24 @@ BoxCollider:
   m_GameObject: {fileID: 1644439419}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9053631126147854262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644439419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &1777157526
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +303,7 @@ GameObject:
   - component: {fileID: 1777157527}
   - component: {fileID: 1777157528}
   - component: {fileID: 4394132849882487056}
+  - component: {fileID: 2656223604770330124}
   m_Layer: 6
   m_Name: Fourth
   m_TagString: Untagged
@@ -286,10 +347,24 @@ BoxCollider:
   m_GameObject: {fileID: 1777157526}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2656223604770330124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777157526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &1995700258
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +376,7 @@ GameObject:
   - component: {fileID: 1995700259}
   - component: {fileID: 1995700260}
   - component: {fileID: 823279145956948123}
+  - component: {fileID: 8216840584680337034}
   m_Layer: 6
   m_Name: First
   m_TagString: Untagged
@@ -348,6 +424,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8216840584680337034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995700258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &2020461893
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f895e7d06f17c8b498748b43f6255fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMonster: {fileID: 5890225089132513927, guid: d26db191ba65e984ab355b3f73ea3a47, type: 3}
   _monstersAnimatorHandler: {fileID: 2096990774342737447}
 --- !u!54 &2020461895
 Rigidbody:
@@ -617,6 +706,7 @@ GameObject:
   - component: {fileID: 545249662074912835}
   - component: {fileID: 3211480284962815235}
   - component: {fileID: 7705961845061732701}
+  - component: {fileID: 7637938101228361263}
   m_Layer: 0
   m_Name: LeadMonster
   m_TagString: Untagged
@@ -665,6 +755,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7637938101228361263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940785713604490140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterPlace: {fileID: 0}
+  _monstersHandler: {fileID: 2020461897}
 --- !u!1 &5820987452316911389
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,9 +1018,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
---- !u!224 &2141733329559280261 stripped
+--- !u!224 &1682965854 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3849856746798073874, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2942406698866087881, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
   m_PrefabInstance: {fileID: 2942406700414833303}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &104736133 stripped
@@ -930,8 +1034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1682965854 stripped
+--- !u!224 &2141733329559280261 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2942406698866087881, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3849856746798073874, guid: 47ffe1334eb192344b3e69c6c93eff09, type: 3}
   m_PrefabInstance: {fileID: 2942406700414833303}
   m_PrefabAsset: {fileID: 0}

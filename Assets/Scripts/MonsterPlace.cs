@@ -43,12 +43,12 @@ public class MonsterPlace : MonoBehaviour, IJumpable
             PlaceFree?.Invoke(this);
     }
 
-    public void Free()
+    public void Free(bool isColliderDisabled = false)
     {
         Monster.Died -= MonsterDied;
         IsTaken = false;
         Monster = null;
-        _boxCollider.enabled = false;
+        _boxCollider.enabled = isColliderDisabled;
     }
 
     public void Jump(AnimationCurve animationCurve)
