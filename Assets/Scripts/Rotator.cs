@@ -35,7 +35,6 @@ public class Rotator : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("asds");
             if (Mathf.Abs(pointerX) >= _threshold)
                 transform.localRotation = Quaternion.Euler(0, xRotation, 0f);
         }

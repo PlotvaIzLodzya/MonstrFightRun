@@ -20,6 +20,7 @@ public class MonsterAnimator : MonoBehaviour
     private const string Idle = "Idle";
     private const string Victory = "Victory";
     private const string Hit = "TakeHit";
+    private const string Placed = "Placed";
 
     private bool _isDead;
 
@@ -43,6 +44,11 @@ public class MonsterAnimator : MonoBehaviour
     {
         _formsHandler.FormChanged -= RunAnimation;
         _stateMachine.StateChanged -= OnStateChanged;
+    }
+
+    public void MonsterPlaced()
+    {
+        _animator.SetTrigger(Placed);
     }
 
     public void TriggerAttackAnimation()
@@ -82,15 +88,20 @@ public class MonsterAnimator : MonoBehaviour
         _animator.SetTrigger(Hit);
     }
 
-    public void VictoryAnimation()
+    public void TriggerVictory()
     {
         if (_isDead)
             return;
 
         _uIHandler.SwitchState();
 
-        _animator.SetTrigger(Victory);
+        VictoryAnimation();
         _animator.ResetTrigger(Run);
+    }
+
+    public void VictoryAnimation()
+    {
+        _animator.SetTrigger(Victory);
     }
 
     public void LookAtPlayer()

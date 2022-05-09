@@ -46,6 +46,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         monster.transform.SetParent(_monsterPoint);
         monster.transform.localRotation = Quaternion.identity;
         monster.transform.localPosition = Vector3.zero;
+        monster.transform.localScale = Vector3.one;
 
         DisableRotator();
         return _monster != null;

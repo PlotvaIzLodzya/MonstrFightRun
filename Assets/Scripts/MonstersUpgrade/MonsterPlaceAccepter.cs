@@ -9,7 +9,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
-
+    public Rotator _rotator;
     public Monster Monster => _monster;
 
     private void Awake()
@@ -25,6 +25,8 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         {
             _monster = monster;
             _monstersHandler.TrySetMonsterToPlace(_monster, _monsterPlace, 10);
+
+            DisableRotator();
         }
 
         return isPlaceFree;
@@ -40,8 +42,21 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             _monsterPlace.Free(true);
             _monstersHandler.DecreasseCounter();
             monster = _monster;
+            _monster = null;
         }
 
         return _isMonsterSetted;
+    }
+
+    public void EnableRotator()
+    {
+        if(_rotator != null)
+            _rotator.enabled = true;
+    }
+
+    private void DisableRotator()
+    {
+        _rotator = _monster.GetComponentInChildren<Rotator>();
+        _rotator.enabled = false;
     }
 }

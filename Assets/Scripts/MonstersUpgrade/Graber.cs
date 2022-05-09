@@ -36,6 +36,7 @@ public class Graber : MonoBehaviour
                     _monster = monster;
                     _grabed = true;
                     _monsterHolder = monsterHolder;
+                    _monster.MonsterAnimator.VictoryAnimation();
 
                     _rotator = monster.GetComponentInChildren<Rotator>();
                     _rotator.enabled = true;
@@ -60,7 +61,14 @@ public class Graber : MonoBehaviour
             if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
             {
                 if (monsterHolder.TryAcquireMonster(_monster) == false)
-                    Return(_monsterHolder);
+                {
+                    if (monsterHolder is MonsterPlaceAccepter)
+                        Swap((MonsterPlaceAccepter)monsterHolder);
+                    else
+                        Return(_monsterHolder);
+                }
+
+                _monster.MonsterAnimator.MonsterPlaced();
 
                 return;
             }
@@ -68,6 +76,25 @@ public class Graber : MonoBehaviour
 
         Return(_monsterHolder);
         ResetPosition();
+        _monster.MonsterAnimator.MonsterPlaced();
+    }
+
+    private void Swap(MonsterPlaceAccepter monsterPlaceAccepter)
+    {
+        monsterPlaceAccepter.Grab(out Monster firstMonster);
+
+        monsterPlaceAccepter.TryAcquireMonster(_monster);
+
+        if(_monsterHolder.TryAcquireMonster(firstMonster) == false)
+        {
+            MonsterCell[] monsterCells = FindObjectsOfType<MonsterCell>();
+
+            foreach (var monsterCell in monsterCells)
+            {
+                if (monsterCell.TryAcquireMonster(firstMonster))
+                    return;
+            }
+        }    
     }
 
     private void Return(IMonsterHolder monsterHolder)

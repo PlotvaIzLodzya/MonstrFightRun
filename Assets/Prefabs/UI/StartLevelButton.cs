@@ -15,6 +15,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        EnableRotators();
         gameObject.SetActive(false);
         _shop.SetActive(false);
         _abilityShopAnimator.CloseAnimation();
@@ -30,5 +31,15 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
     {
         Graber graber = FindObjectOfType<Graber>();
         graber.enabled = false;
+    }
+
+    private void EnableRotators()
+    {
+        MonsterPlaceAccepter[] monsterPlaceAccepters = FindObjectsOfType<MonsterPlaceAccepter>();
+
+        foreach (var monsterPlaceAccepter in monsterPlaceAccepters)
+        {
+            monsterPlaceAccepter.EnableRotator();
+        }
     }
 }

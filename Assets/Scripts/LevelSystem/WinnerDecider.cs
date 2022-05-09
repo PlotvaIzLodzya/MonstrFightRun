@@ -78,7 +78,7 @@ public class WinnerDecider : MonoBehaviour
 
         foreach (var monsterAnimator in _monsterAnimators)
         {
-            monsterAnimator.VictoryAnimation();
+            monsterAnimator.TriggerVictory();
         }
     }
 }
