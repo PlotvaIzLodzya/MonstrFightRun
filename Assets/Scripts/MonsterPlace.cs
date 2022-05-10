@@ -22,13 +22,16 @@ public class MonsterPlace : MonoBehaviour, IJumpable
         _boxCollider = GetComponent<BoxCollider>();
     }
 
-    public void Take(Monster monster)
+    public void Take(Monster monster, bool isShopStage = false)
     {
         if(_boxCollider == null)
             _boxCollider = GetComponent<BoxCollider>();
 
         Monster = monster;
-        Monster.LevelUp(1);
+
+        if(isShopStage == false)
+            Monster.LevelUp(1);
+
         Monster.Died += MonsterDied;
         _boxCollider.enabled = true;
         IsTaken = true;

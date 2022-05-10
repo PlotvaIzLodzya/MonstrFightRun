@@ -99,15 +99,18 @@ public class MonstersHandler : MonoBehaviour
         monster.transform.localPosition = Vector3.zero;
         monster.transform.localScale = Vector3.one;
 
-        place.Take(monster);
+        place.Take(monster, true);
 
         _monstersAnimatorHandler.AddAnimator(monster.MonsterAnimator);
+        ChangeMonstersMight(level);
+
         MonsterCounter++;
     }
 
-    public void DecreasseCounter()
+    public void DecreasseCounter(int level)
     {
         MonsterCounter--;
+        ChangeMonstersMight(-level);
     }
 
     public void LevelUpAllMonster(int level)
@@ -191,7 +194,7 @@ public class MonstersHandler : MonoBehaviour
         }
     }
 
-    private void ChangeMonstersMight(int level)
+    public void ChangeMonstersMight(int level)
     {
         _monstersMight+= level;
 

@@ -119,7 +119,7 @@ public class Monster : MonoBehaviour, IMergeable
     {
         _level += level;
         _level = Mathf.Clamp(_level, 0, _maxLevel);
-        _resizeAnimation.PlayEnlargeAnimation(_level, evo);
+        _resizeAnimation?.PlayEnlargeAnimation(_level, evo);
         _damage = _statScaler.ScaleByLevel(_level, _damageScaler, _damagePerLevel);
         _health.IncreaseMaxHealth(_level);
         LevelChanged?.Invoke(_level);

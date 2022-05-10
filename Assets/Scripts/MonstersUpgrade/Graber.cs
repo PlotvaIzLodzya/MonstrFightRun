@@ -85,16 +85,21 @@ public class Graber : MonoBehaviour
 
         monsterPlaceAccepter.TryAcquireMonster(_monster);
 
-        if(_monsterHolder.TryAcquireMonster(firstMonster) == false)
+        PlaceToInititalMonsterCell(firstMonster);  
+    }
+
+    private void PlaceToInititalMonsterCell(Monster monster)
+    {
+        if (_monsterHolder.TryAcquireMonster(monster) == false)
         {
             MonsterCell[] monsterCells = FindObjectsOfType<MonsterCell>();
 
             foreach (var monsterCell in monsterCells)
             {
-                if (monsterCell.TryAcquireMonster(firstMonster))
+                if (monsterCell.TryAcquireMonster(monster))
                     return;
             }
-        }    
+        }
     }
 
     private void Return(IMonsterHolder monsterHolder)

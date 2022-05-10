@@ -24,7 +24,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         if (isPlaceFree)
         {
             _monster = monster;
-            _monstersHandler.TrySetMonsterToPlace(_monster, _monsterPlace, 10);
+            _monstersHandler.TrySetMonsterToPlace(_monster, _monsterPlace, _monster.Level);
 
             DisableRotator();
         }
@@ -40,7 +40,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         if (_isMonsterSetted)
         {
             _monsterPlace.Free(true);
-            _monstersHandler.DecreasseCounter();
+            _monstersHandler.DecreasseCounter(_monster.Level);
             monster = _monster;
             _monster = null;
         }

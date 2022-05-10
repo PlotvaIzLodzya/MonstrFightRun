@@ -81,6 +81,7 @@ public enum PurchaseType
 public enum PurchaseName
 {
     LvlImprovment,
+    MonsterLevelUpgrade,
     CurrencyMultiplier,
     HealUpgrade,
     MeteorUpgrade,

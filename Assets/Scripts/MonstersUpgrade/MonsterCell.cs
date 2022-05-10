@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MonsterCell : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private Monster _monster;
@@ -10,17 +11,19 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private Image _image;
     [SerializeField] private Transform _monsterPoint;
 
-    private Monster InitialMonster;
+    private Monster _initialMonster;
 
     public Monster Monster => _monster;
+    public Monster InitialMonster => _initialMonster;
     public Transform MonsterPoint => _monsterPoint;
 
     private void Start()
     {
-        InitialMonster = _monster;
+        _initialMonster = _monster;
         _image.sprite = _monstersIcons.GetAttackRangeIconSprite(_monster.GetComponent<Attack>().InitialRange);
         DisableRotator();
     }
+
     public bool Grab(out Monster monster)
     {
         bool _isMonsterSetted = _monster != null;
@@ -50,6 +53,11 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
         DisableRotator();
         return _monster != null;
+    }
+
+    public bool IsMonsterPlaced()
+    {
+        return _monster == null;
     }
 
     private void DisableRotator()
