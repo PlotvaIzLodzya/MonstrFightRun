@@ -99,9 +99,12 @@ public class MonsterAnimator : MonoBehaviour
         _animator.ResetTrigger(Run);
     }
 
-    public void VictoryAnimation()
+    public void VictoryAnimation(bool isOneTime = false)
     {
         _animator.SetTrigger(Victory);
+
+        if(isOneTime)
+            _animator.SetTrigger(Placed);
     }
 
     public void LookAtPlayer()

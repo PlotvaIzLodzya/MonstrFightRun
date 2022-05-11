@@ -17,11 +17,6 @@ public class MonsterPlace : MonoBehaviour, IJumpable
     public event Action<MonsterPlace> PlaceFree;
     public event Action<int> CurrencyPickedUp;
 
-    private void Awake()
-    {
-        _boxCollider = GetComponent<BoxCollider>();
-    }
-
     public void Take(Monster monster, bool isShopStage = false)
     {
         if(_boxCollider == null)
@@ -67,5 +62,26 @@ public class MonsterPlace : MonoBehaviour, IJumpable
     public void BattleMode()
     {
         _battleMode = true;
+    }
+
+    public void Activate()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void EnableCollider()
+    {
+        if (_boxCollider == null)
+            _boxCollider = GetComponent<BoxCollider>();
+
+        _boxCollider.enabled = true;
+    }
+
+    public void DeActivate()
+    {
+        if (_boxCollider != null)
+            _boxCollider.enabled = false;
+
+        gameObject.SetActive(false);
     }
 }

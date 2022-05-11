@@ -58,13 +58,13 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
 
     public void LoadProgression(string saveName)
     {
-        BuyCounter = new ValueHandler(0, BuyCounterSaveName);
+        BuyCounter = new ValueHandler(0, 100, $"{BuyCounterSaveName}{saveName}");
         BuyCounter.LoadAmount();
 
-        ValueHandler = new ValueHandler(1, saveName);
+        ValueHandler = new ValueHandler(1, 10000, saveName);
         ValueHandler.LoadAmount();
 
-        CostHandler = new ValueHandler(20, saveName + 1);
+        CostHandler = new ValueHandler(20, 10000, saveName + 1);
         CostHandler.LoadAmount();
         UpdateInfo();
 
@@ -82,6 +82,7 @@ public enum PurchaseName
 {
     LvlImprovment,
     MonsterLevelUpgrade,
+    MonsterBuying,
     CurrencyMultiplier,
     HealUpgrade,
     MeteorUpgrade,

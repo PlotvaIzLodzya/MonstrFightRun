@@ -6,22 +6,24 @@ using UnityEngine;
 public class ValueHandler
 {
     private float _value;
-    private float _maxAmount = 1000000;
+    private float _maxValue;
     private float _minValue;
 
     private string _saveName;
 
     public float Value => _value;
+    public float MaxValue => _maxValue;
 
     public event Action<float, float> ValueIncreased;
     public event Action<float> ValueDecreased;
     public event Action<float> ValueLoaded;
     public event Action ValueChanged;
 
-    public ValueHandler(float minValue, string SaveName)
+    public ValueHandler(float minValue, float maxValue, string SaveName)
     {
         _saveName = SaveName;
         _minValue = minValue;
+        _maxValue = maxValue;
         _value = _minValue;
     }
 
@@ -38,10 +40,8 @@ public class ValueHandler
             Decrease(value);
             return true;
         }
-        else
-        {
-            return false;
-        }    
+
+        return false;  
     }
 
     public bool IsEnough(float value)
@@ -59,7 +59,8 @@ public class ValueHandler
     {
         _value += value;
 
-        Mathf.Clamp(_value, _minValue, _maxAmount);
+        _value = Mathf.Clamp(_value, _minValue, _maxValue);
+
         Save();
         ValueChanged?.Invoke();
     }

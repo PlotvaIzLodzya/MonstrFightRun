@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private float _multiplier = 1f;
     private int _counter;
-    private ValueHandler _currencyHandler = new ValueHandler(0, "Currency");
+    private ValueHandler _currencyHandler = new ValueHandler(0, 100000, "Currency");
 
     public MouseInput MouseInput => _mouseInput;
     public int Might => _monstersHandler.MonsterMight;
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _currencyHandler.LoadAmount();
+        _currencyHandler.Increase(1000);
     }
 
     private void OnEnable()

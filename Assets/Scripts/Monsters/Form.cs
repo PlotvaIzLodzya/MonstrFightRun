@@ -16,23 +16,23 @@ public class Form : MonoBehaviour
     private float _initialSpecularSize;
     private Color _initialColor;
 
-    public SkinnedMeshRenderer _skinnedMeshRenderer { get; private set; }
+    public SkinnedMeshRenderer SkinnedMeshRenderer { get; private set; }
     public Animator FormAnimator => _animator;
 
     private Coroutine _coroutine;
 
     private void Awake()
     {
-        _skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         _animator = GetComponent<Animator>();
         _ragdollHandler = GetComponent<RagdollHandler>();
 
-        _initialSpecularSize = _skinnedMeshRenderer.materials[0].GetFloat("_FlatSpecularSize");
+        _initialSpecularSize = SkinnedMeshRenderer.materials[0].GetFloat("_FlatSpecularSize");
 
         if (_particleSystem != null)
             _particleSystem = Instantiate(_particleSystem, _particlePoint.position, _particlePoint.rotation);
 
-        _initialColor = _skinnedMeshRenderer.materials[0].GetColor("_FlatSpecularColor");
+        _initialColor = SkinnedMeshRenderer.materials[0].GetColor("_FlatSpecularColor");
     }
 
     public void EnableRagdoll()
@@ -70,8 +70,8 @@ public class Form : MonoBehaviour
 
     public void OnDamaged()
     {
-        _skinnedMeshRenderer.materials[0].SetFloat("_FlatSpecularSize", 0.78f);
-        _skinnedMeshRenderer.materials[0].SetColor("_FlatSpecularColor", _damagedColor);
+        SkinnedMeshRenderer.materials[0].SetFloat("_FlatSpecularSize", 0.78f);
+        SkinnedMeshRenderer.materials[0].SetColor("_FlatSpecularColor", _damagedColor);
 
         if (_coroutine != null)
             StopCoroutine(MagicalMaterial());
@@ -83,8 +83,8 @@ public class Form : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        _skinnedMeshRenderer.materials[0].SetFloat("_FlatSpecularSize", _initialSpecularSize);
-        _skinnedMeshRenderer.materials[0].SetColor("_FlatSpecularColor", _initialColor);
+        SkinnedMeshRenderer.materials[0].SetFloat("_FlatSpecularSize", _initialSpecularSize);
+        SkinnedMeshRenderer.materials[0].SetColor("_FlatSpecularColor", _initialColor);
 
         _coroutine = null;
     }

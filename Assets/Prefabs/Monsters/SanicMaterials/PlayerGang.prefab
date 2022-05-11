@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &331614398
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &821576291
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &821576292
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821576291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 0, z: -1.5}
+  m_LocalPosition: {x: 1.08, y: 0, z: -3.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2020461894}
@@ -200,11 +200,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821576291}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6311656227175871395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &1644439419
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &1777157526
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1777157527
 Transform:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777157526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 0, z: -1.5}
+  m_LocalPosition: {x: -1.02, y: 0, z: -3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2020461894}
@@ -346,11 +346,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777157526}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2656223604770330124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,8 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &1995700258
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &2020461893
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,8 +767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a659cf4cbc4fe8949b2e5d3791eb2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPlace: {fileID: 0}
   _monstersHandler: {fileID: 2020461897}
+  _rotator: {fileID: 0}
 --- !u!1 &5820987452316911389
 GameObject:
   m_ObjectHideFlags: 0

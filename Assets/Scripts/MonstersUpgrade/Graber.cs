@@ -18,7 +18,7 @@ public class Graber : MonoBehaviour
             Release();
 
         if (_grabed)
-            _monster.transform.position = GetWorldPositionOnPlane(Input.mousePosition, 0.5f);
+            _monster.transform.position = GetWorldPositionOnPlane(Input.mousePosition, 2f);
     }
 
     private void Grab()

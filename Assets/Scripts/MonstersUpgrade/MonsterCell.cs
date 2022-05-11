@@ -10,24 +10,51 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private MonstersIcons _monstersIcons;
     [SerializeField] private Image _image;
     [SerializeField] private Transform _monsterPoint;
+    [SerializeField] private MonsterUpgraderHandler _monsterUpgraderOpener;
+    [SerializeField] private Material _inactiveMaterial;
 
     private Monster _initialMonster;
+    private Material _initialMaterial;
+    private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
+    private bool _isOpened;
+
+    public MonsterUpgraderHandler MonsterUpgraderHandler => _monsterUpgraderOpener;
     public Monster Monster => _monster;
     public Monster InitialMonster => _initialMonster;
     public Transform MonsterPoint => _monsterPoint;
 
-    private void Start()
+
+    private void OnEnable()
     {
+        _monsterUpgraderOpener.Opened += Open;
+    }
+
+    private void OnDisable()
+    {
+        _monsterUpgraderOpener.Opened -= Open;
+    }
+
+    public void Init()
+    {
+        _initialMaterial = _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material;
         _initialMonster = _monster;
         _image.sprite = _monstersIcons.GetAttackRangeIconSprite(_monster.GetComponent<Attack>().InitialRange);
         DisableRotator();
+
+        if (PlayerPrefs.HasKey(SaveName))
+            Open();
+        else
+            Hide();
     }
 
     public bool Grab(out Monster monster)
     {
         bool _isMonsterSetted = _monster != null;
         monster = null;
+
+        if (_isOpened == false)
+            return false;
 
         if (_isMonsterSetted)
         {
@@ -40,7 +67,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     public bool TryAcquireMonster(Monster monster)
     {
-        if (monster.GetType() != InitialMonster.GetType())
+        if (monster.GetType() != InitialMonster.GetType() || _isOpened == false)
             return false;
 
         _monster = monster;
@@ -58,6 +85,28 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public bool IsMonsterPlaced()
     {
         return _monster == null;
+    }
+
+    public void Activate()
+    {
+
+    }
+
+    public void Hide()
+    {
+        _isOpened = false;
+        _monsterUpgraderOpener.gameObject.SetActive(true);
+        _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _inactiveMaterial;
+    }
+
+    public void Open()
+    {
+        _isOpened = true;
+        _monsterUpgraderOpener.EnableUpgradeButton();
+        _monsterUpgraderOpener.gameObject.SetActive(false);
+        _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;
+        _monster.MonsterAnimator.VictoryAnimation(true);
+        PlayerPrefs.SetString(SaveName, SaveName);
     }
 
     private void DisableRotator()

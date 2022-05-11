@@ -34,8 +34,8 @@ public abstract class Ability : MonoBehaviour
         if (_valueHandler != null)
             return;
 
-        _valueHandler = new ValueHandler(_minValue, _abilityName);
-        _amountHandler = new ValueHandler(0, _abilityName + 1);
+        _valueHandler = new ValueHandler(_minValue, 100000, _abilityName);
+        _amountHandler = new ValueHandler(0, 1000, _abilityName + 1);
         AmountHandler.LoadAmount();
         ValueHandler.LoadAmount();
     }
