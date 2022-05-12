@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MonsterShop : MonoBehaviour
 {
@@ -8,16 +9,20 @@ public class MonsterShop : MonoBehaviour
 
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
 
-    private ValueHandler _monsterCount = new ValueHandler(1, 5, "MonsterCountShopSaveName");
+    private ValueHandler _monsterCount = new ValueHandler(1, 3, "MonsterCountShopSaveName");
     private ValueHandler _openedMonstersCellCount = new ValueHandler(1, 9, "OpenedMonsterCellCountShopSaveName");
+    private ValueHandler _openedMonsterPlaces = new ValueHandler(3, 5, "OpenMonsterPlacesSave");
+
+    public int OpenedMonsterPlaces => (int)_openedMonsterPlaces.Value;
 
     private void Awake()
     {
         _monsterPlaceAcepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
         _monsterCount.LoadAmount();
         _openedMonstersCellCount.LoadAmount();
+        _openedMonsterPlaces.LoadAmount();
 
-        StartCoroutine(Delay());
+        StartCoroutine(Delay(3));
     }
 
     private void OnEnable()
@@ -36,12 +41,53 @@ public class MonsterShop : MonoBehaviour
         }
     }
 
+    public bool TryGetMonstersForPool(out List<Monster> monsters)
+    {
+        int count = RandomMonstersCount();
+        monsters = new List<Monster>();
+
+        if (count <= 0)
+            return false;
+
+        var tempMonsters = from MonsterCell monsterCell in _monsterCells
+                    where monsterCell.IsOpened && monsterCell.IsMonsterPlaced() == false
+                    select monsterCell.InitialMonster;
+
+        List<Monster> tempMonstersList = tempMonsters.ToList();
+
+        for (int i = 0; i < count; i++)
+        {
+            int index = Random.Range(0, tempMonstersList.Count);
+
+            monsters.Add(tempMonstersList[index]);
+            tempMonstersList.RemoveAt(index);
+        }
+
+        return count>0;
+    }
+
+    public int RandomMonstersCount()
+    {
+        int count = 0;
+
+        foreach (var monsterCell in _monsterCells)
+        {
+            if (monsterCell.IsMonsterPlaced())
+                count++;
+        }
+        Debug.Log(_openedMonsterPlaces.Value);
+
+        return Mathf.Abs((int)_openedMonsterPlaces.Value - count);
+    }
+
     private void OnCellOpened()
     {
         _monsterCount.Increase(1);
-        int index = (int)_monsterCount.Value - 1;
-        _monsterPlaceAcepters[index].Activate();
-        _monsterPlaceAcepters[index].Open();
+        _openedMonsterPlaces.Increase(1);
+        int placeToOpenIndex = (int)_monsterCount.Value - 1;
+        int placeToActivateIndex = (int)_openedMonsterPlaces.Value - 1;
+        _monsterPlaceAcepters[placeToActivateIndex].Activate();
+        _monsterPlaceAcepters[placeToOpenIndex].Open();
     }
 
     private void PrepareMonsterHolders(IMonsterHolder[] monsterHolders, int progressionCount, int openedPlacesCount)
@@ -53,12 +99,12 @@ public class MonsterShop : MonoBehaviour
             if (i < progressionCount)
                 monsterHolders[i].Open();
 
-            if (i >= progressionCount && i > openedPlacesCount)
+            if (i >= progressionCount && i >= openedPlacesCount)
                 monsterHolders[i].Hide();
         }
     }
 
-    private IEnumerator Delay()
+    private IEnumerator Delay(int count)
     {
         yield return new WaitForSeconds(0.1f);
 
@@ -67,7 +113,11 @@ public class MonsterShop : MonoBehaviour
             monsterCell.Init();
         }
 
-        _monsterCells[0].Open();
-        PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, 2);
+        for (int i = 0; i < count; i++)
+        {
+            _monsterCells[i].Open();
+        }
+
+        PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);
     }
 }

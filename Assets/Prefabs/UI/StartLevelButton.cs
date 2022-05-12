@@ -25,6 +25,12 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         FindObjectOfType<CameraFollowing>().enabled = true;
 
         DisableMonsterShop();
+        InitializeMonsterPool();
+    }
+
+    private void InitializeMonsterPool()
+    {
+        FindObjectOfType<MonsterPoolCreator>().Init();
     }
 
     private void DisableMonsterShop()

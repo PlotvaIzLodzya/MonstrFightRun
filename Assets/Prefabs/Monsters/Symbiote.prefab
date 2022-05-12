@@ -86,9 +86,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health:
     _healthPerLevel: 20
+    _healthScaler: 0
   _damagePerLevel: 1.5
   _speed: 5
   _level: 0
+  _damageScaler: 0
   _pointForProjectile: {fileID: 101171745141333116}
   Protected: 0
   Name: Symbiote
@@ -276,6 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e98bbe5d0845b459dcb354cc21929a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forms:
+  - {fileID: 6692143614824503324}
+  - {fileID: 1658331211795480428}
+  - {fileID: 5283788513648126758}
 --- !u!114 &3314224583288144299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +374,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4784181166591476940, guid: 32ed0a6615c58f242b7a27a4cb00b7ef, type: 3}
   m_PrefabInstance: {fileID: 3345090686408987485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5283788513648126758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7439928893591074939, guid: 32ed0a6615c58f242b7a27a4cb00b7ef, type: 3}
+  m_PrefabInstance: {fileID: 3345090686408987485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4214322272143634074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -434,6 +451,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1091626581731099664, guid: c456d83761bc6c940add2a37f3c0b1dc, type: 3}
   m_PrefabInstance: {fileID: 4214322272143634074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6692143614824503324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7395758236237837958, guid: c456d83761bc6c940add2a37f3c0b1dc, type: 3}
+  m_PrefabInstance: {fileID: 4214322272143634074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6767015889886954972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,3 +684,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4842302433204040464, guid: 9dd56431295f62643bc61c32e752e95e, type: 3}
   m_PrefabInstance: {fileID: 7691443860970766498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1658331211795480428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9060939000764088270, guid: 9dd56431295f62643bc61c32e752e95e, type: 3}
+  m_PrefabInstance: {fileID: 7691443860970766498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

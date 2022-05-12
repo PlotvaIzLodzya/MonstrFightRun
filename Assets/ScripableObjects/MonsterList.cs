@@ -23,6 +23,27 @@ public class MonsterList : ScriptableObject
         }
     }
 
+    public void SetMonsterPool(IEnumerable<Monster> monsters)
+    {
+        if (_monsterPool.Count > 0)
+            _monsterPool.RemoveRange(0, _monsterPool.Count);
+
+        foreach (var monster in monsters)
+        {
+            _monsterPool.Add(monster);
+        }
+    }
+
+    public bool TryAddToMonsterPool(List<Monster> monsters)
+    {
+        if (_monsterPool == null)
+            return false;
+
+        _monsterPool.AddRange(monsters);
+
+        return true;
+    }
+
     public Monster GetRandomMonster()
     {
         int index = UnityEngine.Random.Range(0, _monsters.Count);
@@ -32,7 +53,6 @@ public class MonsterList : ScriptableObject
 
     public bool TryGetRandomMonster(out Monster monster)
     {
-
         if (_monsterPool.Count > 0)
         {
             int index = UnityEngine.Random.Range(0, _monsterPool.Count);
@@ -45,7 +65,6 @@ public class MonsterList : ScriptableObject
             monster = null;
             return false;
         }
-
     }
 
     public Interactable GetPowerUp()

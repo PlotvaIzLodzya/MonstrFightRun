@@ -17,7 +17,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     private Material _initialMaterial;
     private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
-    private bool _isOpened;
+    public bool IsOpened { get; private set; }
 
     public MonsterUpgraderHandler MonsterUpgraderHandler => _monsterUpgraderOpener;
     public Monster Monster => _monster;
@@ -53,7 +53,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         bool _isMonsterSetted = _monster != null;
         monster = null;
 
-        if (_isOpened == false)
+        if (IsOpened == false)
             return false;
 
         if (_isMonsterSetted)
@@ -67,7 +67,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     public bool TryAcquireMonster(Monster monster)
     {
-        if (monster.GetType() != InitialMonster.GetType() || _isOpened == false)
+        if (monster.GetType() != InitialMonster.GetType() || IsOpened == false)
             return false;
 
         _monster = monster;
@@ -94,14 +94,14 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     public void Hide()
     {
-        _isOpened = false;
+        IsOpened = false;
         _monsterUpgraderOpener.gameObject.SetActive(true);
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _inactiveMaterial;
     }
 
     public void Open()
     {
-        _isOpened = true;
+        IsOpened = true;
         _monsterUpgraderOpener.EnableUpgradeButton();
         _monsterUpgraderOpener.gameObject.SetActive(false);
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;

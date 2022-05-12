@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class FormsHandler : MonoBehaviour
 {
-    private List<Form> _forms;
+    [SerializeField] private List<Form> _forms;
+
     private int _counter = 0;
 
     public Animator CurrentFormAnimator => CurrentForm.FormAnimator;
@@ -16,11 +17,8 @@ public class FormsHandler : MonoBehaviour
 
     private void Awake()
     {
-        _forms = GetComponentsInChildren<Form>().ToList();
-        Error.CheckOnNull(_forms, nameof(Form));
-
-        if (_forms[0] == null)
-            return;
+        if (_forms.Count<=0)
+            _forms = GetComponentsInChildren<Form>().ToList();       
 
         EnableInitialForm();
     }
@@ -34,8 +32,8 @@ public class FormsHandler : MonoBehaviour
     public bool TryEnableNextForm()
     {
         _counter++;
-
-        if(_counter > _forms.Count-1)
+        
+        if (_counter > _forms.Count - 1)
             return false;
 
         if (CurrentForm != null)
@@ -43,6 +41,7 @@ public class FormsHandler : MonoBehaviour
 
         SetCurrentForm(_counter);
         FormChanged?.Invoke();
+
         return true;
     }
 

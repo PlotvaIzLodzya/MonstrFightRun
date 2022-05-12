@@ -103,9 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health:
     _healthPerLevel: 20
+    _healthScaler: 0
   _damagePerLevel: 5
   _speed: 5
   _level: 0
+  _damageScaler: 0
   _pointForProjectile: {fileID: 5251046405217997243}
   Protected: 0
   Name: Freddy
@@ -289,6 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e98bbe5d0845b459dcb354cc21929a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _forms:
+  - {fileID: 5767285515086361647}
+  - {fileID: 479383530040048048}
+  - {fileID: 2595734051896181474}
 --- !u!114 &404209163952124479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +391,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8727173292154740808, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
   m_PrefabInstance: {fileID: 6353891802916173712}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2595734051896181474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8946515765444343154, guid: 957927e20aad1924a87497dcbbf3e2bc, type: 3}
+  m_PrefabInstance: {fileID: 6353891802916173712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8469919308891420232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,6 +620,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8698684627649584390, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
   m_PrefabInstance: {fileID: 8709328029728653376}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &479383530040048048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9113776519639071216, guid: cf2d8a6c9aa01244db24c6a56576a93b, type: 3}
+  m_PrefabInstance: {fileID: 8709328029728653376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9070740381002452363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,6 +704,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+--- !u!114 &5767285515086361647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3307961889053161892, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
+  m_PrefabInstance: {fileID: 9070740381002452363}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4001898228936800305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5361578706168690106, guid: 7669faf1cb82af94d9ed8468bb851fe1, type: 3}
