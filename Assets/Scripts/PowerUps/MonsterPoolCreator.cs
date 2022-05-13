@@ -36,7 +36,6 @@ public class MonsterPoolCreator : MonoBehaviour
         if (monsterShop.TryGetMonstersForPool(out List<Monster> monsters))
             _monsterList.TryAddToMonsterPool(monsters);
 
-        Debug.Log(monsterShop.OpenedMonsterPlaces);
         if (monsterShop.OpenedMonsterPlaces < _firstAdditionalGateIndex)
             _additionalGates[0].gameObject.SetActive(false);
         if(monsterShop.OpenedMonsterPlaces < _secondAdditionalGateIndex)

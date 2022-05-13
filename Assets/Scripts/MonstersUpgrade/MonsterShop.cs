@@ -75,9 +75,14 @@ public class MonsterShop : MonoBehaviour
             if (monsterCell.IsMonsterPlaced())
                 count++;
         }
-        Debug.Log(_openedMonsterPlaces.Value);
 
         return Mathf.Abs((int)_openedMonsterPlaces.Value - count);
+    }
+
+    public void OpenNextCell()
+    {
+        _monsterCells.FirstOrDefault(cell => cell.IsOpened == false).Open();
+        OnCellOpened();
     }
 
     private void OnCellOpened()

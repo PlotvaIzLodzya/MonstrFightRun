@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMonsterHolder
+interface IMonsterHolder
 {
     public bool TryAcquireMonster(Monster monster);
 

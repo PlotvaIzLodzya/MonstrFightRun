@@ -9,6 +9,7 @@ public class WalletView : MonoBehaviour
     [SerializeField] private FlyingPicture _flyingPicture;
 
     private Player _player;
+    private int _amount;
 
     public float Amount => _player.CurrencyHandler.Value;
     public float CurrencyCollected { get; private set; }
@@ -36,14 +37,15 @@ public class WalletView : MonoBehaviour
 
     public void ChangeViewText(float amount)
     {
-        _currencyAmount.text = $"{(int)amount}";
+        _amount += (int)amount;
+        _currencyAmount.text = $"{_amount}";
     }
 
     private void OnAmountChange(float amount, float changeValue)
     {
         var flyingPicture = Instantiate(_flyingPicture, _image.transform);
         flyingPicture.transform.position = _player.UiHandler.Position;
-        flyingPicture.Init(Vector3.zero, _image.sprite, _image.rectTransform.rect.width, this, amount);
+        flyingPicture.Init(Vector3.zero, _image.sprite, _image.rectTransform.rect.width, this, changeValue, 1);
         CurrencyCollected += changeValue;
     }
 

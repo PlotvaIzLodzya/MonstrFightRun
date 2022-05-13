@@ -27,10 +27,12 @@ public class ValueHandler
         _value = _minValue;
     }
 
-    public void Increase(float value)
+    public void Increase(float value, bool triggerEvent = true)
     {
         ChangeAmount(value);
-        ValueIncreased?.Invoke(_value, value);
+
+        if(triggerEvent)
+            ValueIncreased?.Invoke(_value, value);
     }
 
     public bool TryDecrease(float value)
@@ -52,7 +54,7 @@ public class ValueHandler
     private void Decrease(float value)
     {
         ChangeAmount(-value);
-        ValueDecreased?.Invoke(_value);
+        ValueDecreased?.Invoke(-value);
     }
 
     public void ChangeAmount(float value)
