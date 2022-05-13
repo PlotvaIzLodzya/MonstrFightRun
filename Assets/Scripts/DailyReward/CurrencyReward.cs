@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CurrencyReward : DailyRewardBehaviour
 {
     [SerializeField] private int _amount;
     [SerializeField] private FlyingPicture _flyingPicture;
     [SerializeField] private Image _image;
+    [SerializeField] private TMP_Text _amountText;
 
     private WalletView _walletView;
 
     public int Amount => _amount;
+
     public override void Acquire()
     {
         _walletView = FindObjectOfType<WalletView>();
@@ -28,5 +31,10 @@ public class CurrencyReward : DailyRewardBehaviour
             flyingPicture.DelayedInit(Vector3.zero, _image.sprite, 75, _image.rectTransform.rect.width, _walletView, 1, 1f);
             amount++;
         }
+    }
+
+    public override void UpdateInfo()
+    {
+        _amountText.text = $"x{_amount}";
     }
 }

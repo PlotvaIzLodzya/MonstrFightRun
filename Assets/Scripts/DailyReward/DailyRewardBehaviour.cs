@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class DailyRewardBehaviour : MonoBehaviour
 {
     public abstract void Acquire();
+    public virtual void UpdateInfo() { }
 
     private void Expire()
     {

@@ -24,6 +24,19 @@ public class CurrencyMultilplierButton : ShopButton
         Player.SetMuliplier(ValueHandler.Value);
     }
 
+    public void InreaseMultiplier(float multiplier)
+    {
+        float count = multiplier / _mulitplierPerBuy;
+
+        for (float i = 0; i < count; i++)
+        { 
+            Buy(0);
+            Debug.Log(ValueHandler.Value);
+        }
+
+        UpdateInfo();
+    }
+
     protected override void UpdateInfo()
     {
         _multiplier.text = $"X{ValueHandler.Value}";

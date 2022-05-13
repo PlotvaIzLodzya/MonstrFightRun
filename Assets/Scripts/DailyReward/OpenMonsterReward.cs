@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class OpenMonsterReward : DailyRewardBehaviour
 {
+    [SerializeField] private Monster _monster;
+
     public override void Acquire()
     {
-        FindObjectOfType<MonsterShop>().OpenNextCell();
+        FindObjectOfType<MonsterShop>().OpenCellWithMonster(_monster);
     }
 }

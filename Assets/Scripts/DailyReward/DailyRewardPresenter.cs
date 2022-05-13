@@ -8,6 +8,10 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Animator _animator;
     [SerializeField] private DailyRewardBehaviour _dailyRewardBehaviour;
 
+    private void Awake()
+    {
+        _dailyRewardBehaviour.UpdateInfo();
+    }
 
     private const string Pressed = "Pressed";
 

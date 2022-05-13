@@ -24,7 +24,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public Monster InitialMonster => _initialMonster;
     public Transform MonsterPoint => _monsterPoint;
 
-
     private void OnEnable()
     {
         _monsterUpgraderOpener.Opened += Open;

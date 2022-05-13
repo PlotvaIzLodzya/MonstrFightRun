@@ -48,7 +48,7 @@ public class MonsterShop : MonoBehaviour
 
         if (count <= 0)
             return false;
-
+        
         var tempMonsters = from MonsterCell monsterCell in _monsterCells
                     where monsterCell.IsOpened && monsterCell.IsMonsterPlaced() == false
                     select monsterCell.InitialMonster;
@@ -61,7 +61,7 @@ public class MonsterShop : MonoBehaviour
 
             monsters.Add(tempMonstersList[index]);
             tempMonstersList.RemoveAt(index);
-        }
+        } 
 
         return count>0;
     }
@@ -79,9 +79,9 @@ public class MonsterShop : MonoBehaviour
         return Mathf.Abs((int)_openedMonsterPlaces.Value - count);
     }
 
-    public void OpenNextCell()
+    public void OpenCellWithMonster(Monster monster)
     {
-        _monsterCells.FirstOrDefault(cell => cell.IsOpened == false).Open();
+        _monsterCells.FirstOrDefault(cell => cell.Monster.GetType() == monster.GetType()).Open();
         OnCellOpened();
     }
 
