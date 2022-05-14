@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class CenterSwipeZone : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    [SerializeField] private SwipeZone _swipeZone;
+
+    private float _speedDivider = 2;
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out SwipeMover swipeMover))
         {
-            if (Mathf.Abs(swipeMover.transform.localPosition.x) < 0.2f)
-                swipeMover.SlowDown();
-
-
-            if(swipeMover.Speed == 0 && Mathf.Abs(swipeMover.transform.localPosition.x) != 0)
-            {
-                swipeMover.OnStop(-swipeMover.transform.localPosition.x);
-            }
+            _swipeZone.SlowDown(_speedDivider, swipeMover);
         }
     }
 }

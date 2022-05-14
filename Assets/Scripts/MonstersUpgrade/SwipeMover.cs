@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class SwipeMover : MonoBehaviour
 {
-    [SerializeField] private SwipeZone _clickHandler;
-    [SerializeField] private Transform _rightCorner;
-    [SerializeField] private Transform _leftCorner;
+    private Vector3 _rightCorner;
+    private Vector3 _leftCorner;
 
-    public float Speed => _clickHandler.Speed;
+    private float _leftOffset;
+    private float _rightOffset;
 
     private void Update()
     {
-        //transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
-
-        if (transform.localPosition.x < _rightCorner.localPosition.x)
+        if (transform.localPosition.x < _rightCorner.x)
         {
-            transform.localPosition = _leftCorner.localPosition;
+            transform.localPosition = new Vector3(_leftOffset + transform.localPosition.x, transform.localPosition.y, transform.localPosition.z) ;
         }
 
-        if (transform.localPosition.x > _leftCorner.localPosition.x)
+        if (transform.localPosition.x > _leftCorner.x)
         {
-            transform.localPosition = _rightCorner.localPosition;
+            transform.localPosition = new Vector3(transform.localPosition.x + _rightOffset, transform.localPosition.y, transform.localPosition.z);
         }
     }
 
-    public void SlowDown()
+    public void Init(Transform rightCorner, Transform leftCorner, float spacing)
     {
-        _clickHandler.SlowDown(5);
+        _rightCorner = rightCorner.localPosition;
+        _leftCorner = leftCorner.localPosition;
+
+        float distance = Mathf.Abs(_leftCorner.x) + Mathf.Abs(_leftCorner.x);
+
+        _leftOffset = distance + spacing;
+        _rightOffset = -distance - spacing;
     }
 
-    public void OnStop(float offset)
+    public void Move(float speed)
     {
-        _clickHandler.Centration();
-    }
-
-    public void Move()
-    {
-        transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
+        transform.localPosition += (Vector3.left * Time.deltaTime * speed);
     }
 }

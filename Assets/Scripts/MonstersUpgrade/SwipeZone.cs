@@ -5,11 +5,14 @@ using UnityEngine;
 public class SwipeZone : MonoBehaviour
 {
     [SerializeField] private float _sensitivity;
+    [SerializeField] private Transform _rightCorner;
+    [SerializeField] private Transform _leftCorner;
 
+    private float _stopSpeed = 7f;
     private SwipeMover[] _swipeMovers;
-    private bool _centred;
-    private float _threshold = 6f;
-    private float _stopSpeed = 5f;
+    private SwipeMover _centralMover;
+    private float _xPointerDistance;
+
     public bool Clicked { get; private set; }
 
     public float Speed { get; private set; }
@@ -17,29 +20,41 @@ public class SwipeZone : MonoBehaviour
     private void Awake()
     {
         _swipeMovers = GetComponentsInChildren<SwipeMover>();
+
+        foreach (var swipeMover in _swipeMovers)
+        {
+            swipeMover.Init(_swipeMovers[0].transform, _swipeMovers[_swipeMovers.Length - 1].transform, 5);
+        }
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
+        {
+            _xPointerDistance = Input.mousePosition.x;
             Clicked = false;
+        }
 
         if (Clicked)
         {
             Speed = Input.GetAxis("Mouse X") * _sensitivity;
             Speed = Mathf.Clamp(Speed, -30, 30);
-
-            if (Mathf.Abs(Speed) > _threshold)
-                _centred = false;
+            _xPointerDistance += Input.GetAxis("Mouse X");
         }
 
-        if(Speed != 0 && _centred == false)
+        if(Speed != 0)
         {
             foreach (var swipeMover in _swipeMovers)
             {
-                swipeMover.Move();
+                swipeMover.Move(Speed);
             }
         }
+
+        if(Mathf.Abs(Speed) < 0.2f && Mathf.Abs(_xPointerDistance) < 10f)
+            Centrate();
+
+        if (Input.GetMouseButtonUp(0))
+            _xPointerDistance = 0;
     }
 
     private void OnMouseDown()
@@ -47,32 +62,33 @@ public class SwipeZone : MonoBehaviour
         Clicked = true;
     }
 
-    public void SlowDown(float slowCoeficient)
+    public void SlowDown(float speedDivider, SwipeMover swipeMover)
     {
+        _centralMover = swipeMover;
         float speedValue = Mathf.Abs(Speed);
 
         if (Speed > 0)
-            Speed -= speedValue / slowCoeficient;
+            Speed -= speedValue / speedDivider;
 
         if (Speed < 0)
-            Speed += speedValue / slowCoeficient;
+            Speed += speedValue / speedDivider;
 
         if (speedValue < _stopSpeed)
             Speed = 0;
     }
 
-    public void Centration()
+    public void Centrate()
     {
-        if (_centred)
-            return;
+        float offset = _centralMover.transform.localPosition.x;
 
         foreach (var swipeMover in _swipeMovers)
         {
-            float offset1 = Mathf.RoundToInt(swipeMover.transform.localPosition.x);
+            float xPosition = swipeMover.transform.localPosition.x;
+            float targetXPosition = xPosition - offset;
 
-            swipeMover.transform.localPosition = new Vector3(offset1, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
+            xPosition = Mathf.MoveTowards(xPosition, targetXPosition, 3.5f * Time.deltaTime);
+
+            swipeMover.transform.localPosition = new Vector3(xPosition, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
         }
-
-        _centred = true;
     }
 }
