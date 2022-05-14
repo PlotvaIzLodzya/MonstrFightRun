@@ -14,13 +14,11 @@ public class SwipeMover : MonoBehaviour
 
         if (transform.localPosition.x < _rightCorner.localPosition.x)
         {
-            _clickHandler.SlowDown();
             transform.localPosition = _leftCorner.localPosition;
         }
 
         if (transform.localPosition.x > _leftCorner.localPosition.x)
         {
-            _clickHandler.SlowDown();
             transform.localPosition = _rightCorner.localPosition;
         }
     }
@@ -29,7 +27,7 @@ public class SwipeMover : MonoBehaviour
     {
         if (other.TryGetComponent(out CenterSwipeZone centerSwipeZone))
         {
-            //_clickHandler.SlowDown();
+            _clickHandler.SlowDown();
         }
     }
 }
