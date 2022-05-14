@@ -12,7 +12,7 @@ public class CenterSwipeZone : MonoBehaviour
                 swipeMover.SlowDown();
 
 
-            if(swipeMover.Speed == 0 && swipeMover.transform.localPosition.x != 0)
+            if(swipeMover.Speed == 0 && Mathf.Abs(swipeMover.transform.localPosition.x) != 0)
             {
                 swipeMover.OnStop(-swipeMover.transform.localPosition.x);
             }

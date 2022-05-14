@@ -12,7 +12,7 @@ public class SwipeMover : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
+        //transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
 
         if (transform.localPosition.x < _rightCorner.localPosition.x)
         {
@@ -32,6 +32,11 @@ public class SwipeMover : MonoBehaviour
 
     public void OnStop(float offset)
     {
-        _clickHandler.Centration(offset);
+        _clickHandler.Centration();
+    }
+
+    public void Move()
+    {
+        transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
     }
 }

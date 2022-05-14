@@ -7,8 +7,10 @@ public class SwipeZone : MonoBehaviour
     [SerializeField] private float _sensitivity;
 
     private SwipeMover[] _swipeMovers;
-    public bool Clicked { get; private set; }
     private bool _centred;
+    private float _threshold = 6f;
+    private float _stopSpeed = 5f;
+    public bool Clicked { get; private set; }
 
     public float Speed { get; private set; }
 
@@ -27,8 +29,16 @@ public class SwipeZone : MonoBehaviour
             Speed = Input.GetAxis("Mouse X") * _sensitivity;
             Speed = Mathf.Clamp(Speed, -30, 30);
 
-            if (Speed > 7.5f)
+            if (Mathf.Abs(Speed) > _threshold)
                 _centred = false;
+        }
+
+        if(Speed != 0 && _centred == false)
+        {
+            foreach (var swipeMover in _swipeMovers)
+            {
+                swipeMover.Move();
+            }
         }
     }
 
@@ -47,18 +57,20 @@ public class SwipeZone : MonoBehaviour
         if (Speed < 0)
             Speed += speedValue / slowCoeficient;
 
-        if (speedValue < 5f)
+        if (speedValue < _stopSpeed)
             Speed = 0;
     }
 
-    public void Centration(float offset)
+    public void Centration()
     {
         if (_centred)
             return;
 
         foreach (var swipeMover in _swipeMovers)
         {
-            swipeMover.transform.localPosition = new Vector3(swipeMover.transform.localPosition.x + offset, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
+            float offset1 = Mathf.RoundToInt(swipeMover.transform.localPosition.x);
+
+            swipeMover.transform.localPosition = new Vector3(offset1, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
         }
 
         _centred = true;
