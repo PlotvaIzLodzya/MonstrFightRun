@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SwipeMover : MonoBehaviour
 {
-    [SerializeField] private ClickHandler _clickHandler;
+    [SerializeField] private SwipeZone _clickHandler;
     [SerializeField] private Transform _rightCorner;
     [SerializeField] private Transform _leftCorner;
 
-    private void FixedUpdate()
+    public float Speed => _clickHandler.Speed;
+
+    private void Update()
     {
         transform.localPosition += (Vector3.left * Time.deltaTime * _clickHandler.Speed);
 
@@ -23,11 +25,13 @@ public class SwipeMover : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SlowDown()
     {
-        if (other.TryGetComponent(out CenterSwipeZone centerSwipeZone))
-        {
-            _clickHandler.SlowDown();
-        }
+        _clickHandler.SlowDown(5);
+    }
+
+    public void OnStop(float offset)
+    {
+        _clickHandler.Centration(offset);
     }
 }
