@@ -39,6 +39,9 @@ public class Graber : MonoBehaviour
 
     private void Grab()
     {
+        if (_grabed == true)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
@@ -47,7 +50,7 @@ public class Graber : MonoBehaviour
         {
             if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
             {
-                if (monsterHolder.Grab(out Monster monster))
+                if (monsterHolder.TryGrab(out Monster monster))
                 {
                     _monster = monster;
                     _grabed = true;
@@ -97,13 +100,16 @@ public class Graber : MonoBehaviour
 
     private bool TryOpenInfoPanel()
     {
+        if (_grabed)
+            return false;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder))
+            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder) && SwipeZone.IsMoving == false)
             {
                 monsterHolder.TryOpenInfoPanel();
 
@@ -133,7 +139,7 @@ public class Graber : MonoBehaviour
 
     private void Swap(MonsterPlaceAccepter monsterPlaceAccepter)
     {
-        monsterPlaceAccepter.Grab(out Monster firstMonster);
+        monsterPlaceAccepter.TryGrab(out Monster firstMonster);
 
         monsterPlaceAccepter.TryAcquireMonster(_monster);
 

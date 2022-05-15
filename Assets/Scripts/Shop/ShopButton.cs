@@ -11,6 +11,8 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float _costPerBuy;
     [SerializeField] private PurchaseType _purchaseType;
     [SerializeField] private PurchaseName _purchaseName;
+    [SerializeField] private float _minValue;
+    [SerializeField] private float _minCost;
 
     protected Player Player;
     private const int MaxBuying = 100;
@@ -61,10 +63,10 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
         BuyCounter = new ValueHandler(0, 100, $"{BuyCounterSaveName}{saveName}");
         BuyCounter.LoadAmount();
 
-        ValueHandler = new ValueHandler(1, 10000, saveName);
+        ValueHandler = new ValueHandler(_minValue, 10000, saveName);
         ValueHandler.LoadAmount();
 
-        CostHandler = new ValueHandler(20, 10000, saveName + 1);
+        CostHandler = new ValueHandler(_minCost, 10000, saveName + 1);
         CostHandler.LoadAmount();
         UpdateInfo();
 

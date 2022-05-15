@@ -10,17 +10,24 @@ public class MonsterInfoPanel : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private TMP_Text _attackText;
+    [SerializeField] private AddToPartyButton _addToPartyButton;
     [SerializeField] private Image _attackRangeImage;
     [SerializeField] private MonstersIcons _monstersIcons;
 
     private Monster _monster;
 
-    public void Open(Monster monster)
+    public void Open(MonsterCell monsterCell)
     {
+        _monster = monsterCell.Monster;
         gameObject.SetActive(true);
-        _monster = monster;
+        _addToPartyButton.Init(monsterCell);
 
         UpdateInfo();
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 
     public void UpdateInfo()

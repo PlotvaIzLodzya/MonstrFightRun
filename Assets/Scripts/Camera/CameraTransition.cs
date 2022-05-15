@@ -9,13 +9,14 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] protected CameraPoint _cameraPoint;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private bool _setPointAsParent;
+    [SerializeField] private float _timeToTransit;
 
-    private float _timeToTransit = 1f;
     protected float Delay = 0f;
     private CameraFollowing _following;
     private FocalPoint _focalPoint;
     private Camera _camera;
     private float changeSpeed;
+    private bool _inTransition;
 
     public event Action TransitionCompleted;
 
@@ -31,8 +32,11 @@ public class CameraTransition : MonoBehaviour
 
     }
 
-    public void Transit()
+    public bool TryTransit()
     {
+        if (_inTransition)
+            return false;
+
         if (_camera.transform.parent != null)
             _camera.transform.parent = null;
 
@@ -44,11 +48,15 @@ public class CameraTransition : MonoBehaviour
         float distance = Vector3.Distance(Camera.main.transform.position, _cameraPoint.transform.position);
         changeSpeed = distance / _timeToTransit;
         StartCoroutine(TransitAnimation());
+
+        return true;
     }
 
     private IEnumerator TransitAnimation()
     {
         yield return new WaitForSeconds(Delay);
+
+        _inTransition = true;
 
         while (_camera.transform.position != _cameraPoint.transform.position)
         {
@@ -58,6 +66,8 @@ public class CameraTransition : MonoBehaviour
 
             yield return null;
         }
+
+        _inTransition = false;
 
         TransitionCompleted?.Invoke();
     }

@@ -15,7 +15,7 @@ public class MonsterLevelUpgrader : ShopButton
     private void Awake()
     {
         LoadProgression(SaveName);
-        AddLvl(_monsterCell.Monster, (int)ValueHandler.LoadAmount());
+        AddLvl(_monsterCell.Monster, (int)ValueHandler.LoadAmount() - 1);
         UpdateInfo();
     }
 
@@ -26,6 +26,12 @@ public class MonsterLevelUpgrader : ShopButton
 
         if (_monsterCell.IsMonsterPlaced())
             IncreaseMonstersMight();
+    }
+
+    protected override void UpdateInfo()
+    {
+        _monsterCell.MonsterInfoPanel.UpdateInfo();
+        base.UpdateInfo();
     }
 
     private void AddLvl(Monster monster, int level)

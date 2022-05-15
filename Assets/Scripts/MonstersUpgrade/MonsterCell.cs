@@ -8,30 +8,24 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private Monster _monster;
     [SerializeField] private Transform _monsterPoint;
-    [SerializeField] private MonsterUpgraderHandler _monsterUpgraderOpener;
+    [SerializeField] private MonsterOpener _monsterUpgraderOpener;
     [SerializeField] private Material _inactiveMaterial;
     [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
+    [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
+    [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
+
     private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
     public bool IsOpened { get; private set; }
 
-    public MonsterUpgraderHandler MonsterUpgraderHandler => _monsterUpgraderOpener;
+    public MonsterInfoPanel MonsterInfoPanel => _monsterInfoPanel;
+    public MonsterOpener MonsterUpgraderHandler => _monsterUpgraderOpener;
     public Monster Monster => _monster;
     public Monster InitialMonster => _initialMonster;
     public Transform MonsterPoint => _monsterPoint;
-
-    private void OnEnable()
-    {
-        _monsterUpgraderOpener.Opened += Open;
-    }
-
-    private void OnDisable()
-    {
-        _monsterUpgraderOpener.Opened -= Open;
-    }
 
     public void Init()
     {
@@ -45,12 +39,12 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
             Hide();
     }
 
-    public bool Grab(out Monster monster)
+    public bool TryGrab(out Monster monster)
     {
         bool _isMonsterSetted = _monster != null;
         monster = null;
 
-        if (IsOpened == false)
+        if (IsOpened == false || ViewState.IsViewed)
             return false;
 
         if (_isMonsterSetted)
@@ -58,6 +52,20 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
             monster = _monster;
             _monster = null;
         }
+
+        return _isMonsterSetted;
+    }
+
+    public void Clear()
+    {
+        _monster = null;
+    }
+
+    public bool TryTakeMonster(out Monster monster)
+    {
+        bool _isMonsterSetted = _monster != null;
+
+        monster = _monster;
 
         return _isMonsterSetted;
     }
@@ -99,21 +107,40 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public void Open()
     {
         IsOpened = true;
-        _monsterUpgraderOpener.EnableUpgradeButton();
         _monsterUpgraderOpener.gameObject.SetActive(false);
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;
         _monster.MonsterAnimator.VictoryAnimation(true);
         PlayerPrefs.SetString(SaveName, SaveName);
     }
 
-    public bool TryOpenInfoPanel()
+    public bool TryOpenInfoPanel(bool needCameraTransition = true)
     {
         bool canOpen = _monster != null && IsOpened;
 
-        if(canOpen)
-            _monsterInfoPanel.Open(_monster);
+        if (canOpen)
+        {
+            _monsterInfoPanel.Open(this);
+
+            if (needCameraTransition && ViewState.IsViewed == false)
+            {
+                ViewState.IsViewed = true;
+                _cameraTransitionToInfoPanel.TryTransit();
+            }
+        }
 
         return canOpen;
+    }
+
+    public void CloseInfoPanel(bool needCameraTransition = true)
+    {
+        _monsterInfoPanel.Close();
+
+        if (needCameraTransition)
+        {
+            _cameraTransitionToDefaultPosition.TryTransit();
+
+            ViewState.IsViewed = false;
+        }
     }
 
     private void DisableRotator()

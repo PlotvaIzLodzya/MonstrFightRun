@@ -3103,6 +3103,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5995989984619120696, guid: c7c93488252e9d740978e9229800ace5, type: 3}
+      propertyPath: _minCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995989984619120696, guid: c7c93488252e9d740978e9229800ace5, type: 3}
+      propertyPath: _minValue
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c93488252e9d740978e9229800ace5, type: 3}
 --- !u!224 &2429019823026534051 stripped
@@ -3616,6 +3624,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7005546580845743105}
     - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
       propertyPath: _costPerBuy
       value: 10
       objectReference: {fileID: 0}
@@ -3970,6 +3986,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5890113377456433457}
     - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
       propertyPath: _costPerBuy
       value: 10
       objectReference: {fileID: 0}
@@ -4112,6 +4136,14 @@ PrefabInstance:
       value: MultiplyCollect
       objectReference: {fileID: 0}
     - target: {fileID: 8348133052198758704, guid: 0446379dd415a794098a345452ba8b83, type: 3}
+      propertyPath: _minCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348133052198758704, guid: 0446379dd415a794098a345452ba8b83, type: 3}
+      propertyPath: _minValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348133052198758704, guid: 0446379dd415a794098a345452ba8b83, type: 3}
       propertyPath: _purchaseName
       value: 1
       objectReference: {fileID: 0}
@@ -4249,6 +4281,14 @@ PrefabInstance:
       propertyPath: _ability
       value: 
       objectReference: {fileID: 7687966825650015478}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
+      propertyPath: _minValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8050229150730389139, guid: 544025661f782694d9a420f343af1924, type: 3}
       propertyPath: _costPerBuy
       value: 10

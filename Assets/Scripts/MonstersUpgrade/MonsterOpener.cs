@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterUpgraderHandler : ShopButton
+public class MonsterOpener : ShopButton
 {
-    [SerializeField] private MonsterLevelUpgrader _monsterLevelUpgrader;
+    [SerializeField] private MonsterCell _monsterCell;
 
     private const string SaveName = "MonsterUpgraderHandler";
 
     public event Action Opened;
+
     private void Awake()
     {
         LoadProgression(SaveName);
@@ -17,13 +18,17 @@ public class MonsterUpgraderHandler : ShopButton
 
     public override void Buy(float cost)
     {
+        if (SwipeZone.IsMoving)
+            return;
+
         Opened?.Invoke();
-        EnableUpgradeButton();
+        OpenCell();
         gameObject.SetActive(false);
     }
 
-    public void EnableUpgradeButton()
+    public void OpenCell()
     {
-        _monsterLevelUpgrader.gameObject.SetActive(true);
+        _monsterCell.Open();
+        _monsterCell.TryOpenInfoPanel();
     }
 }

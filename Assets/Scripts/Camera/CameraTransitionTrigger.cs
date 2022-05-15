@@ -20,7 +20,7 @@ public class CameraTransitionTrigger : MonoBehaviour
     {
         if (other.TryGetComponent(out MonstersHandler monstersHandler))
         {
-            _cameraTransition.Transit();
+            _cameraTransition.TryTransit();
             _boxCollider.enabled = false;
         }
     }

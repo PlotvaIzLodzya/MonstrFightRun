@@ -6,6 +6,7 @@ using System.Linq;
 public class MonsterShop : MonoBehaviour
 {
     [SerializeField] private MonsterCell[] _monsterCells;
+    [SerializeField] private MonsterCell[] _initialMonsterCells;
 
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
 
@@ -118,9 +119,9 @@ public class MonsterShop : MonoBehaviour
             monsterCell.Init();
         }
 
-        for (int i = 0; i < count; i++)
+        foreach (var initialMonsterCell in _initialMonsterCells)
         {
-            _monsterCells[i].Open();
+            initialMonsterCell.Open();
         }
 
         PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);

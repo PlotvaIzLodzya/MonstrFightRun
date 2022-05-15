@@ -14,5 +14,19 @@ public class CenterSwipeZone : MonoBehaviour
         {
             _swipeZone.SlowDown(_speedDivider, swipeMover);
         }
+
+        if(other.TryGetComponent(out MonsterCell monsterCell))
+        {
+            if(ViewState.IsViewed)
+                monsterCell.TryOpenInfoPanel(false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out MonsterCell monsterCell))
+        {
+            monsterCell.CloseInfoPanel(false);
+        }
     }
 }

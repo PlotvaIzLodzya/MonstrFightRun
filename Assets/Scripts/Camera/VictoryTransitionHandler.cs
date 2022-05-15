@@ -27,6 +27,6 @@ public class VictoryTransitionHandler : MonoBehaviour
 
     private void StartTransition()
     {
-        _cameraTransition.Transit();
+        _cameraTransition.TryTransit();
     }
 }

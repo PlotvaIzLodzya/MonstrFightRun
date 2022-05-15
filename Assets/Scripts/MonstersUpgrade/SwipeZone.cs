@@ -5,16 +5,15 @@ using UnityEngine;
 public class SwipeZone : MonoBehaviour
 {
     [SerializeField] private float _sensitivity;
-    [SerializeField] private Transform _rightCorner;
-    [SerializeField] private Transform _leftCorner;
 
     private float _stopSpeed = 7f;
-    private float _threshold = 8;
+    private float _threshold = 6;
     private SwipeMover[] _swipeMovers;
     private SwipeMover _centralMover;
     private float _xPointerDistance;
 
     public bool Clicked { get; private set; }
+    public static bool IsMoving;
 
     public float Speed { get; private set; }
 
@@ -32,6 +31,8 @@ public class SwipeZone : MonoBehaviour
 
     private void Update()
     {
+        IsMoving = Speed != 0;
+
         if (Input.GetMouseButtonUp(0))
         {
             _xPointerDistance = 0;

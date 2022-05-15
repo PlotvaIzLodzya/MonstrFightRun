@@ -6,7 +6,7 @@ interface IMonsterHolder
 {
     public bool TryAcquireMonster(Monster monster);
 
-    public bool Grab(out Monster monster);
+    public bool TryGrab(out Monster monster);
 
     public void Activate();
 

@@ -9,12 +9,15 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
+    private bool _opened;
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
 
+    public bool IsFree => _monster == null;
+
     public bool TryAcquireMonster(Monster monster)
     {
-        bool isPlaceFree = _monsterPlace.Monster == null;
+        bool isPlaceFree = _monsterPlace.Monster == null && _opened;
 
         if (isPlaceFree)
         {
@@ -27,7 +30,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         return isPlaceFree;
     }
 
-    public bool Grab(out Monster monster)
+    public bool TryGrab(out Monster monster)
     {
         bool _isMonsterSetted = _monster != null;
         monster = null;
@@ -52,17 +55,12 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public void Open()
     {
         _monsterPlace.EnableCollider();
+        _opened = true;
     }
 
     public void Hide()
     {
         _monsterPlace.DeActivate();
-    }
-
-    private void DisableRotator()
-    {
-        _rotator = _monster.GetComponentInChildren<Rotator>();
-        _rotator.enabled = false;
     }
 
     public void Activate()
@@ -72,4 +70,12 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
         gameObject.SetActive(true);
     }
+
+    private void DisableRotator()
+    {
+        _rotator = _monster.GetComponentInChildren<Rotator>();
+        _rotator.enabled = false;
+    }
+
+
 }
