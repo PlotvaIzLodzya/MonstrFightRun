@@ -9,6 +9,7 @@ public class SwipeZone : MonoBehaviour
     [SerializeField] private Transform _leftCorner;
 
     private float _stopSpeed = 7f;
+    private float _threshold = 8;
     private SwipeMover[] _swipeMovers;
     private SwipeMover _centralMover;
     private float _xPointerDistance;
@@ -33,7 +34,7 @@ public class SwipeZone : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            _xPointerDistance = Input.mousePosition.x;
+            _xPointerDistance = 0;
             Clicked = false;
         }
 
@@ -52,11 +53,8 @@ public class SwipeZone : MonoBehaviour
             }
         }
 
-        if(Mathf.Abs(Speed) < 0.2f && Mathf.Abs(_xPointerDistance) < 10f)
+        if(Mathf.Abs(Speed) < 0.2f && Mathf.Abs(_xPointerDistance) < _threshold)
             Centrate();
-
-        if (Input.GetMouseButtonUp(0))
-            _xPointerDistance = 0;
     }
 
     private void OnMouseDown()
