@@ -21,9 +21,11 @@ public class SwipeZone : MonoBehaviour
     {
         _swipeMovers = GetComponentsInChildren<SwipeMover>();
 
+        float spacing = Mathf.Abs(_swipeMovers[0].transform.localPosition.x) - Mathf.Abs(_swipeMovers[1].transform.localPosition.x);
+
         foreach (var swipeMover in _swipeMovers)
         {
-            swipeMover.Init(_swipeMovers[0].transform, _swipeMovers[_swipeMovers.Length - 1].transform, 5);
+            swipeMover.Init(_swipeMovers[0].transform, _swipeMovers[_swipeMovers.Length - 1].transform, spacing);
         }
     }
 
