@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class MonsterCell : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private Monster _monster;
-    [SerializeField] private MonstersIcons _monstersIcons;
-    [SerializeField] private Image _image;
     [SerializeField] private Transform _monsterPoint;
     [SerializeField] private MonsterUpgraderHandler _monsterUpgraderOpener;
     [SerializeField] private Material _inactiveMaterial;
+    [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
@@ -38,7 +37,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     {
         _initialMaterial = _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material;
         _initialMonster = _monster;
-        _image.sprite = _monstersIcons.GetAttackRangeIconSprite(_monster.GetComponent<Attack>().InitialRange);
         DisableRotator();
 
         if (PlayerPrefs.HasKey(SaveName))
@@ -106,6 +104,16 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;
         _monster.MonsterAnimator.VictoryAnimation(true);
         PlayerPrefs.SetString(SaveName, SaveName);
+    }
+
+    public bool TryOpenInfoPanel()
+    {
+        bool canOpen = _monster != null && IsOpened;
+
+        if(canOpen)
+            _monsterInfoPanel.Open(_monster);
+
+        return canOpen;
     }
 
     private void DisableRotator()

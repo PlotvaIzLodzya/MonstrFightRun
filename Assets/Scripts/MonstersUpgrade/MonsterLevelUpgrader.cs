@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class MonsterLevelUpgrader : ShopButton
 {
-    [SerializeField] private TMP_Text _levelPresenter;
     [SerializeField] private MonsterCell _monsterCell;
     [SerializeField] private int _levelPerBuy;
 
@@ -27,12 +26,6 @@ public class MonsterLevelUpgrader : ShopButton
 
         if (_monsterCell.IsMonsterPlaced())
             IncreaseMonstersMight();
-    }
-
-    protected override void UpdateInfo()
-    {
-        _levelPresenter.text = $"{ValueHandler.Value}";
-        base.UpdateInfo();
     }
 
     private void AddLvl(Monster monster, int level)

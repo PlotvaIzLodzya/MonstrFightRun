@@ -8,14 +8,30 @@ public class Graber : MonoBehaviour
     private Monster _monster;
     private bool _grabed;
     private IMonsterHolder _monsterHolder;
+    private float _pointerDistance;
+    private float _threshold =1f;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            Grab();
+        {
+            _pointerDistance = 0;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            if (IsBrakingThreshold())
+                Grab();
+
+            _pointerDistance += Mathf.Abs(Input.GetAxis("Mouse X")) + Mathf.Abs(Input.GetAxis("Mouse Y"));
+        }
 
         if (Input.GetMouseButtonUp(0))
+        {
+            TryOpenInfoPanel();
+
             Release();
+        }
 
         if (_grabed)
             _monster.transform.position = GetWorldPositionOnPlane(Input.mousePosition, 2f);
@@ -79,6 +95,42 @@ public class Graber : MonoBehaviour
         _monster.MonsterAnimator.MonsterPlaced();
     }
 
+    private bool TryOpenInfoPanel()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
+
+        foreach (var hitInfo in raycastHits)
+        {
+            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder))
+            {
+                monsterHolder.TryOpenInfoPanel();
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool TryGetMonsterHolder(IMonsterHolder monsterHolder, out IMonsterHolder targetMonsterHolder)
+    {
+        targetMonsterHolder = null;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
+
+        foreach (var hitInfo in raycastHits)
+        {
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder tempMonsterHolder))
+                if (tempMonsterHolder.GetType() == monsterHolder.GetType())
+                    targetMonsterHolder = tempMonsterHolder;
+        }
+
+        return false;
+    }
+
     private void Swap(MonsterPlaceAccepter monsterPlaceAccepter)
     {
         monsterPlaceAccepter.Grab(out Monster firstMonster);
@@ -120,5 +172,10 @@ public class Graber : MonoBehaviour
         float distance;
         xzPlane.Raycast(ray, out distance);
         return ray.GetPoint(distance);
+    }
+
+    private bool IsBrakingThreshold()
+    {
+        return _pointerDistance > _threshold;
     }
 }
