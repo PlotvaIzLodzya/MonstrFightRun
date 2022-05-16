@@ -5,9 +5,9 @@ using System.Linq;
 
 public class MonsterShop : MonoBehaviour
 {
-    [SerializeField] private MonsterCell[] _monsterCells;
     [SerializeField] private MonsterCell[] _initialMonsterCells;
 
+    private MonsterCell[] _monsterCells;
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
 
     private ValueHandler _monsterCount = new ValueHandler(1, 3, "MonsterCountShopSaveName");
@@ -19,6 +19,7 @@ public class MonsterShop : MonoBehaviour
     private void Awake()
     {
         _monsterPlaceAcepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
+        _monsterCells = GetComponentsInChildren<MonsterCell>();
         _monsterCount.LoadAmount();
         _openedMonstersCellCount.LoadAmount();
         _openedMonsterPlaces.LoadAmount();
