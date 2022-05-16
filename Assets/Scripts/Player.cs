@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _currencyHandler.LoadAmount();
-        _currencyHandler.Increase(1000);
     }
 
     private void OnEnable()

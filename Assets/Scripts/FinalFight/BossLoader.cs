@@ -42,6 +42,18 @@ public class BossLoader : MonoBehaviour
         }
     }
 
+    public bool TryGetBossRewardValue(out int value)
+    {
+        value = 0;
+
+        if (_currentBossPrefab == null)
+            return false;
+
+        value = _currentBossPrefab.Bosses.Count * 25;
+
+        return true;
+    }
+
     private int GetBossPrefabIndex()
     {
         int index = 0;

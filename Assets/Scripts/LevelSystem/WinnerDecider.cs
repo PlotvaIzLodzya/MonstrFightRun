@@ -39,13 +39,29 @@ public class WinnerDecider : MonoBehaviour
         _counter++;
 
         if (_counter >= bossCount)
-        {
-            StartCoroutine(DelayedEnable());
+            SetVictory();
+    }
 
-            SetVictoryAnimation();
+    private void SetVictory()
+    {
+        StartCoroutine(DelayedEnable());
 
-            Victory?.Invoke();
-        }
+        SetVictoryAnimation();
+
+        RewardPlayer();
+
+        Victory?.Invoke();
+    }
+
+    private void RewardPlayer()
+    {
+        Player player = FindObjectOfType<Player>();
+
+        BossLoader bossLoader = FindObjectOfType<BossLoader>();
+
+        bossLoader.TryGetBossRewardValue(out int value);
+
+        player.CurrencyHandler.Increase(value, false);
     }
 
     private IEnumerator DelayedEnable()
