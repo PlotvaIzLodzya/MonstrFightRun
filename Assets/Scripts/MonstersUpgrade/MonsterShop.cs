@@ -81,10 +81,19 @@ public class MonsterShop : MonoBehaviour
         return Mathf.Abs((int)_openedMonsterPlaces.Value - count);
     }
 
-    public void OpenCellWithMonster(Monster monster)
+    public bool TryOpenCellWithMonster(Monster monster)
     {
-        _monsterCells.FirstOrDefault(cell => cell.Monster.GetType() == monster.GetType()).Open();
-        OnCellOpened();
+        var monsteCell = _monsterCells.FirstOrDefault(cell => cell.Monster.GetType() == monster.GetType() && cell.IsOpened == false);
+
+        if(monsteCell != default)
+        {
+            monsteCell.Open();
+            OnCellOpened();
+
+            return true;
+        }
+
+        return false;
     }
 
     private void OnCellOpened()

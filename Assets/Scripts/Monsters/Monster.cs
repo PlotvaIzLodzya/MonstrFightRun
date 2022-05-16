@@ -36,6 +36,7 @@ public class Monster : MonoBehaviour, IMergeable
     public float Speed => _speed;
     public int Level => _level;
     public float Damage => _damage;
+    public float DamagePerLevel => _damagePerLevel;
     public Transform PointForProjectile => _pointForProjectile;
 
     public event Action<int> LevelChanged;

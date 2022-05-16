@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Linq;
 
 public class Graber : MonoBehaviour
 {
@@ -48,7 +51,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 if (monsterHolder.TryGrab(out Monster monster))
                 {
@@ -59,6 +62,8 @@ public class Graber : MonoBehaviour
 
                     _rotator = monster.GetComponentInChildren<Rotator>();
                     _rotator.enabled = true;
+
+                    LightUp(monster);
                 }
             }
         }
@@ -77,7 +82,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 if (monsterHolder.TryAcquireMonster(_monster) == false)
                 {
@@ -88,14 +93,15 @@ public class Graber : MonoBehaviour
                 }
 
                 _monster.MonsterAnimator.MonsterPlaced();
-
+                LigthDown();
                 return;
             }
         }
 
-        Return(_monsterHolder);
+        PlaceToInitialMonsterCell(_monster);
         ResetPosition();
         _monster.MonsterAnimator.MonsterPlaced();
+        LigthDown();
     }
 
     private bool TryOpenInfoPanel()
@@ -109,7 +115,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder) && SwipeZone.IsMoving == false)
+            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder) && SwipeZone.IsMoving == false && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 monsterHolder.TryOpenInfoPanel();
 
@@ -118,6 +124,42 @@ public class Graber : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void LightUp(Monster monster)
+    {
+        var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
+
+        foreach (var accepter in accepters)
+        {
+            if (accepter.CanAcquireMonster)
+                accepter.LightUp();
+        }
+
+        var cells = FindObjectsOfType<MonsterCell>();
+
+        foreach (var cell in cells)
+        {
+            if(cell.InitialMonster.GetType() == monster.GetType())
+                cell.LightUp();
+        }
+    }
+
+    private void LigthDown()
+    {
+        var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
+
+        foreach (var accepter in accepters)
+        {
+            accepter.LightDown();
+        }
+
+        var cells = FindObjectsOfType<MonsterCell>();
+
+        foreach (var cell in cells)
+        {
+            cell.LightDown();
+        }
     }
 
     private bool TryGetMonsterHolder(IMonsterHolder monsterHolder, out IMonsterHolder targetMonsterHolder)
@@ -129,7 +171,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder tempMonsterHolder))
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder tempMonsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
                 if (tempMonsterHolder.GetType() == monsterHolder.GetType())
                     targetMonsterHolder = tempMonsterHolder;
         }
@@ -143,20 +185,29 @@ public class Graber : MonoBehaviour
 
         monsterPlaceAccepter.TryAcquireMonster(_monster);
 
-        PlaceToInititalMonsterCell(firstMonster);  
+        TryPlaceToInititalMonsterCell(firstMonster);  
     }
 
-    private void PlaceToInititalMonsterCell(Monster monster)
+    private bool TryPlaceToInititalMonsterCell(Monster monster)
     {
         if (_monsterHolder.TryAcquireMonster(monster) == false)
         {
-            MonsterCell[] monsterCells = FindObjectsOfType<MonsterCell>();
+            PlaceToInitialMonsterCell(monster);
 
-            foreach (var monsterCell in monsterCells)
-            {
-                if (monsterCell.TryAcquireMonster(monster))
-                    return;
-            }
+            return true;
+        }
+
+        return false;
+    }
+
+    private void PlaceToInitialMonsterCell(Monster monster)
+    {
+        MonsterCell[] monsterCells = FindObjectsOfType<MonsterCell>();
+
+        foreach (var monsterCell in monsterCells)
+        {
+            if (monsterCell.TryAcquireMonster(monster))
+                return;
         }
     }
 

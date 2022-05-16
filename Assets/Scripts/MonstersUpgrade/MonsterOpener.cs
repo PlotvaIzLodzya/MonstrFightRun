@@ -6,8 +6,11 @@ using UnityEngine;
 public class MonsterOpener : ShopButton
 {
     [SerializeField] private MonsterCell _monsterCell;
+    [SerializeField] private GameObject _rewardPanel;
+    [SerializeField] private bool _reward;
 
     private const string SaveName = "MonsterUpgraderHandler";
+    public bool Reward => _reward;
 
     public event Action Opened;
 
@@ -30,5 +33,12 @@ public class MonsterOpener : ShopButton
     {
         _monsterCell.Open();
         _monsterCell.TryOpenInfoPanel();
+
+        DisableRewardPanel();
+    }
+
+    public void DisableRewardPanel()
+    {
+        _rewardPanel.SetActive(false);
     }
 }

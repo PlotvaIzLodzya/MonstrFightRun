@@ -1,23 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private DailyRewardBehaviour _dailyRewardBehaviour;
+    [SerializeField] private Image _claimedImage;
+    [SerializeField] private Image _ClosedImage;
 
-    private void Awake()
+    private int _day;
+    private string _saveName = "DailyRewardClaimed";
+
+    private bool _isClaimed;
+    public bool IsOpen { get; private set; }
+
+    public void Init(int day)
     {
         _dailyRewardBehaviour.UpdateInfo();
-    }
+        _day = day;
 
-    private const string Pressed = "Pressed";
+        _saveName = _saveName + day;
+
+        if (PlayerPrefs.HasKey(_saveName))
+        {
+            _claimedImage.gameObject.SetActive(true);
+            _isClaimed = true;
+        }
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _animator.SetTrigger(Pressed);
-        _dailyRewardBehaviour.Acquire();
+        if (CanBeClaimed())
+        {
+            _dailyRewardBehaviour.Acquire();
+            Claim();
+            _isClaimed = true;
+        }
+    }
+
+    public void Open()
+    {
+        _ClosedImage.gameObject.SetActive(false);
+        IsOpen = true;
+    }
+
+    public void Unclaim()
+    {
+        PlayerPrefs.DeleteKey(_saveName);
+    }
+
+    private void Claim()
+    {
+        _claimedImage.gameObject.SetActive(true);
+        PlayerPrefs.SetString(_saveName, _saveName);
+    }
+
+    private bool CanBeClaimed()
+    {
+        return _isClaimed == false && IsOpen;
     }
 }

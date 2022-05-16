@@ -13,6 +13,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
@@ -22,6 +23,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public bool IsOpened { get; private set; }
 
     public MonsterInfoPanel MonsterInfoPanel => _monsterInfoPanel;
+    public CameraTransition CameraTransitionToDefaultPosition => _cameraTransitionToDefaultPosition;
     public MonsterOpener MonsterUpgraderHandler => _monsterUpgraderOpener;
     public Monster Monster => _monster;
     public Monster InitialMonster => _initialMonster;
@@ -100,13 +102,17 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public void Hide()
     {
         IsOpened = false;
-        _monsterUpgraderOpener.gameObject.SetActive(true);
+
+        if(_monsterUpgraderOpener.Reward == false)
+            _monsterUpgraderOpener.gameObject.SetActive(true);
+
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _inactiveMaterial;
     }
 
     public void Open()
     {
         IsOpened = true;
+        _monsterUpgraderOpener.DisableRewardPanel();
         _monsterUpgraderOpener.gameObject.SetActive(false);
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;
         _monster.MonsterAnimator.VictoryAnimation(true);
@@ -143,6 +149,15 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         }
     }
 
+    public void LightUp()
+    {
+        _particleSystem.Play();
+    }
+
+    public void LightDown()
+    {
+        _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
     private void DisableRotator()
     {
         Monster.GetComponentInChildren<Rotator>().enabled = false;

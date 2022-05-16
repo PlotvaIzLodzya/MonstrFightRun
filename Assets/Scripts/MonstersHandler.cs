@@ -89,15 +89,18 @@ public class MonstersHandler : MonoBehaviour
         return false;
     }
 
-    public void TrySetMonsterToPlace(Monster monster, MonsterPlace place, int level)
+    public void TrySetMonsterToPlace(Monster monster, MonsterPlace place, int level, bool isNeededTeleportation = true)
     {
         _monsterHandlerColliders.CreateBoxCollider(place);
 
-        monster.transform.parent = null;
-        monster.transform.SetParent(place.transform);
-        monster.transform.localRotation = Quaternion.identity;
-        monster.transform.localPosition = Vector3.zero;
-        monster.transform.localScale = Vector3.one;
+        if (isNeededTeleportation)
+        {
+            monster.transform.parent = null;
+            monster.transform.SetParent(place.transform);
+            monster.transform.localRotation = Quaternion.identity;
+            monster.transform.localPosition = Vector3.zero;
+            monster.transform.localScale = Vector3.one;
+        }
 
         place.Take(monster, true);
 

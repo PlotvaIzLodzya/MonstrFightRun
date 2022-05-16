@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SwipeZone : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class SwipeZone : MonoBehaviour
     private SwipeMover _centralMover;
     private float _xPointerDistance;
 
-    public bool Clicked { get; private set; }
     public static bool IsMoving;
 
+    public bool Clicked { get; private set; }
     public float Speed { get; private set; }
 
     private void Awake()
@@ -39,7 +40,7 @@ public class SwipeZone : MonoBehaviour
             Clicked = false;
         }
 
-        if (Clicked)
+        if (Clicked && EventSystem.current.IsPointerOverGameObject() == false)
         {
             Speed = Input.GetAxis("Mouse X") * _sensitivity;
             Speed = Mathf.Clamp(Speed, -30, 30);

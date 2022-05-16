@@ -8,7 +8,7 @@ using RunnerMovementSystem.Examples;
 public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameObject _shop;
-    [SerializeField] private ShopAnimator _abilityShopAnimator;
+    [SerializeField] private ShopAnimator[] _shopAnimators;
     [SerializeField] private RoadMap _roadMap;
 
     public event Action RunStarted;
@@ -18,8 +18,14 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         EnableRotators();
         gameObject.SetActive(false);
         _shop.SetActive(false);
-        _abilityShopAnimator.CloseAnimation();
-        _abilityShopAnimator.HideIcon();
+
+        foreach (var shopAnimator in _shopAnimators)
+        {
+            shopAnimator.HideIcon();
+            shopAnimator.CloseAnimation();
+               
+        }
+
         _roadMap.Disable();
         RunStarted?.Invoke();
         FindObjectOfType<CameraFollowing>().enabled = true;

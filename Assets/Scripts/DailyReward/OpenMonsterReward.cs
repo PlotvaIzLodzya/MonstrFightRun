@@ -5,9 +5,11 @@ using UnityEngine;
 public class OpenMonsterReward : DailyRewardBehaviour
 {
     [SerializeField] private Monster _monster;
+    [SerializeField] private CurrencyReward _currencyReward;
 
     public override void Acquire()
     {
-        FindObjectOfType<MonsterShop>().OpenCellWithMonster(_monster);
+        if (FindObjectOfType<MonsterShop>().TryOpenCellWithMonster(_monster) == false)
+            _currencyReward.Acquire();
     }
 }

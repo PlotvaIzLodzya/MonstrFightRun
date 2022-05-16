@@ -6,14 +6,24 @@ using UnityEngine;
 public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private MonstersHandler _monstersHandler;
+    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private BoxCollider _boxCollider;
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
     private bool _opened;
+    private Vector3 _initialColliderScale;
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
 
     public bool IsFree => _monster == null;
+
+    public bool CanAcquireMonster => IsFree && _boxCollider.enabled;
+
+    private void Awake()
+    {
+        _initialColliderScale = _boxCollider.size;
+    }
 
     public bool TryAcquireMonster(Monster monster)
     {
@@ -71,11 +81,22 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         gameObject.SetActive(true);
     }
 
+    public void LightUp()
+    {
+        _particleSystem.Play();
+
+        _boxCollider.size = _boxCollider.size * 2;
+    }
+
     private void DisableRotator()
     {
         _rotator = _monster.GetComponentInChildren<Rotator>();
         _rotator.enabled = false;
     }
 
-
+    public void LightDown()
+    {
+        _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        _boxCollider.size = _initialColliderScale;
+    }
 }

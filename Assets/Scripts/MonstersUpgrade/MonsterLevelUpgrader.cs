@@ -8,6 +8,8 @@ public class MonsterLevelUpgrader : ShopButton
 {
     [SerializeField] private MonsterCell _monsterCell;
     [SerializeField] private int _levelPerBuy;
+    [SerializeField] private StatSlider _attackSlider;
+    [SerializeField] private StatSlider _healthSlider;
 
     private string SaveName => $"MonsterCellLevelHandler{_monsterCell.Monster.Name}";
     private MonstersHandler _monstersHandler;
@@ -17,6 +19,9 @@ public class MonsterLevelUpgrader : ShopButton
         LoadProgression(SaveName);
         AddLvl(_monsterCell.Monster, (int)ValueHandler.LoadAmount() - 1);
         UpdateInfo();
+
+        _attackSlider.Init(_monsterCell.InitialMonster.Level, _monsterCell.Monster.DamagePerLevel, 10);
+        _healthSlider.Init(_monsterCell.InitialMonster.Level, _monsterCell.Monster.Health.HealthPerLevel, 100);
     }
 
     public override void Buy(float cost)
@@ -31,6 +36,8 @@ public class MonsterLevelUpgrader : ShopButton
     protected override void UpdateInfo()
     {
         _monsterCell.MonsterInfoPanel.UpdateInfo();
+        _attackSlider.UpdateInfo();
+        _healthSlider.UpdateInfo();
         base.UpdateInfo();
     }
 

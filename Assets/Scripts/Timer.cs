@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _time;
+    [SerializeField] private TMP_Text _timer;
 
-    private float _elapsedTime = 0;
+    public bool _dayEnded;
+
+    public event Action DayEnded;
+
     private void Update()
     {
-        _elapsedTime += Time.deltaTime;
-        _time.text = $"{(int)_elapsedTime}";
-    }
+        float hours = 23 - DateTime.Now.Hour;
+        float minutes = 60 - DateTime.Now.Minute;
+        float second = 60 - DateTime.Now.Second;
 
-    private void OnDisable()
-    {
-        Debug.Log(_elapsedTime);
+        _timer.text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, second);
+
+        if (hours == 0 && minutes == 0 & second >= 0 && _dayEnded == false)
+        {
+            DayEnded?.Invoke();
+            _dayEnded = true;
+        }
     }
 }

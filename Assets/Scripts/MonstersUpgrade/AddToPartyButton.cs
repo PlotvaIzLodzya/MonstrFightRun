@@ -22,6 +22,9 @@ public class AddToPartyButton : MonoBehaviour, IPointerClickHandler
 
         if (_monsterCell.TryTakeMonster(out Monster monster))
             if (place.TryAcquireMonster(monster))
+            {
                 _monsterCell.Clear();
+                _monsterCell.CloseInfoPanel();
+            }
     }
 }

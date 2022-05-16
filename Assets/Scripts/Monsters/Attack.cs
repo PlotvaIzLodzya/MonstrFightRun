@@ -5,12 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour 
 {
     [SerializeField] private AttackRange _attackRange;
+    [SerializeField] private AttackRange _initialAttackRange;
     [SerializeField] private Projectile _projectile;
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private bool _DontSwitchRangeOnStart;
 
     private AttackRange _inititalRange;
-    public AttackRange InitialRange => _inititalRange;
+    public AttackRange InitialRange => _initialAttackRange;
     public AttackRange AttackRange => _attackRange;
 
     private void Awake()
@@ -20,8 +21,6 @@ public class Attack : MonoBehaviour
 
     public void InitRunerSetting()
     {
-        _inititalRange = _attackRange;
-
         if (_DontSwitchRangeOnStart)
             return;
 

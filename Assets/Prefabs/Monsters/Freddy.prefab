@@ -104,7 +104,7 @@ MonoBehaviour:
   _health:
     _healthPerLevel: 20
     _healthScaler: 0
-  _damagePerLevel: 5
+  _damagePerLevel: 2.5
   _speed: 5
   _level: 1
   _damageScaler: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 0
+  _initialAttackRange: 0
   _projectile: {fileID: 0}
   _attackPoint: {fileID: 0}
   _DontSwitchRangeOnStart: 0

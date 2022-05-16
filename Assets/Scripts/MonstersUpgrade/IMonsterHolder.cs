@@ -13,4 +13,8 @@ interface IMonsterHolder
     public void Open();
 
     public void Hide();
+
+    public void LightUp();
+
+    public void LightDown();
 }
