@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 290619021912467632}
   - component: {fileID: 3887323483477742277}
   - component: {fileID: 4107478718602203707}
+  - component: {fileID: 756169773641114355}
   m_Layer: 7
   m_Name: SCP-49
   m_TagString: Untagged
@@ -293,6 +294,19 @@ MonoBehaviour:
   _projectile: {fileID: 8504317211094323919, guid: a02fd930a5788d84cb9ff18d33955f73, type: 3}
   _attackPoint: {fileID: 8123966103673348519}
   _DontSwitchRangeOnStart: 0
+--- !u!114 &756169773641114355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662317055963435036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad98f5db9aff2d479d74fb53bdfd486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 0}
 --- !u!1 &4214123574840253693
 GameObject:
   m_ObjectHideFlags: 0

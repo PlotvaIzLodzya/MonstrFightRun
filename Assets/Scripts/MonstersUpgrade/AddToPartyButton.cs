@@ -30,6 +30,7 @@ public class AddToPartyButton : MonoBehaviour, IPointerClickHandler
 
         _noPlaceForMonster.gameObject.SetActive(_hideButton);
     }
+
     public void Init(MonsterCell monsterCell)
     {
         _monsterCell = monsterCell;
@@ -39,15 +40,9 @@ public class AddToPartyButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        var place = _monsterPlaceAccepters.FirstOrDefault(place => place.IsFree);
+        if (_hideButton)
+            return;
 
-        if (_monsterCell.TryTakeMonster(out Monster monster))
-        {
-            if (place.TryAcquireMonster(monster))
-            {
-                _monsterCell.Clear();
-                _monsterCell.CloseInfoPanel();
-            }
-        }
+        _monsterCell.TryPlaceMonster();
     }
 }

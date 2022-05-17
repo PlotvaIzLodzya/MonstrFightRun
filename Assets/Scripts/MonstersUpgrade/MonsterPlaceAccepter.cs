@@ -35,6 +35,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             _monstersHandler.TrySetMonsterToPlace(_monster, _monsterPlace, _monster.Level);
 
             DisableRotator();
+            LightDown();
         }
 
         return isPlaceFree;
@@ -50,6 +51,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             _monsterPlace.Free(true);
             _monstersHandler.DecreasseCounter(_monster.Level);
             monster = _monster;
+            LightUp();
             _monster = null;
         }
 
@@ -66,6 +68,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     {
         _monsterPlace.EnableCollider();
         _opened = true;
+        LightUp();
     }
 
     public void Hide()

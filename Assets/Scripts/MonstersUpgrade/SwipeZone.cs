@@ -8,7 +8,7 @@ public class SwipeZone : MonoBehaviour
     [SerializeField] private float _sensitivity;
 
     private float _stopSpeed = 7f;
-    private float _threshold = 6;
+    private float _threshold = 1f;
     private SwipeMover[] _swipeMovers;
     private SwipeMover _centralMover;
     private float _xPointerDistance;
@@ -42,9 +42,9 @@ public class SwipeZone : MonoBehaviour
 
         if (Clicked && EventSystem.current.IsPointerOverGameObject() == false)
         {
-            Speed = Input.GetAxis("Mouse X") * _sensitivity;
+            Speed = Input.GetAxis("Mouse X") * _sensitivity*Time.deltaTime;
             Speed = Mathf.Clamp(Speed, -30, 30);
-            _xPointerDistance += Input.GetAxis("Mouse X");
+            _xPointerDistance += Input.GetAxis("Mouse X")*10f * Time.deltaTime;
         }
 
         if(Speed != 0)

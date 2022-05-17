@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: -5894843227966838262}
   - component: {fileID: 4359993334085215928}
   - component: {fileID: 8912209999568623740}
+  - component: {fileID: -6231785062107140733}
   m_Layer: 7
   m_Name: Skelington
   m_TagString: Untagged
@@ -318,9 +319,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 0
+  _initialAttackRange: 0
   _projectile: {fileID: 0}
   _attackPoint: {fileID: 0}
   _DontSwitchRangeOnStart: 0
+--- !u!114 &-6231785062107140733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358167927135001218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad98f5db9aff2d479d74fb53bdfd486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 0}
 --- !u!1001 &60897364912640021
 PrefabInstance:
   m_ObjectHideFlags: 0

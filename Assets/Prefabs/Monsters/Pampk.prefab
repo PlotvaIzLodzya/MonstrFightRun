@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 912069905492843410}
   - component: {fileID: 3605812200394845889}
   - component: {fileID: 7700951053674859433}
+  - component: {fileID: 6062001490719720811}
   m_Layer: 7
   m_Name: Pampk
   m_TagString: Untagged
@@ -293,6 +294,19 @@ MonoBehaviour:
   _projectile: {fileID: 290961035013506113, guid: de9a92375e6ac21419ec0e2d9dd2d3fb, type: 3}
   _attackPoint: {fileID: 2309069548281847610}
   _DontSwitchRangeOnStart: 0
+--- !u!114 &6062001490719720811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289954068896746566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad98f5db9aff2d479d74fb53bdfd486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 0}
 --- !u!1 &3416232870054454935
 GameObject:
   m_ObjectHideFlags: 0

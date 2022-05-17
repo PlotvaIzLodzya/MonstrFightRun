@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-
+[RequireComponent(typeof(BoxCollider))]
 public class MonsterCell : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private Monster _monster;
@@ -18,6 +20,8 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     private Monster _initialMonster;
     private Material _initialMaterial;
+    private BoxCollider _boxCollider;
+    private Vector3 _initialBoxColliderSize;
 
     private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
@@ -30,11 +34,20 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public Monster InitialMonster => _initialMonster;
     public Transform MonsterPoint => _monsterPoint;
 
+    private void OnMouseUp()
+    {
+        if (ViewState.IsViewed)
+            TryPlaceMonster();
+    }
+
     public void Init()
     {
         _initialMaterial = _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material;
         _initialMonster = _monster;
         DisableRotator();
+
+        _boxCollider = GetComponent<BoxCollider>();
+        _initialBoxColliderSize = _boxCollider.size;
 
         if (PlayerPrefs.HasKey(SaveName))
             Open();
@@ -120,9 +133,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         PlayerPrefs.SetString(SaveName, SaveName);
     }
 
-    public bool TryOpenInfoPanel(bool needCameraTransition = true, bool forceOpen = false)
+    public bool TryOpenInfoPanel(bool needCameraTransition = true)
     {
-        bool canOpen = _monster != null && IsOpened && IsInCenter || forceOpen;
+        bool canOpen = _monster != null && IsOpened && IsInCenter;
 
         if (canOpen)
         {
@@ -134,6 +147,8 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
                 _cameraTransitionToInfoPanel.TryTransit();
             }
         }
+
+        _boxCollider.size = _boxCollider.size + Vector3.up * 4;
 
         return canOpen;
     }
@@ -148,6 +163,8 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
             ViewState.IsViewed = false;
         }
+
+        _boxCollider.size = _initialBoxColliderSize;
     }
 
     public void LightUp()
@@ -158,6 +175,29 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public void LightDown()
     {
         _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
+    public bool TryPlaceMonster()
+    {
+        var monsterPlaceAccepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
+
+        var place = monsterPlaceAccepters.FirstOrDefault(place => place.IsFree);
+
+        CloseInfoPanel();
+
+        if (TryTakeMonster(out Monster monster))
+        {
+            if (place.CanAcquireMonster)
+            {
+                Clear();
+
+                monster.GetComponent<Mover>().MoveTo(monster, place);
+
+                return true;
+            }
+        }
+
+        return false;
     }
     private void DisableRotator()
     {

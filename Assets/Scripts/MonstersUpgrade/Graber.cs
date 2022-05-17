@@ -93,15 +93,15 @@ public class Graber : MonoBehaviour
                 }
 
                 _monster.MonsterAnimator.MonsterPlaced();
-                LigthDown();
+                LighthDown();
                 return;
             }
         }
 
         PlaceToInitialMonsterCell(_monster);
         ResetPosition();
+        LighthDown();
         _monster.MonsterAnimator.MonsterPlaced();
-        LigthDown();
     }
 
     private bool TryOpenInfoPanel()
@@ -128,13 +128,13 @@ public class Graber : MonoBehaviour
 
     private void LightUp(Monster monster)
     {
-        var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
+        //var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
 
-        foreach (var accepter in accepters)
-        {
-            if (accepter.CanAcquireMonster)
-                accepter.LightUp();
-        }
+        //foreach (var accepter in accepters)
+        //{
+        //    if (accepter.CanAcquireMonster)
+        //        accepter.LightUp();
+        //}
 
         var cells = FindObjectsOfType<MonsterCell>();
 
@@ -145,14 +145,14 @@ public class Graber : MonoBehaviour
         }
     }
 
-    private void LigthDown()
+    private void LighthDown()
     {
-        var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
+        //var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
 
-        foreach (var accepter in accepters)
-        {
-            accepter.LightDown();
-        }
+        //foreach (var accepter in accepters)
+        //{
+        //    accepter.LightDown();
+        //}
 
         var cells = FindObjectsOfType<MonsterCell>();
 

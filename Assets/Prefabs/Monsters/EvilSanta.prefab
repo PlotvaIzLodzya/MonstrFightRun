@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: -5806378647150935583}
   - component: {fileID: 2198420886208714921}
   - component: {fileID: 716120863558490757}
+  - component: {fileID: -7844734156348623120}
   m_Layer: 7
   m_Name: EvilSanta
   m_TagString: Untagged
@@ -230,6 +231,19 @@ MonoBehaviour:
   _projectile: {fileID: 7354807768353941477, guid: 9fd74dcc745bae846800a6bbd4703bc0, type: 3}
   _attackPoint: {fileID: 5849470877677478935}
   _DontSwitchRangeOnStart: 0
+--- !u!114 &-7844734156348623120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863492801631827317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad98f5db9aff2d479d74fb53bdfd486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monster: {fileID: 0}
 --- !u!1 &1863492801678024749
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,11 +686,6 @@ PrefabInstance:
       objectReference: {fileID: 2169321206334283348}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
---- !u!4 &7874663256745640929 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1603035792989647075, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
-  m_PrefabInstance: {fileID: 8896663211290882818}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5758500787398131158 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3791188630625275604, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
@@ -688,3 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cecdf766219c4440b504247c26463c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7874663256745640929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1603035792989647075, guid: e03f34d28d73ae540b52f6e3c032277e, type: 3}
+  m_PrefabInstance: {fileID: 8896663211290882818}
+  m_PrefabAsset: {fileID: 0}
