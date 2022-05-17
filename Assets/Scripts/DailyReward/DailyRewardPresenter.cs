@@ -15,7 +15,7 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
     private int _day;
     private string _saveName = "DailyRewardClaimed";
 
-    private bool _isClaimed;
+    public bool IsClaimed { get; private set; }
     public bool IsOpen { get; private set; }
 
     public void Init(int day)
@@ -28,7 +28,7 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
         if (PlayerPrefs.HasKey(_saveName))
         {
             _claimedImage.gameObject.SetActive(true);
-            _isClaimed = true;
+            IsClaimed = true;
         }
     }
 
@@ -38,7 +38,7 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
         {
             _dailyRewardBehaviour.Acquire();
             Claim();
-            _isClaimed = true;
+            IsClaimed = true;
         }
     }
 
@@ -61,6 +61,6 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
 
     private bool CanBeClaimed()
     {
-        return _isClaimed == false && IsOpen;
+        return IsClaimed == false && IsOpen;
     }
 }

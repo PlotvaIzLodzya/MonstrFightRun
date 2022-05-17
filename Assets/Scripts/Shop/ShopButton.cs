@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
 {
@@ -13,15 +14,35 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private PurchaseName _purchaseName;
     [SerializeField] private float _minValue;
     [SerializeField] private float _minCost;
+    [SerializeField] private float _maxBuying = 100;
+    [SerializeField] private Image _notEnoughMoney;
 
     protected Player Player;
-    private const int MaxBuying = 100;
     private const string BuyCounterSaveName = "BuyCounter";
     private bool _isInactive;
     private ValueHandler BuyCounter;
     protected IntegrationMetric _integrationMetric = new IntegrationMetric();
+
     protected ValueHandler ValueHandler { get; private set; }
     protected ValueHandler CostHandler { get; private set; }
+
+    private void OnEnable()
+    {
+        if (Player == null)
+        {
+            Player = FindObjectOfType<Player>();
+            Error.CheckOnNull(Player, nameof(Player));
+        }
+
+        Player.CurrencyHandler.ValueChanged += OnValueChanged;
+        OnValueChanged();
+
+    }
+
+    private void OnDisable()
+    {
+        Player.CurrencyHandler.ValueChanged -= OnValueChanged;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -42,6 +63,9 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
             UpdateInfo();
 
             _integrationMetric.OnSoftCurrencySpend(_purchaseType.ToString(), _purchaseName.ToString(), (int)CostHandler.Value);
+
+            if (BuyCounter.Value >= _maxBuying -1)
+                SetInactive();
         }
     }
 
@@ -60,7 +84,7 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
 
     public void LoadProgression(string saveName)
     {
-        BuyCounter = new ValueHandler(0, 100, $"{BuyCounterSaveName}{saveName}");
+        BuyCounter = new ValueHandler(0, _maxBuying, $"{BuyCounterSaveName}{saveName}");
         BuyCounter.LoadAmount();
 
         ValueHandler = new ValueHandler(_minValue, 10000, saveName);
@@ -70,8 +94,15 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
         CostHandler.LoadAmount();
         UpdateInfo();
 
-        if (BuyCounter.Value >= MaxBuying)
+        if (BuyCounter.Value >= _maxBuying-1)
             SetInactive();
+    }
+
+    private void OnValueChanged()
+    {
+        bool isEnoughMoney = Player.CurrencyHandler.Value < CostHandler.Value;
+
+        _notEnoughMoney.gameObject.SetActive(isEnoughMoney);
     }
 }
 

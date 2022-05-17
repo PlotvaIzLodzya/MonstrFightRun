@@ -20,7 +20,7 @@ public class MonsterLevelUpgrader : ShopButton
         AddLvl(_monsterCell.Monster, (int)ValueHandler.LoadAmount() - 1);
         UpdateInfo();
 
-        _attackSlider.Init(_monsterCell.InitialMonster.Level, _monsterCell.Monster.DamagePerLevel, 10);
+        _attackSlider.Init(_monsterCell.InitialMonster.Level, _monsterCell.Monster.DamagePerLevel, 50);
         _healthSlider.Init(_monsterCell.InitialMonster.Level, _monsterCell.Monster.Health.HealthPerLevel, 100);
     }
 

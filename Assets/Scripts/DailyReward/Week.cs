@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Week : MonoBehaviour
 {
     [SerializeField] private DailyRewardPresenter[] _dailyRewardPresenters;
     [SerializeField] private Timer _timer;
+    [SerializeField] private ShopAnimator _shopAnimator;
+    [SerializeField] private Image _indicator;
 
     private int _daysSinceLastVisit;
 
@@ -21,6 +24,8 @@ public class Week : MonoBehaviour
         {
             _dailyRewardPresenters[i].Init(i);
         }
+
+        UpdateIndicator();
     }
 
     private void OnEnable()
@@ -40,9 +45,8 @@ public class Week : MonoBehaviour
 
         int firstDay = PlayerPrefs.GetInt(SaveName);
 
-        //_daysSinceLastVisit = DateTime.Today.Day - firstDay;
-
-        _daysSinceLastVisit = 7;
+        _daysSinceLastVisit = DateTime.Today.Day - firstDay;
+        _daysSinceLastVisit = 1;
 
         if (_daysSinceLastVisit >7)
         {
@@ -52,6 +56,23 @@ public class Week : MonoBehaviour
         }
 
         OpenDailyRewards();
+    }
+
+    public void OpenShop()
+    {
+        _shopAnimator.OpenAnimation();
+    }
+
+    public void CloseShop()
+    {
+        _shopAnimator.CloseAnimation();
+
+        UpdateIndicator();
+    }
+
+    private void UpdateIndicator()
+    {
+        _indicator.gameObject.SetActive(HaveUnclaimedReward());
     }
 
     private void OpenNextReward()
@@ -65,6 +86,11 @@ public class Week : MonoBehaviour
         {
             _dailyRewardPresenters[i].Open();
         }
+    }
+
+    private bool HaveUnclaimedReward()
+    {
+        return _dailyRewardPresenters.FirstOrDefault(reward => reward.IsOpen && reward.IsClaimed == false);
     }
 
     private void ResetDailyRewards()

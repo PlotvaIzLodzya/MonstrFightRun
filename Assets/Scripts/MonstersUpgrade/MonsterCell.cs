@@ -14,6 +14,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
     [SerializeField] private ParticleSystem _particleSystem;
+    [HideInInspector]public bool IsInCenter;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
@@ -119,9 +120,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         PlayerPrefs.SetString(SaveName, SaveName);
     }
 
-    public bool TryOpenInfoPanel(bool needCameraTransition = true)
+    public bool TryOpenInfoPanel(bool needCameraTransition = true, bool forceOpen = false)
     {
-        bool canOpen = _monster != null && IsOpened;
+        bool canOpen = _monster != null && IsOpened && IsInCenter || forceOpen;
 
         if (canOpen)
         {

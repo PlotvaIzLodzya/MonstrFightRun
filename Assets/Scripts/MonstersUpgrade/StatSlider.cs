@@ -17,8 +17,8 @@ public class StatSlider : MonoBehaviour
     {
         _step = step/ divider;
         _statValue = (level * _step);
-        _slider.fillAmount = _statValue - (int)_statValue;
-        SetLevel();
+        _slider.fillAmount = _statValue;
+        SetLevel(_statValue);
     }
 
     public void UpdateInfo()
@@ -26,16 +26,17 @@ public class StatSlider : MonoBehaviour
         _slider.fillAmount += _step;
         _statValue += _step;
 
-        if (_slider.fillAmount >= 0.99f)
-        {
-            _slider.fillAmount = 0;
-            SetLevel();
-        }
+        //if (_slider.fillAmount >= 1f)
+        //{
+        //    _slider.fillAmount = 0;
+        //    SetLevel(_statValue);
+        //    _statValue = _statValue - (int)_statValue;
+        //}
     }
 
-    private void SetLevel()
+    private void SetLevel(float statValue)
     {
-        float textValue = (_statValue)+1;
+        float textValue = (statValue) +1;
         _statLvlText.text = $"x{(int)textValue}";
     }
 }
