@@ -36,7 +36,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     private void OnMouseUp()
     {
-        if (ViewState.IsViewed)
+        if (ViewState.IsViewed && EventSystem.current.IsPointerOverGameObject() == false)
             TryPlaceMonster();
     }
 
