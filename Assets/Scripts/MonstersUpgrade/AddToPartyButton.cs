@@ -14,18 +14,20 @@ public class AddToPartyButton : MonoBehaviour, IPointerClickHandler
 
     private bool _hideButton;
 
+    private bool _initialized;
+
     private void Update()
     {
-        foreach (var monsterPlace in _monsterPlaceAccepters)
-        {
-            _hideButton = true;
+        if (_initialized == false)
+            return;
 
-            if (monsterPlace.CanAcquireMonster)
-            {
+        _hideButton = true;
+
+
+        foreach (var monsterPlaceAccepter in _monsterPlaceAccepters)
+        {
+            if (_monsterCell.IsMonsterUsed == false && monsterPlaceAccepter.CanAcquireMonster)
                 _hideButton = false;
-                _noPlaceForMonster.gameObject.SetActive(_hideButton);
-                return;
-            }
         }
 
         _noPlaceForMonster.gameObject.SetActive(_hideButton);
@@ -36,6 +38,7 @@ public class AddToPartyButton : MonoBehaviour, IPointerClickHandler
         _monsterCell = monsterCell;
         _monsterPlaceAccepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
         Error.CheckOnNull(_monsterPlaceAccepters, nameof(MonstersHandler));
+        _initialized = true;
     }
 
     public void OnPointerClick(PointerEventData eventData)

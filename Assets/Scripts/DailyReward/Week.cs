@@ -70,6 +70,11 @@ public class Week : MonoBehaviour
         UpdateIndicator();
     }
 
+    public void DisableIndicator()
+    {
+        _indicator.gameObject.SetActive(false);
+    }
+
     private void UpdateIndicator()
     {
         _indicator.gameObject.SetActive(HaveUnclaimedReward());

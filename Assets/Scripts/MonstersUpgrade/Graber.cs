@@ -128,13 +128,6 @@ public class Graber : MonoBehaviour
 
     private void LightUp(Monster monster)
     {
-        //var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
-
-        //foreach (var accepter in accepters)
-        //{
-        //    if (accepter.CanAcquireMonster)
-        //        accepter.LightUp();
-        //}
 
         var cells = FindObjectsOfType<MonsterCell>();
 
@@ -147,12 +140,6 @@ public class Graber : MonoBehaviour
 
     private void LighthDown()
     {
-        //var accepters = FindObjectsOfType<MonsterPlaceAccepter>();
-
-        //foreach (var accepter in accepters)
-        //{
-        //    accepter.LightDown();
-        //}
 
         var cells = FindObjectsOfType<MonsterCell>();
 
@@ -192,12 +179,15 @@ public class Graber : MonoBehaviour
     {
         if (_monsterHolder.TryAcquireMonster(monster) == false)
         {
-            PlaceToInitialMonsterCell(monster);
+            monster.gameObject.SetActive(false);
+            Debug.Log("hi");
 
-            return true;
+            return false;
         }
 
-        return false;
+        PlaceToInitialMonsterCell(monster);
+
+        return true;
     }
 
     private void PlaceToInitialMonsterCell(Monster monster)

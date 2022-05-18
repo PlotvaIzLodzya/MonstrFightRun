@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MonsterLevelUpgrader : ShopButton
 {
@@ -13,6 +14,7 @@ public class MonsterLevelUpgrader : ShopButton
 
     private string SaveName => $"MonsterCellLevelHandler{_monsterCell.Monster.Name}";
     private MonstersHandler _monstersHandler;
+    private MonsterPlaceAccepter[] _monsterPlaceAccepters;
 
     private void Awake()
     {
@@ -29,7 +31,15 @@ public class MonsterLevelUpgrader : ShopButton
         ValueHandler.Increase(_levelPerBuy);
         AddLvl(_monsterCell.InitialMonster, _levelPerBuy);
 
-        if (_monsterCell.IsMonsterPlaced())
+        if (_monsterPlaceAccepters == null)
+            _monsterPlaceAccepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
+
+        var accepter = _monsterPlaceAccepters.FirstOrDefault(accepter =>accepter.Monster != null && accepter.Monster.GetType() == _monsterCell.Monster.GetType());
+
+        if(accepter != null)
+            AddLvl(accepter.Monster, _levelPerBuy);
+
+        if (_monsterCell.IsMonsterUsed)
             IncreaseMonstersMight();
     }
 

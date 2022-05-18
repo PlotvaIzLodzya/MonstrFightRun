@@ -29,12 +29,11 @@ public class CameraTransition : MonoBehaviour
 
         _following = FindObjectOfType<CameraFollowing>();
         Error.CheckOnNull(_following, nameof(CameraFollowing));
-
     }
 
     public bool TryTransit()
     {
-        if (_inTransition)
+        if (ViewState.IsCameraInTransition)
             return false;
 
         if (_camera.transform.parent != null)
@@ -56,18 +55,22 @@ public class CameraTransition : MonoBehaviour
     {
         yield return new WaitForSeconds(Delay);
 
-        _inTransition = true;
+        ViewState.IsCameraInTransition = true;
 
-        while (_camera.transform.position != _cameraPoint.transform.position)
+        float distance = Vector3.Distance(_camera.transform.position, _cameraPoint.transform.position);
+
+        while (distance >0.4f)
         {
             _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _cameraPoint.transform.position, changeSpeed * Time.deltaTime);
 
             _camera.transform.rotation = Quaternion.Slerp(_camera.transform.rotation, _cameraPoint.transform.rotation, _rotationSpeed * Time.deltaTime);
 
+            distance = Vector3.Distance(_camera.transform.position, _cameraPoint.transform.position);
+
             yield return null;
         }
 
-        _inTransition = false;
+        ViewState.IsCameraInTransition = false;
 
         TransitionCompleted?.Invoke();
     }

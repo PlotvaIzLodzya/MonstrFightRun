@@ -13,11 +13,10 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     private Monster _monster;
     private bool _opened;
     private Vector3 _initialColliderScale;
+
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
-
     public bool IsFree => _monster == null;
-
     public bool CanAcquireMonster => IsFree && _boxCollider.enabled;
 
     private void Awake()

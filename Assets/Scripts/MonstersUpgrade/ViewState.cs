@@ -5,4 +5,6 @@ using UnityEngine;
 public static class ViewState
 {
     public static bool IsViewed = false;
+
+    public static bool IsCameraInTransition = false;
 }

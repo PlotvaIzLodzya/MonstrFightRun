@@ -32,6 +32,9 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
         DisableMonsterShop();
         InitializeMonsterPool();
+
+        FindObjectOfType<MonsterShop>().SaveMonsterParty();
+        FindObjectOfType<Week>().DisableIndicator();
     }
 
     private void InitializeMonsterPool()

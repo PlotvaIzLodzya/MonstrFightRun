@@ -10,6 +10,8 @@ public class MonsterList : ScriptableObject
     [SerializeField] private List<Monster> _monsters;
     [SerializeField] private Interactable _powerUp;
 
+    public IReadOnlyList<Monster> Monsters => _monsters;
+
     private List<Monster> _monsterPool = new List<Monster>();
 
     public void CreateMonsterPool()
@@ -89,5 +91,21 @@ public class MonsterList : ScriptableObject
     public void AddMonster(Monster monster)
     {
         _monsterPool.Add(monster);
+    }
+
+    public bool TryGetMonsterId(Monster monster, out int index)
+    {
+        index = 0;
+
+        for (int i = 0; i < _monsters.Count; i++)
+        {
+            if (monster.GetType() == _monsters[i].GetType())
+            {
+                index = i;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

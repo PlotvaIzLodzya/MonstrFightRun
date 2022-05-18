@@ -6,6 +6,8 @@ using System.Linq;
 public class MonsterShop : MonoBehaviour
 {
     [SerializeField] private MonsterCell[] _initialMonsterCells;
+    [SerializeField] private MonsterPersistence _monsterPersistence = new MonsterPersistence();
+    [SerializeField] private Monster _initialMonster;
 
     private MonsterCell[] _monsterCells;
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
@@ -24,7 +26,7 @@ public class MonsterShop : MonoBehaviour
         _openedMonstersCellCount.LoadAmount();
         _openedMonsterPlaces.LoadAmount();
 
-        StartCoroutine(Delay(3));
+        StartCoroutine(Delay());
     }
 
     private void OnEnable()
@@ -96,6 +98,39 @@ public class MonsterShop : MonoBehaviour
         return false;
     }
 
+    public void SaveMonsterParty()
+    {
+        for (int i = 0; i < _monsterPlaceAcepters.Length; i++)
+        {
+            if (_monsterPlaceAcepters[i].Monster != null)
+                _monsterPersistence.Save(_monsterPlaceAcepters[i].Monster, i);
+            else
+                _monsterPersistence.DeleteSave(i);
+        }
+    }
+
+    public void LoadMonsterParty()
+    {
+        if(_monsterPersistence.HaveSavedMonster == false)
+        {
+            if (_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == _initialMonster.GetType()).TryGrab(out Monster monster))
+                _monsterPlaceAcepters[0].TryAcquireMonster(monster);
+        }
+            
+
+        for (int i = 0; i < _monsterPlaceAcepters.Length; i++)
+        {
+            if (_monsterPlaceAcepters[i].CanAcquireMonster)
+            {
+                if (_monsterPersistence.TryLoad(i, out Monster tempMonster))
+                {
+                    if(_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == tempMonster.GetType()).TryGrab(out Monster monster))
+                        _monsterPlaceAcepters[i].TryAcquireMonster(monster);
+                }
+            }
+        }
+    }
+
     private void OnCellOpened()
     {
         _monsterCount.Increase(1);
@@ -120,7 +155,7 @@ public class MonsterShop : MonoBehaviour
         }
     }
 
-    private IEnumerator Delay(int count)
+    private IEnumerator Delay()
     {
         yield return new WaitForSeconds(0.1f);
 
@@ -135,5 +170,6 @@ public class MonsterShop : MonoBehaviour
         }
 
         PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);
+        LoadMonsterParty();
     }
 }

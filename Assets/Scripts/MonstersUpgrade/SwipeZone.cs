@@ -55,7 +55,7 @@ public class SwipeZone : MonoBehaviour
             }
         }
 
-        if(Mathf.Abs(Speed) < 0.2f && Mathf.Abs(_xPointerDistance) < _threshold)
+        if(Mathf.Abs(Speed) < 1.5f && Mathf.Abs(_xPointerDistance) < _threshold)
             Centrate();
     }
 

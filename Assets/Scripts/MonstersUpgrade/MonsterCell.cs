@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(BoxCollider))]
 public class MonsterCell : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private Monster _monster;
@@ -16,16 +15,17 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private FrameHandler _frameHandler;
     [HideInInspector]public bool IsInCenter;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
-    private BoxCollider _boxCollider;
-    private Vector3 _initialBoxColliderSize;
 
     private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
     public bool IsOpened { get; private set; }
+    public bool IsMonsterUsed { get; private set; }
 
     public MonsterInfoPanel MonsterInfoPanel => _monsterInfoPanel;
     public CameraTransition CameraTransitionToDefaultPosition => _cameraTransitionToDefaultPosition;
@@ -36,7 +36,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     private void OnMouseUp()
     {
-        if (ViewState.IsViewed && EventSystem.current.IsPointerOverGameObject() == false)
+        if (EventSystem.current.IsPointerOverGameObject() == false && IsMonsterUsed == false)
             TryPlaceMonster();
     }
 
@@ -46,30 +46,30 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         _initialMonster = _monster;
         DisableRotator();
 
-        _boxCollider = GetComponent<BoxCollider>();
-        _initialBoxColliderSize = _boxCollider.size;
-
         if (PlayerPrefs.HasKey(SaveName))
             Open();
         else
             Hide();
+
+        if (Mathf.Abs(transform.localPosition.x) <=1f)
+        {
+            IsInCenter = true;
+            TryOpenInfoPanel();
+        }
     }
 
     public bool TryGrab(out Monster monster)
     {
-        bool _isMonsterSetted = _monster != null;
         monster = null;
 
-        if (IsOpened == false || ViewState.IsViewed)
+        if (IsOpened == false || IsMonsterUsed)
             return false;
 
-        if (_isMonsterSetted)
-        {
-            monster = _monster;
-            _monster = null;
-        }
+        SwitchState(true);
 
-        return _isMonsterSetted;
+        monster = Instantiate(_monster);
+
+        return true;
     }
 
     public void Clear()
@@ -81,7 +81,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     {
         bool _isMonsterSetted = _monster != null;
 
-        monster = _monster;
+        SwitchState(true);
+
+        monster = Instantiate(_monster);
 
         return _isMonsterSetted;
     }
@@ -91,13 +93,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         if (monster.GetType() != InitialMonster.GetType() || IsOpened == false)
             return false;
 
-        _monster = monster;
+        monster.gameObject.SetActive(false);
 
-        monster.transform.parent = null;
-        monster.transform.SetParent(_monsterPoint);
-        monster.transform.localRotation = Quaternion.identity;
-        monster.transform.localPosition = Vector3.zero;
-        monster.transform.localScale = Vector3.one;
+        SwitchState( false);
 
         DisableRotator();
         return _monster != null;
@@ -138,17 +136,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         bool canOpen = _monster != null && IsOpened && IsInCenter;
 
         if (canOpen)
-        {
             _monsterInfoPanel.Open(this);
-
-            if (needCameraTransition && ViewState.IsViewed == false)
-            {
-                ViewState.IsViewed = true;
-                _cameraTransitionToInfoPanel.TryTransit();
-            }
-        }
-
-        _boxCollider.size = _boxCollider.size + Vector3.up * 4;
 
         return canOpen;
     }
@@ -156,15 +144,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public void CloseInfoPanel(bool needCameraTransition = true)
     {
         _monsterInfoPanel.Close();
-
-        if (needCameraTransition)
-        {
-            _cameraTransitionToDefaultPosition.TryTransit();
-
-            ViewState.IsViewed = false;
-        }
-
-        _boxCollider.size = _initialBoxColliderSize;
     }
 
     public void LightUp()
@@ -181,17 +160,26 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     {
         var monsterPlaceAccepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
 
-        var place = monsterPlaceAccepters.FirstOrDefault(place => place.IsFree);
+        foreach (var monsterPlace in monsterPlaceAccepters)
+        {
+            if (monsterPlace.IsFree == false && monsterPlace.Monster.GetType() == _monster.GetType())
+                return false;
+        }
 
-        CloseInfoPanel();
+        var place = monsterPlaceAccepters.FirstOrDefault(place => place.CanAcquireMonster);
+
+        if (place == default)
+            return false;
 
         if (TryTakeMonster(out Monster monster))
         {
             if (place.CanAcquireMonster)
             {
-                Clear();
+                monster.transform.position = _spawnPoint.transform.position+ monster.transform.right*Random.Range(-5,5);
 
                 monster.GetComponent<Mover>().MoveTo(monster, place);
+
+                SwitchState(true);
 
                 return true;
             }
@@ -202,5 +190,11 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     private void DisableRotator()
     {
         Monster.GetComponentInChildren<Rotator>().enabled = false;
+    }
+
+    private void SwitchState(bool isUsed)
+    {
+        IsMonsterUsed = isUsed;
+        _frameHandler.SwitchState(isUsed);
     }
 }

@@ -19,8 +19,7 @@ public class CenterSwipeZone : MonoBehaviour
         {
             monsterCell.IsInCenter = true;
 
-            if(ViewState.IsViewed)
-                monsterCell.TryOpenInfoPanel(false);
+            monsterCell.TryOpenInfoPanel(false);
         }
     }
 
