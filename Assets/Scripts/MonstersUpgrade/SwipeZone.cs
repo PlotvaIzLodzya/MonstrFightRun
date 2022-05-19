@@ -40,7 +40,7 @@ public class SwipeZone : MonoBehaviour
             Clicked = false;
         }
 
-        if (Clicked && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Clicked )
         {
             Speed = Input.GetAxis("Mouse X") * _sensitivity*Time.deltaTime;
             Speed = Mathf.Clamp(Speed, -30, 30);

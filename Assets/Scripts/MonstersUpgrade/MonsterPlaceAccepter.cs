@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,15 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
-    private bool _opened;
     private Vector3 _initialColliderScale;
 
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
     public bool IsFree => _monster == null;
     public bool CanAcquireMonster => IsFree && _boxCollider.enabled;
+    public bool IsOpened { get; private set; }
+
+    public event Action Changed;
 
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     public bool TryAcquireMonster(Monster monster)
     {
-        bool isPlaceFree = _monsterPlace.Monster == null && _opened;
+        bool isPlaceFree = _monsterPlace.Monster == null && IsOpened;
 
         if (isPlaceFree)
         {
@@ -35,6 +38,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
             DisableRotator();
             LightDown();
+            Changed?.Invoke();
         }
 
         return isPlaceFree;
@@ -52,6 +56,8 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             monster = _monster;
             LightUp();
             _monster = null;
+
+            Changed?.Invoke();
         }
 
         return _isMonsterSetted;
@@ -66,8 +72,9 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public void Open()
     {
         _monsterPlace.EnableCollider();
-        _opened = true;
+        IsOpened = true;
         LightUp();
+        Changed?.Invoke();
     }
 
     public void Hide()

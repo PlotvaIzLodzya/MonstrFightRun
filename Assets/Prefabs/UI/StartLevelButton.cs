@@ -15,6 +15,16 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
+
+        foreach (var hitInfo in raycastHits)
+        {
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) || hitInfo.collider.TryGetComponent(out SwipeZone swipeZone))
+                return;
+        }
+
         EnableRotators();
         gameObject.SetActive(false);
         _shop.SetActive(false);
@@ -23,7 +33,6 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         {
             shopAnimator.HideIcon();
             shopAnimator.CloseAnimation();
-               
         }
 
         _roadMap.Disable();
@@ -35,6 +44,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
         FindObjectOfType<MonsterShop>().SaveMonsterParty();
         FindObjectOfType<Week>().DisableIndicator();
+
     }
 
     private void InitializeMonsterPool()

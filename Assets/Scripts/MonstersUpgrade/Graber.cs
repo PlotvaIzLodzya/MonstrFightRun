@@ -51,7 +51,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
             {
                 if (monsterHolder.TryGrab(out Monster monster))
                 {
@@ -74,7 +74,7 @@ public class Graber : MonoBehaviour
         if (_grabed == false)
             return;
 
-        _grabed = false;
+       _grabed = false;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -82,7 +82,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
             {
                 if (monsterHolder.TryAcquireMonster(_monster) == false)
                 {
@@ -158,7 +158,7 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder tempMonsterHolder) && EventSystem.current.IsPointerOverGameObject() == false)
+            if (hitInfo.collider.TryGetComponent(out IMonsterHolder tempMonsterHolder))
                 if (tempMonsterHolder.GetType() == monsterHolder.GetType())
                     targetMonsterHolder = tempMonsterHolder;
         }
@@ -180,7 +180,6 @@ public class Graber : MonoBehaviour
         if (_monsterHolder.TryAcquireMonster(monster) == false)
         {
             monster.gameObject.SetActive(false);
-            Debug.Log("hi");
             PlaceToInitialMonsterCell(monster);
             return false;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFinder : MonoBehaviour
 {
-    private void Awake()
+    private void OnValidate()
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
