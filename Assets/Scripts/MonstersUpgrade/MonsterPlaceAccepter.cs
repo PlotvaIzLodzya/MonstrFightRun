@@ -7,7 +7,7 @@ using UnityEngine;
 public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 {
     [SerializeField] private MonstersHandler _monstersHandler;
-    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private GameObject _freeEffect;
     [SerializeField] private BoxCollider _boxCollider;
 
     private MonsterPlace _monsterPlace;
@@ -92,7 +92,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     public void LightUp()
     {
-        _particleSystem.Play();
+        _freeEffect.SetActive(true);
 
         _boxCollider.size = _boxCollider.size * 2;
     }
@@ -105,7 +105,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     public void LightDown()
     {
-        _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        _freeEffect.SetActive(false);
         _boxCollider.size = _initialColliderScale;
     }
 }
