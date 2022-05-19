@@ -181,11 +181,9 @@ public class Graber : MonoBehaviour
         {
             monster.gameObject.SetActive(false);
             Debug.Log("hi");
-
+            PlaceToInitialMonsterCell(monster);
             return false;
         }
-
-        PlaceToInitialMonsterCell(monster);
 
         return true;
     }
