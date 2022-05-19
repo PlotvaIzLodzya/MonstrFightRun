@@ -10,6 +10,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameObject _shop;
     [SerializeField] private ShopAnimator[] _shopAnimators;
     [SerializeField] private RoadMap _roadMap;
+    [SerializeField] private MonsterCounter _monsterCounter;
 
     public event Action RunStarted;
 
@@ -24,6 +25,9 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
             if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) || hitInfo.collider.TryGetComponent(out SwipeZone swipeZone))
                 return;
         }
+
+        if (_monsterCounter.IsPartyFull == false)
+            return;
 
         EnableRotators();
         gameObject.SetActive(false);

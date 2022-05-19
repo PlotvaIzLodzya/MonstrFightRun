@@ -14,6 +14,8 @@ public class MonsterCounter : MonoBehaviour
     public int MaxCount { get; private set; }
     public int CurrentCount { get; private set; }
 
+    public bool IsPartyFull => CurrentCount == MaxCount;
+
     private void OnEnable()
     {
         _monsterPlaceAccepters = FindObjectsOfType<MonsterPlaceAccepter>();
