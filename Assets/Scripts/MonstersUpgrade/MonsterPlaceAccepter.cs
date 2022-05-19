@@ -73,7 +73,10 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     {
         _monsterPlace.EnableCollider();
         IsOpened = true;
-        LightUp();
+
+        if(CanAcquireMonster)
+            LightUp();
+
         Changed?.Invoke();
     }
 
@@ -94,7 +97,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     {
         _freeEffect.SetActive(true);
 
-        _boxCollider.size = _boxCollider.size * 2;
+        _boxCollider.size = _boxCollider.size + (Vector3.right+Vector3.forward) *1.2f;
     }
 
     private void DisableRotator()
