@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(MonsterPlace))]
@@ -44,7 +45,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         return isPlaceFree;
     }
 
-    public bool TryGrab(out Monster monster)
+    public bool TryGrab(out Monster monster, bool instaShrink = false)
     {
         bool _isMonsterSetted = _monster != null;
         monster = null;
@@ -110,5 +111,31 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     {
         _freeEffect.SetActive(false);
         _boxCollider.size = _initialColliderScale;
+    }
+
+    public bool TryReturnMonster()
+    {
+        if (_monster == null)
+            return false;
+
+        MonsterCell[] monsterCells = FindObjectsOfType<MonsterCell>();
+
+        var place = monsterCells.FirstOrDefault(place => place.Monster.GetType() == _monster.GetType());
+
+        if (place == default)
+            return false;
+
+        if (TryGrab(out Monster monster))
+        {
+            if (place.IsOpened)
+            {
+                monster.GetComponent<Mover>().MoveTo(monster, place, -transform.forward * 10f);
+
+                return true;
+            }
+        }
+
+        return false;
+
     }
 }

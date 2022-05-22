@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CenterSwipeZone : MonoBehaviour
 {
     [SerializeField] private SwipeZone _swipeZone;
 
     private float _speedDivider = 2;
+
+    public SwipeZone SwipeZone => _swipeZone;
 
     private void OnTriggerEnter(Collider other)
     {

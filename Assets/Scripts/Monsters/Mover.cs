@@ -6,41 +6,45 @@ public class Mover : MonoBehaviour
 {
     private Monster _monster;
 
-    public void MoveTo(Monster monster, MonsterPlaceAccepter monsterPlaceAccepter)
+    public void MoveTo(Monster monster, MonsterPlaceAccepter monsterPlaceAccepter, Vector3 destination)
     {
         _monster = monster;
-        StartCoroutine(MoveAnimation(monsterPlaceAccepter));
+        StartCoroutine(MoveAnimation(destination, monsterPlaceAccepter));
     }
 
-    private IEnumerator MoveAnimation(MonsterPlaceAccepter monsterPlaceAccepter)
+    public void MoveTo(Monster monster, MonsterCell monsterPlaceAccepter, Vector3 destination)
+    {
+        _monster = monster;
+        StartCoroutine(MoveAnimation(destination, monsterPlaceAccepter));
+    }
+
+    private IEnumerator MoveAnimation(Vector3 destinationPoint, IMonsterHolder monsterHolder)
     {
         _monster.MonsterAnimator.RunAnimation();
 
-        float distance = Vector3.Distance(_monster.transform.position, monsterPlaceAccepter.transform.position);
+        float distance = Vector3.Distance(_monster.transform.position, destinationPoint);
 
         while (distance > 0.2f)
         {
-            Vector3 direction = (monsterPlaceAccepter.transform.position - transform.position).normalized;
+            Vector3 direction = (destinationPoint- transform.position).normalized;
 
             Rotate(direction);
 
             transform.position += (transform.forward * 10f * Time.deltaTime);
 
-            distance = Vector3.Distance(_monster.transform.position, monsterPlaceAccepter.transform.position);
+            distance = Vector3.Distance(_monster.transform.position, destinationPoint);
 
             yield return null;
         }
 
 
-        monsterPlaceAccepter.TryAcquireMonster(_monster);
+        monsterHolder.TryAcquireMonster(_monster);
         _monster.MonsterAnimator.IdleAnimation();
     }
 
     private void Rotate(Vector3 direction)
     {
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        lookRotation.x = 0;
-        lookRotation.z = 0;
 
         transform.rotation = lookRotation;
     }

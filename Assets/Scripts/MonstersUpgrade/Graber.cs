@@ -7,18 +7,24 @@ using System.Linq;
 
 public class Graber : MonoBehaviour
 {
+    [SerializeField] private SwipeZone _swipeZone;
+
     private Rotator _rotator;
     private Monster _monster;
-    private bool _grabed;
     private IMonsterHolder _monsterHolder;
-    private float _pointerDistance;
-    private float _threshold =1f;
+    private float _yPointerDistance;
+    private float _yThreshold = 0.05f;
+
+    public static bool Grabed { get; private set; }
 
     private void Update()
     {
+        if (SwipeZone.IsMoving)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
-            _pointerDistance = 0;
+            _yPointerDistance = 0;
         }
 
         if (Input.GetMouseButton(0))
@@ -26,23 +32,28 @@ public class Graber : MonoBehaviour
             if (IsBrakingThreshold())
                 Grab();
 
-            _pointerDistance += Mathf.Abs(Input.GetAxis("Mouse X")) + Mathf.Abs(Input.GetAxis("Mouse Y"));
+            _yPointerDistance += Mathf.Abs(Input.GetAxis("Mouse Y"));
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             TryOpenInfoPanel();
 
+            ClearMonsterAccepter();
+
             Release();
         }
 
-        if (_grabed)
+        if (Grabed)
+        {
             _monster.transform.position = GetWorldPositionOnPlane(Input.mousePosition, 2f);
+
+        }
     }
 
     private void Grab()
     {
-        if (_grabed == true)
+        if (Grabed == true)
             return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -55,13 +66,20 @@ public class Graber : MonoBehaviour
             {
                 if (monsterHolder.TryGrab(out Monster monster))
                 {
+                    Grabed = true;
                     _monster = monster;
-                    _grabed = true;
                     _monsterHolder = monsterHolder;
-                    _monster.MonsterAnimator.VictoryAnimation();
+                    _monster.MonsterAnimator.VictoryAnimation();                        
 
                     _rotator = monster.GetComponentInChildren<Rotator>();
                     _rotator.enabled = true;
+
+                    if(_monster.transform.parent != null)
+                        _monster.transform.parent = null;
+
+                    _monster.transform.localScale = Vector3.one * 0.25f;
+
+                    _swipeZone.Expand();
 
                     LightUp(monster);
                 }
@@ -71,10 +89,10 @@ public class Graber : MonoBehaviour
 
     private void Release()
     {
-        if (_grabed == false)
+        if (Grabed == false)
             return;
 
-       _grabed = false;
+       Grabed = false;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -88,8 +106,10 @@ public class Graber : MonoBehaviour
                 {
                     if (monsterHolder is MonsterPlaceAccepter)
                         Swap((MonsterPlaceAccepter)monsterHolder);
-                    else
-                        Return(_monsterHolder);
+                }
+                else
+                {
+                    _swipeZone.Shrink(false, 0);
                 }
 
                 _monster.MonsterAnimator.MonsterPlaced();
@@ -97,6 +117,7 @@ public class Graber : MonoBehaviour
                 return;
             }
         }
+
 
         PlaceToInitialMonsterCell(_monster);
         ResetPosition();
@@ -106,7 +127,7 @@ public class Graber : MonoBehaviour
 
     private bool TryOpenInfoPanel()
     {
-        if (_grabed)
+        if (Grabed)
             return false;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -124,6 +145,22 @@ public class Graber : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void ClearMonsterAccepter()
+    {
+        if (Grabed)
+            return;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
+
+        foreach (var hitInfo in raycastHits)
+        {
+            if (hitInfo.collider.TryGetComponent(out MonsterPlaceAccepter monsterPlaceAccepter))
+                monsterPlaceAccepter.TryReturnMonster();
+        }
     }
 
     private void LightUp(Monster monster)
@@ -172,14 +209,16 @@ public class Graber : MonoBehaviour
 
         monsterPlaceAccepter.TryAcquireMonster(_monster);
 
-        TryPlaceToInititalMonsterCell(firstMonster);  
+        TryPlaceToInititalMonsterCell(firstMonster);
+
+        if(_monsterHolder is MonsterCell == false)
+            _swipeZone.Shrink(false, 0);
     }
 
     private bool TryPlaceToInititalMonsterCell(Monster monster)
     {
         if (_monsterHolder.TryAcquireMonster(monster) == false)
         {
-            monster.gameObject.SetActive(false);
             PlaceToInitialMonsterCell(monster);
             return false;
         }
@@ -202,6 +241,7 @@ public class Graber : MonoBehaviour
     {
         monsterHolder.TryAcquireMonster(_monster);
         _rotator.enabled = false;
+        _swipeZone.Shrink(false, 0);
     }
 
     private void ResetPosition()
@@ -212,7 +252,7 @@ public class Graber : MonoBehaviour
     private Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float yPostion)
     {
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-        Plane xzPlane = new Plane(Vector3.up, new Vector3(0, yPostion, 0));
+        Plane xzPlane = new Plane(Vector3.forward, new Vector3(0, 0, Camera.main.transform.position.z+1.5f));
         float distance;
         xzPlane.Raycast(ray, out distance);
         return ray.GetPoint(distance);
@@ -220,6 +260,6 @@ public class Graber : MonoBehaviour
 
     private bool IsBrakingThreshold()
     {
-        return _pointerDistance > _threshold;
+        return _yPointerDistance > _yThreshold;
     }
 }

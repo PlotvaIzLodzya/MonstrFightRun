@@ -15,8 +15,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
     [SerializeField] private ParticleSystem _particleSystem;
-    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private FrameHandler _frameHandler;
+    [SerializeField] private Transform _placeForMonster;
+    [SerializeField] private SwipeZone _swipeZone;
     [HideInInspector]public bool IsInCenter;
 
     private Monster _initialMonster;
@@ -36,7 +37,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     private void OnMouseUp()
     {
-
         if (EventSystem.current.IsPointerOverGameObject() == false && IsMonsterUsed == false)
         {
             TryPlaceMonster();
@@ -61,16 +61,18 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         }
     }
 
-    public bool TryGrab(out Monster monster)
+    public bool TryGrab(out Monster monster, bool instaShrink = false)
     {
         monster = null;
 
-        if (IsOpened == false || IsMonsterUsed)
+        if (IsOpened == false || IsMonsterUsed || IsInCenter == false)
             return false;
 
         SwitchState(true);
 
-        monster = Instantiate(_monster);
+        _swipeZone.ShrinkToSwipeMover(GetComponent<SwipeMover>(), transform.localPosition.x, instaShrink);
+
+        monster = _monster;
 
         return true;
     }
@@ -86,7 +88,7 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
         SwitchState(true);
 
-        monster = Instantiate(_monster);
+        monster = _monster;
 
         return _isMonsterSetted;
     }
@@ -96,11 +98,14 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         if (monster.GetType() != InitialMonster.GetType() || IsOpened == false)
             return false;
 
-        monster.gameObject.SetActive(false);
-
         SwitchState( false);
 
+        MonsterPositioning(monster);
+
+        _swipeZone.ExpandFromSwipeMover(GetComponent<SwipeMover>());
+
         DisableRotator();
+
         return _monster != null;
     }
 
@@ -178,9 +183,9 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         {
             if (place.CanAcquireMonster)
             {
-                monster.transform.position = _spawnPoint.transform.position+ monster.transform.right*Random.Range(-5,5);
+                monster.transform.position = place.transform.position + monster.transform.right*Random.Range(-5,5) - place.transform.forward*7;
 
-                monster.GetComponent<Mover>().MoveTo(monster, place);
+                monster.GetComponent<Mover>().MoveTo(monster, place, place.transform.position);
 
                 SwitchState(true);
 
@@ -190,6 +195,16 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
         return false;
     }
+
+    private void MonsterPositioning(Monster monster)
+    {
+        monster.transform.parent = null;
+        monster.transform.SetParent(_placeForMonster);
+        monster.transform.localRotation = Quaternion.identity;
+        monster.transform.localPosition = Vector3.zero;
+        monster.transform.localScale = Vector3.one;
+    }
+
     private void DisableRotator()
     {
         Monster.GetComponentInChildren<Rotator>().enabled = false;

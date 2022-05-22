@@ -1,41 +1,85 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SwipeMover : MonoBehaviour
 {
-    private Vector3 _rightCorner;
-    private Vector3 _leftCorner;
+    [SerializeField] private BoxCollider _boxCollider;
+    private SwipeZone _swipeZone;
+    private float _targetXPosition;
+    private Coroutine _coroutine;
+    public SwipeZone SwipeZone => _swipeZone;
 
-    private float _leftOffset;
-    private float _rightOffset;
+    public bool IsInTransition { get; private set; }
 
-    private void Update()
+    public void Init(SwipeZone swipeZone)
     {
-        if (transform.localPosition.x < _rightCorner.x)
-        {
-            transform.localPosition = new Vector3(_leftOffset + transform.localPosition.x, transform.localPosition.y, transform.localPosition.z) ;
-        }
-
-        if (transform.localPosition.x > _leftCorner.x)
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x + _rightOffset, transform.localPosition.y, transform.localPosition.z);
-        }
-    }
-
-    public void Init(Transform rightCorner, Transform leftCorner, float spacing)
-    {
-        _rightCorner = rightCorner.localPosition;
-        _leftCorner = leftCorner.localPosition;
-
-        float distance = Mathf.Abs(_leftCorner.x) + Mathf.Abs(_leftCorner.x);
-
-        _leftOffset = distance + spacing;
-        _rightOffset = -distance - spacing;
+        _swipeZone = swipeZone;
     }
 
     public void Move(float speed)
     {
         transform.localPosition += (Vector3.left * Time.deltaTime * speed);
+
+        if (transform.localPosition.x <= _swipeZone.RightBorder.x)
+            Teleport(_swipeZone.LeftOffset);
+
+        if (transform.localPosition.x >= _swipeZone.LeftBorder.x)
+            Teleport(_swipeZone.RightOffset);
+    }
+
+    public void TranslateLeft(float targetxPosition)
+    {
+        _targetXPosition = targetxPosition;
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(MoveAnimation(IsLeftPositionReached));
+    }
+
+    public void TranslateRight(float targetxPosition)
+    {
+        _targetXPosition = targetxPosition;
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(MoveAnimation(IsRightPositionReached));
+    }
+
+    private IEnumerator MoveAnimation(Func<bool> IsReached)
+    {
+        float xPosition = transform.localPosition.x;
+
+        IsInTransition = true;
+
+        while (IsReached())
+        {
+            xPosition = Mathf.MoveTowards(xPosition, _targetXPosition, 3.5f * Time.deltaTime);
+            transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z);
+
+            yield return null;
+        }
+
+        _targetXPosition = 0;
+
+        IsInTransition = false;
+    }
+
+    private bool IsRightPositionReached()
+    {
+        return transform.localPosition.x > _targetXPosition;
+    }
+
+    private bool IsLeftPositionReached()
+    {
+        return transform.localPosition.x < _targetXPosition;
+    }
+
+    private void Teleport(float offset)
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x + offset, transform.localPosition.y, transform.localPosition.z);
     }
 }

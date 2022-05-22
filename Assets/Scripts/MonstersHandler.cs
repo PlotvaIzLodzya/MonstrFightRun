@@ -97,7 +97,7 @@ public class MonstersHandler : MonoBehaviour
         {
             monster.transform.parent = null;
             monster.transform.SetParent(place.transform);
-            monster.transform.localRotation = Quaternion.identity;
+            monster.transform.localRotation = new Quaternion(0,1,0,0);
             monster.transform.localPosition = Vector3.zero;
             monster.transform.localScale = Vector3.one;
         }
