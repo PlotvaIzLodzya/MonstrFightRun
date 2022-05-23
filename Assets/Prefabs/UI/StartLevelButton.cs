@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using RunnerMovementSystem.Examples;
+using UnityEngine.UI;
 
 public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameObject _shop;
     [SerializeField] private ShopAnimator[] _shopAnimators;
     [SerializeField] private RoadMap _roadMap;
-    [SerializeField] private MonsterCounter _monsterCounter;
+    [SerializeField] private Image _buttonImage;
 
     public event Action RunStarted;
+
+    private bool _canStartRun;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -20,13 +23,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
         RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
 
-        foreach (var hitInfo in raycastHits)
-        {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder) || hitInfo.collider.TryGetComponent(out SwipeZone swipeZone))
-                return;
-        }
-
-        if (_monsterCounter.IsPartyFull == false)
+        if (_canStartRun == false)
             return;
 
         EnableRotators();
@@ -49,9 +46,19 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         var monsterShop = FindObjectOfType<MonsterShop>();
         monsterShop.SaveMonsterParty();
         monsterShop.GetComponent<ShopAnimator>().CloseAnimation();
-        FindObjectOfType<Week>().DisableIndicator();
+        //FindObjectOfType<Week>().DisableIndicator();
 
         FindObjectOfType<MonsterCounter>().gameObject.SetActive(false);
+    }
+
+    public void SetActive(bool isPartyFull)
+    {
+        _canStartRun = isPartyFull;
+        
+        if (_canStartRun)
+            _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 1);
+        else
+            _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 0.5f);
     }
 
     private void InitializeMonsterPool()

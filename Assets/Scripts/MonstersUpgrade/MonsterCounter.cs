@@ -7,6 +7,7 @@ public class MonsterCounter : MonoBehaviour
 {
     [SerializeField] private TMP_Text _counterView;
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private StartLevelButton _startLevelButton;
 
     private MonsterPlaceAccepter[] _monsterPlaceAccepters;
     private TextAnimation _textAnimation = new TextAnimation();
@@ -50,6 +51,8 @@ public class MonsterCounter : MonoBehaviour
 
         _counterView.text = $"{CurrentCount}/{MaxCount}";
 
+        _startLevelButton.SetActive(IsPartyFull);
+
         if (CurrentCount < MaxCount)
         {
             _particleSystem.Stop();
@@ -61,6 +64,7 @@ public class MonsterCounter : MonoBehaviour
         _particleSystem.Play();
         StartCoroutine(_textAnimation.WoopAnimation(_counterView.rectTransform, 1.7f));
         _counterView.color = Color.green;
+
 
     }
 }

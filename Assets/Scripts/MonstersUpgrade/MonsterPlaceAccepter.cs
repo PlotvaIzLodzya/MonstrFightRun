@@ -14,9 +14,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
-    private Vector3 _initialColliderScale;
 
-    public bool LvlLoaded;
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
     public bool IsFree => _monster == null;
@@ -25,11 +23,6 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public bool IsOpened { get; private set; }
 
     public event Action Changed;
-
-    private void Awake()
-    {
-        _initialColliderScale = _boxCollider.size;
-    }
 
     public bool TryAcquireMonster(Monster monster)
     {
@@ -103,8 +96,6 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public void LightUp()
     {
         _freeEffect.SetActive(true);
-
-        _boxCollider.size = _boxCollider.size + (Vector3.right+Vector3.forward) *1.2f;
     }
 
     private void DisableRotator()
@@ -116,7 +107,6 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public void LightDown()
     {
         _freeEffect.SetActive(false);
-        _boxCollider.size = _initialColliderScale;
     }
 
     public bool TryReturnMonster()
