@@ -116,18 +116,42 @@ public class MonsterShop : MonoBehaviour
             if (_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == _initialMonster.GetType()).TryGrab(out Monster monster))
                 _monsterPlaceAcepters[0].TryAcquireMonster(monster);
         }
-            
+
+        //for (int i = 0; i < _monsterPlaceAcepters.Length; i++)
+        //{
+        //    //if (_monsterPlaceAcepters[i].CanAcquireMonster)
+        //    //{
+        //    //    if (_monsterPersistence.TryLoad(i, out Monster tempMonster))
+        //    //    {
+        //    //        if(_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == tempMonster.GetType()).TryGrab(out Monster monster, true))
+        //    //            _monsterPlaceAcepters[i].TryAcquireMonster(monster);
+        //    //    }
+        //    //}
+        //}
+
+        StartCoroutine(Dela1y());
+    }
+
+    private IEnumerator Dela1y()
+    {
         for (int i = 0; i < _monsterPlaceAcepters.Length; i++)
         {
             if (_monsterPlaceAcepters[i].CanAcquireMonster)
             {
                 if (_monsterPersistence.TryLoad(i, out Monster tempMonster))
                 {
-                    if(_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == tempMonster.GetType()).TryGrab(out Monster monster, true))
+                    var cell = _monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == tempMonster.GetType());
+                    if (_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == tempMonster.GetType()).TryGrab(out Monster monster, true))
+                    {
                         _monsterPlaceAcepters[i].TryAcquireMonster(monster);
+                        //Debug.Log(cell.transform.localPosition.x + " " + cell.transform.name);
+                    }
                 }
             }
+            yield return new WaitForSeconds(1f);
         }
+
+
     }
 
     private void OnCellOpened()

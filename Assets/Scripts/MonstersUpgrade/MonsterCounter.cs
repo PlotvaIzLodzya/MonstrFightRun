@@ -64,7 +64,5 @@ public class MonsterCounter : MonoBehaviour
         _particleSystem.Play();
         StartCoroutine(_textAnimation.WoopAnimation(_counterView.rectTransform, 1.7f));
         _counterView.color = Color.green;
-
-
     }
 }

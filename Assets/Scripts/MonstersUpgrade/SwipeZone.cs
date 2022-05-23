@@ -130,19 +130,27 @@ public class SwipeZone : MonoBehaviour
 
     public void Shrink(bool instaShrink, float xPos)
     {
-        int counter = 0;
+        float counter = xPos;
+        float targetXPosition;
+
 
         foreach (var swipeMover in _swipeMovers)
         {
             if (swipeMover.transform.localPosition.x < xPos)
             {
-                float targetXPosition = -counter * _spacing;
-                counter++;
+                targetXPosition = -counter;
+                counter+=_spacing;
+                Debug.Log($"xPos: {xPos}, target{targetXPosition}, counter: {counter}");
 
-                if (instaShrink == false)
-                    swipeMover.TranslateLeft(targetXPosition);
-                else
-                    swipeMover.transform.localPosition = new Vector3(targetXPosition, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z); ;
+                swipeMover.TranslateLeft(targetXPosition);
+
+                //if (instaShrink == false)
+                //    swipeMover.TranslateLeft(targetXPosition);
+                //else
+                //{
+
+                //    swipeMover.transform.localPosition = new Vector3(targetXPosition, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
+                //}
             }
         }
     }
