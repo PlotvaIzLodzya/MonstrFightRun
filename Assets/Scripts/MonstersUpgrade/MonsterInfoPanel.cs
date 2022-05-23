@@ -14,13 +14,29 @@ public class MonsterInfoPanel : MonoBehaviour
     [SerializeField] private MonstersIcons _monstersIcons;
     [SerializeField] private MonsterLevelUpgrader _monsterLevelUpgrader;
 
+    private StartLevelButton _startLevelButton;
+
     private Monster _monster;
+
+    private void Awake()
+    {
+        _startLevelButton = FindObjectOfType<StartLevelButton>();
+    }
+
+    private void OnEnable()
+    {
+        _startLevelButton.RunStarted += Close;
+    }
+
+    private void OnDisable()
+    {
+        _startLevelButton.RunStarted -= Close;
+    }
 
     public void Open(Monster monster)
     {
         _monster = monster;
         gameObject.SetActive(true);
-        //_addToPartyButton.Init(monsterCell);
 
         UpdateInfo();
         _monsterLevelUpgrader.Init();

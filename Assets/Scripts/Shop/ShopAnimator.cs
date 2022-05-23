@@ -24,4 +24,9 @@ public class ShopAnimator : MonoBehaviour
     {
         _animator.SetTrigger(HideShopIcon);
     }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

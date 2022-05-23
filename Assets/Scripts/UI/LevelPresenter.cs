@@ -9,6 +9,7 @@ public class LevelPresenter : MonoBehaviour
 
     public void Show(int level)
     {
+        Debug.Log(level);
         Level.text = $"Lv.{level}";
     }
 }

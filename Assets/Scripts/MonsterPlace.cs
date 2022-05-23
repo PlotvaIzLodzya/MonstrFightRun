@@ -49,6 +49,12 @@ public class MonsterPlace : MonoBehaviour, IJumpable
         _boxCollider.enabled = isColliderDisabled;
     }
 
+    public void TurnMonsterForward()
+    {
+        if (Monster != null)
+            Monster.transform.localRotation = Quaternion.identity;
+    }
+
     public void Jump(AnimationCurve animationCurve)
     {
         StartCoroutine(_jumpAnimation.Play(animationCurve, transform));

@@ -39,6 +39,9 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         _roadMap.Disable();
         RunStarted?.Invoke();
         FindObjectOfType<CameraFollowing>().enabled = true;
+        var monsterHandler = FindObjectOfType<MonstersHandler>();
+        monsterHandler.TurnAllMonsterForward();
+        monsterHandler.GetComponent<MonsterLevelPresenter>().Enable();
 
         DisableMonsterShop();
         InitializeMonsterPool();

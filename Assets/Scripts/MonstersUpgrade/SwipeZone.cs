@@ -22,6 +22,7 @@ public class SwipeZone : MonoBehaviour
     public float RightOffset { get; private set; }
     public static bool IsMoving { get; private set; }
     public static bool Clicked { get; private set; }
+    public static bool Interacting { get; private set; }
     public float Speed { get; private set; }
 
     private void Awake()
@@ -42,7 +43,6 @@ public class SwipeZone : MonoBehaviour
         {
             swipeMover.Init(this);
         }
-
     }
 
     private void Update()
@@ -50,23 +50,28 @@ public class SwipeZone : MonoBehaviour
         if (Graber.Grabed)
         {
             Speed = 0;
+            Clicked = false;
             return;
         }
 
-        IsMoving = Mathf.Abs(Speed) > 0.001f;
+        IsMoving = Mathf.Abs(Speed) > 0.5f;
 
         if (Input.GetMouseButtonUp(0))
         {
             _xPointerDistance = 0;
             Clicked = false;
+            Interacting = false;
         }
 
         if (Clicked )
         {
-            Speed = Input.GetAxis("Mouse X") * _sensitivity * Time.deltaTime;
+            Speed = Input.GetAxis("Mouse X") * _sensitivity;
             Speed = Mathf.Clamp(Speed, -30, 30);
-            _xPointerDistance += Input.GetAxis("Mouse X") * Time.deltaTime;
+            _xPointerDistance += Input.GetAxis("Mouse X");
         }
+
+        if (Mathf.Abs(_xPointerDistance) > 0.5f)
+            Interacting = true;
 
         if (Speed != 0)
         {

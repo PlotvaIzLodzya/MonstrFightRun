@@ -13,13 +13,13 @@ public class Graber : MonoBehaviour
     private Monster _monster;
     private IMonsterHolder _monsterHolder;
     private float _yPointerDistance;
-    private float _yThreshold = 0.05f;
+    private float _yThreshold = 0.001f;
 
     public static bool Grabed { get; private set; }
 
     private void Update()
     {
-        if (SwipeZone.IsMoving)
+        if (SwipeZone.Interacting || SwipeZone.IsMoving)
             return;
 
         if (Input.GetMouseButtonDown(0))
@@ -98,24 +98,19 @@ public class Graber : MonoBehaviour
 
         foreach (var hitInfo in raycastHits)
         {
-            if (hitInfo.collider.TryGetComponent(out IMonsterHolder monsterHolder))
+            if (hitInfo.collider.TryGetComponent(out MonsterPlaceAccepter monsterAccepter))
             {
-                if (monsterHolder.TryAcquireMonster(_monster) == false)
-                {
-                    if (monsterHolder is MonsterPlaceAccepter)
-                        Swap((MonsterPlaceAccepter)monsterHolder);
-                }
+                if (monsterAccepter.TryAcquireMonster(_monster) == false)
+                    Swap(monsterAccepter);
                 else
-                {
                     _swipeZone.Shrink(false, 0);
-                }
 
                 _monster.MonsterAnimator.MonsterPlaced();
+                
                 LighthDown();
                 return;
             }
         }
-
 
         PlaceToInitialMonsterCell(_monster);
         ResetPosition();

@@ -41,10 +41,16 @@ public class MonsterLevelPresenter : LevelPresenter
         _canvas.gameObject.SetActive(false);
     }
 
+    public void Enable()
+    {
+        _canvas.gameObject.SetActive(true);
+        Show(_monstersHandler.MonsterMight);
+    }
+
     public void OnMightChange(int might, int addedMight)
     {
-        if(_canvas.gameObject.activeInHierarchy == false)
-            _canvas.gameObject.SetActive(true);
+        if (_canvas.gameObject.activeInHierarchy == false)
+            return;
 
         Show(might);
 

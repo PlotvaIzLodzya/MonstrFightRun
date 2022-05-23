@@ -164,6 +164,14 @@ public class MonstersHandler : MonoBehaviour
         return monsters;
     }
 
+    public void TurnAllMonsterForward()
+    {
+        foreach (var monsterPlace in _monsterPlaces)
+        {
+            monsterPlace.TurnMonsterForward();
+        }
+    }
+
     private void SwapMonsterPlaces(MonsterPlace monsterPlace)
     {
         _monsterHandlerColliders.DisableCollider(monsterPlace);
