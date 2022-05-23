@@ -32,7 +32,6 @@ public class MonsterOpener : ShopButton
     public void OpenCell()
     {
         _monsterCell.Open();
-        _monsterCell.TryOpenInfoPanel();
 
         DisableRewardPanel();
     }

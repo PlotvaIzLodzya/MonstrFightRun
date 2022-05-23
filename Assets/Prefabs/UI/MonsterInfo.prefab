@@ -1334,9 +1334,9 @@ MonoBehaviour:
   _nameText: {fileID: 6672925149080235226}
   _healthText: {fileID: 4928795776163322353}
   _attackText: {fileID: 8433615058979272451}
-  _addToPartyButton: {fileID: 4276142217420743364}
   _attackRangeImage: {fileID: 7835638278680166052}
   _monstersIcons: {fileID: 11400000, guid: e679406e56623e446be3432e6b011180, type: 2}
+  _monsterLevelUpgrader: {fileID: 0}
 --- !u!1 &4893238740080630239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,10 +2970,8 @@ MonoBehaviour:
   _minCost: 20
   _maxBuying: 10
   _notEnoughMoney: {fileID: 7750477603607790181}
-  _monsterCell: {fileID: 0}
+  _monstarAccepter: {fileID: 0}
   _levelPerBuy: 1
-  _attackSlider: {fileID: 3088107129438679002}
-  _healthSlider: {fileID: 8922877397171551485}
 --- !u!114 &8253301673482723290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,17 +3566,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6993655980120001007, guid: 549911c35ffc02047810dc67f99ab162, type: 3}
   m_PrefabInstance: {fileID: 3080342507055508622}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3088107129438679002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 28352153015763796, guid: 549911c35ffc02047810dc67f99ab162, type: 3}
-  m_PrefabInstance: {fileID: 3080342507055508622}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511a0ba535ffe194d82e40395be46c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6210868767400598942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3930,14 +3917,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6993655980120001007, guid: 549911c35ffc02047810dc67f99ab162, type: 3}
   m_PrefabInstance: {fileID: 8912860700366012329}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8922877397171551485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 28352153015763796, guid: 549911c35ffc02047810dc67f99ab162, type: 3}
-  m_PrefabInstance: {fileID: 8912860700366012329}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511a0ba535ffe194d82e40395be46c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -98,8 +98,11 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
             SetInactive();
     }
 
-    private void OnValueChanged()
+    protected void OnValueChanged()
     {
+        if (CostHandler == null)
+            return;
+
         bool isEnoughMoney = Player.CurrencyHandler.Value < CostHandler.Value;
 
         _notEnoughMoney.gameObject.SetActive(isEnoughMoney);

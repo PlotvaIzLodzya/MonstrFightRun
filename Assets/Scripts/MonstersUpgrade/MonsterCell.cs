@@ -11,7 +11,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private Transform _monsterPoint;
     [SerializeField] private MonsterOpener _monsterUpgraderOpener;
     [SerializeField] private Material _inactiveMaterial;
-    [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToInfoPanel;
     [SerializeField] private CameraTransition _cameraTransitionToDefaultPosition;
     [SerializeField] private ParticleSystem _particleSystem;
@@ -27,8 +26,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
 
     public bool IsOpened { get; private set; }
     public bool IsMonsterUsed { get; private set; }
-
-    public MonsterInfoPanel MonsterInfoPanel => _monsterInfoPanel;
     public CameraTransition CameraTransitionToDefaultPosition => _cameraTransitionToDefaultPosition;
     public MonsterOpener MonsterUpgraderHandler => _monsterUpgraderOpener;
     public Monster Monster => _monster;
@@ -57,7 +54,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         if (Mathf.Abs(transform.localPosition.x) <=1f)
         {
             IsInCenter = true;
-            TryOpenInfoPanel();
         }
     }
 
@@ -137,21 +133,6 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
         _monster.FormsHandler.CurrentForm.SkinnedMeshRenderer.material = _initialMaterial;
         _monster.MonsterAnimator.VictoryAnimation(true);
         PlayerPrefs.SetString(SaveName, SaveName);
-    }
-
-    public bool TryOpenInfoPanel(bool needCameraTransition = true)
-    {
-        bool canOpen = _monster != null && IsOpened && IsInCenter;
-
-        if (canOpen)
-            _monsterInfoPanel.Open(this);
-
-        return canOpen;
-    }
-
-    public void CloseInfoPanel(bool needCameraTransition = true)
-    {
-        _monsterInfoPanel.Close();
     }
 
     public void LightUp()

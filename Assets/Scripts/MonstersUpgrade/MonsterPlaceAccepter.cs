@@ -10,6 +10,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     [SerializeField] private MonstersHandler _monstersHandler;
     [SerializeField] private GameObject _freeEffect;
     [SerializeField] private BoxCollider _boxCollider;
+    [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
@@ -19,6 +20,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     public Monster Monster => _monster;
     public bool IsFree => _monster == null;
     public bool CanAcquireMonster => IsFree && _boxCollider.enabled;
+    public MonsterInfoPanel MonsterInfoPanel => _monsterInfoPanel;
     public bool IsOpened { get; private set; }
 
     public event Action Changed;
@@ -40,6 +42,8 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             DisableRotator();
             LightDown();
             Changed?.Invoke();
+
+            _monsterInfoPanel?.Open(monster);
         }
 
         return isPlaceFree;
@@ -58,6 +62,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             LightUp();
             _monster = null;
 
+            _monsterInfoPanel?.Close();
             Changed?.Invoke();
         }
 

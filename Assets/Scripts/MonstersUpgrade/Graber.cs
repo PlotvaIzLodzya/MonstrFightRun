@@ -37,8 +37,6 @@ public class Graber : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            TryOpenInfoPanel();
-
             ClearMonsterAccepter();
 
             Release();
@@ -123,28 +121,6 @@ public class Graber : MonoBehaviour
         ResetPosition();
         LighthDown();
         _monster.MonsterAnimator.MonsterPlaced();
-    }
-
-    private bool TryOpenInfoPanel()
-    {
-        if (Grabed)
-            return false;
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
-
-        foreach (var hitInfo in raycastHits)
-        {
-            if (hitInfo.collider.TryGetComponent(out MonsterCell monsterHolder) && SwipeZone.IsMoving == false && EventSystem.current.IsPointerOverGameObject() == false)
-            {
-                monsterHolder.TryOpenInfoPanel();
-
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void ClearMonsterAccepter()

@@ -10,19 +10,20 @@ public class MonsterInfoPanel : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private TMP_Text _attackText;
-    [SerializeField] private AddToPartyButton _addToPartyButton;
     [SerializeField] private Image _attackRangeImage;
     [SerializeField] private MonstersIcons _monstersIcons;
+    [SerializeField] private MonsterLevelUpgrader _monsterLevelUpgrader;
 
     private Monster _monster;
 
-    public void Open(MonsterCell monsterCell)
+    public void Open(Monster monster)
     {
-        _monster = monsterCell.Monster;
+        _monster = monster;
         gameObject.SetActive(true);
-        _addToPartyButton.Init(monsterCell);
+        //_addToPartyButton.Init(monsterCell);
 
         UpdateInfo();
+        _monsterLevelUpgrader.Init();
     }
 
     public void Close()
@@ -32,7 +33,7 @@ public class MonsterInfoPanel : MonoBehaviour
 
     public void UpdateInfo()
     {
-        _lvlText.text = $"Lv. {_monster.Level}";
+        _lvlText.text = $"{_monster.Level}";
         _nameText.text = $"{_monster.Name}";
         _healthText.text = $"{_monster.Health.MaxHealth}";
         _attackText.text = $"{_monster.Damage}";

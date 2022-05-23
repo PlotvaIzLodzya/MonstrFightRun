@@ -46,6 +46,7 @@ public class GateIcon : MonoBehaviour
 
         _monsterName.text = _monsterIcon.Name;
 
+        _rangeIcon.enabled = true;
         _rangeIcon.sprite = _monstersIcons.GetAttackRangeIconSprite(_monsterIcon.Attack.InitialRange);
     }
 

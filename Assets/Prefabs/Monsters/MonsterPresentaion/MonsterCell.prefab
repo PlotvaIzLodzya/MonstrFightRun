@@ -317,7 +317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.185, y: 0.25}
+  m_AnchoredPosition: {x: -0.185, y: 0.247}
   m_SizeDelta: {x: 0.4981, y: 0.3999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2688252261998023535
@@ -506,7 +506,6 @@ MonoBehaviour:
   _monsterPoint: {fileID: 2570031367152656809}
   _monsterUpgraderOpener: {fileID: 150419106262392048}
   _inactiveMaterial: {fileID: 2100000, guid: e8653ac1a55f8644189b551e74b7e618, type: 2}
-  _monsterInfoPanel: {fileID: 564094890966418365}
   _cameraTransitionToInfoPanel: {fileID: 7541731377729056526}
   _cameraTransitionToDefaultPosition: {fileID: 245790354040907883}
   _particleSystem: {fileID: 7165478930846853521}
@@ -823,7 +822,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.033, y: 0.045}
-  m_SizeDelta: {x: -0.1741, y: -0.1304}
+  m_SizeDelta: {x: -0.1741, y: -0.2149}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3950179333945039260
 CanvasRenderer:
@@ -853,8 +852,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b32b4808a0d8b411a907f3a809ebca51, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: a8344ab2be7e54cc6b34c453c8256ed4, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1516,14 +1515,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7973186251244314324, guid: bb0b310629a441d49b05196f1e37e390, type: 3}
   m_PrefabInstance: {fileID: 9208345034873483918}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &564094890966418365 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8655509834838782259, guid: bb0b310629a441d49b05196f1e37e390, type: 3}
-  m_PrefabInstance: {fileID: 9208345034873483918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0979208f96623024d8b54d9442c2451a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
