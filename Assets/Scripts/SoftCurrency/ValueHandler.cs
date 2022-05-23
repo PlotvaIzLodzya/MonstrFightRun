@@ -35,6 +35,12 @@ public class ValueHandler
             ValueIncreased?.Invoke(_value, value);
     }
 
+    public void SetValue(float value)
+    {
+        _value = value;
+        ChangeAmount(0);
+    }
+
     public bool TryDecrease(float value)
     {
         if (IsEnough(value))

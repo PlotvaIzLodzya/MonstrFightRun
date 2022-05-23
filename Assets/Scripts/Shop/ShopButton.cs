@@ -20,9 +20,9 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
     protected Player Player;
     private const string BuyCounterSaveName = "BuyCounter";
     private bool _isInactive;
-    private ValueHandler BuyCounter;
     protected IntegrationMetric _integrationMetric = new IntegrationMetric();
 
+    protected ValueHandler BuyCounter { get; private set; }
     protected ValueHandler ValueHandler { get; private set; }
     protected ValueHandler CostHandler { get; private set; }
 
@@ -71,10 +71,10 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
 
     public abstract void Buy(float cost);
 
-    public void SetInactive()
+    public void SetInactive(bool isInactive = true)
     {
-        _isInactive = true;
-        _soldOut.SetActive(true);
+        _isInactive = isInactive;
+        _soldOut.SetActive(isInactive);
     }
 
     protected virtual void UpdateInfo()

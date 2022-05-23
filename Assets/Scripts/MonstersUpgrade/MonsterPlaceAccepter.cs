@@ -16,6 +16,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     private Monster _monster;
     private Vector3 _initialColliderScale;
 
+    public bool LvlLoaded;
     public Rotator _rotator { get; private set; }
     public Monster Monster => _monster;
     public bool IsFree => _monster == null;

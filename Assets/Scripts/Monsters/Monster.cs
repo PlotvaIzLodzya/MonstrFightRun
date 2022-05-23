@@ -15,6 +15,7 @@ public class Monster : MonoBehaviour, IMergeable
     [SerializeField] private float _damageScaler;
     [SerializeField] private Transform _pointForProjectile;
     [HideInInspector] public bool Protected;
+    [HideInInspector] public bool LvlLoaded;
 
     public string Name;
     private int _maxLevel = 80;

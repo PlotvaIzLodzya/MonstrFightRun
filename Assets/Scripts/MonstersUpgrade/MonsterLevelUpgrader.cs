@@ -12,18 +12,25 @@ public class MonsterLevelUpgrader : ShopButton
 
     private MonstersHandler _monstersHandler;
     private bool _isInitialized;
+    private Monster _previousMonster;
     private string SaveName => $"MonsterCellLevelHandler{_monstarAccepter.Monster.Name}";
 
     public void Init()
     {
         LoadProgression(SaveName);
 
-        if(_isInitialized == false)
+        if(_previousMonster != null)
+            _isInitialized = _previousMonster.GetType() == _monstarAccepter.Monster.GetType();
+
+        if(_isInitialized == false && _monstarAccepter.Monster.LvlLoaded == false)
         {
             AddLvl(_monstarAccepter.Monster, (int)ValueHandler.LoadAmount() - 1);
             IncreaseMonstersMight((int)ValueHandler.LoadAmount() - 1);
+            _previousMonster = _monstarAccepter.Monster;
+            _monstarAccepter.Monster.LvlLoaded = true;
         }
 
+        SetInactive();
 
         UpdateInfo();
 
@@ -39,13 +46,7 @@ public class MonsterLevelUpgrader : ShopButton
 
         IncreaseMonstersMight(_levelPerBuy);
 
-        //if (_monsterPlaceAccepters == null)
-        //    _monsterPlaceAccepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
-
-        //var accepter = _monsterPlaceAccepters.FirstOrDefault(accepter =>accepter.Monster != null && accepter.Monster.GetType() == _monsterCell.Monster.GetType());
-
-        //if(accepter != null)
-        //    AddLvl(accepter.Monster, _levelPerBuy);
+        SetInactive();
     }
 
     protected override void UpdateInfo()
@@ -65,5 +66,13 @@ public class MonsterLevelUpgrader : ShopButton
             _monstersHandler = FindObjectOfType<MonstersHandler>();
 
         _monstersHandler.ChangeMonstersMight(value);
+    }
+
+    private void SetInactive()
+    {
+        if (_monstarAccepter.Monster.Level >= 10)
+            SetInactive(true);
+        else
+            SetInactive(false);
     }
 }
