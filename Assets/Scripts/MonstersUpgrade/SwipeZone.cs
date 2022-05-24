@@ -68,7 +68,7 @@ public class SwipeZone : MonoBehaviour
             Interacting = false;
         }
 
-        if (Clicked )
+        if (Clicked)
         {
             float speed = Input.GetAxis("Mouse X") * _sensitivity;
 
@@ -92,6 +92,9 @@ public class SwipeZone : MonoBehaviour
 
         if(Mathf.Abs(Speed) < 1.5f && Mathf.Abs(_xPointerDistance) < _xPointerthreshold)
             Centrate();
+
+        if (Interacting)
+            Speed = Mathf.MoveTowards(Speed, 0, 1 * Time.deltaTime);
     }
 
     private void OnMouseDown()

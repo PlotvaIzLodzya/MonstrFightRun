@@ -33,7 +33,6 @@ public class SwipeMover : MonoBehaviour
 
     public void TranslateLeft(float targetxPosition)
     {
-
         _targetXPosition = targetxPosition;
 
         IsInTransition = true;

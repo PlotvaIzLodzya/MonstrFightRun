@@ -35,7 +35,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
 
 
             monster.transform.localScale = Vector3.one;
-
+            _rotator = monster.GetComponent<Rotator>();
             DisableRotator();
             LightDown();
             Changed?.Invoke();

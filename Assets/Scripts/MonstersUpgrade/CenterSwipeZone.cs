@@ -15,7 +15,8 @@ public class CenterSwipeZone : MonoBehaviour
     {
         if (other.TryGetComponent(out SwipeMover swipeMover))
         {
-            _swipeZone.SlowDown(_speedDivider, swipeMover);
+            if(SwipeZone.Interacting == false)
+                _swipeZone.SlowDown(_speedDivider, swipeMover);
         }
 
         if(other.TryGetComponent(out MonsterCell monsterCell))

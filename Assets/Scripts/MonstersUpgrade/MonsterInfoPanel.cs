@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MonsterInfoPanel : MonoBehaviour
 {
+    [SerializeField] private int _levelToShow;
     [SerializeField] private TMP_Text _lvlText;
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _healthText;
@@ -35,6 +36,11 @@ public class MonsterInfoPanel : MonoBehaviour
 
     public void Open(Monster monster)
     {
+        float currentLevel = SaveSystem.LoadLevelsProgression();
+
+        if (currentLevel < _levelToShow)
+            return;
+
         _monster = monster;
         gameObject.SetActive(true);
 

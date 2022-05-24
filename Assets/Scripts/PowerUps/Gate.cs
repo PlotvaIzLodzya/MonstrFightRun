@@ -56,6 +56,7 @@ public class Gate : Interactable
         if (_isActivated)
             return;
 
+        Monster.FormsHandler.GetComponent<Rotator>().enabled = true;
         _isActivated = monstersHandler.TrySetMonsterToPlace(Monster, _level);
 
         if (_isActivated)

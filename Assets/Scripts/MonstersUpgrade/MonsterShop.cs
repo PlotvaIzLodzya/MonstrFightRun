@@ -8,8 +8,8 @@ public class MonsterShop : MonoBehaviour
     [SerializeField] private MonsterCell[] _initialMonsterCells;
     [SerializeField] private MonsterPersistence _monsterPersistence = new MonsterPersistence();
     [SerializeField] private Monster _initialMonster;
+    [SerializeField] private MonsterCell[] _monsterCells;
 
-    private MonsterCell[] _monsterCells;
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
 
     private ValueHandler _monsterCount = new ValueHandler(1, 3, "MonsterCountShopSaveName");
@@ -21,7 +21,6 @@ public class MonsterShop : MonoBehaviour
     private void Awake()
     {
         _monsterPlaceAcepters = FindObjectOfType<MonstersHandler>().GetComponentsInChildren<MonsterPlaceAccepter>();
-        _monsterCells = GetComponentsInChildren<MonsterCell>();
         _monsterCount.LoadAmount();
         _openedMonstersCellCount.LoadAmount();
         _openedMonsterPlaces.LoadAmount();
@@ -113,7 +112,6 @@ public class MonsterShop : MonoBehaviour
     {
         if(_monsterPersistence.HaveSavedMonster == false)
         {
-            
             var cell = _initialMonsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == _initialMonster.GetType());
 
             if (cell.TryGrab(out Monster monster, true))
