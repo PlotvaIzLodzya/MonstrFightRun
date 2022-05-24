@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
 
     public void SetInitialRange()
     {
-        _attackRange = _inititalRange;
+        _attackRange = InitialRange;
     }
 }
 

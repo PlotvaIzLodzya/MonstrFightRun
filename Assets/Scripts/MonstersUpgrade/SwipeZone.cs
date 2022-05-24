@@ -147,7 +147,10 @@ public class SwipeZone : MonoBehaviour
                 targetXPosition = swipeMover.transform.localPosition.x + _spacing;
                 counter++;
 
-                swipeMover.TranslateLeft(targetXPosition);
+                if (instaShrink == false)
+                    swipeMover.TranslateLeft(targetXPosition);
+                else
+                    swipeMover.transform.localPosition = new Vector3(targetXPosition, swipeMover.transform.localPosition.y, swipeMover.transform.localPosition.z);
             }
         }
     }
