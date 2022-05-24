@@ -6,9 +6,11 @@ using UnityEngine;
 public class SwipeMover : MonoBehaviour
 {
     [SerializeField] private BoxCollider _boxCollider;
+
     private SwipeZone _swipeZone;
     private float _targetXPosition;
     private Coroutine _coroutine;
+    private Queue<Coroutine> _coroutines = new Queue<Coroutine>();
     public SwipeZone SwipeZone => _swipeZone;
 
     public bool IsInTransition { get; private set; }
@@ -31,7 +33,10 @@ public class SwipeMover : MonoBehaviour
 
     public void TranslateLeft(float targetxPosition)
     {
+
         _targetXPosition = targetxPosition;
+
+        IsInTransition = true;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -42,6 +47,8 @@ public class SwipeMover : MonoBehaviour
     public void TranslateRight(float targetxPosition)
     {
         _targetXPosition = targetxPosition;
+
+        IsInTransition = true;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -60,12 +67,11 @@ public class SwipeMover : MonoBehaviour
             xPosition = Mathf.MoveTowards(xPosition, _targetXPosition, 3.5f * Time.deltaTime);
             transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z);
 
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
 
-        _targetXPosition = 0;
-
         IsInTransition = false;
+        _targetXPosition = 0;
     }
 
     private bool IsRightPositionReached()

@@ -27,6 +27,7 @@ public class MonsterPlace : MonoBehaviour, IJumpable
         if(isShopStage == false)
             Monster.LevelUp(1);
 
+
         Monster.Died += MonsterDied;
         _boxCollider.enabled = true;
         IsTaken = true;

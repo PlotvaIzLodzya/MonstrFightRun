@@ -113,7 +113,10 @@ public class MonsterShop : MonoBehaviour
     {
         if(_monsterPersistence.HaveSavedMonster == false)
         {
-            if (_monsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == _initialMonster.GetType()).TryGrab(out Monster monster))
+            
+            var cell = _initialMonsterCells.FirstOrDefault(cell => cell.InitialMonster.GetType() == _initialMonster.GetType());
+
+            if (cell.TryGrab(out Monster monster, true))
                 _monsterPlaceAcepters[0].TryAcquireMonster(monster);
         }
 

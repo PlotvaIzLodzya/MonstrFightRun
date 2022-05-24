@@ -33,6 +33,9 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             _monster = monster;
             _monstersHandler.TrySetMonsterToPlace(_monster, _monsterPlace, _monster.Level);
 
+
+            monster.transform.localScale = Vector3.one;
+
             DisableRotator();
             LightDown();
             Changed?.Invoke();
@@ -132,6 +135,5 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         }
 
         return false;
-
     }
 }

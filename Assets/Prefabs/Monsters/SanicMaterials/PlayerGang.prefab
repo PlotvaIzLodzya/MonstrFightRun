@@ -60,7 +60,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3696993509481047658
 MonoBehaviour:
@@ -213,7 +213,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6311656227175871395
 MonoBehaviour:
@@ -366,7 +366,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2656223604770330124
 MonoBehaviour:
@@ -444,7 +444,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8216840584680337034
 MonoBehaviour:
@@ -781,8 +781,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1, y: 1.591864, z: 1.5}
+  m_Center: {x: 0, y: 0.795932, z: 0}
 --- !u!114 &7637938101228361263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6066643694197909221, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.2
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6066643694197909221, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1771,6 +1771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterInfoPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 2587157979895100187, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3102645203214533775, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1861,7 +1865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6066643694197909221, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.477
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 6066643694197909221, guid: d3fe08008db76c24a92efe83ac2af7ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -488,8 +488,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.300181, y: 0.32720187, z: 0.5739278}
-  m_Center: {x: -0.15737799, y: 0.20513596, z: -0.52885556}
+  m_Size: {x: 0.300181, y: 0.41515827, z: 0.5739278}
+  m_Center: {x: -0.15737796, y: 0.24911359, z: -0.5288549}
 --- !u!114 &2743381673823852456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
   _frameHandler: {fileID: 2784194751727870407}
   _placeForMonster: {fileID: 2570031367152656809}
   _swipeZone: {fileID: 0}
-  IsInCenter: 0
+  _monsterIconTransform: {fileID: 2570031367152656809}
 --- !u!54 &1341079914510370229
 Rigidbody:
   m_ObjectHideFlags: 0

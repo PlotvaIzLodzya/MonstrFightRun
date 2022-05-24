@@ -17,13 +17,14 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     [SerializeField] private FrameHandler _frameHandler;
     [SerializeField] private Transform _placeForMonster;
     [SerializeField] private SwipeZone _swipeZone;
-    [HideInInspector]public bool IsInCenter;
+    [SerializeField] private Transform _monsterIconTransform;
 
     private Monster _initialMonster;
     private Material _initialMaterial;
 
     private string SaveName => $"MonsterCellIsOpened{_monster.Name}";
 
+    public bool IsInCenter { get; private set; }
     public bool IsOpened { get; private set; }
     public bool IsMonsterUsed { get; private set; }
     public CameraTransition CameraTransitionToDefaultPosition => _cameraTransitionToDefaultPosition;
@@ -61,8 +62,12 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     {
         monster = null;
 
-        if (IsOpened == false || IsMonsterUsed || IsInCenter == false)
-            return false;
+        if(instaShrink == false)
+        {
+            if (IsOpened == false || IsMonsterUsed || IsInCenter == false)
+                return false;
+        }
+
 
         SwitchState(true);
 
@@ -143,6 +148,19 @@ public class MonsterCell : MonoBehaviour, IMonsterHolder
     public void LightDown()
     {
         _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
+    public void SetCentral(bool isInCenter)
+    {
+        IsInCenter = isInCenter;
+
+
+        if (IsInCenter)
+            _monsterIconTransform.localScale += Vector3.one * 0.05f;
+        else
+        {
+            _monsterIconTransform.localScale -= Vector3.one * 0.05f;
+        }
     }
 
     public bool TryPlaceMonster()

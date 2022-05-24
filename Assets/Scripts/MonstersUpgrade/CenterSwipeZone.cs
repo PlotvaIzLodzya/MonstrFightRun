@@ -20,7 +20,7 @@ public class CenterSwipeZone : MonoBehaviour
 
         if(other.TryGetComponent(out MonsterCell monsterCell))
         {
-            monsterCell.IsInCenter = true;
+            monsterCell.SetCentral(true);
         }
     }
 
@@ -28,7 +28,7 @@ public class CenterSwipeZone : MonoBehaviour
     {
         if (other.TryGetComponent(out MonsterCell monsterCell))
         {
-            monsterCell.IsInCenter = false;
+            monsterCell.SetCentral(false);
         }
     }
 }

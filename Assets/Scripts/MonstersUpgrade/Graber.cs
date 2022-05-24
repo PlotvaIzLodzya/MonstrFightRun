@@ -13,7 +13,7 @@ public class Graber : MonoBehaviour
     private Monster _monster;
     private IMonsterHolder _monsterHolder;
     private float _yPointerDistance;
-    private float _yThreshold = 0.001f;
+    private float _yThreshold = 0.1f;
 
     public static bool Grabed { get; private set; }
 
@@ -22,31 +22,28 @@ public class Graber : MonoBehaviour
         if (SwipeZone.Interacting || SwipeZone.IsMoving)
             return;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            _yPointerDistance = 0;
-        }
-
         if (Input.GetMouseButton(0))
         {
+            if(Grabed == false)
+                _yPointerDistance = Input.GetAxis("Mouse Y");
+
             if (IsBrakingThreshold())
                 Grab();
-
-            _yPointerDistance += Mathf.Abs(Input.GetAxis("Mouse Y"));
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            ClearMonsterAccepter();
-
             Release();
+
+            _yPointerDistance = 0;
         }
 
         if (Grabed)
         {
             _monster.transform.position = GetWorldPositionOnPlane(Input.mousePosition, 2f);
-
         }
+
+        _yPointerDistance = 0;
     }
 
     private void Grab()
@@ -70,7 +67,6 @@ public class Graber : MonoBehaviour
                     _monster.MonsterAnimator.VictoryAnimation();                        
 
                     _rotator = monster.GetComponentInChildren<Rotator>();
-                    _rotator.enabled = true;
 
                     if(_monster.transform.parent != null)
                         _monster.transform.parent = null;
@@ -80,6 +76,7 @@ public class Graber : MonoBehaviour
                     _swipeZone.Expand();
 
                     LightUp(monster);
+                    _yPointerDistance = 0;
                 }
             }
         }
@@ -231,6 +228,17 @@ public class Graber : MonoBehaviour
 
     private bool IsBrakingThreshold()
     {
-        return _yPointerDistance > _yThreshold;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
+
+        bool isPlaceAccepter = false;
+        foreach (var hitInfo in raycastHits)
+        {
+            if(hitInfo.collider.TryGetComponent(out MonsterPlaceAccepter monsterPlaceAccepter))
+            isPlaceAccepter = true;
+        }
+
+        return _yPointerDistance > _yThreshold || isPlaceAccepter;
     }
 }

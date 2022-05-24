@@ -11,6 +11,7 @@ public class SwipeZone : MonoBehaviour
     private List<SwipeMover> _swipeMovers;
     private float _stopSpeed = 7f;
     private float _xPointerthreshold = 1f;
+    private float _interactingDistance = 7f;
     private SwipeMover _centralMover;
     private float _xPointerDistance;
     private float _spacing;
@@ -27,7 +28,11 @@ public class SwipeZone : MonoBehaviour
 
     private void Awake()
     {
-        _swipeMovers = GetComponentsInChildren<SwipeMover>().ToList();
+        _swipeMovers = GetComponentsInChildren<SwipeMover>().OrderBy(mover => mover.transform.localPosition.x).ToList();
+
+#if UNITY_EDITOR
+        _sensitivity *= 10;
+#endif
 
         _spacing = Mathf.Abs(_swipeMovers[0].transform.localPosition.x) - Mathf.Abs(_swipeMovers[1].transform.localPosition.x);
 
@@ -54,7 +59,7 @@ public class SwipeZone : MonoBehaviour
             return;
         }
 
-        IsMoving = Mathf.Abs(Speed) > 0.5f;
+        IsMoving = Mathf.Abs(Speed) > 0.001f;
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -65,15 +70,19 @@ public class SwipeZone : MonoBehaviour
 
         if (Clicked )
         {
-            Speed = Input.GetAxis("Mouse X") * _sensitivity;
+            float speed = Input.GetAxis("Mouse X") * _sensitivity;
+
+            if(Mathf.Abs(speed)> 1f)
+                Speed = speed;
+
             Speed = Mathf.Clamp(Speed, -30, 30);
-            _xPointerDistance += Input.GetAxis("Mouse X");
+            _xPointerDistance += Mathf.Abs(Input.GetAxis("Mouse X"));
         }
 
-        if (Mathf.Abs(_xPointerDistance) > 0.5f)
+        if (Mathf.Abs(_xPointerDistance) > _interactingDistance)
             Interacting = true;
 
-        if (Speed != 0)
+        if (IsMoving)
         {
             foreach (var swipeMover in _swipeMovers)
             {
@@ -107,13 +116,14 @@ public class SwipeZone : MonoBehaviour
 
     public void Centrate()
     {
-        if (_centralMover.IsInTransition)
+        if (_centralMover.IsInTransition || Graber.Grabed || Interacting)
             return;
 
         float offset = _centralMover.transform.localPosition.x;
 
         foreach (var swipeMover in _swipeMovers)
         {
+
             float xPosition = swipeMover.transform.localPosition.x;
             float targetXPosition = xPosition - offset;
 
@@ -138,13 +148,15 @@ public class SwipeZone : MonoBehaviour
         int counter = 0;
         float targetXPosition;
 
-
         foreach (var swipeMover in _swipeMovers)
         {
             if (swipeMover.transform.localPosition.x < xPos)
             {
-                targetXPosition = -counter * _spacing;
-                targetXPosition = swipeMover.transform.localPosition.x + _spacing;
+                if(instaShrink == false)
+                    targetXPosition = -counter * _spacing;
+                else
+                    targetXPosition = swipeMover.transform.localPosition.x + _spacing;
+
                 counter++;
 
                 if (instaShrink == false)
