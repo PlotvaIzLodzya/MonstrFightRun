@@ -15,7 +15,7 @@ public class MonsterCounter : MonoBehaviour
     public int MaxCount { get; private set; }
     public int CurrentCount { get; private set; }
 
-    public bool IsPartyFull => CurrentCount == MaxCount;
+    public bool IsPartyFull => CurrentCount >0;
 
     private void OnEnable()
     {
