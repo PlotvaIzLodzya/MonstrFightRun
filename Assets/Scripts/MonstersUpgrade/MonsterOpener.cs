@@ -9,14 +9,15 @@ public class MonsterOpener : ShopButton
     [SerializeField] private GameObject _rewardPanel;
     [SerializeField] private bool _reward;
 
-    private const string SaveName = "MonsterUpgraderHandler";
+    private string _saveName = "MonsterUpgraderHandler";
     public bool Reward => _reward;
 
     public event Action Opened;
 
     private void Awake()
     {
-        LoadProgression(SaveName);
+        _saveName = $"{_saveName}{_monsterCell.Monster.Name}";
+        LoadProgression(_saveName);
     }
 
     public override void Buy(float cost)

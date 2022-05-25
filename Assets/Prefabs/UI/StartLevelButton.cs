@@ -19,10 +19,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit[] raycastHits = Physics.RaycastAll(ray, 50f);
-
+        Debug.Log("asds");
         if (_canStartRun == false)
             return;
 
