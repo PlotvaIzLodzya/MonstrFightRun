@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ShopTutorial : MonoBehaviour
+public class ShopTutorial : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameObject[] _tutorObjects;
+    [SerializeField] private ShopTutorial _nextStep; 
     [SerializeField] private string _saveWord;
     [SerializeField] private bool _pauseTheGame;
     [SerializeField] private Button _button;
@@ -23,7 +25,9 @@ public class ShopTutorial : MonoBehaviour
         }
 
         if(_button != null)
+        {
             _button.onClick.AddListener(UnFreezeGame);
+        }
 
         PlayerPrefs.SetString(_saveWord, _saveWord);
     }
@@ -43,6 +47,9 @@ public class ShopTutorial : MonoBehaviour
         Time.timeScale = 1;
         CloseTutorial();
         _button.onClick.RemoveListener(UnFreezeGame);
+
+        if(_nextStep != null)
+            OpenNextStep();
     }
 
     private IEnumerator DelayedUnFreeze()
@@ -72,5 +79,15 @@ public class ShopTutorial : MonoBehaviour
         {
             tutorObject.SetActive(false);
         }
+    }
+
+    private void OpenNextStep()
+    {
+        _nextStep.gameObject.SetActive(true);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        CloseTutorial();
     }
 }

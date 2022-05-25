@@ -36,8 +36,8 @@ public class SwipeZone : MonoBehaviour
 
         _spacing = Mathf.Abs(_swipeMovers[0].transform.localPosition.x) - Mathf.Abs(_swipeMovers[1].transform.localPosition.x);
 
-        RightBorder = _swipeMovers[0].transform.localPosition - Vector3.right * _spacing;
-        LeftBorder = _swipeMovers[_swipeMovers.Count - 1].transform.localPosition + Vector3.right *_spacing;
+        RightBorder = _swipeMovers[0].transform.localPosition+ Vector3.one * _spacing;
+        LeftBorder = _swipeMovers[_swipeMovers.Count - 1].transform.localPosition + Vector3.right *_spacing*3;
 
         float distance = Mathf.Abs(LeftBorder.x) + Mathf.Abs(RightBorder.x);
 

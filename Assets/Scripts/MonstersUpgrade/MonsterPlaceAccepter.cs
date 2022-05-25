@@ -37,7 +37,6 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             monster.transform.localScale = Vector3.one;
             _rotator = monster.GetComponent<Rotator>();
             DisableRotator();
-            LightDown();
             Changed?.Invoke();
 
             _monsterInfoPanel?.Open(monster);
@@ -77,8 +76,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
         _monsterPlace.EnableCollider();
         IsOpened = true;
 
-        if(CanAcquireMonster)
-            LightUp();
+        LightUp();
 
         Changed?.Invoke();
     }

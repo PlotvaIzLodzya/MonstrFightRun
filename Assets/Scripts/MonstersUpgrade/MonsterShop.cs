@@ -9,6 +9,8 @@ public class MonsterShop : MonoBehaviour
     [SerializeField] private MonsterPersistence _monsterPersistence = new MonsterPersistence();
     [SerializeField] private Monster _initialMonster;
     [SerializeField] private MonsterCell[] _monsterCells;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private int _levelToOpen;
 
     private MonsterPlaceAccepter[] _monsterPlaceAcepters;
 
@@ -25,7 +27,28 @@ public class MonsterShop : MonoBehaviour
         _openedMonstersCellCount.LoadAmount();
         _openedMonsterPlaces.LoadAmount();
 
-        StartCoroutine(Delay());
+        foreach (var monsterCell in _monsterCells)
+        {
+            monsterCell.Init();
+        }
+
+        foreach (var initialMonsterCell in _initialMonsterCells)
+        {
+            initialMonsterCell.Open();
+        }
+
+        PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);
+        LoadMonsterParty();
+
+        int levelIndex = SaveSystem.LoadLevelsProgression();
+
+        if (levelIndex < _levelToOpen)
+        {
+            _animator.enabled = false;
+            transform.parent = null;
+            transform.position = new Vector3(0, 100, 0);
+        }
+
     }
 
     private void OnEnable()
@@ -158,19 +181,8 @@ public class MonsterShop : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0f);
 
-        foreach (var monsterCell in _monsterCells)
-        {
-            monsterCell.Init();
-        }
 
-        foreach (var initialMonsterCell in _initialMonsterCells)
-        {
-            initialMonsterCell.Open();
-        }
-
-        PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);
-        LoadMonsterParty();
     }
 }

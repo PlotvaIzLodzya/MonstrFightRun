@@ -15,7 +15,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public event Action RunStarted;
 
-    private bool _canStartRun;
+    private bool _canStartRun = true;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -42,6 +42,12 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         var monsterHandler = FindObjectOfType<MonstersHandler>();
         monsterHandler.TurnAllMonsterForward();
         monsterHandler.GetComponent<MonsterLevelPresenter>().Enable();
+        var acceptres = monsterHandler.GetComponentsInChildren<MonsterPlaceAccepter>();
+
+        foreach (var accepter in acceptres)
+        {
+            accepter.LightDown();
+        }
 
         DisableMonsterShop();
         InitializeMonsterPool();
@@ -56,7 +62,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public void SetActive(bool isPartyFull)
     {
-        _canStartRun = isPartyFull;
+        //_canStartRun = isPartyFull;
         
         //if (_canStartRun)
         //    _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 1);
