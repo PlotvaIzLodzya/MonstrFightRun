@@ -58,10 +58,10 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
     {
         _canStartRun = isPartyFull;
         
-        if (_canStartRun)
-            _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 1);
-        else
-            _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 0.5f);
+        //if (_canStartRun)
+        //    _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 1);
+        //else
+        //    _buttonImage.color = new Color(_buttonImage.color.r, _buttonImage.color.g, _buttonImage.color.b, 0.5f);
     }
 
     private void InitializeMonsterPool()
