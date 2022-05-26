@@ -58,7 +58,7 @@ public class Graber : MonoBehaviour
 
     private void Grab()
     {
-        if (Grabed == true)
+        if (Grabed == true || EventSystem.current.IsPointerOverGameObject())
             return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
