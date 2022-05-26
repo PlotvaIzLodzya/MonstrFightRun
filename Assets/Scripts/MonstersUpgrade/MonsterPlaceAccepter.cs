@@ -11,6 +11,7 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
     [SerializeField] private GameObject _freeEffect;
     [SerializeField] private BoxCollider _boxCollider;
     [SerializeField] private MonsterInfoPanel _monsterInfoPanel;
+    [SerializeField] private ParticleSystem _acquireParticle;
 
     private MonsterPlace _monsterPlace;
     private Monster _monster;
@@ -38,6 +39,8 @@ public class MonsterPlaceAccepter : MonoBehaviour, IMonsterHolder
             _rotator = monster.GetComponent<Rotator>();
             DisableRotator();
             Changed?.Invoke();
+
+            Instantiate(_acquireParticle, transform);
 
             _monsterInfoPanel?.Open(monster);
         }

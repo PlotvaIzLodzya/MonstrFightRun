@@ -17,6 +17,16 @@ public class Graber : MonoBehaviour
 
     public static bool Grabed { get; private set; }
 
+
+    private void Awake()
+    {
+        int levelIndex = SaveSystem.LoadLevelsProgression();
+
+        if (levelIndex < 1)
+            gameObject.SetActive(false);
+    }
+
+
     private void Update()
     {
         if (SwipeZone.Interacting || SwipeZone.IsMoving)

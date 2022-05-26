@@ -36,7 +36,7 @@ public class CurrencyUIView : MonoBehaviour
             textValue += valuePerTick;
 
             textValue = Mathf.Clamp(textValue, 0, value);
-            text.text = $"{(int)textValue}";
+            text.text = $"x{(int)textValue}";
         }
     }
 }
