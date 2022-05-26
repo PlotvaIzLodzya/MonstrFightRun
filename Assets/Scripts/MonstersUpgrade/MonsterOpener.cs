@@ -22,11 +22,9 @@ public class MonsterOpener : ShopButton
 
     public override void Buy(float cost)
     {
-        if (SwipeZone.IsMoving)
-            return;
+        OpenCell();
 
         Opened?.Invoke();
-        OpenCell();
         gameObject.SetActive(false);
     }
 

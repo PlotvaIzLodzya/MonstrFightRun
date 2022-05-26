@@ -19,6 +19,8 @@ public class MonsterShop : MonoBehaviour
     private ValueHandler _openedMonstersCellCount = new ValueHandler(1, 9, "OpenedMonsterCellCountShopSaveName");
     private ValueHandler _openedMonsterPlaces = new ValueHandler(3, 5, "OpenMonsterPlacesSave");
 
+    public static bool IsReady { get; private set; }
+
     public int OpenedMonsterPlaces => (int)_openedMonsterPlaces.Value;
 
     private void Awake()
@@ -190,5 +192,7 @@ public class MonsterShop : MonoBehaviour
 
         PrepareMonsterHolders(_monsterPlaceAcepters, (int)_monsterCount.Value, (int)_openedMonsterPlaces.Value);
         LoadMonsterParty();
+
+        IsReady = true;
     }
 }

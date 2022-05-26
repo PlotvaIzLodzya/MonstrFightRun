@@ -49,7 +49,7 @@ public class BossLoader : MonoBehaviour
         if (_currentBossPrefab == null)
             return false;
 
-        value = _currentBossPrefab.Bosses.Count * 25;
+        value = _currentBossPrefab.Bosses.Count * 20;
 
         return true;
     }

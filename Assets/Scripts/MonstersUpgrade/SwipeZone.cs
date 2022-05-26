@@ -119,6 +119,9 @@ public class SwipeZone : MonoBehaviour
 
     public void Centrate()
     {
+        if (_centralMover == null)
+            return;
+
         if (_centralMover.IsInTransition || Graber.Grabed || Interacting)
             return;
 

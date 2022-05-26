@@ -11,6 +11,7 @@ public class ShopTutorial : MonoBehaviour, IPointerDownHandler
     [SerializeField] private string _saveWord;
     [SerializeField] private bool _pauseTheGame;
     [SerializeField] private Button _button;
+    [SerializeField] private Button _startLevelButton;
 
     private void OnEnable()
     {
@@ -25,9 +26,10 @@ public class ShopTutorial : MonoBehaviour, IPointerDownHandler
         }
 
         if(_button != null)
-        {
             _button.onClick.AddListener(UnFreezeGame);
-        }
+
+        if(_startLevelButton != null)
+            _button.onClick.AddListener(UnFreezeGame);
 
         PlayerPrefs.SetString(_saveWord, _saveWord);
     }

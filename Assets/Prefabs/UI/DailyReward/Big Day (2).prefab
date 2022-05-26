@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monster: {fileID: 2840612604432673332, guid: b6f2fdb243097254b9ff07236fd9c26d, type: 3}
   _currencyReward: {fileID: 5056127960022242030}
+  _congrats: {fileID: 0}
 --- !u!114 &5056127960022242030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1c4cc3242e0544967b6eb69d898a306c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 482701d7fe23a4094b9fa72ba3be7ccd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

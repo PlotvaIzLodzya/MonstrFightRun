@@ -38,7 +38,7 @@ public class MonsterInfoPanel : MonoBehaviour
     {
         float currentLevel = SaveSystem.LoadLevelsProgression();
 
-        if (currentLevel < _levelToShow)
+        if (currentLevel < _levelToShow-1)
             return;
 
         _monster = monster;

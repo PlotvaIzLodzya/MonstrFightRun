@@ -19,8 +19,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("asds");
-        if (_canStartRun == false)
+        if (_canStartRun == false || MonsterShop.IsReady == false)
             return;
 
         EnableRotators();
