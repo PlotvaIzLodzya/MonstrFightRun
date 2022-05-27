@@ -46,9 +46,8 @@ public class Week : MonoBehaviour
         int firstDay = PlayerPrefs.GetInt(SaveName);
 
         _daysSinceLastVisit = DateTime.Today.Day - firstDay;
-        _daysSinceLastVisit = 1;
 
-        if (_daysSinceLastVisit >7)
+        if (_daysSinceLastVisit >6)
         {
             _daysSinceLastVisit = 0;
             PlayerPrefs.DeleteKey(SaveName);
@@ -87,7 +86,7 @@ public class Week : MonoBehaviour
 
     private void OpenDailyRewards()
     {
-        for (int i = 0; i < _daysSinceLastVisit; i++)
+        for (int i = 0; i <= _daysSinceLastVisit; i++)
         {
             _dailyRewardPresenters[i].Open();
         }

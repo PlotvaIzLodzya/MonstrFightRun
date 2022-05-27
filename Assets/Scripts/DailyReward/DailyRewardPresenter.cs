@@ -51,6 +51,7 @@ public class DailyRewardPresenter : MonoBehaviour, IPointerDownHandler
     public void Unclaim()
     {
         PlayerPrefs.DeleteKey(_saveName);
+        IsClaimed = false;
     }
 
     private void Claim()

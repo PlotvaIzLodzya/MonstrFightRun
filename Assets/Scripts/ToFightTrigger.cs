@@ -8,6 +8,9 @@ public class ToFightTrigger : MonoBehaviour
     public event Action PlayerEnteredFight;
     private void OnTriggerExit(Collider other)
     {
+        if (other.TryGetComponent(out MonsterPlace monsterPlace))
+            monsterPlace.BattleMode();
+
         if (other.TryGetComponent(out StateMachine stateMachine))
             stateMachine.enabled = true;
 
@@ -29,8 +32,5 @@ public class ToFightTrigger : MonoBehaviour
             PlayerEnteredFight?.Invoke();
             player.DisableCollider();
         }
-
-        if (other.TryGetComponent(out MonsterPlace monsterPlace))
-            monsterPlace.BattleMode();
     }
 }

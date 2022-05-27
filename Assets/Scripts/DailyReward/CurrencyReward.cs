@@ -23,14 +23,31 @@ public class CurrencyReward : DailyRewardBehaviour
 
         int amount = 0;
 
-        while (amount < _amount)
+        if (_amount < 200)
         {
-            var flyingPicture = Instantiate(_flyingPicture, _walletView.Image.transform);
-            flyingPicture.transform.position = transform.position;
-            flyingPicture.SetSprite(_image.sprite);
-            flyingPicture.DelayedInit(Vector3.zero, _image.sprite, 75, _image.rectTransform.rect.width, _walletView, 1, 1f);
-            amount++;
+            while (amount < _amount)
+            {
+                var flyingPicture = Instantiate(_flyingPicture, _walletView.Image.transform);
+                flyingPicture.transform.position = transform.position;
+                flyingPicture.SetSprite(_image.sprite);
+                flyingPicture.DelayedInit(Vector3.zero, _image.sprite, 75, _image.rectTransform.rect.width, _walletView, 1, 1f);
+                amount++;
+            }
         }
+        else
+        {
+            {
+                while (amount < _amount)
+                {
+                    var flyingPicture = Instantiate(_flyingPicture, _walletView.Image.transform);
+                    flyingPicture.transform.position = transform.position;
+                    flyingPicture.SetSprite(_image.sprite);
+                    flyingPicture.DelayedInit(Vector3.zero, _image.sprite, 75, _image.rectTransform.rect.width, _walletView, 10, 1f);
+                    amount += 20;
+                }
+            }
+        }
+
     }
 
     public override void UpdateInfo()

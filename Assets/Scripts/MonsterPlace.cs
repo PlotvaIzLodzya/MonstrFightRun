@@ -8,6 +8,7 @@ public class MonsterPlace : MonoBehaviour, IJumpable
 {
     [HideInInspector] public int Position;
 
+    private const int _playerLayer = 7;
     private bool _battleMode;
     private BoxCollider _boxCollider;
     private JumpAnimation _jumpAnimation = new JumpAnimation();
@@ -23,8 +24,9 @@ public class MonsterPlace : MonoBehaviour, IJumpable
             _boxCollider = GetComponent<BoxCollider>();
 
         Monster = monster;
+        Monster.gameObject.layer = _playerLayer;
 
-        if(isShopStage == false)
+        if (isShopStage == false)
             Monster.LevelUp(1);
 
 
@@ -68,6 +70,9 @@ public class MonsterPlace : MonoBehaviour, IJumpable
 
     public void BattleMode()
     {
+        if (Monster != null)
+            Monster.transform.localPosition = Vector3.zero;
+
         _battleMode = true;
     }
 

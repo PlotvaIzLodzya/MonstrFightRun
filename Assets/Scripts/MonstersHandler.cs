@@ -72,6 +72,8 @@ public class MonstersHandler : MonoBehaviour
         {
             if (CanMerge(monster, placeWithMonster))
             {
+
+                Debug.Log("hi");
                 ChangeMonstersMight(AddLevelOnMerge);
 
                 MonsterMerged?.Invoke(placeWithMonster.Monster);
@@ -218,6 +220,7 @@ public class MonstersHandler : MonoBehaviour
     private void SetMonsterToPlace(Monster monsterType, MonsterPlace monsterPlace, int level)
     {
         var monster = Instantiate(monsterType, monsterPlace.transform);
+        monster.transform.localPosition = Vector3.zero;
         monsterPlace.Take(monster);
 
         ChangeMonstersMight(level);

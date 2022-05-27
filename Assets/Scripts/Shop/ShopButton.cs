@@ -79,7 +79,7 @@ public abstract class ShopButton : MonoBehaviour, IPointerClickHandler
 
     protected virtual void UpdateInfo()
     {
-        _label.text = $"{CostHandler.Value}";
+        _label.text = $"x{CostHandler.Value}";
     }
 
     public void LoadProgression(string saveName)

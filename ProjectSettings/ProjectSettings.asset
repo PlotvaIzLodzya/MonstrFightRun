@@ -159,7 +159,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 6
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
@@ -689,7 +689,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    7: APP_METRICA_TRACK_LOCATION_DISABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
