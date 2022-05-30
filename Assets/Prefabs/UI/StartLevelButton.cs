@@ -22,6 +22,8 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
         if (_canStartRun == false || MonsterShop.IsReady == false)
             return;
 
+        FindObjectOfType<HandPointer>().gameObject.SetActive(false);
+
         EnableRotators();
         gameObject.SetActive(false);
         _shop.SetActive(false);
