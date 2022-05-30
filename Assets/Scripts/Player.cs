@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private int _counter;
     private ValueHandler _currencyHandler = new ValueHandler(0, 100000, "Currency");
 
+    public PlayerDeathHandler playerDeathHandler => _deathHandler;
     public MouseInput MouseInput => _mouseInput;
     public int Might => _monstersHandler.MonsterMight;
     public ValueHandler CurrencyHandler => _currencyHandler;

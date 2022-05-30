@@ -12,6 +12,7 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
     [SerializeField] private ShopAnimator[] _shopAnimators;
     [SerializeField] private RoadMap _roadMap;
     [SerializeField] private Image _buttonImage;
+    [SerializeField] private Canvas _canvas;
 
     public event Action RunStarted;
 
@@ -23,6 +24,8 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
             return;
 
         FindObjectOfType<HandPointer>().gameObject.SetActive(false);
+
+        _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
         EnableRotators();
         gameObject.SetActive(false);

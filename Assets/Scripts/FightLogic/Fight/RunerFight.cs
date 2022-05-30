@@ -59,8 +59,6 @@ public class RunerFight: AttackBehavior
     {
         float elapsedTime = 0;
 
-        Debug.Log(transform.name);
-
         while(elapsedTime < 0.2f)
         {
             elapsedTime += Time.deltaTime;

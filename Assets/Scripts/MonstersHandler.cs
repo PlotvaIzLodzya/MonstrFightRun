@@ -176,6 +176,10 @@ public class MonstersHandler : MonoBehaviour
 
     private void SwapMonsterPlaces(MonsterPlace monsterPlace)
     {
+        var Player = FindObjectOfType<Player>();
+        if (Player.playerDeathHandler.IsDead)
+            return;
+
         _monsterHandlerColliders.DisableCollider(monsterPlace);
         MonsterPlace currentPlace = _monsterPlaces.FirstOrDefault(place => place.Monster != null && place.Position > monsterPlace.Position);
 

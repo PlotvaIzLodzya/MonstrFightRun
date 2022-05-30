@@ -10,10 +10,10 @@ public class PlayerDeathHandler : MonoBehaviour, IDeathBehavior
 
     public event Action<string> PlayerLost;
 
-    private bool _isDead;
+    public bool IsDead { get; private set; }
     public void Die(LostCouse lostCouse)
     {
-        if (_isDead)
+        if (IsDead)
             return;
 
         PlayerLost?.Invoke(lostCouse.ToString());
@@ -21,7 +21,7 @@ public class PlayerDeathHandler : MonoBehaviour, IDeathBehavior
         _animatorHandler.SetDeathAnimation();
         _uIHandler.Disable();
 
-        _isDead = true;
+        IsDead = true;
     }
 }
 

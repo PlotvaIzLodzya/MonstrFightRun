@@ -99,6 +99,7 @@ public class Monster : MonoBehaviour, IMergeable
     {
         if (IsAllive)
         {
+            Debug.Log(transform.name);
             MonsterDeathHandler.Die(lostCouse);
             IsAllive = false;
             Died?.Invoke();
