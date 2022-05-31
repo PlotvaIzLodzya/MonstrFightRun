@@ -41,10 +41,6 @@ public class MonsterShop : MonoBehaviour
             transform.parent = null;
             transform.position = new Vector3(0, 100, 0);
         }
-        else
-        {
-            _shopTutorial.gameObject.SetActive(true);
-        }
 
     }
 

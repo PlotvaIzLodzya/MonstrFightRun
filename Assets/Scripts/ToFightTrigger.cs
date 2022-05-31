@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ToFightTrigger : MonoBehaviour
 {
+    [SerializeField] private HandPointer _handPointer;
+
     public event Action PlayerEnteredFight;
     private void OnTriggerExit(Collider other)
     {
@@ -31,6 +33,8 @@ public class ToFightTrigger : MonoBehaviour
         {
             PlayerEnteredFight?.Invoke();
             player.DisableCollider();
+
+            _handPointer.gameObject.SetActive(true);
         }
     }
 }

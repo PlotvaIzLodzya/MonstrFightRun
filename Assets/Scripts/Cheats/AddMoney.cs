@@ -16,6 +16,6 @@ public class AddMoney : MonoBehaviour
 
     private void OnButtonClick()
     {
-        _player.CurrencyHandler.Increase(200);
+        _player.CurrencyHandler.Increase(224);
     }
 }

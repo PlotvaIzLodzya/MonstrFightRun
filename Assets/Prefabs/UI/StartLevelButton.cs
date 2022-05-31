@@ -25,7 +25,6 @@ public class StartLevelButton : MonoBehaviour, IPointerDownHandler
 
         FindObjectOfType<HandPointer>().gameObject.SetActive(false);
 
-        _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
         EnableRotators();
         gameObject.SetActive(false);

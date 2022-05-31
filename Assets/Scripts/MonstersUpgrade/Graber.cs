@@ -20,10 +20,6 @@ public class Graber : MonoBehaviour
 
     private void Awake()
     {
-        int levelIndex = SaveSystem.LoadLevelsProgression();
-
-        if (levelIndex < 1)
-            gameObject.SetActive(false);
     }
 
 

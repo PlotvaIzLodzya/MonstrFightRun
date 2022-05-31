@@ -72,8 +72,6 @@ public class MonstersHandler : MonoBehaviour
         {
             if (CanMerge(monster, placeWithMonster))
             {
-
-                Debug.Log("hi");
                 ChangeMonstersMight(AddLevelOnMerge);
 
                 MonsterMerged?.Invoke(placeWithMonster.Monster);
